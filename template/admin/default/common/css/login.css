@@ -1,0 +1,175 @@
+body{
+    font-family: "微软雅黑","Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+ul,p{
+    margin: 0 auto;
+}
+ul,li{
+    list-style: none;
+}
+a{
+    text-decoration: none;
+}
+a:hover{
+    text-decoration: none;
+}
+.fl{
+    float: left;
+}
+.fr{
+    float: right;
+}
+.border-left{
+    border-left:1px solid #EEEEEE;
+}
+/******************
+*****登录界面******
+*******************/
+#header{
+    height: 96px;
+    width: 970px;
+    margin: 0 auto;
+}
+#header .logo{
+    margin: 20px 0;
+}
+#header .logo img{
+    height: 50px;
+}
+#header .line{
+    width: 2px;
+    height: 45px;
+    margin: 25px 14px;
+    display: inline-block;
+}
+#header .welcome-login{
+    color:#11CE72;
+    margin: 40px 0 0 18px;
+    font-size: 14px;
+    float: right;
+    color: #333;
+}
+#container{
+    margin: 0 auto;
+    position: relative;
+    background-color: #00A0EA;
+	min-height:430px;
+}
+#container .login-image-bg{
+    text-align: center;
+}
+#container .login-area{
+    background-color: #ffffff;
+    position: absolute;
+    height: 370px;
+    width: 350px;
+    left: 60%;
+    top: 25px;
+}
+#container .login-area .notice{
+	background: #fcf4cd;
+	margin-bottom: 15px;
+	font-size: 12px;
+	line-height: 25px;
+	color: #9b9484;
+}
+#container .login-area .notice i{
+	margin: 0 5px;
+	position: relative;
+	top: 3px;
+	color: #d6ce49;
+}
+#container .login-area h3{
+    height: 45px;
+    margin: 0;
+    border-bottom: 1px #e5e5e5 solid;
+    *height: 44px;
+    font-size: 16px;
+    color: #00A0EA;
+    font-weight: 100;
+    padding-left: 20px;
+    line-height: 44px;
+}
+#container .login-area ul{
+    padding: 15px 33px 0 33px;
+}
+#container .login-area ul li{
+    margin-bottom: 15px;
+}
+#container .login-area .login-info{
+    height: 42px;
+    *height: 40px;
+    border: 1px #ccc solid;
+}
+#container .login-area .title-info{
+    width: 44px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    border-right: 1px #ccc solid;
+    *width: 43px;
+}
+#container .login-area .login-info input{
+    border: 0;
+    width: 238px;
+    *width: 228px;
+    height: 40px;
+    line-height: 40px;
+    outline: none;
+    padding: 0;
+    padding-left: 10px;
+    line-height: 40px \0;
+}
+#container .login-area .login-info.active{
+    border: 1px #00A0EA solid;
+}
+#container .login-area .active .title-info{
+    border-right: 1px #00A0EA solid;
+    color: #00A0EA;
+}
+#container .login-area .title-info i{
+    font-size: 24px;
+    color: #CCCCCC;
+}
+#container .login-area .active .title-info i{
+    color: #00A0EA;
+}
+#container .login-area .remember-me{
+    margin: 0;
+    color: #666;
+    white-space: nowrap;
+
+}
+#container .error-info{
+    display: none;
+}
+#container .login-area .btn-login{
+    line-height: 42px;
+    width: 284px;
+    _width: 293px;
+    text-align: center;
+    display: block;
+    font-size: 14px;
+    color: #fff;
+    background-color: #00A0EA;
+}
+#container .login-area .btn-login:hover{
+    opacity: 0.9;
+    filter: alpha(opacity=90);
+}
+#container .login-area .help a:link,#container .login-area .help a:visited{
+    color: #666;
+}
+/*******页脚********/
+#footer{
+    width: 1200px;
+    margin: 30px auto;
+}
+#footer .copyright{
+    text-align: center;
+    color: #999999;
+}
+#footer .copyright a{
+    padding: 0 15px;
+    color: #999999;
+}

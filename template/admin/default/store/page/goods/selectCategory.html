@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<!-- head -->
+<!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/admin/<!--{$theme}-->/common/page/head.html"}-->
+<link rel="stylesheet" href="<!--{$smarty.const.TEMPLATE_PATH}-->/admin/<!--{$theme}-->/store/css/goods/selectCategory.css" />
+<body>
+<!---------------- 商品列表 ------------------->
+
+<!-- 页头 -->
+<!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/admin/<!--{$theme}-->/common/page/header.html"}-->
+<!-- 主体 -->
+<div class="content container-fluid<!--{if $leftBarScale eq '1'}--> scale<!--{/if}-->">
+    <div class="row">
+        <div class="col-md-2 left-section">
+            <!-- 左导航菜单 -->
+            <!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/admin/<!--{$theme}-->/common/page/menu.html"}-->
+
+        </div>
+        <div class="col-md-10 right-section">
+            <!--内容区域-->
+            <h3><i class="icon iconfont"><!--{$smarty.session.currentMenu.icon}--></i>分类列表
+            </h3>
+            <div class="inner-section row">
+                <div id="content">
+                    <div class="select-category">
+                        <div class="category-txt">
+                        	商品上架后将只能在分类编辑中选择修改
+                        </div>
+                        <div class="category-wrap clearfix">
+                            <div class="category-item-wrap" rank='1'>
+                                <ul class="category-list">
+                                    <!--{foreach from = $firCateList item = firCategory}-->
+                                    <li><a href="javascript:;" data-id="<!--{$firCategory.id}-->" fir="<!--{$firCategory.fir}-->"><span class="category-name" data-name="<!--{$firCategory.name}-->"><!--{$firCategory.name}--></span><span class="selected-category">选为分类</span></a></li>
+                                    <!--{/foreach}-->
+                                </ul>
+                            </div>
+                            <div class="category-item-wrap hidden" rank='2'>
+                                <ul class="category-list">
+                                    <!--{foreach from = $secCateList item = secCategory}-->
+                                    <li><a href="javascript:;" data-id="<!--{$secCategory.id}-->" fir="<!--{$secCategory.fir}-->" sec="<!--{$secCategory.sec}-->"><span class="category-name" data-name=""><!--{$secCategory.name}--></span><span class="selected-category">选为分类</span></a></li>
+                                    <!--{/foreach}-->
+                                </ul>
+                            </div>
+                            <div class="category-item-wrap hidden" rank='3'>
+                                <ul class="category-list">
+                                    <!--{foreach from = $thrCateList item = thrCategory}-->
+                                    <li><a href="javascript:;" data-id="<!--{$thrCategory.id}-->" fir="<!--{$thrCategory.fir}-->" sec="<!--{$thrCategory.sec}-->" thr="<!--{$thrCategory.thr}-->" ><span class="category-name" data-name=""><!--{$thrCategory.name}--></span><span class="selected-category">选为分类</span></a></li>
+                                    <!--{/foreach}-->
+                                </ul>
+                            </div>
+                            <div class="category-item-wrap hidden" rank='4'>
+                                <ul class="category-list">
+                                    <!--{foreach from = $fouCateList item = fouCategory}-->
+                                    <li><a href="javascript:;" data-id="<!--{$fouCategory.id}-->" fir="<!--{$fouCategory.fir}-->" sec="<!--{$fouCategory.sec}-->" thr="<!--{$fouCategory.thr}-->" fou="<!--{$fouCategory.fou}-->"><span class="category-name" data-name=""><!--{$fouCategory.name}--></span><span class="selected-category">选为分类</span></a></li>
+                                    <!--{/foreach}-->
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="choosed-title">
+                        	<div>已选分类</div>
+                        </div>
+                        <div class="choose-category-area row">
+                        </div>
+                        <div class="action-area">
+                        	<input type="hidden" class="ids" id="ids" name="ids" value="">
+                        	<a href="javascript:;" class="next">下一步</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 页脚 -->
+<!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/admin/<!--{$theme}-->/common/page/footer.html"}-->
+
+<!-- jsfiles -->
+<!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/admin/<!--{$theme}-->/common/page/jsfiles.html"}-->
+<script type="text/javascript" src="<!--{$smarty.const.TEMPLATE_PATH}-->/admin/<!--{$theme}-->/store/js/goods/selectCategory.js"></script>
+</body>
+</html>

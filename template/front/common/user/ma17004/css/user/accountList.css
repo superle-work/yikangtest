@@ -1,0 +1,159 @@
+/*******************************
+ -------账户列表页面样式--------
+ ---------author:jjhu-----------
+ -------date:2015-11-14---------
+ *******************************/
+#content .account-top-area{
+    padding: 10px;
+    border-bottom: 1px solid #F0E8E8;
+}
+
+#content .account-top-area a{
+    text-decoration: none;
+    float: right;
+}
+#content .account-list table{
+    width: 100%;
+    table-layout: fixed;
+}
+#content .account-list tr{
+    border-bottom: 1px solid #eee;
+}
+#content .account-list .col-1{
+    width: 26px;
+}
+#content .account-list td{
+    padding: 5px 0;
+    font-size: 12px;
+}
+#content .account-list .col-2{
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+#content .account-list .col-3{
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    padding-left:5px;
+}
+#content .account-list .col-4{
+    width: 50px;
+    color: #666666;
+}
+#content .account-list{
+    padding: 0 10px;
+}
+#content .account-list a{
+    text-decoration: none;
+}
+.account-list .item-select i {
+    display: none;
+}
+.account-list .item-select i.selected{
+    color:#3BA93B;
+}
+.account-list .item-select i.un-selected,
+.account-list .item-delete i.un-selected
+{
+    color: #CCCCCC;
+}
+.account-list .item-delete i.selected,#selectAllDelete i.all-selected{
+    color: #F95858;
+}
+
+#content .account-list .edit{
+    color: #AAAAAA;
+    display: inline-block;
+    padding: 0 8px;
+}
+.account-bottom-area{
+    z-index: 10;
+    position: fixed;
+    bottom: 0;
+    text-align: center;
+    background: #ffffff;
+}
+.account-bottom-area a{
+    height: 40px;
+    padding:0;
+    line-height: 40px;
+    text-decoration: none;
+    text-align: center;
+}
+.account-bottom-area #defaultAccount span
+{
+    color: #ffffff;
+    font-size: 14px;
+    background: #19B4EA;
+    display: inline-block;
+    padding: 0 10px;
+    width: 100%;
+}
+.account-bottom-area #addAccount span,
+.account-bottom-area #deleteAll span
+{
+    display: block;
+    padding: 0 10px;
+    color: #ffffff;
+    font-size: 14px;
+}
+.account-bottom-area #addAccount span{
+    background: #FF5C00;
+    width: 100%;
+}
+.account-bottom-area #deleteAll span{
+    background: #CCCCCC;
+}
+.account-bottom-area #deleteAll span.can-use{
+    background: #F95858;
+}
+#selectAllDelete i.not-all-selected{
+    color: #DDDDDD;
+}
+#selectAllDelete span{
+    color: #CCCCCC;
+}
+#selectAllDelete.all-selected span{
+    color: #F95858;
+}
+
+.modal-title{
+    min-height: inherit;
+    color: #666666;
+}
+/**弹出框样式**/
+#editAccountModal input ,#addAccountModal input{
+    min-width: 200px;
+}
+#editAccountModal input,#editAccountModal select,
+#addAccountModal input,#addAccountModal select
+{
+    border: 1px solid #DDD;
+    padding: 4px 3px;
+    color: #444444;
+}
+#editAccountModal button,#addAccountModal button{
+    border-radius: 0;
+}
+#editAccountModal table .tr > td,
+#addAccountModal table .tr > td
+{
+    padding: 5px 0;
+}
+#editAccountModal table .tr > td:first-child,
+#addAccountModal table .tr > td:first-child{
+    padding-right: 5px;
+    width: 70px;
+}
+#editAccountModal table .tr table td,
+#addAccountModal table .tr table td
+{
+    padding: 2px 0;
+}
+#editAccountModal table .dong,#editAccountModal table .shi,
+#addAccountModal table .dong,#addAccountModal table .shi
+{
+    width: 60px;
+    margin:0 2px ;
+}

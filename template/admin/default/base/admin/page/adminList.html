@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<!-- head -->
+<!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/admin/<!--{$theme}-->/common/page/head.html"}-->
+<body>
+<!---------------- 网站管理员 ------------------->
+
+<!-- 页头 -->
+<!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/admin/<!--{$theme}-->/common/page/header.html"}-->
+<!-- 主体 -->
+<div class="content container-fluid<!--{if $leftBarScale eq '1'}--> scale<!--{/if}-->">
+    <div class="row">
+        <div class="col-md-2 left-section">
+            <!-- 左导航菜单 -->
+            <!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/admin/<!--{$theme}-->/common/page/menu.html"}-->
+
+        </div>
+        <div class="col-md-10 right-section">
+            <!--内容区域-->
+            <h3><i class="icon iconfont"><!--{$smarty.session.currentMenu.icon}--></i>网站管理员
+                <div class="operation-div">
+                    <a href="admin.php?c=base_admin&a=addAdmin" class="btn btn-success">添加管理员</a>
+                </div>
+            </h3>
+            <div class="inner-section row">
+
+               <!--{foreach from = $adminList item = admin name = admin}-->
+                <!--{if $smarty.foreach.admin.iteration % 4 eq '1'}-->
+                <div class="col-md-3 quick-nav admin">
+                    <a href="javascript:;" aid="<!--{$admin.id}-->" class="edit">
+                        <div class="icon-image  blue-background"><i class="icon iconfont">&#xe617;</i></div>
+                        <div class="title  blue-background"><!--{$admin.account}-->-<!--{$admin.admin_name}--></div>
+                    </a>
+                    <div class="action">
+                        <a href="javascript:;" aid="<!--{$admin.id}-->" class="edit">编辑</a>
+                        <!--{if $admin.account neq $smarty.session.admin.account}-->
+                        &nbsp;|&nbsp;<a  href="javascript:;" aid="<!--{$admin.id}-->" class="delete" account="<!--{$admin.account}-->">删除</a>
+                        <!--{else}-->
+                        &nbsp;|&nbsp;<a  href="javascript:;" aid="<!--{$admin.id}-->" class="editPwd" account="<!--{$admin.account}-->">修改密码</a>
+                        <!--{/if}-->
+                    </div>
+
+                </div>
+
+                <!--{elseif $smarty.foreach.admin.iteration % 4 eq '2'}-->
+                <div class="col-md-3 quick-nav admin">
+                    <a href="javascript:;" aid="<!--{$admin.id}-->" class="edit">
+                        <div class="icon-image green-background"><i class="icon iconfont">&#xe617;</i></div>
+                        <div class="title green-background"><!--{$admin.account}-->-<!--{$admin.admin_name}--></div>
+                    </a>
+                    <div class="action">
+                        <a href="javascript:;" aid="<!--{$admin.id}-->" class="edit">编辑</a>
+                        <!--{if $admin.account neq $smarty.session.admin.account}-->
+                        &nbsp;|&nbsp;<a  href="javascript:;" aid="<!--{$admin.id}-->" class="delete" account="<!--{$admin.account}-->">删除</a>
+                        <!--{else}-->
+                        &nbsp;|&nbsp;<a  href="javascript:;" aid="<!--{$admin.id}-->" class="editPwd" account="<!--{$admin.account}-->">修改密码</a>
+                        <!--{/if}-->
+                    </div>
+
+                </div>
+                <!--{elseif $smarty.foreach.admin.iteration % 4 eq '3'}-->
+                <div class="col-md-3 quick-nav admin">
+                    <a href="javascript:;" aid="<!--{$admin.id}-->" class="edit">
+                        <div class="icon-image purple-background"><i class="icon iconfont">&#xe617;</i></div>
+                        <div class="title purple-background"><!--{$admin.account}-->-<!--{$admin.admin_name}--></div>
+                    </a>
+                    <div class="action">
+                        <a href="javascript:;" aid="<!--{$admin.id}-->" class="edit">编辑</a>
+                        <!--{if $admin.account neq $smarty.session.admin.account}-->
+                        &nbsp;|&nbsp;<a  href="javascript:;" aid="<!--{$admin.id}-->" class="delete" account="<!--{$admin.account}-->">删除</a>
+                        <!--{else}-->
+                        &nbsp;|&nbsp;<a  href="javascript:;" aid="<!--{$admin.id}-->" class="editPwd" account="<!--{$admin.account}-->">修改密码</a>
+                        <!--{/if}-->
+                    </div>
+
+                </div>
+                <!--{elseif $smarty.foreach.admin.iteration % 4 eq '0'}-->
+                <div class="col-md-3 quick-nav admin">
+                    <a href="javascript:;" aid="<!--{$admin.id}-->" class="edit">
+                        <div class="icon-image red-background"><i class="icon iconfont">&#xe617;</i></div>
+                        <div class="title red-background"><!--{$admin.account}-->-<!--{$admin.admin_name}--></div>
+                    </a>
+                    <div class="action">
+                        <a href="javascript:;" aid="<!--{$admin.id}-->" class="edit">编辑</a>
+                        <!--{if $admin.account neq $smarty.session.admin.account}-->
+                        &nbsp;|&nbsp;<a  href="javascript:;" aid="<!--{$admin.id}-->" class="delete" account="<!--{$admin.account}-->">删除</a>
+                        <!--{else}-->
+                        &nbsp;|&nbsp;<a  href="javascript:;" aid="<!--{$admin.id}-->" class="editPwd" account="<!--{$admin.account}-->">修改密码</a>
+                        <!--{/if}-->
+                    </div>
+
+                </div>
+                <!--{/if}-->
+
+                <!--{/foreach}-->
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 页脚 -->
+<!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/admin/<!--{$theme}-->/common/page/footer.html"}-->
+
+<!-- jsfiles -->
+<!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/admin/<!--{$theme}-->/common/page/jsfiles.html"}-->
+<script type="text/javascript" src="<!--{$smarty.const.TEMPLATE_PATH}-->/admin/<!--{$theme}-->/base/admin/js/adminList.js"></script>
+</body>
+</html>

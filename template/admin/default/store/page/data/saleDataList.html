@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<!-- head -->
+<!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/admin/<!--{$theme}-->/common/page/head.html"}-->
+<link rel="stylesheet" href="<!--{$smarty.const.TEMPLATE_PATH}-->/admin/<!--{$theme}-->/store/css/data/saleDataList.css">
+<body>
+
+<!---------------- 销售额 报表统计------------------->
+<!-- 页头 -->
+<!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/admin/<!--{$theme}-->/common/page/header.html"}-->
+<!-- 主体 -->
+<div class="content container-fluid<!--{if $leftBarScale eq '1'}--> scale<!--{/if}-->">
+    <div class="row">
+        <div class="col-md-2 left-section">
+            <!-- 左导航菜单 -->
+            <!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/admin/<!--{$theme}-->/common/page/menu.html"}-->
+
+        </div>
+        <div class="col-md-10 right-section"><!--
+            <!--内容区域-->
+            <h3><i class="icon iconfont"><!--{$smarty.session.currentMenu.icon}--></i><!--{$smarty.session.currentMenu.menuTitle}-->
+                <div class="operation-div">
+                   
+                </div>
+            </h3>
+            <div class="inner-section row">
+
+                <!--关键指标-->
+                <div class="key-index">
+                    <ul class="clearfix">
+                        <li class="key-index-item">
+                            <div class="key-index-item-wrap">
+                                <div class="count"><i class="icon iconfont">&#xe666;</i><!--{$keyIndex.todayMoney}--></div>
+                                <div class="text">今日销售额</div>
+                            </div>
+                        </li>
+                        <li class="key-index-item">
+                            <div class="key-index-item-wrap">
+                                <div class="count"><i class="icon iconfont">&#xe666;</i><!--{$keyIndex.totalMoney}--></div>
+                                <div class="text">销售总额</div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <!--饼图-->
+				<div id="pie-chart-area">
+                    <div class="pie-chart-top">
+                        商品销量类别比例指标
+                    </div>
+                    <div class="pie-chart-wrap clearfix">
+                        <!--预计交易 商品销量类别比例图-->
+                        <!--交易完成 商品销量类别比例图-->
+                        <div class="pie-chart pie-chart-left" id="pie-chart-left"></div>
+                        <!--正在交易 商品销量类别比例图-->
+                        <div class="pie-chart pie-chart-right" id="pie-chart-right"></div>
+                    </div>
+                </div>
+
+                <!--折线图-->
+                <div id="line-chart-area">
+                    <!--查询参数-->
+                    <div class="line-chart-top">
+                        <h4>销售额关键指标趋势图</h4>
+                        <div class="line-chart-search-area clearfix">
+                            <a href="javascript:void(0);" class="chart-range selected" data-dayCount="7">最近7日</a>
+                            <a href="javascript:void(0);" class="chart-range" data-dayCount="15">最近15日</a>
+                            <a href="javascript:void(0);" class="chart-range" data-dayCount="30">最近30日</a>
+                        </div>
+                    </div>
+                    <div class="line-chart-wrap">
+                        <div class="line-chart" id="line-chart-1"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 页脚 -->
+<!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/admin/<!--{$theme}-->/common/page/footer.html"}-->
+<!-- jsfiles -->
+<!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/admin/<!--{$theme}-->/common/page/jsfiles.html"}-->
+<script type="text/javascript" src="<!--{$smarty.const.BASE_PATH}-->/js/public/highchart/highcharts-4.1.9.js"></script>
+<script src="<!--{$smarty.const.BASE_PATH}-->/js/public/My97DatePicker/WdatePicker.js"></script>
+<script type="text/javascript" src="<!--{$smarty.const.TEMPLATE_PATH}-->/admin/<!--{$theme}-->/store/js/data/saleDataList.js"></script>
+
+</body>
+</html>

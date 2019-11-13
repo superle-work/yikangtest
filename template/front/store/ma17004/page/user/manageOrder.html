@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <title>订单管理</title>
+    <!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/front/store/<!--{$theme}-->/inner/head.html"}-->
+    <link rel="stylesheet"	href="<!--{$smarty.const.TEMPLATE_PATH}-->/front/store/<!--{$theme}-->/css/user/manageOrder.css">
+</head>
+
+<body>
+    <!--主容器-->
+    <div id="container" class="container-fluid">
+        <div id="header">
+            <div class="header-wrap">
+                <a class="back" href="javascript:window.history.go(-1);"><i class="icon iconfont">&#xe62a;</i></a>
+	       		<input type="text" name="input-screen" id="input-screen" placeholder="订单号/昵称">
+            </div>
+        </div>
+        <!--主体内容-->
+        <div id="content">
+        	<div class="screen-nav">
+        		<ul class="row">
+	       			<li class="state-nav active" data="1"><a href="javascript:;" class="state">订单状态</a></li>
+	       			<li class="pay-method-nav" data="2"><a href="javascript:;" class="pay-method">支付方式</a></li>
+	       		</ul>
+	       		<div class="display-nav-area">
+	       			<div class="display-nav display-nav-1 cf">
+		       			<div data-state="" class="item item-1 active">全部</div>
+		       			<div data-state="0" class="item item-2">待付款</div>
+		       			<div data-state="1" class="item item-3">未发货</div>
+		       			<div data-state="2" class="item item-1">已发货</div>
+		       			<div data-state="3" class="item item-2">已收货</div>
+		       			<div data-state="4" class="item item-3">已取消</div>
+		       			<div data-state="5" class="item item-1">已完成</div>
+		       			<div data-state="6" class="item item-2">申请退款</div>
+		       			<div data-state="7" class="item item-3">退款完成</div>
+	       			</div>
+	       			<div class="display-nav display-nav-2 cf">
+		       			<div data-method="" class="item item-1 active">全部</div>
+		       			<div data-method="0" class="item item-2">未选择</div>
+		       			<div data-method="1" class="item item-3">微信支付</div>
+		       			<div data-method="2" class="item item-1">支付宝支付</div>
+		       			<div data-method="3" class="item item-2">货到付款</div>
+		       			<div data-method="4" class="item item-3">余额付款</div>
+	       			</div>
+	       		</div>
+        	</div>
+        	
+            <div class="order-list">
+                <div class="order-detail-list">
+                </div>
+            </div>
+            <!--分页-->
+            <div id="shadow"></div>
+            <div id="page-selection"></div>
+            <div class="back-header"><span><i class="icon iconfont">&#xe65b;</i></span></div>
+        </div>
+    </div>
+    <!--提示框-->
+    <!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/front/store/<!--{$theme}-->/inner/dialog.html"}-->
+    <!--公用js文件-->
+    <!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/front/store/<!--{$theme}-->/inner/jsfiles.html"}-->
+    <script type="text/javascript" src="<!--{$smarty.const.JS_PATH}-->/public/jquery.bootpag/jquery.bootpag.min.js"></script>
+    <script type="text/javascript" src="<!--{$smarty.const.TEMPLATE_PATH}-->/front/store/<!--{$theme}-->/js/user/manageOrder.js"></script>
+
+</body>
+</html>

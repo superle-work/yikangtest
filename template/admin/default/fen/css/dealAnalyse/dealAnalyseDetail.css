@@ -1,0 +1,74 @@
+#line-chart-area{
+    margin-bottom: 30px;
+}
+
+#line-chart-area .line-chart-top{
+    line-height: 38px;
+    height: 38px;
+    padding: 0 20px;
+    background-color: #f4f5f9;
+    border: 1px solid #e7e7eb;
+    position: relative;
+}
+#line-chart-area .line-chart-top h4{
+    font-size: 14px;
+    font-weight: 400;
+    margin: 0;
+    padding: 0;
+    line-height: 38px;
+}
+#line-chart-area .line-chart-top .line-chart-search-area{
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+#line-chart-area .line-chart-top .line-chart-search-area a{
+    line-height: 34px;
+    height: 34px;
+    border-top: 0;
+    background-color: #f4f5f9;
+    display: inline-block;
+    min-width: 106px;
+    text-align: center;
+    border-left: 1px solid #e7e7eb;
+    color: #222222;
+}
+#line-chart-area .line-chart-search-area a.selected,
+#line-chart-area .line-chart-search-area a:hover{
+    color:#459ae9;
+}
+#line-chart-area .line-chart{
+    height: 400px;
+    text-align: center;
+}
+.cart-rank-list .cart-rank-text{
+    line-height: 38px;
+    height: 38px;
+    padding: 0 20px;
+    background-color: #f4f5f9;
+    text-align: center;
+    font-size: 16px;
+}
+.cart-rank-list .list-table{
+    margin-bottom: 20px;
+}
+.content #line-chart-area #pie-chart-1{
+	width:50%;
+	float:left;
+}
+.content #line-chart-area #pie-chart-2{
+	width:50%;
+	float:right;
+}
+.line-chart-wrap:after{
+	content:'1';
+	display:block;
+	clear:both;
+	visibility: hidden;
+}
+#line-chart-area .line-chart-wrap{
+	margin-bottom:20px;
+	border-bottom:1px solid #e7e7eb;
+	border-left:1px solid #e7e7eb;
+	border-right:1px solid #e7e7eb;
+}

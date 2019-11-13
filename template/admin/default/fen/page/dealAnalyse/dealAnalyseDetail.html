@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<!-- head -->
+<!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/admin/<!--{$theme}-->/common/page/head.html"}-->
+<link rel="stylesheet" href="<!--{$smarty.const.TEMPLATE_PATH}-->/admin/<!--{$theme}-->/fen/css/dealAnalyse/dealAnalyseDetail.css">
+<body>
+
+<!---------------- 考试人数报表统计------------------->
+<!-- 页头 -->
+<!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/admin/<!--{$theme}-->/common/page/header.html"}-->
+<!-- 主体 -->
+<div class="content container-fluid<!--{if $smarty.session.admin.left_bar_scale eq '1'}--> scale<!--{/if}-->">
+    <div class="row">
+        <div class="col-md-2 left-section">
+            <!-- 左导航菜单 -->
+            <!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/admin/<!--{$theme}-->/common/page/menu.html"}-->
+
+        </div>
+        <div class="col-md-10 right-section"><!--
+            <!--内容区域-->
+            <h3><i class="icon iconfont"><!--{$smarty.session.currentMenu.icon}--></i><!--{$smarty.session.currentMenu.menuTitle}-->--<!--{$distributor.name}-->
+
+            </h3>
+            <div class="inner-section row">
+                <!--折线图-->
+                <div id="line-chart-area">
+                    <!--查询参数-->
+                    <div class="line-chart-top num-line">
+                        <h4>三级分销人数变动折线图</h4>
+                        <div class="line-chart-search-area clearfix">
+                            <a href="javascript:void(0);" class="chart-range selected" data-dayCount="day">最近30日</a>
+                            <a href="javascript:void(0);" class="chart-range" data-dayCount="month">最近12个月</a>
+                            <a href="javascript:void(0);" class="chart-range" data-dayCount="year">最近5年</a>
+                        </div>
+                    </div>
+                    <div class="line-chart-wrap">
+                        <div class="line-chart" id="line-chart-1"></div>
+                    </div>
+                    <div class="line-chart-top fee-line">
+                        <h4>三级分销销售额变动折线图</h4>
+                        <div class="line-chart-search-area clearfix">
+                            <a href="javascript:void(0);" class="chart-range selected" data-dayCount="day">最近30日</a>
+                            <a href="javascript:void(0);" class="chart-range" data-dayCount="month">最近12个月</a>
+                            <a href="javascript:void(0);" class="chart-range" data-dayCount="year">最近5年</a>
+                        </div>
+                    </div>
+                    <div class="line-chart-wrap">
+                        <div class="line-chart" id="line-chart-2"></div>
+                    </div>
+                    <div class="line-chart-top pie-chart">
+                        <h4>三级分销人数和销售额饼状图</h4>
+                        <div class="line-chart-search-area clearfix">
+                        	<a href="javascript:void(0);" class="chart-range selected" data-dayCount="0">当前</a>
+                            <a href="javascript:void(0);" class="chart-range" data-dayCount="7">7日前</a>
+                            <a href="javascript:void(0);" class="chart-range" data-dayCount="15">15日前</a>
+                            <a href="javascript:void(0);" class="chart-range" data-dayCount="30">30日前</a>
+                        </div>
+                    </div>
+                    <div class="line-chart-wrap">
+                        <div class="line-chart" id="pie-chart-1"></div>
+                        <div class="line-chart" id="pie-chart-2"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 页脚 -->
+<!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/admin/<!--{$theme}-->/common/page/footer.html"}-->
+
+<!-- jsfiles -->
+<!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/admin/<!--{$theme}-->/common/page/jsfiles.html"}-->
+<script type="text/javascript" src="<!--{$smarty.const.BASE_PATH}-->/js/public/highchart/highcharts-4.1.9.js"></script>
+<script type="text/javascript" src="<!--{$smarty.const.TEMPLATE_PATH}-->/admin/<!--{$theme}-->/fen/js/dealAnalyse/dealAnalyseDetail.js"></script>
+
+</body>
+</html>

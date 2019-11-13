@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <title>成为分销商</title>
+    <!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/front/common/fen/inner/head.html"}-->
+    <link rel="stylesheet"	href="<!--{$smarty.const.TEMPLATE_PATH}-->/front/common/fen/css/introduce.css">
+</head>
+
+<body>
+    <!--主容器-->
+    <div id="container" class="container-fluid">
+        <!--页面头部-->
+         <!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/front/common/fen/inner/top.html"}-->
+        <!--主体内容-->
+        <div id="content">
+        	<div class="top-area">
+        		<!--{if $distributor_fee eq 0}-->
+        		<p class="desc-text">关注即成为分销商</p>
+				<a class="go-buy" href="./index.php?c=store&a=index">立即开始购物之旅</a>	
+        		<!--{else}-->
+        		<p class="desc-text">您目前的累计消费额为 <!--{$total_fee}-->元，当累计消费额满<span class="money"><!--{$distributor_fee}--></span>元时，将升级成为初级分销商！</p>
+				<a class="go-buy" href="./index.php?c=store&a=index">购买商品成为分销商</a>	
+        		<!--{/if}-->
+        	</div>
+            
+			<div class="distributor-right">
+				<div class="title">分销商特权</div>
+				<table>
+					<!-- <tr class="row-1">
+						<td class="col-1"><i class="icon iconfont">&#xe63a;</i></td>
+						<td class="col-2">
+							<div class="desc-1">独立微店</div>
+							<div class="desc-2">拥有自己的微店及推广二维码</div>
+						</td>
+					</tr> -->
+					<tr class="row-2">
+						<td class="col-1"><i class="icon iconfont">&#xe63d;</i></td>
+						<td class="col-2">
+							<div class="desc-1">销售拿佣金</div>
+							<div class="desc-2">二维码分享公众号，发展团队，可以获得相应佣金</div>
+						</td>
+					</tr>
+					<tr class="row-3">
+						<td colspan="2">分销商的商品销售统一由厂家直接收款，直接发货，分销佣金由厂家统一设置。</td>
+					</tr>
+				</table>
+			</div>
+        </div>
+        <!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/front/common/fen/inner/footer.html"}-->
+  		<!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/front/common/fen/inner/bottomNav.html"}-->
+    </div>
+    <!--公用js文件-->
+    <!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/front/common/fen/inner/jsfiles.html"}-->
+    <script type="text/javascript" src="<!--{$smarty.const.TEMPLATE_PATH}-->/front/common/fen/js/introduce.js"></script>
+
+</body>
+</html>

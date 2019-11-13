@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<!-- head -->
+<!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/admin/<!--{$theme}-->/common/page/head.html"}-->
+<!---------------- 商品列表 ------------------->
+
+<!-- 页头 -->
+<!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/admin/<!--{$theme}-->/common/page/header.html"}-->
+<!-- 主体 -->
+<div class="content container-fluid<!--{if $leftBarScale eq '1'}--> scale<!--{/if}-->">
+    <div class="row">
+        <div class="col-md-2 left-section">
+            <!-- 左导航菜单 -->
+            <!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/admin/<!--{$theme}-->/common/page/menu.html"}-->
+
+        </div>
+        <div class="col-md-10 right-section">
+            <!--内容区域-->
+            <h3>
+                <i class="icon iconfont"><!--{$smarty.session.currentMenu.icon}--></i>工作人员列表
+                <div class="operation-div">
+                    <a class="btn btn-default" href="javascript:window.history.go(-1);">返回</a>
+                </div>
+            </h3>
+            <div class="inner-section row">
+                <div id="content">
+                    <div class="list-title">
+                        <div class="list-title-panel">
+                            <span class="glyphicon glyphicon-list"></span>列表</span>
+                        </div>
+                    </div>
+                    <div class="table-content" id = "list_container">
+                        <table id="list-table" class="list-table table-hover table-bordered">
+                            <tbody>
+                            	<tr>
+                            		<th class="th1">序号</th>
+                            		<th class="th3">头像</th>
+                            		<th class="th2">昵称</th>
+                            		<th class="th4">手机号</th>
+                            		<th class="th5">真实姓名</th>
+                            		<th class="th7">邮箱</th>
+                            		<th class="th7">地址</th>
+                            	</tr>
+                            	<tr>
+                            		<!--{if $userInfo}-->
+                            		<tr>
+                            			<td><span>1</span></td>
+		                                <td><img height="40" src="<!--{$userInfo.head_img_url}-->"></td>
+		                                <td><!--{$userInfo.nick_name}--></td>
+		                                <td><!--{$userInfo.phone}--></td>
+		                                <td><!--{$userInfo.name}--></td>
+										<td><!--{$userInfo.email}--></td>
+		                                <td>
+		                                	<!--{if $userinfo.address}-->
+		                                	<!--{$userinfo.address}-->
+		                                	<!--{else}-->
+		                                	<!--{$userinfo.country}--> <!--{$userinfo.province}--> <!--{$userinfo.city}-->
+		                                	<!--{/if}-->
+		                                </td>
+	                               </tr>
+	                               <!--{/if}-->
+                            	</tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <!--分页-->
+                    <div id="page-selection"></div>
+
+                    <div class="fn-clear"></div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 页脚 -->
+<!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/admin/<!--{$theme}-->/common/page/footer.html"}-->
+
+<!-- jsfiles -->
+<!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/admin/<!--{$theme}-->/common/page/jsfiles.html"}-->
+<script src="<!--{$smarty.const.BASE_PATH}-->/js/public/My97DatePicker/WdatePicker.js"></script>
+<script type="text/javascript" src="<!--{$smarty.const.BASE_PATH}-->/js/public/jquery.bootpag/jquery.bootpag.min.js"></script>
+</body>
+</html>

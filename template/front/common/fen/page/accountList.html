@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <title>账户管理</title>
+   <!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/front/common/fen/inner/head.html"}-->
+    <link rel="stylesheet"	href="<!--{$smarty.const.TEMPLATE_PATH}-->/front/common/fen/css/accountList.css">
+</head>
+
+<body>
+    <!--主容器-->
+    <div id="content">
+    	<input type="hidden" id="id" value="<!--{$id}-->">
+    	<input type="hidden" id="type" value="<!--{$type}-->">
+    	<div class="list">账户列表 <span>编辑</span></div>
+    	<div class="wrap">
+
+    	</div>
+    	<div class="get-more" data-start="0" data-num="10"></div>
+    	
+    </div>
+     <!--页面脚部-->
+    <div class="button">
+    	<a href="./index.php?c=fen&a=addAccount&id=<!--{$id}-->&type=<!--{$type}-->" class="add_account"><i class="icon iconfont">&#xe62f;</i>&nbsp;&nbsp;&nbsp;添加账户</a>    	
+    </div>   
+    <!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/front/common/fen/inner/dialog.html"}-->
+    
+    <!--公用js文件-->
+    <!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/front/common/fen/inner/jsfiles.html"}-->
+    <script type="text/javascript" src="<!--{$smarty.const.TEMPLATE_PATH}-->/front/common/fen/js/accountList.js"></script>
+</body>
+</html>

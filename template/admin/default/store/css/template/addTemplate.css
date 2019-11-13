@@ -1,0 +1,55 @@
+#myForm table .td1 label{
+    color: #666666;
+}
+#myForm td label{
+    line-height: 34px;
+}
+#myForm table .td1{
+    width: 100px;
+}
+#myForm table .td2{
+    width: 780px;
+}
+.property dl{
+    margin: 10px;
+}
+.property dl dt span{
+    font-weight: normal;
+    font-size: 14px;
+    color: blue;
+}
+.property dd,.property ul,.property li{
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+#myForm .property li label{
+    line-height: 30px;
+    margin: 0;
+    padding: 0;
+    color: #666666;
+}
+.property dl{
+    height: 30px;
+    line-height: 30px;
+}
+.property dl dd ul{
+    list-style: none;
+}
+.property dl dt,.property dl dd{
+    float: left;
+    line-height: 30px;
+}
+.property dl li{
+    float: left;
+    margin-left: 10px;
+}
+#myForm .property li label.checked {
+    color: #FF2B2B;
+}
+.property li .value{
+    cursor: pointer;
+    margin-right: 2px;
+    padding-top: 6px;
+    font-size: 14px;
+}

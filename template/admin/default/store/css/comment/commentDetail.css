@@ -1,0 +1,17 @@
+.content .right-section #myForm .trianle-see{
+	display:none;
+}
+
+.content .right-section #myForm .view{
+	display:none;
+}
+.content .right-section #myForm .show-img{
+	clear:left;
+	margin-top:12px;
+}
+.content .right-section #myForm .image-content{
+	float:left;
+	margin-right:5px;
+	margin-bottom:14px;
+}
+

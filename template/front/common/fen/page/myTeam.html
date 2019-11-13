@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <title>我的团队</title>
+    <!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/front/common/fen/inner/head.html"}-->
+    <link rel="stylesheet"	href="<!--{$smarty.const.TEMPLATE_PATH}-->/front/common/fen/css/myTeam.css">
+</head>
+
+<body>
+    <!--主容器-->
+    <div id="container" class="container-fluid">
+        <!--页面头部-->
+        <!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/front/common/fen/inner/top.html"}-->
+        <!--主体内容-->
+        <div id="content">
+            <div class="top-area">
+                <span>团队成员</span>(<span class="number"><!--{count($secDistributorList)}--></span>)
+            </div>
+            <div class="team-list">
+                <table>
+                <!--{if count($secDistributorList) > 0}-->
+                <!--{foreach from=$secDistributorList item=distributor }-->
+                    <tr>
+                        <td class="col-1"><img style="height: 40px;" src="<!--{$distributor.head_img_url}-->"></td>
+                        <td class="col-2">
+                            <div class="content-wrap">
+                                <div><span class="name"><!--{$distributor.name}--></span><span class="phone"><!--{$distributor.phone}--></span></div>
+                                <div class="add-time"><!--{$distributor.add_time}--></div>
+                            </div>
+                        </td>
+                        <td class="col-3">
+                            <div class="content-wrap">
+                                <div class="child-team-total-fee">累计佣金：<span><!--{if $distributor.total_fee}--><!--{$distributor.total_fee}--><!--{else}-->0<!--{/if}--></span></div>
+                                <div class="child-team-count"><span class="number"><!--{if $distributor.num}--><!--{$distributor.num}--><!--{else}-->0<!--{/if}--></span>个成员</div>
+                            </div>
+                        </td>
+                    </tr>
+                    <!--{/foreach}-->
+                 <!--{else}-->
+                 	<tr class="no-team"><td colspan ="3"><p class="text-danger">您还没有团对成员哦</p></td></tr>
+                 <!--{/if}-->
+                </table>
+            </div>
+        </div>
+
+        <!--页面脚部-->
+        <!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/front/common/fen/inner/footer.html"}-->
+        <!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/front/common/fen/inner/bottomNav.html"}-->
+    </div>
+    <!--公用js文件-->
+    <!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/front/common/fen/inner/jsfiles.html"}-->
+
+</body>
+</html>

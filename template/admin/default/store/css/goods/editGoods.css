@@ -1,0 +1,52 @@
+#myForm table .td1 label{
+    color: #666666;
+}
+#myForm table .td1{
+    width: 120px;
+}
+#myForm table .td2{
+    width: 800px;
+}
+#myForm select{
+    padding: 0;
+    line-height: 24px;
+    height: 24px;
+}
+#myForm td label{
+    line-height: 34px;
+}
+#myForm .current-category{
+    margin-right: 15px;
+}
+#myForm .property-group-wrap .property-value{
+    color: blue;
+}
+#myForm .property-group-wrap select {
+    width: 100px;
+    line-height: 24px;
+    height: 24px;
+    padding: 0;
+}
+#myForm .property-group-wrap .span input {
+    width: 50px;
+    background-color: #FFFFFF;
+    padding: 0 4px;
+    border: 1px solid #e7e7eb;
+    outline: 0;
+    height: 24px;
+    line-height: 24px;
+}
+#myForm .property-group-wrap .property-group span{
+	margin-right: 10px;
+}
+
+#myForm .side-image-wrap{
+    margin-bottom: 10px;
+}
+#myForm .side-image{
+    width: 180px;
+    display: inline;
+}
+#myForm .property-group-wrap select.property-value{
+	color:#777 !important;
+}

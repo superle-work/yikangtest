@@ -1,0 +1,172 @@
+/**************************
+ ---------首页样式---------
+ --------author:linli-------
+ ------date:2016-07-06-----
+ *************************/
+/**头部***/
+.recharge-record-nav{
+	position:fixed;
+	padding:12px 0;
+	max-width:640px;
+	width:100%;
+	brecharge-bottom:1px solid #ccc;
+	z-index:555;
+	background-color: #E6E5E5;
+}
+.recharge-record-nav a{
+	text-align: center;
+	height:16px;
+	line-height: 16px;
+	color:#666;
+}
+.recharge-record-nav .item{
+	brecharge-left:1px solid #ccc;
+}
+.recharge-record-nav a span{
+	height: 29px;
+    display: inline-block;
+    line-height: 16px;
+}
+.recharge-record-nav a span.active{
+	color:#C71804;
+	brecharge-bottom:1px solid #C71804;
+}
+#content .recharge-list{
+    font-size: 12px;
+}
+#content .tip-info{
+    display: none;
+}
+#content .get-more{
+	text-align:center;
+	color:#aaa;
+}
+/**订单商品列表**/
+.recharge-list a{
+    text-decoration: none;
+}
+.recharge-list .comment{
+    float: right;
+}
+.recharge-list .recharge-num{
+    font-size: 12px;
+}
+.recharge-list .recharge-goods-list{
+    padding: 0 10px;
+    background: #ffffff;
+    brecharge-top:1px solid #EEEEEE ;
+    brecharge-bottom:1px solid #EEEEEE ;
+    margin-bottom: 20px;
+}
+.recharge-list .address{
+    color: #AAAAAA;
+    font-size: 12px;
+    padding: 4px 0;
+}
+.recharge-goods-list tfoot .total-price{
+    color: #FF5C00;
+}
+.recharge-goods-list tfoot tr{
+    brecharge-top: 1px solid #EEEEEE;
+    font-size: 14px;
+}
+.recharge-list thead td,.recharge-list tfoot td{
+    padding: 5px 0;
+}
+.recharge-goods-list table{
+    width: 100%;
+}
+.recharge-goods-list .recharge-goods{
+    brecharge-top: 1px solid #EEEEEE;
+    padding: 5px 0;
+    height: 51px;
+    overflow: hidden;
+}
+.recharge-goods-list .recharge-goods td{
+    padding: 0 2px;
+}
+.recharge-goods-list .recharge-goods a{
+    text-decoration: none;
+    color: #333;
+}
+.recharge-goods-list .recharge-goods .col-1{
+    width: 44px;
+}
+.recharge-goods-list .recharge-goods .col-2 .name{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: normal;
+}
+.recharge-goods-list .recharge-goods .property-area{
+    color: #9c9c9c;
+    font-size: 12px;
+}
+.recharge-goods-list .property-area span{
+    margin-right: 2px;
+}
+.recharge-goods-list thead .col-3,
+.recharge-goods-list tfoot .col-3,
+.recharge-goods-list .recharge-goods .col-3{
+    min-width: 40px;
+    text-align: right ;
+}
+.recharge-goods-list .recharge-goods .col-3 .quantity{
+    text-align: right;
+}
+.recharge-goods .col-3 .quantity i{
+    font-size: 10px;
+}
+.recharge-goods .col-3 .quantity .quantity-value{
+    font-size: 12px;
+}
+.recharge-goods-list tfoot .go-buy{
+    display: inline-block;
+    background: #FF5C00;
+    color: #ffffff;
+    font-size: 12px;
+    padding: 2px 7px;
+}
+.recharge-list .add-time{
+    font-size: 12px;
+    color: #999999;
+}
+.recharge-goods-list tfoot .paymethod-text{
+    color: #FF5C00;
+    font-size: 12px;
+}
+.recharge-goods-list .btn{
+	color:#fff;
+}
+.recharge-goods-list .btn-default{
+	color:#666;
+}
+.recharge-goods-list table .td-right{
+	text-align:right;
+	width:35%
+}
+
+.recharge-goods-list table .td-center{
+	text-align:center;
+	width:30%
+}
+#container .header{
+	text-align:center;
+	background-color:#A90505;
+	color:#fff;
+	font-size:16px;
+	height:40px;
+	line-height:40px;
+	position:relative;
+}
+#container .header .header-left{
+	display:inline-block;
+	height:40px;
+	position:absolute;
+	left:0px;
+	width:50px;
+	color:#fff;
+}
+#container .header .header-left .icon{
+	font-size:20px;
+}
+

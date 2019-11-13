@@ -1,0 +1,141 @@
+/*************************
+ ------提现页面样式---
+ *************************/
+#content{
+    margin-bottom: 30px;
+    background: #fff;
+}
+/*可提现余额*/
+#content .top-area{
+    background-color: #1695FC;
+    height: 110px;
+    padding: 15px;
+    color: #ffffff;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+#content .top-area .myfee{
+    margin-top: 10px;
+    font-size: 24px;
+}
+
+/*输入金额区域*/
+.inp-area{
+    height: 110px;
+    padding:0px 15px;
+}
+.inp-area p{
+	margin:0px;
+	padding: 0px;
+}
+.inp-area .withdrawal{
+	color:black;
+	padding-top:25px;
+	padding-bottom:15px;
+}
+.inp-area .rmb{
+	color:black;
+	font-weight:bold;
+	font-size:20px;
+	padding-right:8px;
+}
+.inp-area .inp{
+	width:250px;
+	height:30px;
+	font-size:26px;
+	border:0px;
+	outline:none;
+}
+.space{
+	height:10px;
+	background:#F7F7F7;
+}
+/*提现账户*/
+#content .choose-account-text{
+	width:100%;
+    padding: 0 15px;
+    height: 40px;
+    line-height: 30px;
+    border-bottom: 1px solid #F7F7F7;
+    color: #9B9B9B;
+    line-height: 39px;
+    display: inline-flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+#content .choose-account-text a{
+    text-decoration: none;
+   	color:#FB7A33;  
+}
+#content .choose-account-text a i{
+	padding-right:10px;
+	font-size:20px;
+	position:relative;
+	top:2px;
+}
+/*提现账户信息*/
+#content .account-list table{
+    width: 100%;
+    table-layout: fixed;
+}
+#content .account-list tr{
+}
+#content .account-list .col-1{
+    width: 10%;
+}
+#content .account-list td{
+    padding: 5px 0;
+    font-size: 12px;
+}
+#content .account-list .col-2{
+	width:20%;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+#content .account-list .col-3{
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    padding-left:5px;
+}
+#content .account-list .col-4{
+    width: 20%;
+    color: #666666;
+    text-align: center;
+}
+#content .account-list{
+    padding: 10px 15px;
+}
+#content .account-list a{
+    text-decoration: none;
+}
+#content .account-list .item-option i{
+    display: none;
+}
+#content .account-list .item-option i.selected{
+    color: #1695FC;
+}
+#content .account-list .item-option i.un-selected{
+    color: #CCCCCC;
+}
+
+/*提交按钮*/
+.withdraw{
+    margin-top: 20px;
+    padding: 10px;
+}
+.withdraw a{
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    display: block;
+    background-color: #AAAAAA;
+    color: #ffffff;
+    text-decoration: none;
+}
+.withdraw a.can-use{
+    background-color: #1695FC;
+}

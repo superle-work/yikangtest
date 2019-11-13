@@ -1,0 +1,7 @@
+User-agent: *
+Disallow: /controller/admin/
+Disallow: /controller/change/
+Disallow: /include/
+Disallow: /languages/
+Disallow: /admin.php
+Disallow: /change.php

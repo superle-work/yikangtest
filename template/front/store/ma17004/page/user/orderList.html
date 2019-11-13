@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <title>我的订单</title>
+    <!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/front/store/<!--{$theme}-->/inner/head.html"}-->
+    <link rel="stylesheet"	href="<!--{$smarty.const.TEMPLATE_PATH}-->/front/store/<!--{$theme}-->/css/user/orderList.css">
+    <link rel="stylesheet"	href="<!--{$smarty.const.JS_PATH}-->/public/swiper/css/swiper.min.css">
+</head>
+
+<body>
+    <!--主容器-->
+    <div id="container" class="container-fluid">
+        <!--主体内容-->
+        <div id="content">
+        	<!--订单状态-->
+            <input type="hidden" id="state" value="<!--{$state}-->">
+            <!--支付方式-->
+            <input type="hidden" id="payType" value="<!--{$configInfo.pay_type}-->">
+            <!--是否开启退款-->
+            <input type="hidden" id="is_refund" value="<!--{$configInfo.is_refund}-->">
+            
+            <div id="myBottomNav" data-http ="<!--{$HttpHost}-->">
+	            <div class="swiper-container swiper-container-horizontal swiper-container-free-mode">
+					<div class="swiper-wrapper">
+					    <div class="swiper-slide loan-list all <!--{if $state == ''}-->cur<!--{/if}-->" data-state="">全部</div>				        					
+					    <div class="swiper-slide loan-list <!--{if $state == '0'}-->cur<!--{/if}-->" data-state="0">待付款</div>	
+					    <div class="swiper-slide loan-list <!--{if $state == '1'}-->cur<!--{/if}-->" data-state="1">待采样</div>				        
+					    <div class="swiper-slide loan-list <!--{if $state == '2'}-->cur<!--{/if}-->" data-state="2">待送检</div>				        
+					    <div class="swiper-slide loan-list <!--{if $state == '3'}-->cur<!--{/if}-->" data-state="3">送检中</div>				        
+					    <div class="swiper-slide loan-list <!--{if $state == '4'}-->cur<!--{/if}-->" data-state="4">检测中</div>				        
+					    <div class="swiper-slide loan-list <!--{if $state == '5'}-->cur<!--{/if}-->" data-state="5">已完成</div>
+					</div>
+				</div>	            
+	        </div>
+	        <div class="space2"></div>
+            
+            <div class="order-list">
+            	
+            </div>	
+            <div class="get-more hidden" data-start="1" data-num="8" data-id="<!--{$estate_id}-->"></div>	
+        </div>
+    </div>
+    <!--提示框-->
+    <!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/front/store/<!--{$theme}-->/inner/dialog.html"}-->
+    <!--公用js文件-->
+    <!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/front/store/<!--{$theme}-->/inner/jsfiles.html"}-->
+    <script type="text/javascript" src="<!--{$smarty.const.JS_PATH}-->/public/jquery.bootpag/jquery.bootpag.min.js"></script>
+    <script src="<!--{$smarty.const.JS_PATH}-->/public/swiper/js/swiper.jquery.min.js"></script>
+    <script type="text/javascript" src="<!--{$smarty.const.TEMPLATE_PATH}-->/front/store/<!--{$theme}-->/js/user/orderList.js"></script>
+
+</body>
+</html>

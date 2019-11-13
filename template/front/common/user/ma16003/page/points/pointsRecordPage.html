@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <title>提现记录</title>
+    <!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/front/common/head.html"}-->
+    <link rel="stylesheet"	href="<!--{$smarty.const.TEMPLATE_PATH}-->/front/common/user/<!--{$theme}-->/css/points/cashRecordPage.css">
+</head>
+
+<body>
+    <!--主容器-->
+    <div id="container" class="container-fluid">
+        <!--页面头部-->
+        <div id="header">
+            <a class="back" href="javascript:window.history.back(-1);"><i class="icon iconfont">&#xe62a;</i></a>
+            <!--{if $type eq 'store'}--><a class="logo" href="./index.php?c=<!--{$type}-->&a=index"><span>微商城</span></a><!--{/if}-->
+            <!--{if $type eq 'dining'}--><a class="logo" href="./index.php?c=<!--{$type}-->&a=index"><span>订餐系统</span></a><!--{/if}-->
+            <!--{if $type eq 'hotel'}--><a class="logo" href="./index.php?c=<!--{$type}-->&a=index"><span>微酒店首页</span></a><!--{/if}-->
+            <!--{if $type eq 'rob'}--><a class="logo" href="./index.php?c=<!--{$type}-->&a=index"><span>抢购商城</span></a><!--{/if}-->
+            <!--{if $type eq 'group'}--><a class="logo" href="./index.php?c=<!--{$type}-->&a=index"><span>拼团商城</span></a><!--{/if}-->
+            <!--{if $type eq 'bargain'}--><a class="logo" href="./index.php?c=<!--{$type}-->&a=index"><span>砍价商城</span></a><!--{/if}-->
+        </div>
+        <!--主体内容-->
+        <div id="content">
+            <div class="cash-record-list">
+                <table class="table-striped">
+                <!--{if count($recordList) neq 0}-->
+                    <tr class="title"><td>消耗积分</td><td>提现金额</td><td>提现时间</td></tr>
+                    <!--{foreach item=cash from=$recordList}-->
+                    <tr class="record-info">
+                        <td class="col-1"><!--{$cash.points}--></span></td>
+                        <td class="col-1"><span class="money-info"><i class="icon iconfont">&#xe604;</i><!--{$cash.money}--></span></td>
+                        <td class="col-2"><!--{$cash.add_time}--></td>
+                    </tr>
+                    <!--{/foreach}-->
+                 <!--{else}-->
+                 <tr class="text-danger"><td>您还没有提现记录哦</td></tr>
+                 <!--{/if}-->
+                </table>
+            </div>
+        </div>
+    </div>
+    <!--公用js文件-->
+    <!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/front/common/jsfiles.html"}-->
+
+</body>
+</html>

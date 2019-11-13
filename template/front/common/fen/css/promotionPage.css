@@ -1,0 +1,84 @@
+/*************************
+ ------我的佣金页面样式---
+ *************************/
+#container{
+    position: relative;
+    /*padding-bottom: 50px;*/
+}
+#container #content{
+    background: #F7F7F7;
+}
+#container .mall-logo img{
+    width: 100%;
+}
+#container .code-tip-info{
+    padding: 10px;
+    text-align: center;
+    font-size: 14px;
+    font-weight: bold;
+    color: #C2273E;
+    background-color: #ffffff;
+}
+#container .code {
+	text-align:center;
+    min-height: 100px;
+	position:relative;
+}
+#container .code img{
+	max-width:100%;
+}
+#container .code .head-img{
+	border:3px solid #fff;
+}
+#myBottomNav{
+    display: none;
+    z-index: 10;
+    position: fixed;
+    bottom: 0;
+    text-align: center;
+    background: #fff;
+    box-shadow: 0 -1px  #ddd;
+    color: #FFFFFF;
+    overflow: hidden;
+}
+#myBottomNav a{
+    text-align: center;
+    color: #000;
+    display: inline-block;
+    float: left;
+    text-decoration: none;
+    padding: 0;
+    height: 40px;
+    line-height: 40px;
+    width: 50%;
+    font-size: 14px;
+}
+#myBottomNav a i{
+    margin-right: 5px;
+}
+#myBottomNav a.link-distribute i{
+    color: #ff6600;
+}
+#myBottomNav a.image-distribute i{
+    color: #0065B0;
+}
+#container .distribute-guide{
+    display: none;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.7);
+    text-align: center;
+    z-index: 99;
+    padding: 0 10px;
+}
+#container .distribute-guide img{
+    width: 100%;
+}
+#container #content .code .head-img{
+	position:absolute;
+	top:0;
+	left:0;
+}

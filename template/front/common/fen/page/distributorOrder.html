@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <title>特产分销订单</title>
+    <!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/mall/<!--{$curTemplate}-->/inner/head.html"}-->
+    <link rel="stylesheet"	href="<!--{$smarty.const.TEMPLATE_PATH}-->/mall/<!--{$curTemplate}-->/css/distributor/distributorOrder.css">
+</head>
+
+<body>
+    <!--主容器-->
+    <div id="container" class="container-fluid">
+        <!--页面头部-->
+        <div id="header">
+            <div>
+                <a class="back" href="javascript:window.history.go(-1);"><i class="icon iconfont">&#xe62a;</i></a>
+                <a class="weimall" href="./index.php?c=mall&a=index"><span><!--{$smarty.const.pageTitle}--></span></a>
+            </div>
+        </div>
+        <!--主体内容-->
+        <div id="content">
+			<input type="hidden" id="state" value="<!--{$state}-->">
+            <div class="order-list">
+           
+            </div>
+            <div id="page-selection"></div>
+        </div>
+
+        <div id="myBottomNav">
+        	<input class="distributor-id" type="hidden" value="<!--{$did}-->" >
+            <a href="javascript:;" class="nav-item <!--{if $state eq '' }-->current<!--{/if}-->" data-state="">所有订单</a>
+            <a href="javascript:;" class="nav-item <!--{if $state eq '5' }-->current<!--{/if}-->" data-state="5">已完成</a>
+            <a href="javascript:;" class="nav-item <!--{if $state eq '0' }-->current<!--{/if}-->" data-state="0">待付款</a>
+            <a href="javascript:;" class="nav-item <!--{if $state eq '1' }-->current<!--{/if}-->" data-state="1">待发货</a>
+            <a href="javascript:;" class="nav-item <!--{if $state eq '2' }-->current<!--{/if}-->" data-state="2">已发货</a>
+        </div>
+    </div>
+    <!--公用js文件-->
+    <!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/mall/<!--{$curTemplate}-->/inner/jsfiles.html"}-->
+    <script type="text/javascript" src="<!--{$smarty.const.JS_PATH}-->/public/jquery.bootpag/jquery.bootpag.min.js"></script>
+    <script type="text/javascript" src="<!--{$smarty.const.JS_PATH}-->/mall/distributor/distributorOrder.js"></script>
+
+</body>
+</html>

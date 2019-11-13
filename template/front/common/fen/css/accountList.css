@@ -1,0 +1,71 @@
+#content{
+	
+}
+#content .list{
+	padding: 15px 10px;
+	background: #fff;
+	border-bottom: 1px solid #E3E3E3;
+	font-size: 16px;
+}
+#content .list span{
+	float: right;
+	color: #1695FC;
+}
+
+#content .wrap{
+	padding:0px 10px;
+	background: #fff;
+}
+#content .wrap .box{
+	width: 100%;
+	padding: 15px 0;
+	border-bottom: 1px solid #E1E1E1;
+	position: relative;
+}
+
+#content .wrap .box:last-child{
+	border:none;
+}
+#content .wrap .box span{
+	display: inline-block;
+	
+	text-align: left;
+}
+#content .wrap .box span .i_cur{
+	color:#1695FC;
+}
+#content .wrap .box span:nth-child(2){
+	width:15%;
+	margin-left: 5%;
+}
+#content .wrap .box a{
+	width: 50%;
+	margin-left:10% ;
+	color:#333;
+	
+}
+#content .wrap .box .arrow{
+	position: absolute;
+/*	top:5px;*/
+	right:0px;
+	font-size: 18px;
+	color: #1695FC;
+}
+.button{
+	padding: 10px;
+}
+.button a{
+	display: inline-block;
+	width:100%;
+	padding: 10px;
+	height:40px;
+	line-height: 20px;
+	text-align: center;	
+	color:#fff;
+	border-radius: 3px;
+	margin-bottom: 10px;
+	font-size:15i_curpx;
+}
+.button .add_account{
+	background:#3994FD;
+}

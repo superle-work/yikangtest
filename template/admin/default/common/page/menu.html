@@ -1,0 +1,18 @@
+
+<!--左边栏缩放-->
+<div class="section-scale"><a class="btn-scale" href="javascript:;"><i class="icon iconfont">&#xe669;</i></a></div>
+<!--左边栏菜单-->
+<!--{foreach from = $menuList item = topMenu name = menuList}-->
+<ul class="nav nav-stacks menu" data-top-id="<!--{$topMenu.id}-->" data-name="<!--{$topMenu.alias}-->" <!--{if $topMenu.id neq $smarty.session.currentMenu.menu_top_id}-->style="display:none;"<!--{/if}-->>
+    <li class="divider"></li>
+    <!--{foreach from = $topMenu.subList item = block}-->
+        <!--{foreach from = $block item = bmenu}-->
+        <li role="presentation" <!--{if $smarty.session.currentMenu.mid eq $bmenu.id}-->class="active"<!--{/if}-->>
+        <a href="<!--{$bmenu.url}-->" data-toggle="tooltip" data-placement="right" title="<!--{$bmenu.name}-->"><i class="icon iconfont"><!--{$bmenu.icon}--></i><span class="menu-name"><!--{$bmenu.name}--></span></span></a>
+        </li>
+        <!--{/foreach}-->
+        <li class="divider"></li>
+    <!--{/foreach}-->
+</ul>
+<!--{/foreach}-->
+<input type="hidden" id="menuId" value="<!--{$smarty.session.currentMenu.mid}-->">

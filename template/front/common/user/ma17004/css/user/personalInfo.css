@@ -1,0 +1,142 @@
+/*******************************
+ -------我的技师页面样式--------
+ ---------author:joy-----------
+ -------data:2016-10-21---------
+ *******************************/
+/****顶部插件弹框样式修改*****/
+.picker-modal{
+	left: auto;
+	max-width: 640px;
+	height: 300px;
+}
+.picker-modal .bar-nav{
+	height: 35px;
+}
+.picker-center-highlight{
+	height: 40px;
+	top: 48%;
+}
+.picker-items,.picker-modal .picker-modal-inner{
+	font-size: 16px;
+	line-height: 30px;
+	height: 250px;
+}
+.city-picker .col-province {
+    width: 7rem;
+}
+.city-picker .col-city {
+    width: 10rem;
+}
+.city-picker .col-district {
+    width: 10rem;
+}
+.picker-item{
+	height: 40px;
+	line-height: 40px;
+	font-size: 16px;
+	padding: 0;
+}
+.picker-modal .bar-nav .button,
+.picker-modal .bar-nav .title{
+	height: 35px;
+	line-height: 35px;
+	font-size: 16px;
+	padding: 0;
+	margin: 0;
+}
+#container .top .right-icon{
+	width: 20%;
+}
+#container .top .center{
+	width: 70%;
+}
+#container .top .right-icon a.btn {
+    display: block;
+    text-align: center;
+    height: 30px;
+    line-height: 30px;
+    padding: 0px;
+    font-size: 14px;
+    z-index: 999999999;
+    top: 5px;
+    right: 10px;
+    position: absolute;
+}
+#content .myinfo{
+	border-top: 1px solid #e5e5e5;
+	background: #fff;
+    padding: 0 10px;
+    margin-bottom: 20px;
+    min-height: 160px;
+}
+#content .myinfo input{
+    width: 70%;
+    border: 1px solid #ffffff;
+    padding: 2px 5px;
+    background: none;
+    border: none;
+    float: right;
+    text-align: right;
+}
+#content .user-info span.text{
+	display: block;
+	float: left;
+	width: 30%;
+}
+#content .user-info #head_img_url{
+	display: block;
+	width: 40px;
+	height: 40px;
+	float: right;
+	border-radius: 20px;
+}
+#content .operation-area{
+    text-align: right;
+    padding: 5px 0;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding-bottom: 0;
+    margin-right: 10px;
+}
+#content .myinfo .btn{
+    border-radius: 0;
+}
+/*可编辑状态*/
+#content .myinfo input.edit{
+    border-color:#EEEEEE;
+}
+#content .myinfo  a{
+    text-decoration: none;
+}
+#content .user-info{
+	position: relative;
+    line-height: 40px;
+    font-size: 16px;
+    margin: 0 -10px;
+    padding: 5px 10px;
+    border-bottom: 1px solid #e5e5e5;
+}
+#content .user-info i{
+	position: absolute;
+	top: 10px;
+	left: 0;
+}
+#content .user-info.nick_name i{
+	font-size: 22px;
+}
+#content .user-info-title{
+    color: #888;
+    padding: 3px 5px;
+    margin-bottom: 5px;
+}
+#content  select{
+    padding: 3px 12px;
+    border: 1px solid #ccc;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+.my-dialog-footer a{
+	text-decoration: none;
+}

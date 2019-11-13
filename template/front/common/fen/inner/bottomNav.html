@@ -1,0 +1,8 @@
+<!--底部导航-->
+<div class="bottom-nav">
+    <div class="row">
+        <a class="col-xs-6 col-sm-6 col-md-6 home<!--{if $bottomNav eq 'index'}--> current<!--{/if}-->" data-user="<!--{$smarty.session.user.account}-->" href="./index.php?c=<!--{$smarty.session.fen.bottomNav_module}-->&a=index"><div class="nav-icon"><i class="icon iconfont">&#xe600;</i></div><div class="nav-name">首页</div></a>
+        <a class="col-xs-6 col-sm-6 col-md-6 item<!--{if $bottomNav eq 'distributorCenter'}--> current<!--{/if}-->"  data-user="<!--{$smarty.session.user.account}-->" href="./index.php?c=fen&a=distributorCenter"><div class="nav-icon"><i class="icon iconfont">&#xe626;</i></div><div class="nav-name">分销中心</div></a>
+    </div>
+</div>
+<!--商品分类导航-->

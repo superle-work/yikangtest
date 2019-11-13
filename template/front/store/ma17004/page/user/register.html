@@ -1,0 +1,62 @@
+<!--用户注册-->
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <title>用户注册</title>
+    <!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/front/store/<!--{$theme}-->/inner/head.html"}-->
+    <link rel="stylesheet"	href="<!--{$smarty.const.TEMPLATE_PATH}-->/front/store/<!--{$theme}-->/css/user/register.css">
+</head>
+
+<body>
+<!--主容器-->
+<div id="container" class="container-fluid">
+    <!--页面头部-->
+    <!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/front/store/<!--{$theme}-->/inner/top.html"}-->
+    <!--主体内容-->
+    <div id="content">
+        <form class="form-horizontal">
+
+            <div class="form-group">
+                <label for="email" class="col-xs-2 col-sm-2 control-label">邮箱</label>
+                <div class="col-xs-10 col-sm-10">
+                    <input type="text" class="form-control" id="email" placeholder="选填">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="phone" class="col-xs-2 col-sm-2 control-label">手机<span class="must-tag">*</span></label>
+                <div class="col-xs-7 col-sm-7">
+                    <input type="text" class="form-control" id="phone" placeholder="必填">
+                </div>
+                <!--{if $isVerifyPhone eq '1'}-->
+                <div class="col-xs-3 col-sm-3">
+                    <a href="javascript:;" class="getCode btn ">获取验证码</a>
+                </div>
+                <!--{/if}-->
+            </div>
+            <!--{if $isVerifyPhone eq '1'}-->
+            <div class="form-group">
+                <label for="phoneCode" class="col-xs-2 col-sm-2 control-label">验证码<span class="must-tag">*</span></label>
+                <div class="col-xs-4 col-sm-4">
+                    <input type="text" class="form-control" id="phoneCode" placeholder="必填">
+                </div>
+            </div>
+            <!--{/if}-->
+            <div class="form-group action-area">
+                <div class="col-sm-12">
+                    <input type="hidden" id="verifyPhone" value="<!--{$isVerifyPhone}-->">
+                    <button type="submit" class="btn btn-primary register">注册</button>
+                </div>
+            </div>
+        </form>
+        <div class="tip-info"><div class="error-info">验证码错误!</div></div>
+    </div>
+    <!--页面脚部-->
+    <!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/front/store/<!--{$theme}-->/inner/footer.html"}-->
+</div>
+<!--公用js文件-->
+<!--提示框-->
+<!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/front/store/<!--{$theme}-->/inner/dialog.html"}-->
+<!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/front/store/<!--{$theme}-->/inner/jsfiles.html"}-->
+<script type="text/javascript" src="<!--{$smarty.const.TEMPLATE_PATH}-->/front/store/<!--{$theme}-->/js/user/register.js"></script>
+</body>
+</html>

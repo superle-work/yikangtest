@@ -1,0 +1,34 @@
+.list-table .th1{
+    width:40px;
+}
+.list-table .th2{
+    width: 80px;
+}
+.list-table .th5{
+    width:80px;
+}
+.list-table .th6{
+    width: 70px;
+}
+.list-table td span{
+	margin-left:15px;
+	margin-right:15px;
+}
+#content #list_container .edit{
+  text-align: left;
+}
+.edit a{
+  display: inline-block;
+  width:70px;
+  height:25px;
+  line-height: 25px;
+  padding:0px;
+  margin:0px;
+  text-align: center;
+}
+.image img{
+	height:500px;
+	width:350px;
+	margin-right:10px;
+	margin-bottom:15px;
+}

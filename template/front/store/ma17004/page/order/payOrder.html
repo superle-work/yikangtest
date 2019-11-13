@@ -1,0 +1,90 @@
+<!--提交订单-->
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <title>确认订单</title>
+    <!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/front/store/<!--{$theme}-->/inner/head.html"}-->
+    <link rel="stylesheet"	href="<!--{$smarty.const.TEMPLATE_PATH}-->/front/store/<!--{$theme}-->/css/order/payOrder.css">
+</head>
+
+<body>
+<!--主容器-->
+<div id="container" class="container-fluid">
+    <!--主体内容-->
+    <div id="content">
+        <div class="member-list">
+        	<!--{if $memberInfo}-->
+    		<div class="info" data-id="<!--{$memberInfo.id}-->">
+    			<p class="name"><!--{$memberInfo.name}--></p>
+    			<p>出生年月日: <!--{$memberInfo.idCard}--></p>
+    			<p>手机号码: <!--{$memberInfo.phone}--></p>
+    		</div>
+	    	<div class="action">
+	    		<i class="icon iconfont reSel">&#xe618;</i>
+	    	</div>	
+	    	<!--{else}-->
+	    	<div class="addMem-area">
+	    		<button class="addCheckMember"><i class="icon iconfont add-icon">&#xe62f;</i>添加体检人员</button>
+	    	</div>
+	    	<!--{/if}-->
+    	</div>
+    	<div class="space"></div>
+        
+        <input type="hidden" id="cgids" value="<!--{$cgids}-->">
+        <input type="hidden" id="gids" value="<!--{$gids}-->">
+        <input type="hidden" id="counts" value="<!--{$counts}-->">
+       	
+        <!--待付款订单的商品列表-->
+        <!--{foreach from = $goodsList item = goods}-->
+        <div class="order-goods-list">
+            <div class="goods-list">
+            	<a href="http://yikang.chuyuanshengtai.com/index.php?c=store&a=goodsDetail&id=<!--{$goods.id}-->">
+					<div class="goods-name">
+						<div class="name"><!--{$goods.name}--></div>
+						<div class="price">￥<!--{$goods.price}--></div>
+					</div>
+					<div class="count">x<!--{$goods.goods_count}-->&nbsp;</div>
+            	</a>
+            </div>
+        </div>
+        <div class="space2"></div>
+        <!--{/foreach}-->
+        <div class="space3"></div>
+        
+        
+        <div class="clinic-area">
+        	<span class="title">推荐ID</span>
+        	<input type="text" name="clinicID" class="clinicID" placeholder="推荐诊所(可选填)"/>
+        </div>
+        
+        
+        <div class="order-bottom-area">
+            <div class="goods-total">
+            	<span class="goods-count">共<span class="number"><!--{count($goodsList)}--></span>件商品</span>
+            	<span>小计: <i class="icon iconfont icon-price">&#xe645;</i><span id="total-price-1" class="money"><!--{$totalPrice|string_format:"%.2f"}--></span></span>
+            </div>
+        </div>
+    </div>
+    
+    
+    <div class="bottom-nav">
+        <div class="row">	
+            <a class="goods-info" href="javascript:;">
+            	<span class="total-money">总金额：<i class="icon iconfont icon-price">&#xe645;</i><span class="money"><!--{$totalPrice|string_format:"%.2f"}--></span></span>
+            </a>            	
+            <a class="pay-method" href="javascript:;"  data-user="<!--{$uid}-->" data-payType="2"><span>立即支付</span></a>
+        </div>
+    </div>
+
+    <!--页面脚部-->
+
+</div>
+<!--提示框-->
+<!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/front/store/<!--{$theme}-->/inner/dialog.html"}-->
+<!--公用js文件-->
+<!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/front/store/<!--{$theme}-->/inner/jsfiles.html"}-->
+<script type="text/javascript" src="<!--{$smarty.const.JS_PATH}-->/public/wechat/jweixin-1.0.0.js"></script>
+<script type="text/javascript" src="<!--{$smarty.const.TEMPLATE_PATH}-->/front/store/<!--{$theme}-->/js/order/payOrder.js"></script>
+
+</body>
+</html>

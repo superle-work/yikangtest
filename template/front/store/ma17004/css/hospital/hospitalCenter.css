@@ -1,0 +1,92 @@
+#content{
+	background: #fff;
+}
+#content .top-area{
+	height:150px;
+	background:#1695FC;
+	padding:15px;
+}
+#content .top-area .name{
+	text-align: center;
+	color:white;
+	font-size: 12px;
+}
+#content .top-area .user{
+	text-align: center;
+	color:white;
+	font-size: 13px;
+	padding-top: 20px;
+}
+#content .top-area .money{
+	text-align: center;
+	color:white;
+	font-size: 28px;
+	padding-top: 15px;
+	display:flex;
+	flex-direction: row;
+	justify-content: flex-start;
+}
+.money .blank{
+	color:#fff;
+	width:27%;
+}
+.money .num{
+	width:46%;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+.money a{
+	color:#fff;
+	font-size:12px;
+	display: block;
+	width:27%;
+	display: flex;
+	align-items:flex-end;
+	height:34px;
+}
+.money .right{
+	font-size:12px;
+}
+
+#content .info-area{
+	height:45px;
+	line-height: 45px;
+	font-size:14px;
+	padding-left:20px;
+}
+#content .info-area .tip{
+	color:red;
+}
+
+#content .order-area{
+	height:120px;
+	border-top:1px solid #E8E8E8 ;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+}
+#content .order-area .sao{
+	width:50%;
+	border-right:1px solid #E8E8E8 ;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+#content .order-area .clear{
+	width:50%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+p{
+	margin:0px;
+	padding:0px;
+	font-size:15px;
+	padding-top:10px;
+}
+#content .order-area i{
+	color:#1695FC;
+	font-size:30px;
+}

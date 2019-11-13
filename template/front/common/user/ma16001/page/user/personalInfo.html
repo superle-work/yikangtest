@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <title>我的资料</title>
+	<link rel="stylesheet" href='<!--{$smarty.const.JS_PATH}-->/public/SUI_Mobile_dev/dist/css/sm.min.css'>
+    <!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/front/common/user/<!--{$theme}-->/page/inner/head.html"}-->
+    <link rel="stylesheet"	href="<!--{$smarty.const.TEMPLATE_PATH}-->/front/common/user/<!--{$theme}-->/css/user/personalInfo.css">
+</head>
+
+<body>
+    <!--主容器-->
+    <div id="container" class="container-fluid">
+    	
+    	<!--顶部-->
+    	<div class="top clearfix" id="top">
+			<a href="javascript:window.history.go(-1);" class="left-icon"><i class="iconfont">&#xe62a;</i></a>
+		    <a href="./index.php?c=dining&a=userCenter" class="center"><span class="logo">个人资料</span></a>
+		    <a href="javascript:;" class="right-icon" style="display: none;"><i class="icon iconfont">&#xe626;</i></a>
+		</div>
+		    	
+        <!--主体内容-->
+        <div id="content">
+            <div class="top-area">
+                <div class="head-image"><img src="<!--{$userInfo.head_img_url}-->"></div>
+                <div class="nickname"><span><!--{$userInfo.nick_name}--></span></div>
+            </div>
+			<div class="operation-area">
+                <input type="hidden" value="<!--{$userInfo.id}-->" id="id">
+                <a href="javascript:;" class="btn-save btn btn-sm btn-success">保存</a>
+            </div>
+            <div class="myinfo">
+                <div class="user-info nick_name">
+                	<i class="icon iconfont">&#xe717;</i>
+                    <p class="user-info-title">昵称</p>
+                    <div class="user-info-text">
+                        <input type="text" id="nick_name" value="<!--{$userInfo.nick_name}-->">
+                    </div>
+                </div>
+
+                <div class="user-info">
+                	<i class="icon iconfont">&#xe626;</i>
+                    <p class="user-info-title">姓名：</p>
+                    <div class="user-info-text">
+                        <input type="text" id="name" value="<!--{$userInfo.name}-->">
+                    </div>
+                </div>
+                <div class="user-info">
+                	<i class="icon iconfont">&#xe714;</i>
+                    <p class="user-info-title">手机：</p>
+                    <div class="user-info-text">
+                        <input type="text" id="phone" value="<!--{$userInfo.phone}-->">
+                    </div>
+                </div>
+                <div class="user-info" style="display: none;">
+                	<i class="icon iconfont">&#xe716;</i>
+                    <p class="user-info-title">邮箱：</p>
+                    <div class="user-info-text">
+                        <input type="text" id="email" value="<!--{$userInfo.email}-->">
+                    </div>
+                </div>
+                <div class="user-info" style="display: none;">
+                	<i class="icon iconfont">&#xe66d;</i>
+                    <p class="user-info-title">密码：</p>
+                    <div class="user-info-text">
+                        <input type="text" id="password" value="<!--{$userInfo.password}-->">
+                    </div>
+                </div>
+                <div class="user-info">
+                	<i class="icon iconfont">&#xe653;</i>
+                    <p class="user-info-title">现居地：</p>
+                    <div class="user-info-text">
+						<input type="text" id="addr" placeholder="省/市/区"  value="<!--{$userInfo.address}-->  ">	
+                    </div>
+                </div>
+                <div class="user-info" style="display: none;">
+                	<i class="icon iconfont">&#xe715;</i>
+                    <p class="user-info-title">详细地址：</p>
+                    <div class="user-info-text">
+						<input type="text" id="detail" value="<!--{$userInfo.detail}-->">
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+
+        <!--页面脚部-->
+        <!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/front/common/user/<!--{$theme}-->/page/inner/footer.html"}-->
+    </div>
+    <!--提示框-->
+    <!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/front/common/user/<!--{$theme}-->/page/inner/dialog.html"}-->
+    
+    <!--公用js文件-->
+    <!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/front/common/user/<!--{$theme}-->/page/inner/jsfiles.html"}-->
+    <script>jQuery.noConflict()</script>
+    <script type='text/javascript' src='<!--{$smarty.const.JS_PATH}-->/public/SUI_Mobile_dev/dist/js/Zepto.js'></script>
+    <script type='text/javascript' src='<!--{$smarty.const.JS_PATH}-->/public/SUI_Mobile_dev/dist/js/sm.min.js'></script>
+    <script type='text/javascript' src='<!--{$smarty.const.JS_PATH}-->/public/SUI_Mobile_dev/dist/js/sm-extend.min.js'></script>
+    <script type='text/javascript' src='<!--{$smarty.const.JS_PATH}-->/public/SUI_Mobile_dev/dist/js/sm-city-picker.min.js'></script>
+    <script type="text/javascript" src="<!--{$smarty.const.TEMPLATE_PATH}-->/front/common/user/<!--{$theme}-->/js/user/personalInfo.js"></script>
+
+</body>
+</html>

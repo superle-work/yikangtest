@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+
+<html>
+
+<!-- head -->
+
+<!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/admin/<!--{$theme}-->/common/page/head.html"}-->
+
+<!---------------- 商品列表 ------------------->
+
+
+
+<!-- 页头 -->
+
+<!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/admin/<!--{$theme}-->/common/page/header.html"}-->
+
+<!-- 主体 -->
+
+<div class="content container-fluid<!--{if $leftBarScale eq '1'}--> scale<!--{/if}-->">
+
+    <div class="row">
+
+        <div class="col-md-2 left-section">
+
+            <!-- 左导航菜单 -->
+
+            <!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/admin/<!--{$theme}-->/common/page/menu.html"}-->
+
+
+
+        </div>
+
+        <div class="col-md-10 right-section">
+
+            <!--内容区域-->
+
+            <h3>
+
+                <i class="icon iconfont"><!--{$smarty.session.currentMenu.icon}--></i>工作人员列表
+
+                <div class="operation-div">
+
+                	<input type="hidden" name="uid" id="uid" value="" data-id="<!--{$id}-->">
+
+                	<a data-toggle="modal" class="btn btn-primary btn-sm select-goods" href="./admin.php?c=store_clinic&a=showBindUser" data-target="#bindLabelDialog">添加用户</a>
+
+                	
+
+                    <a class="btn btn-default" href="admin.php?c=store_clinic&a=clinicList&mid=31">返回</a>
+
+                </div>
+
+            </h3>
+
+            <div class="inner-section row">
+
+                <div id="content">
+
+                    <div class="list-title">
+
+                        <div class="list-title-panel">
+
+                            <span class="glyphicon glyphicon-list"></span>列表</span>
+
+                        </div>
+
+                    </div>
+
+                    <div class="table-content">
+
+                        <table class="list-table table-hover table-bordered">
+
+                            <tbody>
+
+                            	<tr>
+
+                            		<th width="12%">序号</th>
+
+                            		<th width="12%">头像</th>
+
+                            		<th width="13%">昵称</th>
+
+                            		<th width="13%">手机号</th>
+
+                            		<th width="12%">真实姓名</th>
+
+                            		<th width="13%">邮箱</th>
+
+                            		<th width="13%">地址</th>
+
+                            		<th width="12%">操作</th>
+
+                            	</tr>
+
+                            	
+
+                            	<!--{if $userInfo}-->
+
+                        		<!--{foreach from=$userInfo item=val key=k}-->
+                                <tr>
+
+                                    <td><span><!--{$k+1}--></span></td>
+
+                                    <td><img height="40" src="<!--{$val.head_img_url}-->"></td>
+
+                                    <td><!--{$val.nick_name}--></td>
+
+                                    <td><!--{$val.phone}--></td>
+
+                                    <td><!--{$val.name}--></td>
+
+                                    <td><!--{$val.email}--></td>
+
+                                    <td>
+
+                                        <!--{if $val.address}-->
+
+                                        <!--{$val.address}-->
+
+                                        <!--{else}-->
+
+                                        <!--{$val.country}--> <!--{$val.province}--> <!--{$val.city}-->
+
+                                        <!--{/if}-->
+
+                                    </td>
+
+                                    <td>
+
+                                        <a href="javascript:;" class="btn btn-default btn-xs delete" data-id="<!--{$val.id}-->">删除</a>
+
+                                    </td>
+
+                                </tr>
+                                <!--{/foreach}-->
+
+                                <!--{else}-->
+
+                               	<tr>
+
+                               		<td colspan="8" align="center" style="color:red;font-size:15px;">无数据，请添加人员！</td>
+
+                               	</tr>
+
+                               <!--{/if}-->
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                    <!--分页-->
+
+                    <!--<div id="page-selection"></div>
+
+
+
+                    <div class="fn-clear"></div>-->
+
+
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<!--选择用户-->
+
+<div class="modal fade" id="bindLabelDialog"  tabindex="-1" role="dialog"
+
+     aria-labelledby="myModalLabel" aria-hidden="true">
+
+    <div class="modal-dialog modal-lg">
+
+        <div class="modal-content">
+
+
+
+
+
+        </div><!-- /.modal-content -->
+
+    </div><!-- /.modal-dialog -->
+
+</div><!-- /.modal -->
+
+
+
+<!-- 页脚 -->
+
+<!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/admin/<!--{$theme}-->/common/page/footer.html"}-->
+
+
+
+<!-- jsfiles -->
+
+<!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/admin/<!--{$theme}-->/common/page/jsfiles.html"}-->
+
+<script src="<!--{$smarty.const.BASE_PATH}-->/js/public/My97DatePicker/WdatePicker.js"></script>
+
+<script type="text/javascript" src="<!--{$smarty.const.BASE_PATH}-->/js/public/jquery.bootpag/jquery.bootpag.min.js"></script>
+
+
+
+<script>
+
+	$(".delete").click(function(){
+
+		var id=$("#uid").attr("data-id");
+
+		var uid=$(this).attr("data-id");
+
+		if(id && uid){
+
+			$.ajax({
+
+				type:'post',
+
+				url:'admin.php?c=store_clinic&a=deleteUser',
+
+				data:{
+
+					'id':id,
+
+					'uid':uid,
+
+				},
+
+				dataType:'json',
+
+				success:function(res){
+
+					if(res.errorCode==0){
+
+						location.href="admin.php?c=store_clinic&a=showUser&id="+res.data.id+"&uid="+res.data.uid;
+
+					}
+
+				}
+
+			})
+
+		}
+
+	})
+
+	
+
+</script>
+
+</body>
+
+</html>

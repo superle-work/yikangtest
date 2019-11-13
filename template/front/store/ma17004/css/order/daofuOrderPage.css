@@ -1,0 +1,72 @@
+/*******************************
+ ------到付订单页面样式-------
+ ---------author:jjhu-----------
+ -------data:2015-07-26---------
+ *******************************/
+#content{
+    padding: 0 10px 0;
+}
+.order-area .order-num-info{
+    font-size: 12px;
+    padding: 5px 0;
+    border-top: 1px solid #EEEEEE;
+    border-bottom: 1px solid #EEEEEE;
+}
+#content .order-num-info a {
+    text-decoration: none;
+    float: right;
+    margin-left: 15px;
+    color: #E28313;
+    display: inline-block;
+    line-height: 18px;
+}
+.order-area .order-goods-list{
+    padding: 5px 0;
+    border-bottom: 1px solid #EEEEEE;
+    overflow: hidden;
+}
+.order-area .goods a{
+    float: left;
+}
+.order-area .goods .goods-info{
+    float: left;
+    padding-left: 5px;
+}
+.order-area .goods .price-count-info{
+    float: right;
+    text-align: right;
+    font-size: 12px;
+}
+.order-area .address{
+    font-size: 12px;
+    color: #999999;
+    padding: 5px 0;
+}
+.order-area .property-area{
+    font-size: 12px;
+    color: #666;
+}
+.order-area .total-price{
+    padding:5px 0;
+    border-bottom: 1px solid #EEEEEE;
+}
+.order-area .total-price span{
+    color: #FF5C00;
+}
+.message-area{
+    color: #AAAAAA;
+    font-size: 12px;
+}
+.pay-method-area{
+    margin: 20px 0;
+    text-align: center;
+}
+.pay-method-area .pay-method a{
+    text-decoration: none;
+    height: 40px;
+    line-height: 40px;
+    font-size: 14px;
+    display: block;
+    background: #009A00;
+    color: #ffffff;
+}

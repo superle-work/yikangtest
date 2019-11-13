@@ -1,0 +1,164 @@
+/******所有活动的公用css*********
+ ***** @author joy**********
+ ***** @since 2016-10-13*****
+ ****************************/
+#content{
+	background: #fff;
+}
+.cart-area,.user-action{
+	padding: 0 10px;
+	background: #fff;
+}
+/*****头部*******/
+.top-area{
+    height: 120px;
+    padding-top:20px;
+    padding-bottom:15px;
+}
+.top-area .head-image{
+    text-align: center;
+}
+.top-area .head-image img{
+	width: 60px;
+    height: 60px;
+    border-radius: 30px;
+    border: 1px solid #fff;
+}
+.top-area .head-image div{
+	padding-top:5px;
+	font-weight:bold;
+}
+
+/*间隔区域*/
+.space{
+	height:10px;
+	background:#F5F5F5;
+}
+
+/********订单状态**********/
+.order-area .all-order{
+	margin-left:10px;
+	height:40px;
+	border-bottom:1px solid #ececec;
+}
+.order-area .all-order a{
+	color: #303030;
+	line-height: 40px;
+}
+.order-area .all-order a.left{
+	width:45%;
+	display:inline-block;
+	font-weight:bold;
+	text-align:left;
+}
+.order-area .all-order a.right{
+	width:50%;
+	display:inline-block;
+	color: #aaaaac;
+	text-align: right;
+}
+.order-area .all-order a.right i{
+	position:relative;
+	top:1px;
+}
+
+/*订单状态*/
+.order-area .quick-btn{
+    text-align: center;
+    display:flex;
+    flex-direction: row;
+}
+.order-area .quick-btn a{
+	padding: 10px 0;
+	display: block;
+	width: 20%;
+}
+.order-area .quick-btn .order-btn i{
+	color: #1FA5FD;
+	font-size:22px;
+}
+.order-area .quick-btn a{
+    color: #aaaaac;
+    font-size: 12px;
+}
+
+/*物流中心、医院中心、诊所中心*/
+.cart-area a{
+	width:100%;
+    text-decoration: none;
+    display:block;
+}
+.cart-area a div:first-child{
+	display: inline-block;
+	width:60%;
+    height:40px;
+    line-height: 40px; 
+    text-align: left;
+}
+.cart-area a div span{
+	color:black;
+	padding-left:5px;
+}
+.cart-area a div:last-child{
+	display: inline-block;
+	width:38%;
+    height:40px;
+    line-height: 40px; 
+    text-align: right;
+}
+.cart-area i,.user-area i{
+	color:#FE7676;
+	position: relative;
+	top:1px;
+}
+.cart-area .info .arrow{
+	color:#CECECE;
+	font-weight:bold;
+}
+
+.user-area{
+	margin-left:10px;
+	border-top:1px solid #ececec;
+}
+.user-area a{
+	width:100%;
+    text-decoration: none;
+    display:block;
+}
+.user-area a div:first-child{
+	display: inline-block;
+	width:60%;
+    height:40px;
+    line-height: 40px; 
+    text-align: left;
+}
+.user-area a div span{
+	color:black;
+	padding-left:5px;
+}
+.user-area a div:last-child{
+	display: inline-block;
+	width:38%;
+    height:40px;
+    line-height: 40px; 
+    text-align: right;
+}
+.user-area .info .arrow{
+	color:#CECECE;
+	font-weight:bold;
+	padding-right:10px;
+}
+
+.user-area .info a div .like{
+	color:#FFBF43;
+}
+.cart-area .info a div .check{
+	color:#4DB7FD;
+}
+
+.cart-area .info a div .hospital{
+	color:#F9914A;
+}
+.cart-area .info a div .clinic{
+	color: #2ECCBD;
+}

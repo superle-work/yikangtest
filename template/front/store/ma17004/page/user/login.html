@@ -1,0 +1,56 @@
+<!--用户登录-->
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <title>手机验证</title>
+    <!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/front/store/<!--{$theme}-->/inner/head.html"}-->
+    <link rel="stylesheet"	href="<!--{$smarty.const.TEMPLATE_PATH}-->/front/store/<!--{$theme}-->/css/user/login.css">
+</head>
+
+<body>
+<!--主容器-->
+<div id="container" class="container-fluid">
+    <!--主体内容-->
+    <div id="content">
+        <form class="form-horizontal">
+            <div class="inp-area">
+            	<div>
+            		<label for="phone">请输入手机号码</label>
+            		<input type="text" id="phone" name="phone"/>
+            	</div>
+            </div>
+            <div class="inp-area">
+            	<div>
+            		<label for="img_yzm">请输入图形验证码</label>
+            		<input type="text" id="img_yzm" name="img_yzm"/>
+            	</div>
+            	<div>
+            		<img src="index.php?c=base_user&a=captcha" alt="" class="captcha-img"/>
+            	</div>
+            </div>
+            <div class="inp-area">
+            	<div>
+            		<label for="yzm">请输入验证码</label>
+            		<input type="text" id="yzm" name="yzm"/>
+            	</div>
+            	<div>
+            		<a href="javascript:;" class="getYzm">获取验证码</a>
+            	</div>
+            </div>
+            
+            <div class="but-area">
+            	<button id="send">提 交</button>
+            </div>
+        </form>
+    </div>
+
+    <!--页面脚部-->
+    <!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/front/store/<!--{$theme}-->/inner/dialog.html"}-->
+
+</div>
+<!--公用js文件-->
+<!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/front/store/<!--{$theme}-->/inner/jsfiles.html"}-->
+<script type="text/javascript" src="<!--{$smarty.const.TEMPLATE_PATH}-->/front/store/<!--{$theme}-->/js/user/login.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <title>编辑账户</title>
+    <!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/front/common/fen/inner/head.html"}-->
+    <link rel="stylesheet"	href="<!--{$smarty.const.TEMPLATE_PATH}-->/front/common/fen/css/addAccount.css">
+</head>
+
+<body>
+    <!--主容器-->
+    
+        <!--页面头部-->
+      
+        <!--主体内容-->
+        <div id="content">
+            <div class="type">
+            	<span>类型：</span>
+            	<select>
+            		<option value="1" <!--{if $account.account_type eq 1}-->selected<!--{/if}--> >微信</option>
+            		<option value="0" <!--{if $account.account_type eq 0}-->selected<!--{/if}--> >支付宝</option>
+            		<option value="2" <!--{if $account.account_type eq 2}-->selected<!--{/if}--> >银行卡</option>
+            	</select>
+            	<i class="icon iconfont">&#xe618;</i>
+            </div>
+            <div class="name">
+            	<span class="tip">账号姓名：</span>
+            	<input type="text" value="<!--{$account.name}-->">
+            </div>
+            <div class="accounts">
+            	<span class="tip">账号：</span>
+            	<input type="text" value="<!--{$account.account}-->">
+            </div>
+            <div class="account">
+            	<span class="tip">银行卡号：</span>
+            	<input type="text" value="<!--{$account.account}-->">
+            </div>
+            <div class="account_bank">
+            	<span>开户行：</span>
+            	<input type="text" value="<!--{$account.account_bank}-->">
+            </div>
+        </div>
+        
+        <div id="bottom">
+        	<div class="button">
+            	<a href="javascript:;" class="comfirm" data-id="<!--{$account.id}-->">确定</a>
+            </div>
+        </div>
+
+        <!--页面脚部-->
+    <!--提示框-->
+    <!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/front/common/fen/inner/dialog.html"}-->
+    <!--公用js文件-->
+    <!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/front/common/fen/inner/jsfiles.html"}-->
+	<script type="text/javascript" src="<!--{$smarty.const.TEMPLATE_PATH}-->/front/common/fen/js/editAccount.js"></script>
+</body>
+</html>

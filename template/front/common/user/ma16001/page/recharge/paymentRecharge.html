@@ -1,0 +1,83 @@
+<!--待付款订单-->
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <title>待付款页面</title>
+    <meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
+	<meta name="author" content="安徽千界信息科技有限公司">
+	<meta name="robots" content="index,follow">
+	<meta name="application-name" content="www.changekeji.com">
+    <link rel="stylesheet"	href="<!--{$smarty.const.TEMPLATE_PATH}-->/front/common/iconfont/iconfont.css">
+	<link rel="stylesheet"	href="<!--{$smarty.const.TEMPLATE_PATH}-->/front/common/common.css">
+	<link rel="stylesheet"	href="<!--{$smarty.const.TEMPLATE_PATH}-->/public/bootstrap/css/bootstrap.min.css">
+	 <link rel="stylesheet" href="<!--{$smarty.const.TEMPLATE_PATH}-->/front/common/user/<!--{$theme}-->/css/base.css">
+    <link rel="stylesheet"	href="<!--{$smarty.const.TEMPLATE_PATH}-->/front/common/user/<!--{$theme}-->/css/recharge/paymentRecharge.css">
+</head>
+
+<body>
+<!--主容器-->
+<div id="container" class="container-fluid">
+    <!--页面头部-->
+    <div id="header">
+        <div>
+            <!-- <a href="../index.php?c=duo&a=index"><span>充值夺宝币</span></a> -->
+        </div>
+    </div>
+    <!--主体内容-->
+    <div id="content">
+        <div class="order-area">
+            <div class="order-list">充值金额：<span class="color-text"><!--{$orderInfo.money}-->元</span></div>
+            <div class="order-list">赠送：<span class="color-text"><!--{$orderInfo.reward_coin}-->元</span></div>
+            <div class="order-list">实际获得：<span class="color-text"><!--{$orderInfo.get_real_coin}-->元</span></div>
+
+        <div class="pay-method-area">
+            <div class="pay-method"><a href="javascript:callpay();" class="wechat" data-oid="<!--{$orderInfo.id}-->">微信安全支付</a></div>
+        </div>
+    </div>
+    <!--页面脚部-->
+    <!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/front/common/user/<!--{$theme}-->/page/inner/footer.html"}-->
+</div>
+<!--提示框-->
+<!--公用js文件-->
+<!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/front/common/user/<!--{$theme}-->/page/inner/jsfiles.html"}-->
+<script type="text/javascript" src="<!--{$smarty.const.JS_PATH}-->/public/wechat/jweixin-1.0.0.js"></script>
+<script type="text/javascript">
+    //调用微信JS api 支付
+    function jsApiCall()
+    {
+        WeixinJSBridge.invoke(
+                'getBrandWCPayRequest',
+                <!--{$jsApiParameters}-->,
+                function(res){
+                    //WeixinJSBridge.log(res.err_msg);
+                    if(res.err_msg == "get_brand_wcpay_request:ok" ) {//支付成功
+                        // 使用以上方式判断前端返回,微信团队郑重提示：res.err_msg将在用户支付成功后返回    ok，但并不保证它绝对可靠。
+                        window.location.href = "/index.php?c=<!--{$orderInfo.module}-->&a=userCenter";//跳转到用户中心
+                    }else if(res.err_msg == "get_brand_wcpay_request:cancel"){//取消支付
+
+                    }else if(res.err_msg == "get_brand_wcpay_request:fail"){//支付失败
+						alert("支付失败");
+                    }
+                }
+        );
+    }
+
+    function callpay()
+    {
+        if (typeof WeixinJSBridge == "undefined"){
+            if( document.addEventListener ){
+                document.addEventListener('WeixinJSBridgeReady', jsApiCall, false);
+            }else if (document.attachEvent){
+                document.attachEvent('WeixinJSBridgeReady', jsApiCall);
+                document.attachEvent('onWeixinJSBridgeReady', jsApiCall);
+            }
+        }else{
+            jsApiCall();
+        }
+    }
+</script>
+
+</body>
+</html>

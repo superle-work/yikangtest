@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="zh-cn"> 
+<head>
+    <title>首页</title>
+    <!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/front/store/<!--{$theme}-->/inner/head.html"}-->
+    <link rel="stylesheet"	href="<!--{$smarty.const.JS_PATH}-->/public/swiper/css/swiper.min.css">
+    <link rel="stylesheet" href="<!--{$smarty.const.TEMPLATE_PATH}-->/front/store/<!--{$theme}-->/css/index.css">
+</head>
+
+<body>
+    <!--主容器-->
+    <div id="container" class="container-fluid">
+    	<div class="search-goods-area">
+    		<div style="margin-left:15px;">
+    			<i class="icon iconfont search_ico">&#xe601;</i>
+    			<span><!--{$smarty.session.area.city}--></span>
+    		</div>
+        	<div class="search">
+            	<i class="icon iconfont search_ico">&#xe609;</i></span>
+            	<input type="text" class="search-text" placeholder="搜索体检项目关键词">
+            </div>
+        </div>
+        <!--页面头部-->
+		<!--{if $slideList}-->
+        <!--幻灯片轮播-->
+        <div class="swiper-container">
+            <div class="swiper-wrapper">
+                <!--{foreach from = $slideList item = slide name=slide}-->
+                <!--默认只展示前5张轮播图-->
+                <!--{if $smarty.foreach.slide.iteration <= 5}-->
+                <div class="swiper-slide"><a href="<!--{$slide.url}-->"><img class="slide-image" src="<!--{$slide.img_url}-->"></a></div>
+                <!--{/if}-->
+                <!--{/foreach}-->
+            </div>
+            <!-- 如果需要分页器 -->
+            <div class="swiper-pagination"></div>
+        </div>
+		<!--{/if}-->
+		
+		<div class="quick-area">
+			<div class="quick-info">
+                <a href="./index.php?c=store&a=goodsCate">
+                    <div class="image product">
+                    	<i class="icon iconfont show-icon1">&#xe65e;</i>
+                    </div>
+                    <div class="name">我要体检</div>
+                </a>
+            </div>
+            <div class="quick-info">
+                <a href="index.php?c=store&a=moreClinic">
+                    <div class="image clinic">
+                    	<i class="icon iconfont show-icon2">&#xe601;</i>
+                    </div>
+                    <div class="name">附近诊所</div>
+                </a>
+            </div>
+            <div class="quick-info">
+                <a href="index.php?c=store&a=orderList">
+                    <div class="image order">
+                    	<i class="icon iconfont show-icon3">&#xe667;</i>
+                    </div>
+                    <div class="name">订单查询</div>
+                </a>
+            </div>
+            <div class="quick-info">
+                <a href="index.php?c=fen&a=fenCenter">
+                    <div class="image center">
+                    	<i class="icon iconfont show-icon4">&#xe675;</i>
+                    </div>
+                    <div class="name">分销中心</div>
+                </a>
+            </div>
+		</div>
+		<div class="space"></div>
+		
+        <!--主体内容-->
+        <div id="content">
+            <!--商品分类-->
+			<!--{if $categoryList}-->
+            <div class="label-display-area">
+                <div class="row label-display">
+                <!--{foreach from = $categoryList item = cate name = cateList}-->
+                    <!--默认只展示前8个标签-->
+                    <!--{if $smarty.foreach.cateList.iteration <= 8}-->
+                    <div class="col-xs-3 col-sm-3 col-md-3 item">
+                        <a href="./index.php?c=store&a=goodsCate&cid=<!--{$cate.id}-->">
+                            <div class="image"><img src="<!--{$cate.icon}-->"></div>
+                            <div class="name"><!--{$cate.name}--></div>
+                        </a>
+                    </div>
+                    <!--{/if}-->
+                <!--{/foreach}-->
+                
+                
+	                <!--全部项目-->
+	                <div class="col-xs-3 col-sm-3 col-md-3 item">
+	                    <a href="./index.php?c=store&a=goodsCate">
+	                        <div class="image">
+	                        	<i class="icon iconfont all">&#xe70c;</i>
+	                        </div>
+	                        <div class="name">全部体检</div>
+	                    </a>
+	                </div>
+                </div>
+            </div>
+			<!--{/if}-->
+			<!--商品消息和推荐商品-->
+			
+	    	<!--推荐商品展示区域-->
+	    	<!--$recommendGoodsList-->
+            <div class="recommend-goods-diplay-area hidden" >
+                <div class="recommend-name-area" style="background:url(<!--{$smarty.const.TEMPLATE_PATH}-->/front/store/<!--{$theme}-->/image/0.png) no-repeat left center;"><span class="recommend-name">推荐商品</span><a class="more" href="./index.php?c=store&a=goodsSearch">查看全部<i class="icon iconfont">&#xe62d;</i></a></div>
+                <!--推荐的商品展示区域-->
+                <div class="row recommend-goods-area">
+                    <!--{foreach from = $recommendGoodsList item = goods name = goodsList}-->
+                    <!--默认只展示前16个商品-->
+                    <div class="col-xs-12 col-sm-12 col-md-12 item">
+                        <div class="goods">
+                            <a href="./index.php?c=store&a=goodsDetail&id=<!--{$goods.id}-->" class="goods-info" title="商品详情" data-id="<!--{$goods.id}-->">
+                                <div class="image">
+                                    <img src="<!--{$goods.img_url}-->">
+                                </div>
+                            </a>
+                            <div class="goods-descript-info">
+                            	<div class="name"><!--{$goods.name}--></div>
+	                            <div>
+	                            	<span class="ori-price"><i class="icon iconfont">&#xe645;</i><!--{$goods.price}--></span>
+	                            	<span class="sale-quantity">已售：<!--{$goods.sale_quantity}--></span>
+	                            </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--{/foreach}-->
+                </div>
+            </div>
+            <div class="space"></div>
+            
+            <!--标签分类商品展示区域-->
+            <div class="label-goods-diplay-area">
+                <!--标签名称-->
+                <div class="label-goods-foreach">
+	                <div class="label-title-english">
+	                	<span class="left">
+	                		<span class="shuxian"></span>
+	                		<span class="near">&nbsp;合作医院</span></span>
+	                	<!--<a class="right" href="index.php?c=store&a=moreClinic">更多诊所  <i class="icon iconfont">&#xe619;</i></a>-->
+	                </div>
+	                
+	                <!--诊所展示区-->
+	                <div class="label-goods-display-item">
+	                    <div class="row label-goods-area">
+							<!--{if $labelList}-->
+	                        <!--{foreach from = $labelList item = goods name = goodsList}-->
+	                        <!--默认只展示前6个-->
+	                        <!--{if $smarty.foreach.goodsList.iteration <= 6}-->
+	                        <div class="col-xs-12 col-sm-12 col-md-12 item">
+	                            <div class="goods goods-<!--{$smarty.foreach.goodsList.iteration%2}-->">
+	                                <a href="./index.php?c=store&a=clinicDetail&id=<!--{$goods.id}-->" class="goods-info" title="诊所详情" data-id="<!--{$goods.id}-->">
+	                                    <div class="image">
+	                                        <img alt="<!--{$goods.name}-->" src="<!--{$goods.img_url}-->">
+	                                    </div>
+	                                
+		                                <div class="detail">
+		                                	<div class="name"><!--{$goods.name}--></div>
+		                                    <div class="space2">
+		                                    	<span class="addr"><i class="icon iconfont colo">&#xe639;</i><span class="address"><!--{$goods.address}--></span></span><span class="distance"><!--{$goods.distance}--></span>
+		                                    </div>	
+		                                    <div>
+		                                    	<i class="icon iconfont colo">&#xe67f;</i><span class="phone"><!--{$goods.phone}--></span>
+		                                    </div>
+		                                </div>
+		                            </a>
+	                            </div>
+	                        </div>
+	                        <div class="space3"></div>
+	                        <!--{/if}-->
+	                        <!--{/foreach}-->
+							<!--{else}-->
+							<p class="text-danger">没有查到记录</p>
+							<!--{/if}-->
+	                    </div>
+	                </div>
+	            </div>
+            </div>
+        </div>
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <!--页面脚部-->
+        <!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/front/store/<!--{$theme}-->/inner/bottomNav.html"}-->
+    </div>
+    
+    <!-- 模态框（Modal） 加入购物车弹出框,当商品为多规格 加载以下div-->
+    <div class="modal fade" id="addCartModal" tabindex="-1" role="dialog"
+         aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-fixed">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close"
+                            data-dismiss="modal" aria-hidden="true">
+                        <i class="icon iconfont">&#xe613;</i>
+                    </button>
+                    <h4 class="modal-title" id="myModalLabel">
+                        <div class="cart-goods-info">
+                            <img src="<!--{$goodsInfo.thumb}-->" style="height: 40px;">
+                            <div class="cart-goods-text-info">
+                                <div class="name"><!--{$goodsInfo.name}--></div>
+                                <div class="price">
+                                    <i class="icon iconfont">&#xe604;</i>
+                                    <span class="price-value" data-price="<!--{$goodsInfo.price}-->"><!--{$goodsInfo.price}--></span><span class="unit-area">/<span class="unit">件</span></span>
+                                    <span class="ori-price-info"<!--{if $goodsInfo.standard eq 1}-->style="display:none;"<!--{/if}-->>原价<i class="icon iconfont">&#xe604;</i><span class="ori-price"><!--{$goodsInfo.ori_price}--></span></span>
+                                    <span class="inventory-area">(库存&nbsp;<span class="inventory"><!--{$goodsInfo.inventory}--></span>)</span></div>
+                            </div>
+                        </div>
+                    </h4>
+                </div>
+                <div class="modal-body">
+                    <div class="property-group-area" data-id="<!--{$goodsInfo.id}-->">
+                        <!--{$k = 0}-->
+                        <!--{foreach from = $propertyGroups item = property name = propertyGroups}-->
+                        <div class="goods-property-item" data-property-index="<!--{$smarty.foreach.propertyGroups.iteration}-->">
+                            <dl class="goods-prop clearfix">
+                                <dt><span><!--{$property.name}--></span></dt>
+                                <dd>
+                                    <ul data-name="<!--{$property.name}-->">
+                                        <!--{foreach from = $property.valueList item = value}-->
+                                        <li data-key="<!--{$k++}-->" data-value="<!--{$value}-->">
+                                            <a class="property-value" href="javascritp:;"><!--{$value}--></a>
+                                            <i>已选中</i>
+                                        </li>
+                                        <!--{/foreach}-->
+                                    </ul>
+                                </dd>
+                            </dl>
+                        </div>
+                        <!--{/foreach}-->
+                    </div>
+
+                    <div class="quantity-area">
+                        <span class="quantity-title">数量</span>
+                        <!--数量操作区域-->
+                        <div class="quantity-operation-area">
+                            <button class="quantity-minus"><i class="icon iconfont">&#xe611;</i></button>
+                            <span class="quantity-area"><input type="text" class="quantity-value" value="1"></span>
+                            <button class="quantity-plus"><i class="icon iconfont">&#xe610;</i></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <div class="row">
+                        <a class="col-xs-6 col-sm-6 col-md-6 buy-now" href="javascritp:;"   data-id="<!--{$goodsInfo.id}-->"><i class="icon iconfont">&#xe60e;</i><span>立即购买</span></a>
+                        <a class="col-xs-6 col-sm-6 col-md-6 add-cart" href="javascript:;"  data-id="<!--{$goodsInfo.id}-->"><i class="icon iconfont">&#xe609;</i><span>加入购物车</span></a>
+                    </div>
+                </div>
+            </div><!-- /.modal-content -->
+        </div>
+    </div><!-- /.modal -->
+    
+    <!--提示框-->
+    <!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/front/store/<!--{$theme}-->/inner/dialog.html"}-->
+    <!--公用js文件-->
+    <!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/front/store/<!--{$theme}-->/inner/jsfiles.html"}-->
+    <!--公用的客服服务-->
+    <!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/front/common/service/page/service.html"}-->
+    <script src="<!--{$smarty.const.JS_PATH}-->/public/swiper/js/swiper.jquery.min.js"></script>
+
+    <script type="text/javascript" src="<!--{$smarty.const.JS_PATH}-->/public/wechat/jweixin-1.0.0.js"></script>
+    
+    <!--{if !$smarty.session.area.city}-->
+    <script>
+    //获取城市定位
+    wx.config({
+        debug: false,
+        appId: '<!--{$signPackage.appId}-->',
+        timestamp: '<!--{$signPackage.timestamp}-->',
+        nonceStr: '<!--{$signPackage.nonceStr}-->',
+        signature: '<!--{$signPackage.signature}-->',
+        jsApiList: [
+            'checkJsApi',
+            'onMenuShareTimeline',
+            'getLocation',
+        ]
+    });
+    wx.ready(function(){
+        wx.checkJsApi({
+            jsApiList: [
+                'getNetworkType',
+                'previewImage'
+            ],
+            success: function (res) {
+            }
+        });
+        wx.getLocation({
+            type: 'gcj02', // 默认为wgs84的gps坐标，如果要返回直接给openLocation用的火星坐标，可传入'gcj02'
+            success: function (res) {
+                var latitude = res.latitude; // 纬度，浮点数，范围为90 ~ -90
+                var longitude = res.longitude; // 经度，浮点数，范围为180 ~ -180。    
+                $.ajax({
+                    url:"index.php?c=store&a=getLocation",
+                    type:"post",
+                    data:{"latitude":latitude,"longitude":longitude},
+                    dataType:"json",
+                    success:function(json,statusText){
+                        if(json.errorCode == 0){
+                            window.location.reload();                           
+                        }
+                    },
+                    error:errorResponse
+                });
+            },
+            cancel: function (res) {
+                $("#content .get-more").text('获取位置失败');
+            }
+        });
+    });
+    </script>
+    <!--{/if}-->
+
+    <script type="text/javascript" src="<!--{$smarty.const.TEMPLATE_PATH}-->/front/store/<!--{$theme}-->/js/index.js"></script>
+</body>
+</html>

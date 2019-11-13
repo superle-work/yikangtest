@@ -1,0 +1,301 @@
+/*************************
+ ------购物车页面样式-----
+ *************************/
+#content{
+    background: #fff;
+}
+.top-area{
+	background: #fff;
+	height:44px;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+}
+.top-area div{
+	height:100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size:13px;
+}
+.top-area .cur{
+	color:#1695FC;
+	border-bottom:2px solid #1695FC;
+}
+.top-area .num{
+	display:inline-block;
+	width:16px;
+	height:16px;
+	line-height: 16px;
+	text-align: center;
+	border:1px solid;
+	border-radius: 8px;
+	background: red;
+	color:white;
+	position:relative;
+	top:-10px;
+	left:2px;
+}
+.space{
+	height:7px;
+	background: #F5F5F5;
+}
+.space2{
+	height:5px;
+	background: #F5F5F5;
+}
+/*购物车列表区域*/
+#content .cart-top-area{
+    height:40px;
+    border-bottom:1px solid #F7F7F7;
+    padding:0px 10px;
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+    font-size:12px;
+}
+#content .cart-top-area .all-select{
+    display:flex;
+    align-items: center;
+}
+#content .cart-top-area .all-select .location{
+    position:relative;
+    top:-1px; 
+    font-size:14px;
+}
+#content .cart-top-area .delete{
+    display:flex;
+    align-items: center;
+}
+
+#content .goods-info{
+	height:110px;
+	padding:10px;
+}
+#content .goods-info .goods{
+	height:100%;
+	display:flex;
+	flex-direction: row;
+	justify-content: flex-start;
+}
+#content .goods-info .goods .good-sel{
+	height:100%;
+	display: flex;
+	align-items:center;
+	padding-right:5px;
+}
+.goods-info .goods .good-sel{
+	color:black;
+	font-size:14px;
+}
+#content .goods-info .goods a{
+	display:block;
+	height:100%;
+	display:flex;
+	flex-direction: row;
+	justify-content: flex-start;
+}
+#content .goods-info .goods img{
+	width:84px;
+	height:84px;
+}
+#content .goods-info .goods .good-name{
+	padding-left:10px;
+	width:120px;
+}
+.goods-info .goods .good-name .name{
+	width:100%;
+	text-align: left;
+	overflow: hidden;
+	text-overflow:ellipsis;
+	white-space: nowrap;
+	font-size:15px;
+	color:black;
+	height:35px;
+	line-height:35px;
+}
+.goods-info .goods .good-name .price{
+	height:45px;
+	line-height:45px;
+	width:100%;
+	text-align: left;
+	font-size:15px;
+	color:#FD6B07;
+}
+#content .goods-info .goods .state{
+	text-align: right;
+	font-size:12px;
+	width:100%;
+}
+#content .goods-info .goods .state .state-type{
+	height:35px;
+}
+#content .goods-info .goods .state .count{
+	height:45px;
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;
+}
+.goods .state .count .num-area{
+	
+}
+.goods .count .num-area .decCount{
+	display: inline-block;
+	width:20px;
+	height:20px;
+	font-size:13px;
+	padding:0px;
+	margin:0px;
+	border-top:1px solid #f5f5f5;
+	border-left:1px solid #f5f5f5;
+	border-right:0px;
+	border-bottom:1px solid #f5f5f5;
+	background: #fff;
+	outline:none;
+}
+.goods .count .num-area .num{
+	display: inline-block;
+	width:30px;
+	height:20px;
+	font-size:12px;
+	outline: none;
+	border:1px solid #F5F5F5;
+	text-align: center;
+	padding:0px;
+	margin:0px;
+}
+.goods .count .num-area .incCount{
+	display: inline-block;
+	width:20px;
+	height:20px;
+	font-size:13px;
+	padding:0px;
+	margin:0px;
+	border-top:1px solid #f5f5f5;
+	border-right:1px solid #f5f5f5;
+	border-bottom:1px solid #f5f5f5;
+	border-left:0px;
+	background: #fff;
+	outline:none;
+}
+
+
+/*商品数量操作区域样式*/
+.empty-cart{
+    margin: 0 auto;
+    text-align: center;
+    height:400px;
+}
+.empty-cart .text-1{
+    font-size: 20px;
+}
+.empty-cart .text-2{
+    font-size: 14px;
+    color: #AAAAAA;
+}
+.empty-cart .text-3{
+    margin: 20px 0;
+}
+.empty-cart .text-3 a{
+    padding: 5px 20px;
+    border: 1px solid #F55F68;
+    color: #F55F68;
+    text-decoration: none;
+    border-radius: 3px;
+}
+
+/***购物车底部功能区样式***/
+.cart-bottom-area{
+    z-index: 10;
+    position: fixed;
+    bottom: 0px;
+    text-align: center;
+    background: #ffffff;
+    /*box-shadow: 0px -1px 0px #FF5C00;*/
+}
+.cart-bottom-area a{
+    height: 50px;
+    padding:0;
+    line-height: 50px;
+    text-decoration: none;
+    text-align: center;
+    border-top: 1px solid #ddd;
+}
+.cart-bottom-area a#totalPrice{
+	width:70%;
+}
+.cart-bottom-area a#balance{
+	width:30%;
+    border-top: none;
+}
+.cart-bottom-area #selectAll span,
+.cart-bottom-area #totalPrice span
+{
+    color: #333;
+    font-size: 14px;
+}
+.cart-bottom-area #totalPrice .total-price,
+.cart-bottom-area #totalPrice .total-price-value{
+    color:#FF873E;
+    font-size:16px;
+}
+.cart-bottom-area #balance span{
+	display: inline-block;
+    padding: 0 10px;
+    color: #ffffff;
+    font-size: 16px;
+}
+.cart-bottom-area #balance span{
+	width:100%;
+    background: #CCCCCC;
+}
+.cart-bottom-area #balance span.can-use{
+	width:100%;
+    background: #1695FC;
+}
+#content .empty-cart .empty {
+    font-size: 120px;
+    color: #eee;
+}
+
+
+/*小图标选中颜色*/
+#content .selected{
+    color:#1695FC;
+}
+
+.goods-info i{
+	font-size:14px;
+}
+
+
+/*删除提示框*/
+.my-dialog{
+	padding-bottom:0px;
+	top:130px;
+}
+#deleteModal .title-text{
+	margin-bottom: 20px;
+    font-size: 18px;
+    font-weight:normal; 
+}
+
+#deleteModal .dialog-footer{
+	margin-top: 30px;
+    padding-bottom: 0px;
+    display:flex;
+    flex-direction: row;
+   	justify-content: space-between;
+}
+#deleteModal .dialog-footer a{
+	display:block;
+	width:50%;
+	height:45px;
+	border-top:1px solid #f5f5f5;
+	font-size:16px;
+	line-height:45px;
+}
+.cancel{
+	border-right:1px solid #F5F5F5;
+	color:black;
+}

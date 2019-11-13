@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<!-- head -->
+<!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/admin/<!--{$theme}-->/common/page/head.html"}-->
+<link rel="stylesheet" href="<!--{$smarty.const.TEMPLATE_PATH}-->/admin/<!--{$theme}-->/base/express/css/expressList.css" />
+<body>
+<!---------------- 快递公司列表 ------------------->
+
+<!-- 页头 -->
+<!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/admin/<!--{$theme}-->/common/page/header.html"}-->
+<!-- 主体 -->
+<div class="content container-fluid<!--{if $leftBarScale eq '1'}--> scale<!--{/if}-->">
+    <div class="row">
+        <div class="col-md-2 left-section">
+            <!-- 左导航菜单 -->
+            <!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/admin/<!--{$theme}-->/common/page/menu.html"}-->
+
+        </div>
+        <div class="col-md-10 right-section">
+            <!--内容区域-->
+            <h3>
+                <i class="icon iconfont"><!--{$smarty.session.currentMenu.icon}--></i><!--{$smarty.session.currentMenu.menuTitle}-->
+                <div class="operation-div">
+                    <a class="btn btn-success" class="addExpress" href="<!--{spUrl c=base_express a=addExpress}-->">添加</a>
+                </div>
+            </h3>
+            <div class="inner-section row">
+                <div id="content">
+                    <div class="search-param-panel">
+                        <form class="search-param-form" id="search-param-form">
+                            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                <tr>
+                                    <td width="80px">
+                                        <label for="name">快递公司名称:&nbsp;</label>
+                                    </td>
+                                    <td width="140px">
+                                        <input id="name" name="name" type="text" class="input-normal search"  />
+                                    </td>
+                                     <td width="80">
+                                        <label for="is-use">状态:&nbsp;</label>
+                                    </td>
+                                    <td width="140">
+                                        <select id="is-use" name="is-use" class="select-normal">
+                                            <option value="">全部</option>
+                                            <option value="0">已停用</option>
+                                            <option value="1">已启用</option>
+                                        </select>
+                                    </td>
+                                    <td>
+                                        <div class="list-action-area">
+                                            <a href="javascript:;" class="search-button btn btn-primary btn-sm">查询</a>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+                        </form>
+                    </div>
+                    <div class="list-title">
+                        <div class="list-title-panel">
+                            <span class="glyphicon glyphicon-list"></span>列表</span>
+                        </div>
+                    </div>
+                    <div class="union-operate">
+                    	<a href="javascript:;" class="btn btn-default btn-sm delete-batch">批量删除</a>
+                    </div>
+                    <div class="table-content" id = "list_container">
+                        <table id="list-table" class="list-table table-hover table-bordered">
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
+                    <!--分页-->
+                    <div id="page-selection"></div>
+
+                    <div class="fn-clear"></div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 页脚 -->
+<!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/admin/<!--{$theme}-->/common/page/footer.html"}-->
+
+<!-- jsfiles -->
+<!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/admin/<!--{$theme}-->/common/page/jsfiles.html"}-->
+<script type="text/javascript" src="<!--{$smarty.const.TEMPLATE_PATH}-->/admin/<!--{$theme}-->/base/express/js/expressList.js"></script>
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <title>申请提现</title>
+    <!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/front/common/fen/inner/head.html"}-->
+    <link rel="stylesheet"	href="<!--{$smarty.const.TEMPLATE_PATH}-->/front/common/fen/css/withdrawFeePage.css">
+</head>
+
+<body>
+    <!--主容器-->
+    <div>
+     
+        <!--主体内容-->
+        <div id="content">
+            <div class="top-area">
+                <div>账户金额（元）</div>
+                <div class="myfee"><!--{$my_fee}--></div>
+            </div>
+            
+            <div class="inp-area">
+	        	<p class="withdrawal">输入提现金额</p>
+		    	<i class="icon iconfont rmb">&#xe645;</i><input type="text" name="money" class="inp"/>
+			</div>
+			
+			<div class="space"></div>
+			
+            <div class="choose-account-text">
+            	<span>请选择收款账户</span>
+                <a class="account-manage" href="./index.php?c=fen&a=accountList&id=<!--{$id}-->&type=<!--{$type}-->"><i class="icon iconfont">&#xe642;</i>账户管理</a>
+            </div>
+
+            <!--支付账号列表（支付宝、微信、银联）-->
+            <div class="account-list">
+                <!--{if $accountList}-->
+                <table>
+                    <!--{foreach from = $accountList item = account name = accountList}-->
+                    <tr>
+                        <td class="col-1">
+                            <a href="javascript:;" class="item-option<!--{if $account.is_default eq '1'|| $smarty.foreach.accountList.first}--> checked<!--{/if}-->" data-aid="<!--{$account.id}-->">
+                                <i class="icon iconfont selected" <!--{if $account.is_default eq '1'|| $smarty.foreach.accountList.first}-->style="display:inline;"<!--{/if}-->>&#xe648;</i>
+                                <i class="icon iconfont un-selected"<!--{if $account.is_default eq '0' && !$smarty.foreach.accountList.first}-->style="display:inline;"<!--{/if}-->>&#xe623;</i>
+                            </a>
+                        </td>
+                        <td class="col-2">
+                            <!--{if $account.account_type eq '0'}-->支付宝
+                            <!--{else if $account.account_type eq '1'}-->微信
+                            <!--{else if $account.account_type eq '2'}-->银行卡<!--{/if}-->
+                        </td>
+                        <td class="col-3"><!--{$account.account}--></td>
+                        <td class="col-4"><!--{$account.name}--></td>
+                    </tr>
+                    <!--{/foreach}-->
+                </table>
+                <!--{else}-->
+                <p class="bg-danger no-data">还没有任何账户信息呢！</p>
+                <!--{/if}-->
+            </div>
+        </div>
+        
+        <div class="withdraw">
+        	<input type="hidden" id="tx_uid" value="<!--{$id}-->"/>
+        	<input type="hidden" id="tx_type" value="<!--{$type}-->"/>
+            <a href="javascript:;" class="can-use">申请提现</a>
+        </div>
+
+        <!--页面脚部-->
+        <!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/front/common/fen/inner/bottomNav.html"}-->
+        <!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/front/common/fen/inner/dialog.html"}-->
+    </div>
+    <!--公用js文件-->
+    <!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/front/common/fen/inner/jsfiles.html"}-->
+    <script type="text/javascript" src="<!--{$smarty.const.TEMPLATE_PATH}-->/front/common/fen/js/withdrawFeePage.js"></script>
+</body>
+</html>

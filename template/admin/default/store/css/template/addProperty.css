@@ -1,0 +1,36 @@
+#myForm table .td1 label{
+    color: #666666;
+}
+#myForm td label{
+    line-height: 34px;
+}
+#myForm table .td1{
+    width: 100px;
+}
+#myForm table .td2{
+    width: 780px;
+}
+#myForm .value-info{
+    margin-right: 5px;
+    margin-bottom: 8px;
+    display: inline-block;
+    position: relative;
+}
+#myForm .value-info input{
+    width: 70px;
+}
+#myForm .value-info .value-delete{
+    position: absolute;
+    width: 14px;
+    height: 12px;
+    top: -4px;
+    right: -4px;
+    cursor: pointer;
+    opacity: 0.6;
+    filter:alpha(opacity=60);
+    z-index:100;
+    background: url("../../../../../../themes/image/ico_veri_err.gif");
+}
+#myForm .value-info .value-delete:hover{
+    opacity: 1;
+}

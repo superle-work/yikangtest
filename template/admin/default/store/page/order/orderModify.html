@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<!-- head -->
+<!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/admin/<!--{$theme}-->/common/page/head.html"}-->
+<body>
+<!---------------- 商品列表 ------------------->
+
+<!-- 页头 -->
+<!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/admin/<!--{$theme}-->/common/page/header.html"}-->
+<!-- 主体 -->
+<div class="content container-fluid<!--{if $leftBarScale eq '1'}--> scale<!--{/if}-->">
+    <div class="row">
+        <div class="col-md-2 left-section">
+            <!-- 左导航菜单 -->
+            <!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/admin/<!--{$theme}-->/common/page/menu.html"}-->
+
+        </div>
+        <div class="col-md-10 right-section">
+            <!--内容区域-->
+            <h3><i class="icon iconfont"><!--{$smarty.session.currentMenu.icon}--></i>订单修改
+                <div class="operation-div">
+                    <a class="btn btn-default" href="javascript:window.history.go(-1);">返回</a>
+                </div>
+            </h3>
+            <div class="inner-section row">
+                <div id="content">
+                <!--{if $valid eq true}-->
+                	<form action="#" method="post" id="myForm"  enctype="multipart/form-data">
+                		<input type="hidden" name="oid" class="oid" value="<!--{$orderInfo.id}-->">
+                    	<table class="table table-striped table-hover table-bordered table-base">
+                    	<!--{if $orderInfo.state == 0}-->
+                    		<tr>
+                                <td class="td1"><label><span class="must-tag">*</span>修改订单金额</label></td>
+                                <td class="td2"><input type="text" class="form-control" id="total_price" name="total_price" value="<!--{$orderInfo.total_price}-->" placeholder="修改订单金额"></td>
+                                <td class="td3"></td>
+                            </tr>
+                        <!--{/if}-->
+                        	<tr>
+                                <td class="td1"><label><span class="must-tag">*</span>修改收货人</label></td>
+                                <td class="td2"><input type="text" class="form-control" id="call_name" name="call_name" value="<!--{$orderInfo.address.call_name}-->" placeholder="修改收货人"></td>
+                                <td class="td3"></td>
+                            </tr>
+                            <tr>
+                                <td class="td1"><label><span class="must-tag">*</span>修改收货电话</label></td>
+                                <td class="td2"><input type="text" class="form-control" id="phone" name="phone" value="<!--{$orderInfo.address.phone}-->" placeholder="修改收货电话"></td>
+                                <td class="td3"></td>
+                            </tr>
+                            <tr>
+                                <td class="td1"><label><span class="must-tag">*</span>修改收货地址</label></td>
+                                <td class="td2"><input type="text" class="form-control" id="address" name="address" value="<!--{$orderInfo.address.address}-->" placeholder="修改收货地址"></td>
+                                <td class="td3"></td>
+                            </tr>
+                             <tr>
+                                <td class="td1"><label>快递公司</label></td>
+                                <td class="td2">
+                                	<select id="express_id" name="express_id" class="select-normal">
+                                		<option>选择快递公司</option>
+                                		<!--{foreach from=$expressList item=express}-->
+                                		<option value="<!--{$express.id}-->" <!--{if $express.code eq $orderInfo.express_code}-->selected<!--{/if}--> ><!--{$express.name}--></option>
+                                		<!--{/foreach}-->
+                                	</select>
+                                </td>
+                                <td class="td3"></td>
+                            </tr>
+                            <tr>
+                                <td class="td1"><label>快递单号</label></td>
+                                <td class="td2"><input type="text" class="form-control" id="express_number" name="express_number" value="<!--{$orderInfo.express_number}-->" placeholder="快递单号"></td>
+                                <td class="td3"></td>
+                            </tr>
+                            <tr>
+                            	<td></td>
+                            	<td>
+                            		<a href="javascript:;" class="btn btn-success save">提交</a>
+                            		<a href="javascript:;" class="btn btn-default back">返回</a>
+                            	</td>
+                            	<td></td>
+                            </tr>
+                    	</table>
+                    </form>
+                <!--{else}-->
+                    <p>只能在发货前修改订单信息</p>
+                <!--{/if}-->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 页脚 -->
+<!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/admin/<!--{$theme}-->/common/page/footer.html"}-->
+
+<!-- jsfiles -->
+<!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/admin/<!--{$theme}-->/common/page/jsfiles.html"}-->
+<script type="text/javascript" src="<!--{$smarty.const.BASE_PATH}-->/js/public/form/jquery.form.js"></script>
+<script type="text/javascript" src="<!--{$smarty.const.JS_PATH}-->/public/form/jquery.validate.js"></script>
+<script type="text/javascript" src="<!--{$smarty.const.JS_PATH}-->/public/form/jquery.validate.extend.js"></script>
+<script type="text/javascript" src="<!--{$smarty.const.TEMPLATE_PATH}-->/admin/<!--{$theme}-->/store/js/order/orderModify.js"></script>
+</body>
+</html>
+

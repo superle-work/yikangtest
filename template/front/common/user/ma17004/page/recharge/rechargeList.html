@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <title>充值记录</title>
+    <!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/front/common/user/<!--{$theme}-->/page/inner/head.html"}-->
+    <link rel="stylesheet"	href="<!--{$smarty.const.TEMPLATE_PATH}-->/front/common/user/<!--{$theme}-->/css/recharge/rechargeList.css">
+</head>
+
+<body>
+    <!--主容器-->
+    <div id="container" class="container-fluid">
+        <div id="content">
+        	<div class="header">
+        		<a class="header-left" href="javascript:window.history.go(-1);">
+        			<i class="icon iconfont">&#xe62a;</i>
+        		</a>
+        		充值记录
+        	</div>
+        	<div class="recharge-list">
+                <div class="recharge-goods-list">
+
+                </div>
+            </div>
+        	<div class="get-more" href="#" data-start="0" data-num="10">下拉加载更多</div>
+        </div>
+        <!--页面脚部-->
+        <!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/front/common/user/<!--{$theme}-->/page/inner/footer.html"}-->
+    </div>
+    
+    <!--提示框-->
+    <!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/front/common/user/<!--{$theme}-->/page/inner/dialog.html"}-->
+    <!--公用js文件-->
+    <!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/front/common/user/<!--{$theme}-->/page/inner/jsfiles.html"}-->
+    <script type="text/javascript" src="<!--{$smarty.const.TEMPLATE_PATH}-->/front/common/user/<!--{$theme}-->/js/recharge/rechargeList.js"></script>
+</body>
+</html>

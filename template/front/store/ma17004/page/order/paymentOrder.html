@@ -1,0 +1,145 @@
+<!--待付款订单-->
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <title>待付款订单</title>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
+    <meta name="author" content="安徽千界信息科技有限公司">
+	<meta name="robots" content="index,follow">
+	<meta name="application-name" content="www.changekeji.com">
+	<link rel="stylesheet"	href="<!--{$smarty.const.TEMPLATE_PATH}-->/front/common/iconfont/iconfont.css">
+	<link rel="stylesheet"	href="<!--{$smarty.const.TEMPLATE_PATH}-->/front/common/common.css">
+	<link rel="stylesheet"	href="<!--{$smarty.const.JS_PATH}-->/public/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="<!--{$smarty.const.TEMPLATE_PATH}-->/front/store/<!--{$theme}-->/css/base.css">
+    <link rel="stylesheet"	href="<!--{$smarty.const.TEMPLATE_PATH}-->/front/store/<!--{$theme}-->/css/order/paymentOrder.css">
+</head>
+
+<body>
+<!--主容器-->
+<div id="container" class="container-fluid">
+    <!--页面头部-->
+    <div id="header">
+        <div>
+            <a href="/index.php?c=store&a=index"><span>微商城</span></a>
+        </div>
+    </div>
+    <!--主体内容-->
+    <div id="content">
+        <div class="order-area">
+        <input type="hidden" id="payType" value="<!--{$payType}-->">
+            <div class="order-num-info">
+            <span>订单号：</span><!--{$orderInfo.order_num}-->
+            <a href="./code.php?&oid=<!--{$orderInfo.id}-->&module=storePay" class="refresh">刷新</a>
+            </div>
+            <div class="order-goods-list">
+                <!--{foreach from = $orderInfo.goods_list item = goods}-->
+                <div class="goods clearfix">
+                    <a href="/index.php?c=store&a=goodsDetail&id=<!--{$goods->gid}-->"><img style="width:40px;" src="<!--{$goods->thumb}-->"></a>
+                    <div class="goods-info">
+                        <div class="name"><!--{$goods->goods_name}--></div>
+                        <div class="property-area">
+                            <!--{if $goods->property}-->
+                            <!--{foreach from = $goods->property item = property}-->
+                            <span><!--{$property->name}-->:<!--{$property->value}--></span>
+                            <!--{/foreach}-->
+                            <!--{else}-->
+                            <!--{$goods->simple_desc}-->
+                            <!--{/if}-->
+                        </div>
+                    </div>
+                    <div class="price-count-info">
+                        <div class="price"><i class="icon iconfont">&#xe604;</i><span class="price-value"><!--{$goods->price}--></span></div>
+                        <div class="count"><i class="icon iconfont">&#xe614;</i><span class="count-value"><!--{$goods->count}--></span></div>
+                    </div>
+                </div>
+                <!--{/foreach}-->
+            </div>
+            <div class="total-price">总价：<span><i class="icon iconfont">&#xe604;</i><!--{$orderInfo.total_price}--></span><!--{if $order.coupon}--><span style="color: #999;font-size: 12px;">(使用了：<!--{$order.coupon.name}-->)</span><!--{/if}--></div>
+            <div style="padding: 10px 0px;">
+	        	<div class="count">
+	        		<div class="count-pay" >订单原价：<!--{$orderInfo.real_money|default:'0'}-->元</div><br>
+	        		<!--{if $orderInfo.min neq '0.00' and $orderInfo.min neq null and $orderInfo.min neq '0'}--><div class="count-pay">优惠：<!--{$orderInfo.min|default:'0'}-->元</div><br><!--{/if}-->
+	        		<!--{if $orderInfo.coupon}-->
+	        		<div class="count-pay">
+	        		优惠提示：亲，您已使用<span style="color:red"><!--{$orderInfo.coupon.name}--></span>
+	        		<!--{if $cardInfo}-->您是我们的<span style="color:red"><!--{$cardInfo.level_name}--></span>会员卡用户，享有订单<span style="color:red"><!--{$cardInfo.discount}--></span>优惠特权<!--{/if}-->
+	        		</div>
+	        		<!--{/if}-->
+	        	</div>
+	        </div>
+            <div class="address"><!--{$orderInfo.address_text|default:'请完善收货信息'}--></div>
+        </div>
+        
+        <div class="message-area">
+            给卖家留言：<!--{if $orderInfo.message}--><!--{$orderInfo.message}--><!--{else}-->无<!--{/if}-->
+        </div>
+
+		<div class="pay-type" >
+        	<!--{if $isbalance}-->
+        	<label><input class="is-balance-pay" type="checkbox" <!--{if $userInfo.balance >= $orderInfo.total_price}--><!--{else}-->disabled<!--{/if}--> >使用余额支付，您共有<span class="text-color">余额<!--{$userInfo.balance|default:'0'}-->元</span>，<span class="text-color"><!--{if $userInfo.balance >= $orderInfo.total_price}-->该订单将消耗 余额<!--{(int) $orderInfo.total_price}-->元<!--{else}-->您的余额不足<!--{/if}--></span></label>
+			<!--{/if}-->
+        </div>
+        
+        <div class="pay-method-area">
+        	<!--{if $isbalance}-->
+        	<!--{if $orderInfo.total_price <= $userInfo.balance}-->
+            <div class="pay-method balance-pay" hidden><a class="balance-pay" data-oid="<!--{$orderInfo.id}-->">余额币支付</a></div>
+            <!--{/if}-->
+            <!--{/if}-->
+        
+            <div class="pay-method pay-money"><a href="javascript:callpay();" class="wechat" data-oid="<!--{$orderInfo.id}-->">微信安全支付</a></div>
+            <!--{if $payType eq 2}-->
+            <!--货到付款和微信支付-->
+            <div class="pay-method"><a href="javascript:;" class="daofu" data-oid="<!--{$orderInfo.id}-->">货到付款</a></div>
+            <!--{/if}-->
+        </div>
+    </div>
+    <!--页面脚部-->
+    <!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/front/store/<!--{$theme}-->/inner/footer.html"}-->
+</div>
+<!--提示框-->
+<!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/front/store/<!--{$theme}-->/inner/dialog.html"}-->
+<!--公用js文件-->
+<!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/front/store/<!--{$theme}-->/inner/jsfiles.html"}-->
+<script type="text/javascript" src="<!--{$smarty.const.JS_PATH}-->/public/wechat/jweixin-1.0.0.js"></script>
+<script type="text/javascript" src="<!--{$smarty.const.TEMPLATE_PATH}-->/front/store/<!--{$theme}-->/js/order/paymentOrder.js"></script>
+<script type="text/javascript">
+    //调用微信JS api 支付
+    function jsApiCall()
+    {
+        WeixinJSBridge.invoke(
+                'getBrandWCPayRequest',
+                <!--{$jsApiParameters}-->,
+                function(res){
+                    //WeixinJSBridge.log(res.err_msg);
+                    if(res.err_msg == "get_brand_wcpay_request:ok" ) {//支付成功
+                        // 使用以上方式判断前端返回,微信团队郑重提示：res.err_msg将在用户支付成功后返回    ok，但并不保证它绝对可靠。
+                        window.location.href = "/index.php?c=store&a=orderList&state=1";//跳转到用户中心
+                    }else if(res.err_msg == "get_brand_wcpay_request:cancel"){//取消支付
+
+                    }else if(res.err_msg == "get_brand_wcpay_request:fail"){//支付失败
+						
+                    }
+                }
+        );
+    }
+
+    function callpay()
+    {
+        if (typeof WeixinJSBridge == "undefined"){
+            if( document.addEventListener ){
+                document.addEventListener('WeixinJSBridgeReady', jsApiCall, false);
+            }else if (document.attachEvent){
+                document.attachEvent('WeixinJSBridgeReady', jsApiCall);
+                document.attachEvent('onWeixinJSBridgeReady', jsApiCall);
+            }
+        }else{
+            jsApiCall();
+        }
+    }
+</script>
+
+</body>
+</html>

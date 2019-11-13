@@ -1,0 +1,11 @@
+<!--底部导航-->
+<div class="bottom-nav">
+    <div class="row">
+        <a class="col-xs-3 col-sm-3 col-md-3 home<!--{if $bottomNav eq 'index'}--> current<!--{/if}-->" data-user="<!--{$smarty.session.user.account}-->" href="./index.php?c=store&a=index"><div class="nav-icon"><i class="icon iconfont">&#xe6e1;</i></div><div class="nav-name">首页</div></a>
+        <a class="col-xs-3 col-sm-3 col-md-3 item<!--{if $bottomNav eq 'goodsCate'}--> current<!--{/if}-->"  data-user="<!--{$smarty.session.user.account}-->" href="./index.php?c=store&a=goodsCate"><div class="nav-icon"><i class="icon iconfont">&#xe625;</i></div><div class="nav-name">分类</div></a>
+        <a class="col-xs-3 col-sm-3 col-md-3 item<!--{if $bottomNav eq 'cartList'}--> current<!--{/if}-->"  data-user="<!--{$smarty.session.user.account}-->" href="./index.php?c=store&a=cartList&type=1"><div class="nav-icon" style="padding-right:15px;"><span style="position:relative;left: 24px;top: -8px;background:red;border-radius:10px;display: inline-block;height: 15px;width: 14px;line-height: 16px;color:white;"><span><!--{$smarty.session.cart.cartNum}--></span></span><i class="icon iconfont">&#xe646;</i></div><div class="nav-name">购物车</div></a>
+        <a class="col-xs-3 col-sm-3 col-md-3 item<!--{if $bottomNav eq 'userCenter'}--> current<!--{/if}-->"  data-user="<!--{$smarty.session.user.account}-->" href="./index.php?c=store&a=userCenter"><div class="nav-icon"><i class="icon iconfont">&#xe676;</i></div><div class="nav-name">个人中心</div></a>
+
+    </div>
+</div>
+<!--商品分类导航-->

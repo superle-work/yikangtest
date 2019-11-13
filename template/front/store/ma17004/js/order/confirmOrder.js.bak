@@ -1,0 +1,513 @@
+/*提交订单*/
+$(function(){
+	//会员卡 + 运费 金额
+	var totalPrice = parseFloat($("#content .real-total-price-area .total-price").attr("data-total-price"));    
+    var state = $("#content #points_state").val();     //积分抵现状态
+    var couponMoney = 0; //优惠券价格
+    var feeMoney = 0;    //运费
+    //获取余额与订单金额的对比 1 余额大于 订单金额 0 小于
+    var allBalance = $('#content #allBalance').val();
+    //不变参数
+    var firTotalPoints = $(".order-bottom-area .points-money p.p1 ").attr('data-points');
+    var pointsValue = $(".order-bottom-area .points-money p.p1 .right").attr('points-value');
+    var firBalance = $(".order-bottom-area .balance-money p.p1 .right").attr('fir-balance');
+    var firPoints = $(".order-bottom-area .points-money p.p1 .right").attr('fir-points');
+    var firTotalPrice = parseFloat($("#content .real-total-price-area .total-price").attr("data-total-price"));
+
+    
+    /**
+     * 初始化
+     */
+    function init(){
+        bindEvent();
+    }
+    
+    /**
+     * 积分抵现的金额
+     */
+    function UsePoints(){
+    	var pointsMoney = $(".points-money .left #points-money").html();
+    	if(pointsMoney == '' || pointsMoney == undefined){
+    		pointsMoney = 0;
+    	}
+    	return parseFloat(pointsMoney);
+    }
+    
+    /**
+     * 余额抵现的金额
+     */
+    function UseBalances(){
+    	var balanceMoney = $(".balance-money #balance-money").html();
+    	if(balanceMoney == '' || balanceMoney == undefined){
+    		balanceMoney = 0;
+    	}
+    	return parseFloat(balanceMoney);
+    }
+    
+    /**
+     * 时时计算页面实际总金额
+     */
+    function getTotalMoney(){
+    		//原始总金额计算
+    		   		
+			//会员卡对价格的影响处理
+		　　 var totalPrice = parseFloat($("#total-price").html()); //总价
+
+            //countDiscount 会员卡几折优惠
+			var countDiscount = $("#count-discount").attr("count-discount");
+			countDiscount = countDiscount != undefined ? countDiscount : 10;
+			totalPrice = totalPrice * (countDiscount / 10);
+			
+			
+			//优惠券对价格的影响处理
+			var couponType =  $("select option:checked").attr("type");
+	  		if(couponType == 1){  //代金券
+	  			var couponValue = $("select option:checked").attr("coupon-value");
+	  		}else if(couponType == 2){  //免费券
+	  			couponType = totalPrice;  	
+	  		}else if(couponType == 3){  //折扣券
+	  			var couponDiscount = $("select option:checked").attr("coupon-discount");
+	  				couponValue = totalPrice - totalPrice * (couponDiscount / 10) ;
+	  		}else if(couponType == undefined || couponType == 0){
+	  			couponValue =0.00;
+	  		}
+	  		
+	  		var fee = $(".order-bottom-area .order-fee .fee-value").attr("data-fee");//运费
+	  		if(fee == '' || fee == undefined){
+	  			fee = 0;
+	  		}
+	  		feeMoney = fee;
+	  		
+	  		totalPrice = parseFloat(totalPrice) + parseFloat(fee) - parseFloat(couponValue);
+	  		
+	  		//余额对总金额影响
+	  		/*if($(".order-bottom-area .balance-money p.p1 .right").parent().hasClass('active')){
+	  			var balanceMoney = UseBalances();
+	  			totalPrice = parseFloat(totalPrice) - parseFloat(balanceMoney);
+	  		}*/
+	  		
+	  		
+	  		return (totalPrice.toFixed(2));  //结果保留两位小数
+    }
+
+    /**
+     * 绑定事件
+     */
+    function bindEvent(){
+    	
+    	
+    	//点击使用积分
+    	$(".order-bottom-area .points-money p.p1 .right").on('click',pointsClick);
+    	//点击使用余额
+    	$(".order-bottom-area .balance-money p.p1 .right").on('click',balanceClick);
+    		
+    	//下拉触发
+    	$("select").change(function(){
+    		
+    		$("#content .points-money p .right").unbind('click');
+    		$("#content .balance-money p .right").unbind('click');
+    		$("#content .points-money p .right").bind('click',pointsClick);
+    		$("#content .balance-money p .right").bind('click',balanceClick);
+    		
+    		var balanceMoney = UseBalances();
+    		var totalPrice = getTotalMoney();
+  			$("#final-total-price").html(totalPrice);
+  			
+    		$("#content .points-money p").removeClass('active');
+    		$("#content .balance-money p").removeClass('active');
+    		if(state ==1){
+    			pointsMoney = totalPrice;
+    		}else{
+    			pointsMoney = firPoints;
+    		}
+			$(".order-bottom-area .points-money #points-money").html(pointsMoney);
+    		totalPoints = parseFloat(pointsMoney / pointsValue).toFixed(2);
+    		$(".order-bottom-area .points-money p.p1 .total-points").html(totalPoints);
+    		
+    		if(allBalance ==1){
+    			balanceMoney = totalPrice;
+    		}else{
+    			balanceMoney = firBalance;
+    		}
+    		$(".balance-money #balance-money").html(balanceMoney);    		
+    	});
+    	
+        $(".address-list .item-select").click(function(){
+            var _this = $(this);
+            if(!_this.hasClass("selected")){//当前为选中状态,则取消选中状态
+                //地址单选事件
+                $(".address-list .item-select").removeClass("selected");
+                $(".address-list .item-select").find(".selected").hide();
+                $(".address-list .item-select").find(".un-selected").show();
+                _this.find(".un-selected").hide();
+                _this.find(".selected").show();
+                _this.addClass("selected");
+            }
+        });
+
+        //优惠券 下拉事件 同步修改总价
+        $("#content #couponSelector").change(function(){
+            var id = $(this).val();
+            var fee = $(".order-bottom-area .order-fee .fee-value").attr("data-fee");//运费
+            fee = fee?fee:'0';
+
+            if(id == ""){//不使用优惠券时
+            	//修改最大可用积分
+        		var max_points = parseInt($(".consume_points").attr("data-max-use-points"));
+        		$("#content .max-points").text(max_points);
+        		
+        		totalPrice = parseInt($("#content .real-total-price-area .total-price").attr("data-total-price"));
+            	var consume_points = $("#content .consume_points").val();
+            	if(consume_points){
+            		var points_value =  parseFloat($(".consume_points").attr("data-points-value"));
+            		var dprice = parseFloat((consume_points*points_value)).toFixed(2);
+            	}else{
+            		var dprice = 0;
+            	}
+            	
+                //改 $("#content .real-total-price-area .total-price-value").text(totalPrice - dprice);
+                $("#content .coupon-list .after-coupon").html('');//维护卡券减免
+                //$(".order-bottom-area .points-money p.p1 .right i").html("&#xe6b6;");  误操作
+                //$(".order-bottom-area .points-money p.p1 .right i").removeClass("color");
+                $(".order-bottom-area .points-money .list-2 .right span").text(totalPrice -dprice);
+                return false;
+            }
+            //使用优惠券时，同步修改总价
+            $.ajax({
+                type:"post",
+                url:"./index.php?c=coupon&a=getUserCoupon",
+                data:{"id":id},
+                dataType:"json",
+//                beforeSend:function(xhr){
+// 	               //显示“加载中。。。”
+// 	            	showDialog("#loadingDialog");
+//                },
+//                complete:function(){
+// 	               //隐藏“加载中。。。”
+// 	            	hideDialog("#loadingDialog");
+//                },
+                success:function(json,statusText){
+                    if(json.errorCode == 0){
+                        var coupon = json.data;//优惠券
+                        var type = coupon.type;//优惠券类型 1：代金券，3、折扣券
+                        fee = parseFloat(fee);
+                        totalPrice = parseFloat(totalPrice);
+                        if(type == 1){//代金券时
+                            var value = parseFloat(coupon.value);//面额或折扣值
+                            if(value > (totalPrice-fee)){
+                                //代金券面额大于订单总价，则不能使用
+                                $("#content .tip-info").html("当前代金券面额超过订单总价，不能使用").show();
+                            }else{
+                                //代金券可以使用
+                            	
+                            	var consume_points = $("#content .consume_points").val();
+                            	if(consume_points){
+                            		var points_value =  parseFloat($(".consume_points").attr("data-points-value"));
+                            		var dprice = parseFloat((consume_points*points_value)).toFixed(2);
+                            	}else{
+                            		var dprice = 0;
+                            	}
+                                totalPrice = totalPrice - value;
+                                //改$("#content .real-total-price-area .total-price-value").text(totalPrice - dprice);//修改总价
+                                $(".order-bottom-area .points-money p.p1 .right i").addClass("color");
+                                $(".order-bottom-area .points-money .list-2 .right span").text(totalPrice -dprice);
+                                //$("#content .coupon-list .after-coupon").html('<span class="discount-down">减免：<span class="discount-down-price"><i class="icon iconfont">&#xe604;</i>'+value+'</span></span>');//代金券减免
+                            }
+
+                        }else if(type == 3){//折扣券
+                            var discount = parseFloat(coupon.discount);
+                            var ori_totalPrice = totalPrice;//打折前总价
+                            totalPrice = parseFloat((totalPrice-fee)*discount/10+fee).toFixed(2);
+                            var discount_down = ori_totalPrice - totalPrice;
+                            //得到积分抵现的部分
+                            var consume_points = $("#content .consume_points").val();
+                        	if(consume_points){
+                        		var points_value =  parseFloat($(".consume_points").attr("data-points-value"));
+                        		var dprice = parseFloat((consume_points*points_value)).toFixed(2);
+                        	}else{
+                        		var dprice = 0;
+                        	}
+                        	
+                        	//改$("#content .real-total-price-area .total-price-value").text(totalPrice -dprice);
+                            //维护卡券减免显示
+                            $(".order-bottom-area .points-money p.p1 .right i").html("&#xe7b2;");
+                            //$(".order-bottom-area .points-money p.p1 .right i").addClass("color"); 影响积分图标颜色
+                            $(".order-bottom-area .points-money .list-2 .right span").text(totalPrice -dprice);
+                            
+                            //$("#content .coupon-list .after-coupon").html('<span class="discount-down">减免：<span class="discount-down-price"><i class="icon iconfont">&#xe604;</i>'+discount_down.toFixed(2)+'</span></span>');//折扣券减免
+                        }
+                        
+                      //修改最大可用积分
+                        var use_points_rate =  parseFloat($(".consume_points").attr("data-use-points-rate"));
+                		var max_points = parseInt($(".consume_points").attr("data-max-use-points"));
+                		if(max_points> totalPrice*use_points_rate){
+                			max_points = parseInt(totalPrice*use_points_rate);
+                			$("#content .max-points").text(max_points);
+                		}
+                        
+                    }else{
+                    	showDialog('#errorDialog','',json.errorInfo,'');
+                    }
+                },
+                error:function(){
+                	showDialog('#errorDialog','','网络异常，请求失败！','');
+                }
+            });
+
+        });
+        //提交订单
+        $(".pay-method-area .pay-method .submitOrder").click(function(){
+            $("#content .tip-info").hide();
+            //验证收货地址
+            var option = $(".address-list .item-select.selected");
+            if(option.length == 0){
+                $("#content .tip-info").html("请添加收货地址！").show();
+                return false;
+            }
+            var call_name = option.parents(".address-area").find(".callname").text().trim();//收货人
+            var phone =  option.parents(".address-area").find(".phone").text().trim();//联系方式
+            var address = option.parents(".address-area").find(".address-info").text().trim();//收货地址
+            var consume_points = $('.points-money .p1').hasClass('active') ? $(".points-money .p1").attr("data-points") : 0;
+            var consume_balance = $('.balance-money .p1').hasClass('active') ? 1 : 0;
+
+            var address_text = call_name+"--"+phone+"--"+address;
+            var message = $.trim($(".order-bottom-area .message").val());
+            var cgids = $("#content #cgids").val();//从购物车下单，购物车里面待删除的商品
+            var gids = $("#content #gids").val();//商品主键
+            var gpids = $("#content #gpids").val();//商品属性主键
+            var counts = $("#content #counts").val();//商品数量
+            var user_coupon_id = $("#content #couponSelector").val();
+            var user_card_id = $("#content .user-card-area").attr("data-card-id");
+            var payType = $(this).attr("data-payType");//商城支持的订单支付方式 0：仅货到付款，1：仅微信支付，2：货到付款加微信支付
+            $.ajax(
+                {
+                  type:"post",
+                  url:"./index.php?c=store&a=addOrder",
+                  data:{
+                      "gids":gids,
+                      "gpids":gpids,
+                      "cgids":cgids,
+                      "counts":counts,
+                      "address_text":address_text,
+                      "address_json":JSON.stringify({"call_name":call_name,"phone":phone,"address":address}),
+                      "message":message,
+                      "user_coupon_id":user_coupon_id,
+                      "user_card_id":user_card_id,
+                      "consume_points":consume_points,
+                      "pay_method":payType,
+                      "consume_balance":consume_balance,
+                  },
+                  dataType:"json",
+                  beforeSend:function(xhr){
+                       //显示“加载中。。。”
+                       showDialog('#loadingDialog');
+                  },
+                  complete:function(){
+				   //隐藏“加载中。。。”
+                	  hideDialog('#loadingDialog');
+                  },
+                  success:function(json,statusText){
+                      if(json.errorCode == 0){
+                    	  if(json.data.state == 0){
+	                    	  showConfirmDialog('#successConfirmDialog',' ','订单提交成功','','',function(){
+	                    		  var oid = json.data.addOrderId;//生成的订单记录主键id
+	                              //商城支持的订单支付方式 0：仅货到付款，1：仅微信支付，2：货到付款加微信支付
+	                              if(payType == 0){
+	                                  //跳转到仅货到付款的页面
+	                                  window.location.href = "./index.php?c=store&a=daofuOrderPage&id="+oid;
+	                              }else if(payType == 1 || payType == 2){
+	                                  //跳转到支持货到付款加微信支付的页面
+	                                  window.location.href = "./pay/request/code.php?&oid="+oid+"&module=storePay";
+	                              }
+	                    	  });
+                      	  }else{
+                      		  showConfirmDialog('#successConfirmDialog',' ','订单提交成功','','',function(){
+                      			  window.location.href = "./index.php?c=store&a=orderList&state=1";
+                      		  });
+                      	  }
+                      }else{
+                          $("#content .tip-info").html(json.errorInfo).show();
+                          return false;
+                      }
+                  },
+                  error:function(xhr,status,thrown){
+                	  showDialog('#errorDialog','','网络异常，请求失败！','');
+                      return false;
+                  }
+                }
+            );
+       });
+
+        //其他地址
+        $(".order-address-area .other-address .more-address").click(function(){
+            var userAddress = $(".order-address-area .user-address.current-use");
+            if(userAddress.length > 0){
+                userAddress.removeClass("current-use");
+                $(".order-address-area .new-address").addClass("current-use");
+            }else{
+                $(".order-address-area .new-address").removeClass("current-use");
+                $(".order-address-area .user-address").addClass("current-use");
+            }
+        });
+    }
+	
+	function pointsClick(){
+		var _this = $(".order-bottom-area .points-money p.p1 .right");
+    		var balanceMoney = UseBalances();
+    		var totalPrice = getTotalMoney();
+    		var pointsMoney = UsePoints();
+    		if(_this.parent().hasClass('active')){
+    			_this.parent().removeClass('active');
+    			
+    			if(state ==1){
+    				if(allBalance == 1){
+    					balanceMoney = totalPrice;
+    				}else{
+    					balanceMoney = firBalance;
+	    				if(allBalance !=1){
+	    					$("#content .balance-money p .right").bind('click',balanceClick);
+	    				} 
+    				}
+    				totalPrice = 0.00;
+    			}else{
+    					pointsMoney = firPoints;   					
+    					if($(".order-bottom-area .balance-money p").hasClass('active')){
+	    					totalPrice = parseFloat(totalPrice - balanceMoney).toFixed(2);
+	    				}
+    					if(allBalance == 1){
+    						balanceMoney = firBalance;
+    					}else{
+    						balanceMoney = firBalance;
+    					}
+    			}
+    		}else{
+    			_this.parent().addClass('active');
+  				// 未选择时 积分 大于 总金额
+    			if(state == 1){
+    				pointsMoney = totalPrice;
+    				//totalPoints = parseFloat(totalPrice / pointsValue);
+    				balanceMoney = 0.00;
+    				totalPrice = 0.00;
+    				$("#content .balance-money p").removeClass('active');
+  				if(allBalance !=1){
+    					$("#content .balance-money p .right").unbind('click',balanceClick);
+  				}  				
+    			}else{
+    				if(allBalance ==1){
+	    				balanceMoney = parseFloat(balanceMoney - pointsMoney).toFixed(2);
+	    				totalPrice = parseFloat(totalPrice - pointsMoney).toFixed(2);
+	    			}else{
+	    				if( parseFloat(firPoints) >= parseFloat(totalPrice)){
+	    					totalPrice = 0.00;
+	    					balanceMoney = 0.00;
+	    					$("#content .balance-money p .right").unbind('click');
+	    				}else{
+	    					if(parseFloat(totalPrice - firPoints) >= parseFloat(firBalance)){
+	    						balanceMoney = firBalance;
+	    						pointsMoney = firPoints;
+	    						totalPrice = parseFloat(totalPrice - firPoints).toFixed(2);
+	    						if($(".order-bottom-area .balance-money p").hasClass('active')){
+	    							totalPrice = parseFloat(totalPrice  - firBalance).toFixed(2);
+	    						}
+	    					}else{
+	    						balanceMoney = parseFloat(totalPrice - firPoints).toFixed(2);
+	    						pointsMoney = firPoints;
+	    						totalPrice = parseFloat(totalPrice - firPoints).toFixed(2);
+	    						if($(".order-bottom-area .balance-money p").hasClass('active')){
+	    							totalPrice = 0.00;
+	    						}
+	    					}
+	    				}
+	    			}	
+    			}
+    		}
+    		totalPoints = parseFloat(pointsMoney / pointsValue).toFixed(2);
+    		$(".order-bottom-area .points-money p.p1 .total-points").html(totalPoints);
+    		$(".balance-money #balance-money").html(balanceMoney);
+    		$(".order-bottom-area .points-money #points-money").html(pointsMoney);
+    		$("#final-total-price").text(totalPrice);
+    	}
+    	
+    	function balanceClick(){    		
+    		var _this = $(".order-bottom-area .balance-money p.p1 .right");
+    		var balanceMoney = UseBalances();   		
+    		var pointsMoney = UsePoints();
+    		var totalPrice = parseFloat(getTotalMoney());
+    		if(_this.parent().hasClass('active')){
+    			_this.parent().removeClass('active');
+   			
+    			if(allBalance ==1){
+    				totalPoints = firTotalPoints;   				
+    				if(state == 1){
+    					pointsMoney = totalPrice;
+    				}else{
+    					pointsMoney = firPoints;
+    					$("#content .points-money p .right").bind('click',pointsClick);
+    				}
+    			}else{				
+					
+					balanceMoney = firBalance;
+					if($(".order-bottom-area .points-money p").hasClass('active')){
+    					totalPrice = parseFloat(totalPrice  - pointsMoney).toFixed(2);
+    				}
+					if(state == 1){
+						pointsMoney = totalPrice;
+					}else{
+						pointsMoney = firPoints;
+					}
+    			}
+    		}else{
+    			_this.parent().addClass('active');
+    			//余额大于 订单总额
+    			if(allBalance ==1){
+    				balanceMoney = totalPrice;
+    				pointsMoney = 0.00;
+    				totalPrice = 0.00;
+    				//totalPoints = 0.00; 
+    				$("#content .points-money p").removeClass('active');
+    				if(state != 1){
+    					$("#content .points-money p .right").unbind('click');
+    				}
+				}else{
+					if(state == 1){
+						balanceMoney = firBalance;
+						totalPrice = parseFloat(totalPrice - firBalance).toFixed(2);
+						pointsMoney = parseFloat(pointsMoney - balanceMoney).toFixed(2);						
+					}else{
+						if(parseFloat(firBalance) > parseFloat(totalPrice)){
+							totalPrice = 0.00;
+	    					pointsMoney = 0.00;
+	    					//totalPoints =0.00;
+	    					$("#content .points-money p .right").unbind('click');
+						}else{
+							if(parseFloat(totalPrice - firBalance) >= parseFloat(firPoints)){
+	    						pointsMoney = firPoints;
+	    						balanceMoney = firBalance;
+	    						//totalPoints = firTotalPoints;
+	    						totalPrice = parseFloat(totalPrice - firBalance).toFixed(2);
+	    						if($(".order-bottom-area .points-money p").hasClass('active')){
+	    							totalPrice = parseFloat(totalPrice  - firPoints).toFixed(2);
+	    						}	
+	    				}else{	    						
+	    						balanceMoney = firBalance;
+	    						totalPrice = parseFloat(totalPrice - firBalance).toFixed(2);
+	    						pointsMoney = totalPrice;
+	    						//totalPoints = parseFloat(pointsMoney / pointsValue).toFixed(2);
+	    						if($(".order-bottom-area .points-money p").hasClass('active')){
+	    							totalPrice = 0.00;
+	    						}	    						
+	    					}
+						}
+					}
+				}
+    		}
+    		totalPoints = parseFloat(pointsMoney / pointsValue).toFixed(2);
+    		$(".order-bottom-area .points-money p.p1 .total-points").html(totalPoints);
+    		$(".balance-money #balance-money").html(balanceMoney);
+    		$(".order-bottom-area .points-money #points-money").html(pointsMoney);
+    		$("#final-total-price").text(totalPrice);
+    	}
+    	
+	
+    init();
+});

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <title><!--{$cateName}--></title>
+    <!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/front/store/<!--{$theme}-->/inner/head.html"}-->
+    <link rel="stylesheet"	href="<!--{$smarty.const.TEMPLATE_PATH}-->/front/store/<!--{$theme}-->/css/goods/goodsSearch.css">
+</head>
+<body>
+    <!--主容器-->
+    <div id="container" class="container-fluid">
+        <!--页面头部-->
+        <!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/front/store/<!--{$theme}-->/inner/header.html"}-->
+
+        <!--主体内容-->
+        <div id="content">
+        	<!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/front/store/<!--{$theme}-->/inner/sortBar.html"}-->
+            <div class="goods-display-area">
+            </div>
+            <!--分页-->
+            <div id="page-selection"></div>
+			<input type="hidden" name="category_id" class="category_id" value="<!--{$cids}-->">
+        </div>
+        <!--页面脚部-->
+        <!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/front/store/<!--{$theme}-->/inner/footer.html"}-->
+        <!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/front/store/<!--{$theme}-->/inner/bottomNav.html"}-->
+    </div>
+    <!--公用js文件-->
+    <!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/front/store/<!--{$theme}-->/inner/jsfiles.html"}-->
+    <script type="text/javascript" src="<!--{$smarty.const.JS_PATH}-->/public/jquery.bootpag/jquery.bootpag.min.js"></script>
+    <script type="text/javascript" src="<!--{$smarty.const.TEMPLATE_PATH}-->/front/store/<!--{$theme}-->/js/goods/cateGoodsList.js"></script>
+</body>
+</html>

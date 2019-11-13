@@ -1,0 +1,30 @@
+.list-table .th1{
+    width:40px;
+}
+.list-table .th2{
+    width: 80px;
+}
+.list-table .th5{
+    width:80px;
+}
+.list-table .th6{
+    width: 70px;
+}
+.list-table td span{
+	margin-left:15px;
+	margin-right:15px;
+}
+
+/**打印样式**/
+@media print {
+  .header,.left-section,.right-section h3,#content .list-title,.footer,.print-button{
+  	display: none;
+  }
+  body #list-table{
+  	display: block !important;
+  	width: 500px;
+  }
+ body #list-table td,body #list-table tr{
+  	font-size:20px;
+  }
+}

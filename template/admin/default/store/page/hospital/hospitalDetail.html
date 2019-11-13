@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+
+<html>
+
+<!-- head -->
+
+<!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/admin/<!--{$theme}-->/common/page/head.html"}-->
+
+<body>
+
+<!---------------- 商品详情 ------------------->
+
+
+
+<!-- 页头 -->
+
+<!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/admin/<!--{$theme}-->/common/page/header.html"}-->
+
+<!-- jsfiles -->
+
+<!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/admin/<!--{$theme}-->/common/page/jsfiles.html"}-->
+
+<link href="<!--{$smarty.const.BASE_PATH}-->/include/umeditor/themes/default/css/umeditor.css" type="text/css" rel="stylesheet">
+
+<script type="text/javascript" charset="utf-8" src="<!--{$smarty.const.BASE_PATH}-->/include/umeditor/umeditor.config.js"></script>
+
+<script type="text/javascript" charset="utf-8" src="<!--{$smarty.const.BASE_PATH}-->/include/umeditor/umeditor.min.js"></script>
+
+<script type="text/javascript" src="<!--{$smarty.const.BASE_PATH}-->/include/umeditor/lang/zh-cn/zh-cn.js"></script>
+
+<!-- 主体 -->
+
+<div class="content container-fluid<!--{if $leftBarScale eq '1'}--> scale<!--{/if}-->">
+
+    <div class="row">
+
+        <div class="col-md-2 left-section">
+
+            <!-- 左导航菜单 -->
+
+            <!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/admin/<!--{$theme}-->/common/page/menu.html"}-->
+
+
+
+        </div>
+
+        <div class="col-md-10 right-section">
+
+            <!--内容区域-->
+
+            <h3><i class="icon iconfont"><!--{$smarty.session.currentMenu.icon}--></i>医院详情</h3>
+
+            <div class="inner-section row">
+
+                <div class="items add-div">
+
+                    <form id="myForm" action="#" method="post" enctype="multipart/form-data">
+
+                        <div class="item table-responsive">
+
+                            <table class="table table-striped table-hover table-bordered table-base">
+
+                                <tbody>
+
+                                    <tr>
+
+                                        <td>医院名称<label class="must-tag">&nbsp;&nbsp;</label></td>
+
+                                        <td>
+
+                                            <!--{$goodsInfo.name}-->
+
+                                        </td>
+
+                                        <td></td>
+
+                                    </tr>
+
+                                    <tr>
+
+                                        <td>医院主图<label class="must-tag">&nbsp;&nbsp;</label></td>
+
+                                        <td>
+
+                                            <img src="<!--{$goodsInfo.thumb}-->" height="30">
+
+                                        </td>
+
+                                        <td></td>
+
+                                    </tr>
+
+                                    <tr>
+
+                                        <td>电话<label class="must-tag">&nbsp;&nbsp;</label></td>
+
+                                        <td>
+
+                                            <!--{$goodsInfo.phone}-->
+
+                                        </td>
+
+                                        <td></td>
+
+                                    </tr>
+
+                                    <tr>
+
+                                        <td>医院地址<label class="must-tag">&nbsp;&nbsp;</label></td>
+
+                                        <td>
+
+                                            <!--{$goodsInfo.address}-->
+
+                                        </td>
+
+                                        <td></td>
+
+                                    </tr>
+
+			                        <tr>
+
+			                            <td>医院描述<label class="must-tag">&nbsp;&nbsp;</label></td>
+
+			                            <td>
+
+			                                <div>
+
+			                                	<!--{$goodsInfo.detail_desc}-->
+
+			                                </div>
+
+			                            </td>
+
+			                            <td></td>
+
+			                        </tr>
+
+		                       		<tr>
+
+		                       			<td>添加时间<label class="must-tag">&nbsp;&nbsp;</label></td>
+
+		                       			<td>
+
+		                       			<!--{$goodsInfo.add_time}-->
+
+		                       			</td>
+
+		                       			<td></td>
+
+		                       		</tr>
+
+                                    <tr>
+
+                                        <td>创建者<label class="must-tag">&nbsp;&nbsp;</label></td>
+
+                                        <td>
+
+                                        <!--{$goodsInfo.creator}-->
+
+                                        </td>
+
+                                        <td></td>
+
+                                    </tr>
+
+                                    <tr>
+
+                                        <td>
+
+                                        </td>
+
+                                        <td>
+
+                                            <input type="hidden" name="id" value="<!--{$goodsInfo.id}-->">
+
+                                            <a href="javascript:window.history.go(-1);" class="btn btn-default">返回</a>
+
+                                        </td>
+
+                                        <td></td>
+
+                                    </tr>
+
+                                </tbody>
+
+                            </table>
+
+                        </div>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<!-- 页脚 -->
+
+<!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/admin/<!--{$theme}-->/common/page/footer.html"}-->
+
+</body>
+
+</html>

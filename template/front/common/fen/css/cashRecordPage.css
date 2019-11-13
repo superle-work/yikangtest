@@ -1,0 +1,59 @@
+/*************************
+ ------我的佣金页面样式---
+ *************************/
+
+#content .top-area{
+    height: 50px;
+    color: black;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+#content .top-area div{
+    height: 50px;
+	line-height:50px;
+	text-align:center;
+}
+
+#content .top-area .cur{
+    color: #1597FC;
+    border-bottom: 2px solid #1597FC;
+}
+.space{
+	height:5px;
+	background: #F7F7F7;
+}
+
+/*显示记录*/
+#content .cash-record-list table{
+	width:100%;
+}
+#content .cash-record-list table tbody{
+	width:100%;
+}
+#content .cash-record-list table tbody tr{
+	width:100%;
+    height:65px;
+    border-bottom: 1px solid #F7F7F7;
+}
+#content .cash-record-list table td{
+    background: #fff;
+}
+#content .cash-record-list table .title{
+    padding-left:10px;
+}
+#content .cash-record-list table .tip{
+    color:#FF7F33;
+    font-size:12px;
+    padding-left:7px;
+}
+#content .cash-record-list table .add_time{
+    padding-left:10px;
+}
+#content .cash-record-list table .money{
+    padding-right:10px;
+    font-size:16px;
+}
+.red{
+	color:red;
+}

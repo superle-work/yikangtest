@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/front/store/<!--{$theme}-->/inner/head.html"}-->
+
+    <title>分类</title>
+    <link rel="stylesheet"	href="<!--{$smarty.const.TEMPLATE_PATH}-->/front/store/<!--{$theme}-->/css/goods/goodsCate.css">
+    <link rel="stylesheet"	href="<!--{$smarty.const.JS_PATH}-->/public/swiper/css/swiper.min.css">
+</head>
+<body>
+    <!--主容器-->
+    <div id="container" class="container-fluid">
+        <!--主体内容-->
+        <div id="content" class="clearfix">
+        	<!--搜索区-->
+        	<div class="search-area">
+        		<div class="search-cont">
+        			<i class="iconfont">&#xe609;</i>
+        			<input type="text" placeholder="搜索体检项目关键词" value="<!--{$keywords}-->"/>
+        		</div>
+        		<div class="screening">
+        			<input type="hidden" name="sort"/>
+        			<span class="screen">筛选</span>
+        			<i class="iconfont">&#xe610;</i>
+        		</div>
+        	</div>
+        	
+        	<div class="row goodCate-area">
+	    		<div class="swiper-container swiper-container-horizontal swiper-container-free-mode">
+					<div class="swiper-wrapper">
+					    <div class="swiper-slide loan-list all <!--{if !$cid}-->cur<!--{/if}-->" data-id="">全部</div>				        					
+					    <!--{foreach from = $cateList item = cate name = cate}-->
+					    <div class="swiper-slide loan-list <!--{if $cate.id eq $cid}-->cur<!--{/if}-->" data-id="<!--{$cate.id}-->"><!--{$cate.name}--></div>				        
+					    <!--{/foreach}-->
+					</div>
+				</div>
+        	</div>
+        	<div class="row space"></div>
+        	
+        	<div class="recommend-goods-diplay-area" >
+                <!--商品展示区域-->
+                
+            </div>
+        	
+        	<div class="get-more" data-start="1" data-num="<!--{if $cateLevel eq 3}-->5<!--{elseif $cateLevel eq 2}-->15<!--{else}-->10<!--{/if}-->"></div>
+        </div>
+        <div style="height:50px;width:100%;"></div>
+        <input id='cate-level' type="hidden" value="<!--{$cateLevel}-->" />
+        <input type="hidden" id="account" value="<!--{$smarty.session.user.account}-->"/>
+        <!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/front/store/<!--{$theme}-->/inner/bottomNav.html"}-->
+            <!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/front/store/<!--{$theme}-->/inner/dialog.html"}-->
+    </div>
+    <!-- 模态框（Modal） -->
+	<div class="modal fade" id="sortModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-content">
+            <div class="modal-header">
+                <!--搜索区-->
+	        	<div class="search-area">
+	        		<div class="search-cont">
+	        			<i class="iconfont">&#xe609;</i>
+	        			<input type="text" placeholder="搜索体检项目关键词" />
+	        		</div>
+	        		<div class="screening">
+	        			<input type="hidden" name="sort"/>
+	        			<span class="screen">筛选</span>
+	        			<i class="iconfont">&#xe610;</i>
+	        		</div>
+	        	</div>
+            </div>
+            <div class="modal-body">
+            	<div class="sort-area">
+            		<div class="time_list">
+            			<span>时间</span>
+            			<div class="time_but">
+            				<button class="" data-sort="add_time asc">时间正序</button>
+            				<button data-sort="add_time desc">时间倒序</button>
+            			</div>
+            		</div>
+            		<div class="price_list">
+            			<span>价格</span>
+            			<div class="price_but">
+            				<button class="" data-sort="price asc">价格正序</button>
+            				<button data-sort="price desc">价格倒序</button>
+            			</div>
+            		</div>
+            	</div>
+            </div>
+            <div class="modal-footer">
+                <div class="reset">重置</div>
+                <div class="finish">完成</div>
+            </div>
+        </div><!-- /.modal-content -->
+	</div>
+
+
+    <!--公用js文件-->
+    <!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/front/store/<!--{$theme}-->/inner/jsfiles.html"}-->
+    
+    <script type="text/javascript" src="<!--{$smarty.const.JS_PATH}-->/public/jquery.cookie/jquery.cookie.js"></script>
+    <script src="<!--{$smarty.const.JS_PATH}-->/public/swiper/js/swiper.jquery.min.js"></script>
+    <script type="text/javascript" src="<!--{$smarty.const.TEMPLATE_PATH}-->/front/store/<!--{$theme}-->/js/goods/goodsCate.js"></script>
+</body>
+</html>

@@ -1,0 +1,71 @@
+/*************************
+ ------登录页面样式---
+ *************************/
+#content{
+	position: fixed;
+    margin: auto;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: url(../../image/bg.jpg) no-repeat;
+    background-size: 100% 110%;
+    width: 100%;
+    max-width: 640px;
+    padding: 140px 10px 0px 10px; 
+}
+#content .inp-area{
+	border-bottom:1px solid white;
+	padding:10px 0px;
+	display:flex;
+	flex-direction: row;
+	justify-content: space-between;
+}
+#content .inp-area label{
+	color:white;
+	font-size:12px;
+}
+#content .inp-area input{
+	background-color: transparent; /*背景透明*/
+	border:0px;
+	outline:none;
+	padding-left:10px;
+	width:150px;
+	height:30px;
+}
+#content .inp-area #img_yzm{
+	width:120px;
+}
+#content .inp-area .getYzm{
+	display: inline-block;
+	width:70px;
+	height:30px;
+	border:1px solid #3E7AB6;
+	color:#3E7AB6;
+	font-size:8px;
+	border-radius: 3px;
+	line-height:30px;
+	text-align: center;
+}
+#content .inp-area .captcha-img{
+	width: 70px;
+    height: 28px;
+    border-radius: 3px;
+    margin-left:5px;
+}
+
+#content .but-area{
+	padding-top:40px;
+}
+#content #send{
+	width:100%;
+	background:#1695FC;
+	color:white;
+	height:40px;
+	border: 0px;
+	border-radius: 5px;
+}
+#content .inp-area .time{
+    cursor: default;
+    background: #EEEEEE;
+}

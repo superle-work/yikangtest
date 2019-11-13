@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+	<title>编辑地址</title>
+	<meta http-equiv="Pragma" content="no-cache">
+	<link rel="stylesheet" href='<!--{$smarty.const.JS_PATH}-->/public/SUI_Mobile_dev/dist/css/sm.min.css'>
+	<!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/front/common/user/<!--{$theme}-->/page/inner/head.html"}-->
+    <link rel="stylesheet"	href="<!--{$smarty.const.TEMPLATE_PATH}-->/front/common/user/<!--{$theme}-->/css/address/editAddress.css">
+</head>
+
+<body>
+    <!--主容器-->
+    <div id="container">
+        <!--顶部标签-->
+		<div class="top clearfix">
+			<a href="javascript:window.history.go(-1);" class="left-icon"><i class="iconfont">&#xe62a;</i></a>
+		    <a href="./index.php?c=base_user&a=addressList" class="center"><span class="logo">编辑地址</span></a>
+		    <a href="javascript:;" class="right-icon"><i class="icon iconfont"></i></a>
+		</div>
+        <!--主体内容-->
+        <div id="content" style="background: #fff;">
+            <div class="top-area" style="display: none;">
+                <div class="head-image"><img src="<!--{$smarty.session.user.head_img_url}-->"></div>
+                <div class="nickname"><span><!--{$smarty.session.user.nick_name}--></span></div>
+            </div>
+            <!--<div class="address-top-area">
+                <span class="back"><i class="icon iconfont">&#xe62a;</i></span><span>编辑地址</span>
+            </div>-->
+            <div class="address-wrap">
+	             <table cellspacing="0">
+	             	<tbody>
+		             	<tr class="tr">
+		                    <td class="col-1">收货人：</td><td class="col-2"><input type="text" class="callname" placeholder="请输入姓名" value="<!--{$address.call_name}-->"></td>
+		                </tr>
+		                <tr class="tr">
+		                    <td class="col-1">手机号码：</td><td class="col-2"><input type="text" class="phone" placeholder="请输入手机号码" value="<!--{$address.phone}-->"></td>
+		                </tr>
+		                <tr class="tr">
+		                    <td class="col-1">邮政编码：</td><td class="col-2"><input type="text" class="post" placeholder="请输入邮政编码" value="<!--{$address.post}-->"></td>
+		                </tr>
+		                <tr class="tr addr">
+		                    <td class="col-1">所在地区：</td><td class="col-2"><input type="text" id="addr" placeholder="省/市/区"  value="<!--{$address.address->province}--> <!--{$address.address->city}--> <!--{$address.address->area}-->"><div class="address-select"><i class="icon iconfont">&#xe654;</i></div></td>
+		                </tr>
+		                <tr class="tr detail">
+		                    <td class="col-1">详细地址：</td><td class="col-2"><input type="text" id="detail" placeholder="请输入详细的地址信息" value="<!--{$address.address->detail}-->"></td>
+		                </tr>	
+	             	</tbody>
+	                <tfoot>
+	                	<tr class="footer">
+	                		<td colspan="2">
+	                			<a class="btn btn-primary btn-sm save-address" data-id="<!--{$address.id}-->">保存并使用</a>
+	                			<!--<a class="btn btn-default btn-sm back" href="javascript:window.history.back(-1);">返回</a>-->
+	                		</td>
+	                	</tr>	
+	                </tfoot>
+	                
+	            </table>
+            </div>
+        </div>
+        
+        
+    </div>
+	<!--提示框-->
+    <!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/front/common/user/<!--{$theme}-->/page/inner/dialog.html"}-->
+    <!--公用js文件-->
+    <!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/front/common/user/<!--{$theme}-->/page/inner/jsfiles.html"}-->
+    <script>jQuery.noConflict()</script>
+    <script type='text/javascript' src='<!--{$smarty.const.JS_PATH}-->/public/SUI_Mobile_dev/dist/js/Zepto.js'></script>
+    <script type='text/javascript' src='<!--{$smarty.const.JS_PATH}-->/public/SUI_Mobile_dev/dist/js/sm.min.js'></script>
+    <script type='text/javascript' src='<!--{$smarty.const.JS_PATH}-->/public/SUI_Mobile_dev/dist/js/sm-extend.min.js'></script>
+    <script type='text/javascript' src='<!--{$smarty.const.JS_PATH}-->/public/SUI_Mobile_dev/dist/js/sm-city-picker.min.js'></script>
+    <script type="text/javascript" src="<!--{$smarty.const.TEMPLATE_PATH}-->/front/common/user/<!--{$theme}-->/js/address/editAddress.js"></script>
+
+</body>
+</html>

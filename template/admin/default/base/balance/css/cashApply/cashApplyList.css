@@ -1,0 +1,40 @@
+.right-section #list-table .th1{
+    width:45px;
+}
+.right-section #list-table .th2{
+    width: 45px;
+}
+.right-section #list-table .th4,.th5{
+    width: 75px;
+}
+.right-section #list-table .th6{
+    width: 100px;
+}
+.right-section #list-table .th7{
+    width: 70px;
+}
+.right-section #list-table .th8,.th9{
+    width: 137px;
+}
+.right-section #list-table .th10,.th11{
+    width: 75px;
+}
+.right-section #list-table .th12{
+    width: 70px;
+}
+.right-section #list-table .th13{
+    width: 200px;
+}
+#myCheckModal .modal-body .info{
+	width:65%;
+}
+.modal-body .text-button{
+	margin:10px 0;
+}
+.limitName{
+	text-overflow: ellipsis;
+    white-space: nowrap;
+    display: inline-block;
+    width: 100%;
+    overflow: hidden;
+}

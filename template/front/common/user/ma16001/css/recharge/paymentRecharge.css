@@ -1,0 +1,37 @@
+/*******************************
+ ------待付款订单页面样式-------
+ ---------author:jjhu-----------
+ -------data:2015-07-26---------
+ *******************************/
+#content{
+    padding: 10px 10px 0;
+}
+#content .order-area{
+    padding: 20px 10px;
+}
+
+#content .order-area .order-list{
+	height:30px;
+	line-height:30px;
+	font-size:16px;
+}
+#content .order-area .order-list .color-text{
+	color:#a90505;
+}
+
+.pay-method-area{
+    margin: 20px 0;
+    text-align: center;
+}
+.pay-method-area .pay-method{
+    margin-bottom: 20px;
+}
+.pay-method-area .pay-method a{
+    text-decoration: none;
+    height: 40px;
+    line-height: 40px;
+    font-size: 14px;
+    display: block;
+    background: #009A00;
+    color: #ffffff;
+}

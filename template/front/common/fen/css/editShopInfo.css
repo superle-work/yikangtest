@@ -1,0 +1,40 @@
+/**************************
+ -------修改店铺界面-------
+ --------author:jjhu-------
+ ------date:2015-07-26-----
+ *************************/
+#content .myShop-info{
+    padding: 10px;
+}
+#content .myShop-info input,#content .myShop-info a{
+    border-radius: 0;
+}
+#container #myForm .field-area{
+    padding-left: 0;
+    line-height: 34px;
+}
+#container #myForm .form-group label{
+    line-height: 34px;
+}
+#content .myShop-info .error-info{
+    text-align: center;
+}
+#content .myShop-info .error-info .error{
+    color: #cd0200;
+    font-size: 12px;
+}
+#selectLogoModal .modal-body{
+    text-align: center;
+}
+#selectLogoModal .modal-content .logo-option{
+    margin-bottom: 10px;
+}
+#selectLogoModal img{
+    max-width: 440px;
+    width: 80%;
+    margin: 0 auto;
+    text-align: center;
+}
+#selectLogoModal .fx-logo{
+    margin-right: 10px;
+}

@@ -1,0 +1,41 @@
+<!-- 页头 -->
+<div class="header container-fluid<!--{if $leftBarScale eq '1'}--> scale<!--{/if}-->">
+    <div class="row">
+        <div class="col-md-2 col-sm-2 col-xs-12 logo">
+            <a href="./admin.php"><img src="<!--{$smarty.const.THEMES_PATH}-->/image/logo.png"></a>
+        </div>
+        <div class="col-md-10 col-sm-10 col-xs-12 top">
+            <div class="pull-left">
+                <div class="top-nav clearfix">
+                    <!--{foreach from = $menuList item = topMenu}-->
+                    <a class="nav-item <!--{if $topMenu.id eq $smarty.session.currentMenu.menu_top_id}-->active<!--{/if}-->" href="javascript:;" data-id="<!--{$topMenu.id}-->" data-name="<!--{$topMenu.alias}-->"><!--{$topMenu.name}--></a>
+                    <!--{/foreach}-->
+                </div>
+
+
+            </div>
+            <div class="pull-right">
+                <div class="quick-action">
+                    <a href="javascript:;" class="changeSkin" skin="<!--{$curSkin}-->">换肤
+                        <ul>
+                            <li><span title="红色" class="red skin" skin="red"></span></li>
+                            <li><span title="蓝色" class="blue skin" skin="blue"></span></li>
+                            <li><span title="绿色" class="green skin" skin="green"></span></li>
+                            <li><span title="紫色" class="purple skin" skin="purple"></span></li>
+                            <li><span title="卡奇" class="kaqi skin" skin="kaqi"></span></li>
+                            <li><span class="yellow skin" skin="yellow"></span></li>
+                            <li><span class="orange skin" skin="orange"></span></li>
+                            <li><span class="pink skin" skin="pink"></span></li>
+                            <li><span class="skyBlue skin" skin="skyBlue"></span></li>
+                        </ul>
+                    </a>
+                </div>
+                <div class="user-action">
+                    <!--{if $messageNum}--><a href="?c=site_message&a=message&mid=13&is_read=0" title="未读留言"><i class="icon iconfont">&#xe60e;</i><span class="number"><!--{$messageNum}--></span></a><!--{/if}-->
+                    <!--{if $reserveNum}--><a href="?c=site_reserve&a=reserve&mid=14&is_read=0" title="未读预约"><i class="icon iconfont">&#xe60d;</i><span class="number"><!--{$reserveNum}--></span></a><!--{/if}-->
+                    <a class="user"><!--{$smarty.session.admin.account}--></a>
+                    <a href="?c=base_main&a=logout" class="logo-out"><i class="icon iconfont">&#xe60c;</i>&nbsp;退出</a></div>
+                </div>
+        </div>
+    </div>
+</div>

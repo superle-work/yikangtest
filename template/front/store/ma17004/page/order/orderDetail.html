@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <title>订单详情</title>
+    <!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/front/store/<!--{$theme}-->/inner/head.html"}-->
+    <link rel="stylesheet"	href="<!--{$smarty.const.TEMPLATE_PATH}-->/front/store/<!--{$theme}-->/css/base.css">
+    <link rel="stylesheet"	href="<!--{$smarty.const.TEMPLATE_PATH}-->/front/store/<!--{$theme}-->/css/order/orderDetail.css">
+</head>
+
+<body>
+    <!--主容器-->
+    <div id="container" class="container-fluid">
+        <!--主体内容-->
+        <div id="content">
+        	<div class="orderDetail">
+        	<!--{if $from == 1}-->
+        		<!--{if $orderInfo.state == 0}-->
+        		<div class="space"></div>
+        		<div class="number-wrap2">
+        			<span>您已拍下商品，请尽快支付~</span>
+        		</div>
+        		<div class="space"></div>
+        		<!--{else if $orderInfo.state ==1}-->
+        		
+        		<!--{else}-->
+        		<div class="space"></div>
+        		<div class="number-wrap">
+        			<!--{if $clinicInfo != ''}-->
+        			<div>采样诊所 :&nbsp;&nbsp;<!--{$clinicInfo.name}--></div>
+    				<!--{/if}-->
+    				
+    				<!--{if $hospitalInfo != ''}-->
+        			<div>送检医院 :&nbsp;&nbsp;<!--{$hospitalInfo.name}--></div>
+    				<!--{/if}-->
+        		</div>
+        		<div class="space"></div>
+        		<!--{/if}-->
+        	<!--{else}-->
+        		<div class="number-wrap">
+        			<!--{if $clinicInfo != ''}-->
+        			<div>采样诊所 :&nbsp;&nbsp;<!--{$clinicInfo.name}--></div>
+    				<!--{/if}-->
+    				
+    				<!--{if $hospitalInfo != ''}-->
+        			<div>送检医院 :&nbsp;&nbsp;<!--{$hospitalInfo.name}--></div>
+    				<!--{/if}-->
+        		</div>
+        		<div class="space"></div>
+        	<!--{/if}-->
+        		
+        		<div class="receiver-info">
+        			<div class="checkName">
+        				<!--{$memberInfo.name}-->
+        			</div>
+        			<div class="phone">
+        				出生年月日 :&nbsp;&nbsp;<!--{$memberInfo.idCard}--></div>
+                    <div class="phone">
+                       	手机号码 :&nbsp;&nbsp;<!--{$memberInfo.phone}-->
+                    </div>
+                </div>
+                
+                <div class="space"></div>
+                
+                
+                
+                <div class="goods-area">
+                	<!--{foreach from=$orderInfo.goods_list item=goods}-->
+                	<div class="goods-info">
+	                	<a href="index.php?c=store&a=goodsDetail&id=<!--{$goods.gid}-->">
+	                		<div class="goods">
+	                			<div class="good-name">
+	                				<div class="name"><!--{$goods.goods_name}--></div>
+	                				<div class="price">￥<!--{$goods.price}--></div>
+	                			</div>
+	                			<div class="state">
+	                				<!--{if $from == 1 && $orderInfo.state == 1 || $from == 2 }-->
+	                				<div class="state-type"></div>
+	                				<!--{else}-->
+	                				<div class="state-type">
+	                					<!--{if $orderInfo.state eq 0}--><span class="state-0">待付款</span><!--{/if}-->
+					    				<!--{if $orderInfo.state eq 1}--><span class="state-1">待采样</span> <!--{/if}-->
+					    				<!--{if $orderInfo.state eq 2}--><span class="state-2">待送检</span><!--{/if}-->
+					    				<!--{if $orderInfo.state eq 3}--><span class="state-3">送检中</span><!--{/if}-->
+					    				<!--{if $orderInfo.state eq 4}--><span class="state-4">检测中</span><!--{/if}-->
+					    				<!--{if $orderInfo.state eq 5}--><span class="state-5">已完成</span><!--{/if}-->
+					    			</div>
+					    			<!--{/if}-->
+	                				<div class="quantity">已售<!--{$goods.sale_quantity}--></div>
+	                			</div>
+	                		</div>
+	                	</a>
+                	</div>
+                	<div style="height:2px;background: #F5F5F5;"></div>
+                	<!--{/foreach}-->
+                </div>
+                
+            <!--{if $from ==1}-->
+                <div class="space"></div>
+                
+                <div class="order-number-area">
+                	<span>订单编号:&nbsp;&nbsp;<!--{$orderInfo.order_num}--></span>
+                	<span>下单时间:&nbsp;&nbsp;<!--{$orderInfo.add_time}--></span>
+                	
+                	<!--{if $orderInfo.sample_time !='' && $orderInfo.sample_time !=null}-->
+                	<span>采样时间:&nbsp;&nbsp;<!--{$orderInfo.sample_time}--></span>
+                	<!--{/if}-->
+                	
+                	<!--{if $orderInfo.check_time !='' && $orderInfo.check_time !=null}-->
+                	<span>送检时间:&nbsp;&nbsp;<!--{$orderInfo.check_time}--></span>
+                	<!--{/if}-->
+                	
+                	<!--{if $orderInfo.end_time !='' && $orderInfo.end_time !=null}-->
+                	<span>完成时间:&nbsp;&nbsp;<!--{$orderInfo.end_time}--></span>
+                	<!--{/if}-->
+                </div>
+            <!--{else}-->
+            	<div class="space2">订单信息</div>
+                
+                <div class="order-info-area">
+                	<div class="order-info">
+                		<div>
+                			<span>姓名</span>
+                			<span><!--{$orderInfo.nick_name}--></span>
+                		</div>
+                		<div>
+                			<span>手机号码</span>
+                			<span><!--{$orderInfo.phone}--></span>
+                		</div>
+                		<div>
+                			<span>订单号</span>
+                			<span><!--{$orderInfo.order_num}--></span>
+                		</div>
+                		<div>
+                			<span>下单时间</span>
+                			<span><!--{$orderInfo.add_time}--></span>
+                		</div>
+                	</div>
+                	<div class="total_price">
+                		<span>总金额</span>
+                		<span>￥<!--{$orderInfo.total_price}--></span>
+                	</div>
+                </div>
+            <!--{/if}-->
+        	</div>
+        </div>
+        
+    <!--{if $from ==1}-->
+    	<!--{if $orderInfo.state ==0}-->
+    	<div class="last-area">
+    		<button id="goPay" data-oid="<!--{$orderInfo.id}-->">立即支付</button>
+    	</div>
+   		<!--{else if $orderInfo.state ==1}-->
+        <div class="last-area">
+        	<!--待采样时显示订单的二维码-->
+    		<img src="index.php?c=store&a=qrcode&oid=<!--{$orderInfo.id}-->" alt="" />
+    		<div class="tipInfo">体检前请出示二维码</div>
+    	</div>
+        <!--{else}-->
+        
+        <!--{/if}-->
+    <!--{else if $from ==2}-->
+    	
+    <!--{else}-->
+    	<!--{if $orderInfo.state ==5}-->
+    	<div class="report-area">
+    		<!--{if $reportInfo.imgInfo!='' || $reportInfo.imgInfo!=null}-->
+    		<!--{foreach from=$reportInfo.imgInfo item=img}-->
+    		<img src="<!--{$img.img_url}-->" alt="" />
+    		<!--{/foreach}-->
+    		<!--{/if}-->
+    	</div>
+    	<!--{else if $orderInfo.state ==3 || $orderInfo.state ==4}-->
+        <div class="last-area">
+    		<button id="addReport" data-oid="<!--{$orderInfo.id}-->">上传报告</button>
+    	</div>
+    	<!--{else}-->
+    	
+        <!--{/if}-->
+    <!--{/if}-->
+    <br />
+    <br />
+    </div>
+    <!--提示框-->
+    <!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/front/common/dialog.html"}-->
+    <!--公用js文件-->
+    <!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/front/store/<!--{$theme}-->/inner/jsfiles.html"}-->
+    <script type="text/javascript" src="<!--{$smarty.const.TEMPLATE_PATH}-->/front/store/<!--{$theme}-->/js/order/orderDetail.js"></script>
+
+</body>
+</html>

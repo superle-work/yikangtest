@@ -1,0 +1,124 @@
+/*************************
+ ------我的佣金页面样式---
+ *************************/
+#content{
+    margin-bottom: 50px;
+}
+#content .top-area{
+    background-color: #C2273E;
+    height: 140px;
+    padding: 10px;
+    color: #ffffff;
+    position: relative;
+}
+#content .top-area .myfee{
+    margin-top: 20px;
+    font-size: 24px;
+}
+#content .top-area .cash-total{
+    padding: 10px 0;
+    border-top: 1px solid #C45656;
+    font-size: 12px;
+}
+#content .cash-record-detail{
+    position: absolute;
+    right: 10px;
+    bottom: 15px;
+    color: #ffffff;
+    text-decoration: none;
+}
+#content .cash-record-detail i{
+    font-size: 24px;
+}
+#content .desc{
+    padding: 10px;
+    color: #999999;
+}
+
+#content .choose-account-text{
+    padding: 0 10px;
+    height: 30px;
+    line-height: 30px;
+    border-top: 1px solid #EEEEEE;
+    border-bottom: 1px solid #F0E8E8;
+    color: #444444;
+}
+#content .choose-account-text a{
+    float: right;
+    text-decoration: none;
+    display: inline-block;
+    padding: 0 5px;
+}
+#content .choose-account-text .refresh{
+
+}
+#content .account-list table{
+    width: 100%;
+    table-layout: fixed;
+}
+#content .account-list tr{
+}
+#content .account-list .col-1{
+    width: 26px;
+}
+#content .account-list td{
+    padding: 5px 0;
+    font-size: 12px;
+}
+#content .account-list .col-2{
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+#content .account-list .col-3{
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    padding-left:5px;
+}
+#content .account-list .col-4{
+    width: 50px;
+    color: #666666;
+}
+#content .account-list{
+    padding: 10px;
+}
+#content .account-list a{
+    text-decoration: none;
+}
+#content .account-list .item-option i{
+    display: none;
+}
+#content .account-list .item-option i.selected{
+    color: #3BA93B;
+}
+#content .account-list .item-option i.un-selected{
+    color: #CCCCCC;
+}
+#content .cash-area{
+    padding: 10px;
+}
+#content .cash-area .cash-value{
+    border-radius: 0;
+    border: 1px solid #DDDDDD;
+    height: 36px;
+    padding-left: 10px;
+    outline: none;
+    width: 100%;
+}
+#content .withdraw{
+    margin-top: 20px;
+    padding: 10px;
+}
+#content .withdraw a{
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    display: block;
+    background-color: #AAAAAA;
+    color: #ffffff;
+    text-decoration: none;
+}
+#content .withdraw a.can-use{
+    background-color: #009A00;
+}

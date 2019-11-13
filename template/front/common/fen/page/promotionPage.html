@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <title>推广二维码</title>
+    <!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/front/common/fen/inner/head.html"}-->
+    <link rel="stylesheet"	href="<!--{$smarty.const.TEMPLATE_PATH}-->/front/common/fen/css/promotionPage.css">
+</head>
+
+<body>
+    <!--主容器-->
+    <div id="container" class="container-fluid">
+        <!--主体内容-->
+        <div id="content">
+            <!--二级码图片-->
+            <!--{if $wechatCode neq ''}-->
+            <div class="code">
+            	<img class="code-img" src="<!--{$wechatCode}-->">
+            	<!--<img class="head-img" src="<!--{$userInfo.head_img_url}-->"-->
+            </div>
+            <!--{else}-->
+            <div class="code-tip-info">
+            	<div>您没有分销二维码 暂时无法开启分销之旅</div>
+            </div>
+            <!--{/if}-->          
+        </div>
+        <input type="hidden" id='did' value="<!--{$distributorInfo.id}-->" />
+        <input type="hidden" id='title' value="<!--{$userInfo.nick_name}-->的推广二维码" />
+    </div>
+    <!--公用js文件-->
+    <!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/front/common/fen/inner/jsfiles.html"}-->
+    <script type="text/javascript" src="<!--{$smarty.const.TEMPLATE_PATH}-->/front/common/fen/js/promotionPage.js"></script>
+    <script type="text/javascript" src="<!--{$smarty.const.JS_PATH}-->/public/wechat/jweixin-1.0.0.js"></script>
+<script>
+	var did = $('#did').val();
+	var img_url = $('#content #head-img').attr('src');
+	var tgcode = $('#title').val();
+    /*
+     **** 微信分享
+     */
+    wx.config({
+        debug: false,
+        appId: '<!--{$signPackage.appId}-->',
+        timestamp: '<!--{$signPackage.timestamp}-->',
+        nonceStr: '<!--{$signPackage.nonceStr}-->',
+        signature: '<!--{$signPackage.signature}-->',
+        jsApiList: ['onMenuShareTimeline','onMenuShareAppMessage','hideMenuItems'
+            // 所有要调用的 API 都要加到这个列表中
+        ]
+      });
+    var title = tgcode;
+    var link =  '<!--{$smarty.const.ROOT_URL}-->/index.php?c=fen&a=promotionPage&did='+did;
+    var imgUrl = img_url;
+    wx.ready(function () {
+        // 在这里调用 API
+        //分享到朋友圈
+        wx.onMenuShareTimeline({
+            title: title, // 分享标题
+            link: link, // 分享链接
+            imgUrl: imgUrl, // 分享图标
+			success: function () {		
+			},
+			cancel: function () {
+				// 用户取消分享后执行的回调函数
+
+			}
+        });
+        //发送给朋友
+        wx.onMenuShareAppMessage({
+            title: title, // 分享标题
+            desc: '', // 分享描述
+            link: link, // 分享链接
+            imgUrl: imgUrl, // 分享图标
+            type: 'link', // 分享类型,music、video或link，不填默认为link
+            dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
+            success: function () {              
+            },
+            cancel: function () {
+                // 用户取消分享后执行的回调函数
+            }
+        });
+        wx.hideMenuItems({
+            menuList: ["menuItem:copyUrl",
+                //"menuItem:share:appMessage",
+                "menuItem:openWithQQBrowser",
+                "menuItem:openWithSafari",
+                "menuItem:share:qq",
+                "menuItem:favorite",
+                "menuItem:share:weiboApp",
+                "menuItem:share:email",
+                "menuItem:originPage"] // 要隐藏的菜单项，只能隐藏“传播类”和“保护类”按钮，所有menu项见附录3
+            /**
+             传播类
+             发送给朋友: "menuItem:share:appMessage"
+             分享到朋友圈: "menuItem:share:timeline"
+             分享到QQ: "menuItem:share:qq"
+             分享到Weibo: "menuItem:share:weiboApp"
+             收藏: "menuItem:favorite"
+             分享到FB: "menuItem:share:facebook"
+             分享到 QQ 空间/menuItem:share:QZone
+
+             保护类
+             编辑标签: "menuItem:editTag"
+             删除: "menuItem:delete"
+             复制链接: "menuItem:copyUrl"
+             原网页: "menuItem:originPage"
+             阅读模式: "menuItem:readMode"
+             在QQ浏览器中打开: "menuItem:openWithQQBrowser"
+             在Safari中打开: "menuItem:openWithSafari"
+             邮件: "menuItem:share:email"
+             一些特殊公众号: "menuItem:share:brand"**/
+
+        });
+
+    });
+</script>
+</body>
+</html>

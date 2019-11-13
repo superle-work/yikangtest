@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <title>充值页面</title>
+    <!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/front/common/user/<!--{$theme}-->/page/inner/head.html"}-->
+    <link rel="stylesheet"	href="<!--{$smarty.const.TEMPLATE_PATH}-->/front/common/user/<!--{$theme}-->/css/recharge/rechargePay.css">
+</head>
+
+<body>
+    <!--主容器-->
+    <div id="container" class="container-fluid">
+        <div id="content">
+        	<div class="header">
+        		<a class="header-left" href="javascript:window.history.go(-1);">
+        			<i class="icon iconfont">&#xe62a;</i>
+        		</a>
+        		充值
+        	</div>
+        	<div class="img-area">
+        		<img class="recharge-img" src="<!--{$smarty.const.TEMPLATE_PATH}-->/front/common/user/<!--{$theme}-->/image/recharge_top.jpg">
+        	</div>
+        	<div class="recharge-box">
+                <div class="recharge-title">请选择固定金额或自定义金额微信支付</div>
+                <div class="fixed-area">
+                	<div class="fixed-item">
+                		<div class="item fixed" data-money="20" data-type="0" is-send="<!--{$config.balance_fixed_send}-->" data-send="<!--{$config.balance_send_twenty}-->"><span class="item-color">20</span>元</div>
+                	</div>
+                	<div class="fixed-item">
+                		<div class="item fixed" data-money="50" data-type="0" is-send="<!--{$config.balance_fixed_send}-->" data-send="<!--{$config.balance_send_fifty}-->"><span class="item-color">50</span>元</div>
+                	</div>
+                	<div class="fixed-item">
+                		<div class="item fixed active" data-money="100" data-type="0" is-send="<!--{$config.balance_fixed_send}-->" data-send="<!--{$config.balance_send_one_hundred}-->"><span class="item-color">100</span>元</div>
+                	</div>
+                	<div class="fixed-item">
+                		<div class="item fixed" data-money="200" data-type="0" is-send="<!--{$config.balance_fixed_send}-->" data-send="<!--{$config.balance_send_two_hundred}-->"><span class="item-color">200</span>元</div>
+                	</div>
+                </div>
+                <div class="defined-area item" data-type="1"  is-send="<!--{$config.balance_defined_send}-->" data-min="<!--{$config.balance_defined_min}-->" data-send="<!--{$config.balance_defined_value}-->">
+                	<input class="defined" type="tel" placeholder="自定义金额">
+                	<span class="unit">元</span>
+                </div>
+                
+                <div class="info">
+                	<!--{if $config.balance_fixed_send == 1}-->
+                	注：固定金额100元，充值赠送<!--{$config.balance_send_one_hundred}-->元
+                	<!--{/if}-->
+                </div>
+                <div class="recharge-btn" data-name="<!--{$moduleName}-->">立即充值</div>
+            </div>
+            
+        </div>
+        <!--页面脚部-->
+        <!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/front/common/user/<!--{$theme}-->/page/inner/footer.html"}-->
+    </div>
+    
+    <!--提示框-->
+    <!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/front/common/user/<!--{$theme}-->/page/inner/dialog.html"}-->
+    <!--公用js文件-->
+    <!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/front/common/user/<!--{$theme}-->/page/inner/jsfiles.html"}-->
+    <script type="text/javascript" src="<!--{$smarty.const.TEMPLATE_PATH}-->/front/common/user/<!--{$theme}-->/js/recharge/rechargePay.js"></script>
+</body>
+</html>

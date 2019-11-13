@@ -1,0 +1,72 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html;charset=utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/> 
+    <!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/front/store/<!--{$theme}-->/inner/head.html"}-->
+    <link rel="stylesheet" href="<!--{$smarty.const.TEMPLATE_PATH}-->/front/store/<!--{$theme}-->/css/order/showReport.css">
+    <title>查看报告</title>
+</head>
+<body>
+    <div id="content">
+    	<div class="top-area">
+    		<textarea name="report_desc" id="report_desc" ><!--{$reportInfo.report_desc}--></textarea>
+    	</div>
+    	
+    	<div class="img-area">
+    		<div class="image-list">								
+				<!--{if $reportInfo.imgInfo!='' || $reportInfo.imgInfo!=null}-->
+	    		<!--{foreach from=$reportInfo.imgInfo item=img}-->
+	    		<img src="<!--{$img.img_url}-->" alt="" class="showImage"/>
+	    		<!--{/foreach}-->
+	    		<!--{/if}-->
+			</div>
+    	</div>
+    </div>
+<!--提示框-->
+<!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/front/store/<!--{$theme}-->/inner/dialog.html"}-->
+<!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/front/store/<!--{$theme}-->/inner/jsfiles.html"}-->
+<script src="<!--{$smarty.const.JS_PATH}-->/public/form/jquery.form.js"></script>
+
+<script type="text/javascript" src="<!--{$smarty.const.JS_PATH}-->/public/wechat/jweixin-1.0.0.js"></script>
+
+<script>
+    /*
+     **** 微信分享
+    */ 
+    wx.config({
+        debug: false,
+        appId: '<!--{$signPackage.appId}-->',
+        timestamp: '<!--{$signPackage.timestamp}-->',
+        nonceStr: '<!--{$signPackage.nonceStr}-->',
+        signature: '<!--{$signPackage.signature}-->',
+        jsApiList: ['checkJsApi','previewImage'
+            // 所有要调用的 API 都要加到这个列表中
+        ]
+    });
+    
+    wx.ready(function () {
+     // 在这里调用 API
+        wx.checkJsApi({
+            jsApiList : ['previewImage'],
+            success : function(res) {
+
+            }
+        });
+
+        $(".showImage").click(function(){
+            var src="http://yikang.chuyuanshengtai.com/"+$(this).attr("src");
+            var srcList=[];
+            $(".showImage").each(function(k,v){
+                srcList.push("http://yikang.chuyuanshengtai.com/"+$(v).attr("src"));
+            })
+            wx.previewImage({
+                current: src,
+                urls:srcList
+            });
+        })
+    })
+    
+</script>
+</body>
+</html>

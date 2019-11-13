@@ -1,0 +1,25 @@
+#myForm table .td1 label{
+    color: #666666;
+}
+#myForm table .td1{
+    width: 120px;
+}
+#myForm table .td2{
+    width: 800px;
+}
+#myForm td label{
+    line-height: 34px;
+}
+#myForm table .td2 label{
+	margin-right: 5px;
+}
+#myForm table .td2 label input{
+	margin-right: 5px;
+}
+#myForm table .td2 label input[checked]{
+	
+}
+#myForm td .head_img_preview{
+	max-height:30px; 
+ 	background-color: #8BC34A;
+}

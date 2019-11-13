@@ -1,0 +1,55 @@
+/*******************
+ ------后台换肤-------
+ *******************/
+.header .changeSkin ul{
+    display: none;
+    list-style: none;
+    position: absolute;
+    width: 90px;
+    padding: 0;
+    z-index: 999;
+    background: #EEEEEE;
+    margin-left: -10px;
+}
+.header .changeSkin li{
+    padding: 5px;
+    list-style: none;
+    float: left;
+    height: 30px;
+    line-height: 30px;
+}
+.header .changeSkin span.skin{
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+}
+.header .changeSkin .red{
+    background: #f34541;
+}
+.header .changeSkin .blue{
+    background: #00acec;
+}
+.header .changeSkin .green{
+    background: #49bf67;
+}
+.header .changeSkin .purple{
+    background: #9564e2;
+}
+.header .changeSkin .kaqi{
+    background: #c0a16b;
+}
+.header .changeSkin .yellow{
+    background: #CC9900;
+}
+.header .changeSkin .orange{
+    background: #FF9900;
+}
+.header .changeSkin .pink{
+    background: #FF66FF;
+}
+.header .changeSkin .skyBlue{
+    background: #66CCCC;
+}
+.header .top .changeSkin:hover ul{
+    display: block;
+}

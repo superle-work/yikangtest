@@ -1,0 +1,34 @@
+@CHARSET "UTF-8";
+.right-section #list-table .th1{
+    width:60px;
+}
+.right-section #list-table .th3{
+    width: 100px;
+}
+.right-section #list-table .th4{
+    width: 155px;
+}
+.right-section #list-table .th5{
+    width: 120px;
+}
+
+.right-section #list-table .th7{
+    width: 140px;
+}
+
+.input-normal search{
+	border-radius: 0;
+	border: 1px solid #cccccc !important;
+	color: #222;
+	width: 120px;
+	height: 20px;
+	margin: 5px 0;
+	padding: 2px;
+}
+.limitName{
+	text-overflow: ellipsis;
+    white-space: nowrap;
+    display: inline-block;
+    width: 100%;
+    overflow: hidden;
+}

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <title>收益统计</title>
+    <!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/front/common/fen/inner/head.html"}-->
+    <link rel="stylesheet"	href="<!--{$smarty.const.TEMPLATE_PATH}-->/front/common/fen/css/incomeAnalysis.css">
+</head>
+
+<body>
+    <!--主容器-->
+    <div id="container" class="container-fluid">
+        <!--页面头部-->
+        <!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/front/common/fen/inner/top.html"}-->
+        <!--主体内容-->
+        <div id="content">
+            <div class="top-area">
+                <div>可提现收益（元）</div>
+                <div class="myfee"><!--{$distributorInfo.my_fee}--></div>
+            </div>
+            <div class="total-fee-info">
+                <div>累计佣金（元）</div>
+                <div class="total-fee"><!--{$distributorInfo.total_fee}--></div>
+            </div>
+            <div class="distributor-fee">
+                <ul class="clearfix">
+                    <li class="item">
+                        <div class="item-name">一级佣金</div>
+                        <div class="fee first-fee"><i class="icon iconfont">&#xe604;</i><!--{$distributorInfo.total_fee-$distributorInfo.sec_fee-$distributorInfo.thr_fee}--></div>
+                    </li>
+                    <li class="item leftBorder">
+                        <div class="item-name">二级佣金</div>
+                        <div class="fee second-fee"><i class="icon iconfont">&#xe604;</i><!--{$distributorInfo.sec_fee}--></div>
+                    </li>
+                    <li class="item leftBorder">
+                        <div class="item-name">三级佣金</div>
+                        <div class="fee third-fee"><i class="icon iconfont">&#xe604;</i><!--{$distributorInfo.thr_fee}--></div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/front/common/fen/inner/bottomNav.html"}-->
+    </div>
+    <!--公用js文件-->
+    <!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/front/common/fen/inner/jsfiles.html"}-->
+
+</body>
+</html>

@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html>
+<!-- head -->
+<!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/admin/<!--{$theme}-->/common/page/head.html"}-->
+<body>
+<!---------------- 分销申请详情 ------------------->
+
+<!-- 页头 -->
+<!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/admin/<!--{$theme}-->/common/page/header.html"}-->
+<!-- jsfiles -->
+<!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/admin/<!--{$theme}-->/common/page/jsfiles.html"}-->
+<!-- 主体 -->
+<div class="content container-fluid<!--{if $smarty.session.admin.left_bar_scale eq '1'}--> scale<!--{/if}-->">
+    <div class="row">
+        <div class="col-md-2 left-section">
+            <!-- 左导航菜单 -->
+            <!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/admin/<!--{$theme}-->/common/page/menu.html"}-->
+
+        </div>
+        <div class="col-md-10 right-section">
+            <!--内容区域-->
+            <h3>
+                <i class="icon iconfont"><!--{$smarty.session.currentMenu.icon}--></i>分销商申请信息
+            </h3>
+            <div class="inner-section row">
+                <div id="items add-div">
+                    <form action="#" method="post" id="myForm"  enctype="multipart/form-data">
+                            <table class="table table-striped table-hover table-bordered table-base">
+                                <tbody>
+                                <tr>
+                                    <td>姓名<label class="must-tag">&nbsp;&nbsp;</label></td>
+                                    <td>
+                                    <!--{if $applyInfo.name eq ''}-->
+                                    --
+                                    <!--{else}-->
+                                    <!--{$applyInfo.name}-->
+                                    <!--{/if}-->
+                                    </td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>手机号<label class="must-tag">&nbsp;&nbsp;</label></td>
+                                    <td>
+                                    <!--{if $applyInfo.phone eq ''}-->
+                                    --
+                                    <!--{else}-->
+                                    <!--{$applyInfo.phone}-->
+                                    <!--{/if}-->
+                                    </td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>上级分销商<label class="must-tag">&nbsp;&nbsp;</label></td>
+                                    <td>
+                                    <!--{if $distributorInfo.name eq ''}-->
+                                    --
+                                    <!--{else}-->
+                                    <a href="./admin.php?c=distributorManage&amp;a=editDistributor&amp;id=<!--{$distributorInfo.id}-->" title="查看分销商详情">
+                                    <!--{$distributorInfo.name}-->
+                                    </a>
+                                    <!--{/if}-->
+                                    </td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>申请时间<label class="must-tag">&nbsp;&nbsp;</label></td>
+                                    <td>
+                                    <!--{if $applyInfo.add_time eq ''}-->
+                                    --
+                                    <!--{else}-->
+                                    <!--{$applyInfo.add_time}-->
+                                    <!--{/if}-->
+                                    </td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>审核时间<label class="must-tag">&nbsp;&nbsp;</label></td>
+                                    <td>
+                                    <!--{if $applyInfo.check_time eq ''}-->
+                                    --
+                                    <!--{else}-->
+                                    <!--{$applyInfo.check_time}-->
+                                    <!--{/if}-->
+                                    </td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>审核状态<label class="must-tag">&nbsp;&nbsp;</label></td>
+                                    <td>
+                                    <!--{if $applyInfo.is_check eq '0'}-->
+                                  	  未审核
+                                    <!--{elseif $applyInfo.is_check eq '1'}-->
+                                   	 审核通过
+                                    <!--{elseif $applyInfo.is_check eq '2'}-->
+                                   	 审核不通过
+                                    <!--{else}-->
+                                    --
+                                    <!--{/if}-->
+                                    </td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>审核人员<label class="must-tag">&nbsp;&nbsp;</label></td>
+                                    <td>
+                                    <!--{if $applyInfo.checker eq ''}-->
+                                    --
+                                    <!--{else}-->
+                                    <!--{$applyInfo.checker}-->
+                                    <!--{/if}-->
+                                    </td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>分销级别<label class="must-tag">&nbsp;&nbsp;</label></td>
+                                    <td>
+                                    <!--{if $applyInfo.rank eq ''}-->
+                                    --
+                                    <!--{else}-->
+                                    <!--{$applyInfo.rank}-->
+                                    <!--{/if}-->
+                                    </td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>业余时间<label class="must-tag">&nbsp;&nbsp;</label></td>
+                                    <td>
+                                    <!--{if $applyInfo.sparetime eq '0'}-->
+                                  	  不太充足
+                                    <!--{elseif $applyInfo.sparetime eq '1'}-->
+                                  	  较充足
+                                    <!--{elseif $applyInfo.sparetime eq '2'}-->
+                                   	 充足
+                                    <!--{else}-->
+                                    --
+                                    <!--{/if}-->
+                                    </td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>朋友圈类型<label class="must-tag">&nbsp;&nbsp;</label></td>
+                                    <td>
+                                    <!--{if $applyInfo.friend_type eq ''}-->
+                                    --
+                                    <!--{else}-->
+                                    <!--{$applyInfo.friend_type}-->
+                                    <!--{/if}-->
+                                    </td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>朋友圈人数<label class="must-tag">&nbsp;&nbsp;</label></td>
+                                    <td>
+                                    <!--{if $applyInfo.friend_count eq ''}-->
+                                    --
+                                    <!--{else}-->
+                                    <!--{$applyInfo.friend_count}-->
+                                    <!--{/if}-->
+                                    </td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>是否做过微信销售<label class="must-tag">&nbsp;&nbsp;</label></td>
+                                    <td>
+                                        <!--{if $applyInfo.is_weixin_sale eq '0'}-->
+                                                                                                                         否
+                                        <!--{elseif $applyInfo.is_weixin_sale eq '1'}-->
+                                       	 是
+                                        <!--{else}-->
+                                        --
+                                        <!--{/if}-->
+                                    </td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>备注<label class="must-tag">&nbsp;&nbsp;</label></td>
+                                    <td>
+                                    <!--{if $applyInfo.comment eq ''}-->
+                                    --
+                                    <!--{else}-->
+                                    <!--{$applyInfo.comment}-->
+                                    <!--{/if}-->
+                                    </td>
+                                    <td></td>
+                                </tr>
+                                <!--{if $applyInfo.is_check eq 2}-->
+                                <tr>
+                                    <td>审核失败原因<label class="must-tag">&nbsp;&nbsp;<label class="must-tag">&nbsp;&nbsp;</label></td>
+                                    <td>
+                                        <!--{if $applyInfo.error_info eq ''}-->
+                                        --
+                                        <!--{else}-->
+                                        <!--{$applyInfo.error_info}-->
+                                        <!--{/if}-->
+                                    </td>
+                                    <td></td>
+                                </tr>
+                                <!--{/if}-->
+                                <tr>
+                                    <td>
+                                    </td>
+                                    <td>
+                                      	<a class="btn btn-default btn-lg" href="javascript:window.history.go(-1);">返回</a>
+                                    </td>
+                                    <td></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<!--选择商品、添加标签-->
+<div class="modal fade" id="bindLabelDialog"  tabindex="-1" role="dialog"
+     aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+
+
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<!-- 页脚 -->
+<!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/admin/<!--{$theme}-->/common/page/footer.html"}-->
+
+<!-- jsfiles -->
+<!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/admin/<!--{$theme}-->/common/page/jsfiles.html"}-->
+<!--表单验证插件-->
+<script type="text/javascript" src="<!--{$smarty.const.BASE_PATH}-->/js/public/form/jquery.form.js"></script>
+</body>
+</html>

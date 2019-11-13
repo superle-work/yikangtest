@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<!-- head -->
+<!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/admin/<!--{$theme}-->/common/page/head.html"}-->
+<link rel="stylesheet" href="<!--{$smarty.const.TEMPLATE_PATH}-->/admin/<!--{$theme}-->/weixin/material/css/materialList.css">
+<body>
+<!---------------- 素材管理 ------------------->
+
+<!-- 页头 -->
+<!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/admin/<!--{$theme}-->/common/page/header.html"}-->
+<!-- 主体 -->
+<div class="content container-fluid<!--{if $leftBarScale eq '1'}--> scale<!--{/if}-->">
+    <div class="row">
+        <div class="col-md-2 left-section">
+            <!-- 左导航菜单 -->
+            <!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/admin/<!--{$theme}-->/common/page/menu.html"}-->
+
+        </div>
+        <div class="col-md-10 right-section">
+            <!--内容区域-->
+            <h3>
+                <i class="icon iconfont"><!--{$smarty.session.currentMenu.icon}--></i><!--{$smarty.session.currentMenu.menuTitle}-->
+            </h3>
+            <div class="inner-section row">
+                <div class="media-type">
+                    <ul class="clearfix">
+                        <li class="selected"><a href="javascript:" data-media_type="image">图片库</a></li>
+                        <li><a href="javascript:" data-media_type="news">图文消息</a></li>
+                        <li><a href="javascript:" data-media_type="voice">语音</a></li>
+                        <li><a href="javascript:" data-media_type="video">视频</a></li>
+                    </ul>
+                </div>
+                <div id="materialList" class="clearfix">
+
+                </div>
+                <!--分页-->
+                <div id="page-selection"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 页脚 -->
+<!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/admin/<!--{$theme}-->/common/page/footer.html"}-->
+
+<!-- jsfiles -->
+<!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/admin/<!--{$theme}-->/common/page/jsfiles.html"}-->
+<script type="text/javascript" src="<!--{$smarty.const.BASE_PATH}-->/js/public/jquery.bootpag/jquery.bootpag.min.js"></script>
+<script type="text/javascript" src="<!--{$smarty.const.TEMPLATE_PATH}-->/admin/<!--{$theme}-->/weixin/material/js/materialList.js"></script>
+</body>
+</html>

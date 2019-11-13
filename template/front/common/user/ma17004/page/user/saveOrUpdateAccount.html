@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <title>我的资料</title>
+	<link rel="stylesheet" href='<!--{$smarty.const.JS_PATH}-->/public/SUI_Mobile_dev/dist/css/sm.min.css'>
+        <!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/front/common/user/<!--{$theme}-->/page/inner/head.html"}-->
+    <link rel="stylesheet"	href="<!--{$smarty.const.TEMPLATE_PATH}-->/front/common/user/<!--{$theme}-->/css/user/saveOrUpdateAccount.css">
+</head>
+
+<body>
+    <!--主容器-->
+    <div id="container" class="container-fluid">
+    	
+    	<!--顶部-->
+    	<div class="top">
+			<div class="left-icon"><a href="javascript:window.history.go(-1);" class="left-icon"><i class="iconfont">&#xe62a;</i></a></div>
+		    <div class="center"><span class="logo" style="text-align:left"></span></div>
+		    <div class="right-icon">
+		    	
+		    </div>
+		</div>
+		       	
+        <!--主体内容-->
+        <div id="content">
+            <div class="myinfo">
+            	<div class="user-info">
+                    <div class="user-info-text cf">
+                        <span class="text">账户类型</span>
+                        <select class="account_type">
+                            <option value="0" <!--{if $accountList}--><!--{if $accountList.account_type eq '0'}-->selected<!--{/if}--><!--{else}-->selected<!--{/if}-->>支付宝</option>
+                            <option value="1" <!--{if $accountList.account_type eq 1}-->selected<!--{/if}-->>微信</option>
+                            <option value="2" <!--{if $accountList.account_type eq 2}-->selected<!--{/if}-->>银行卡</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="user-info account_bank-info" style="display: none;">
+                    <div class="user-info-text cf">
+                        <span class="text">银行信息</span><input type="text" id="account_bank" placeholder="请输入所属银行及其支行信息" value="<!--{$accountList.account_bank}-->">
+                    </div>
+                </div>
+                
+                <div class="user-info">
+                    <div class="user-info-text cf">
+                        <span class="text">账号</span><input type="text" id="account" value="<!--{$accountList.account}-->">
+                    </div>
+                </div>
+
+                <div class="user-info">
+                    <div class="user-info-text cf">
+                        <span class="text">户主</span><input type="text" id="name" value="<!--{$accountList.name}-->">
+                    </div>
+                </div>
+            </div>
+            <div class="save-account">
+            	<a href="javascript:;" data-account-id="<!--{$accountList.id}-->" class="save-btn">保存</a>
+            </div>
+        </div>
+
+        <!--页面脚部-->
+        <!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/front/common/user/<!--{$theme}-->/page/inner/footer.html"}-->
+    </div>
+    <!--提示框-->
+    <!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/front/common/user/<!--{$theme}-->/page/inner/dialog.html"}-->
+    
+    <!--公用js文件-->
+    <!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/front/common/user/<!--{$theme}-->/page/inner/jsfiles.html"}-->
+    <script type="text/javascript" src="<!--{$smarty.const.TEMPLATE_PATH}-->/front/common/user/<!--{$theme}-->/js/user/saveOrUpdateAccount.js"></script>
+</body>
+</html>

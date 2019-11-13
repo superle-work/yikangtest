@@ -1,0 +1,20 @@
+<!--{if $serviceList}-->
+<!--客服服务-->
+<div class="shadow"></div>
+<div class="bottom-tag-list">
+	<!--{foreach from=$serviceList item=service name=service}-->
+	<!--{if $service.type eq '1'}--><div class="bottom-tag service" ><a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=<!--{$service.number}-->&site=qq&menu=yes"><img src="<!--{$service.head_img}-->"><span class="name"><!--{$service.name}--></span></a></div><!--{/if}-->
+	<!--{if $service.type eq '2'}-->
+		<div class="bottom-tag service wechat-service" data-img="<!--{$service.number}-->"><img src="<!--{$service.head_img}-->"><span class="name"><!--{$service.name}--></span></div>
+	<!--{/if}-->
+	<!--{if $service.type eq '3'}-->
+		<div class="bottom-tag service" ><a href="tel:<!--{$service.number}-->"><img src="<!--{$service.head_img}-->"><span class="name"><!--{$service.name}--></span></a></div><!--{/if}-->
+	<!--{/foreach}-->
+</div>
+<div class="wechat-code-show">
+	<div class="wechat-code-area">
+		<div class="wechat-code-title">请长按二维码识别<span class="leave-wechat-code"><i class="icon iconfont">&#xe613;</i></span></div>
+		<div class="service-wechat-code"><img src=""></div>
+	</div>
+</div>
+<!--{/if}-->

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <title>订单详情</title>
+    <!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/front/store/<!--{$theme}-->/inner/head.html"}-->
+    <link rel="stylesheet"	href="<!--{$smarty.const.TEMPLATE_PATH}-->/front/store/<!--{$theme}-->/css/base.css">
+    <link rel="stylesheet"	href="<!--{$smarty.const.TEMPLATE_PATH}-->/front/store/<!--{$theme}-->/css/order/orderDetail.css">
+</head>
+
+<body>
+    <!--主容器-->
+    <div id="container" class="container-fluid">
+        <!--主体内容-->
+        <div id="content">
+        	<div class="orderDetail">
+        		<div class="space"></div>
+        		<div class="number-wrap2">
+        			<span>您已拍下商品，请尽快支付~</span>
+        		</div>
+        		<div class="space"></div>
+        		
+        		<div class="receiver-info">
+        			<div class="checkName">
+        				<!--{$memberInfo.name}-->
+        			</div>
+        			<div class="phone">
+        				出生年月日 :&nbsp;<!--{$memberInfo.idCard}--></div>
+                    <div class="phone">
+                       	手机号码 :&nbsp;<!--{$memberInfo.phone}-->
+                    </div>
+                </div>
+                
+                <div class="space"></div>
+                
+                
+                
+                <div class="goods-area">
+                	<!--{foreach from=$orderInfo.goods_info item=goods}-->
+                	<div class="goods-info">
+	                	<a href="">
+	                		<div class="goods">
+	                			<div class="good-name">
+	                				<div class="name"><!--{$goods.goods_name}--></div>
+	                				<div class="price">￥<!--{$goods.price}--></div>
+	                			</div>
+	                			<div class="state">
+	                				<div class="state-type">
+	                					<span class="state-0">待付款</span>
+					    			</div>
+	                				<div class="quantity">已售<!--{$goods.sale_quantity}--></div>
+	                			</div>
+	                		</div>
+	                	</a>
+                	</div>
+                	<div style="height:2px;background: #F5F5F5;"></div>
+                	<!--{/foreach}-->
+                </div>
+                
+                <div class="space"></div>
+                
+                <div class="order-number-area">
+                	<span>订单编号:&nbsp;&nbsp;<!--{$orderInfo.order_num}--></span>
+                	<span>下单时间:&nbsp;&nbsp;<!--{$orderInfo.add_time}--></span>
+                </div>
+            
+        	</div>
+        </div>
+        
+    	<div class="last-area">
+    		<button id="goPay" data-oid="<!--{$orderInfo.id}-->">立即支付</button>
+    	</div>
+    <br />
+    <br />
+    </div>
+    <!--提示框-->
+    <!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/front/common/dialog.html"}-->
+    <!--公用js文件-->
+    <!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/front/store/<!--{$theme}-->/inner/jsfiles.html"}-->
+    <script type="text/javascript" src="<!--{$smarty.const.TEMPLATE_PATH}-->/front/store/<!--{$theme}-->/js/order/payOrderDetail.js"></script>
+
+</body>
+</html>

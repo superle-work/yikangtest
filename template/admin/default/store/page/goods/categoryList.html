@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<!-- head -->
+<!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/admin/<!--{$theme}-->/common/page/head.html"}-->
+<link rel="stylesheet" href="<!--{$smarty.const.TEMPLATE_PATH}-->/admin/<!--{$theme}-->/store/css/goods/categoryList.css">
+<body>
+<!---------------- 商品分类 ------------------->
+
+<!-- 页头 -->
+<!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/admin/<!--{$theme}-->/common/page/header.html"}-->
+<!-- jsfiles -->
+<!-- javascript plugins-->
+<script type="text/javascript" src="<!--{$smarty.const.BASE_PATH}-->/js/public/jquery/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="<!--{$smarty.const.BASE_PATH}-->/js/public/bootstrap/js/bootstrap.js"></script>
+<!--复选框、单选按钮效果增强插件-->
+<script type="text/javascript" src="<!--{$smarty.const.BASE_PATH}-->/js/public/iCheck/icheck.min.js"></script>
+<script type="text/javascript" src="<!--{$smarty.const.BASE_PATH}-->/js/public/bootstrap-switch/js/bootstrap-switch.min.js"></script>
+<script type="text/javascript" src="<!--{$smarty.const.TEMPLATE_PATH}-->/admin/<!--{$theme}-->/common/js/global.js"></script>
+<!-- 主体 -->
+<div class="content container-fluid<!--{if $leftBarScale eq '1'}--> scale<!--{/if}-->">
+    <div class="row">
+        <div class="col-md-2 left-section">
+            <!-- 左导航菜单 -->
+            <!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/admin/<!--{$theme}-->/common/page/menu.html"}-->
+
+        </div>
+        <div class="col-md-10 right-section">
+            <!--内容区域-->
+            <h3>
+                <i class="icon iconfont"><!--{$smarty.session.currentMenu.icon}--></i><!--{$smarty.session.currentMenu.menuTitle}-->
+            </h3>
+            <div class="inner-section row">
+
+                <div class="hb-toolbar cf">
+                    <div class="toolbar-opt toolbar-left"><a href="javascript:;" class="addCatagory btn btn-success btn-sm">添加分类</a></div>
+                    <div class="toolbar-opt toolbar-right"><a href="javascript:;" class="cat-save btn btn-success btn-sm">保存更改</a></div>
+                </div>
+                <div class="table-content" id = "list_container">
+                    <div class="operate-area">
+                        <div class="select-opt"><span class="cat-checkbox checkbox-box"><span class="pseudo-checkbox"></span></span></div>
+                        <div class="delete-opt"><a href="javascript:;" class="batch-delete" style="display: none;">批量删除</a></div>
+                        <div class="show-hide-opt" style="display: none;"><a href="javascript:;" class="down-show">展开</a>|<a href="javascript:;" class="up-hide">收起</a></div>
+                    </div>
+                    <table id="list-table" class="list-table table-hover" width="100%" align="center">
+                        <thead>
+                        <th class="td-00">&nbsp;</th>
+                        <th class="td-0">&nbsp;</th>
+                        <th class="td-1">分类名称</th>
+                        <th class="td-4">状态</th>
+                        <th class="td-5">排序</th>
+                        <th class="td-2">创建时间</th>
+                        <th class="td-3">操作</th>
+                        </thead>
+
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 页脚 -->
+<!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/admin/<!--{$theme}-->/common/page/footer.html"}-->
+<script type="text/javascript" src="<!--{$smarty.const.TEMPLATE_PATH}-->/admin/<!--{$theme}-->/store/js/goods/categoryList.js"></script>
+<!--绑定模板弹出框-->
+<div class="modal fade" id="bindTemplateDialog"  tabindex="-1" role="dialog"
+     aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">模板绑定</h4>
+            </div>
+            <div class="modal-body">
+                <select id="template">
+                    <option value="">选择模板</option>
+                </select>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" id="bindSave">保存</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+</body>
+</html>
+
+
+

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <title>余额提现</title>
+    <!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/front/common/head.html"}-->
+    <link rel="stylesheet"	href="<!--{$smarty.const.TEMPLATE_PATH}-->/front/common/user/<!--{$theme}-->/css/balance/withdrawBalance.css">
+</head>
+
+<body>
+    <!--主容器-->
+    <div id="container" class="container-fluid">
+        <!--页面头部-->
+        <!--主体内容-->
+        <div id="content">
+            <div class="top-area">
+                <div>可提现余额（元）</div>
+                <div class="myfee"><!--{$userInfo.balance}--></div>
+                <div class="cash-total">
+	                <div>成功提现：<!--{if $success_fee}--><!--{$success_fee}--><!--{else}-->0<!--{/if}--></div>
+	                <div>冻结余额：<!--{if $userInfo.freeze_balance}--><!--{$userInfo.freeze_balance}--><!--{else}-->0<!--{/if}--></div>
+                </div>
+                <a href="./index.php?c=base_user&a=balanceRecord" class="cash-record-detail" title="提现记录"><i class="icon iconfont">&#xe63c;</i></a>
+            </div>
+            <!--1：微信零钱模式2：发红包模式0：线下打款模式-->
+            <!--{if $withdraw_model eq 1}-->
+            <div class="desc">买家订单交易完成后，立即获得余额<!--{if $withdraw_limit && $withdraw_limit gt 0}-->,提现金额不得少于<!--{$withdraw_limit}-->元<!--{/if}-->。（提现采取发微信零钱的方式，随时提现，由于微信零钱限额，每次提现不超过2000元。）</div>
+            <!--{else if $withdraw_model eq 2}-->
+            <div class="desc">买家订单交易完成后，立即获得余额<!--{if $withdraw_limit && $withdraw_limit gt 0}-->,提现金额不得少于<!--{$withdraw_limit}-->元<!--{/if}-->。（提现采取发微信红包的方式，随时提现，由于微信零钱限额，每次提现不超过200元。）</div>
+            <!--{else}-->
+            <div class="desc notice1" limit-time="<!--{$configDate}-->" error-info="<!--{$errorInfoData}-->">
+                	买家订单交易完成后，立即获得余额。(每月到<!--{$configDate}-->号就可提现咯，每月只能提现一次)
+            </div>
+
+            <div class="choose-account-text"><span>请选择收款账户</span>
+                <a class="account-manage" href="./index.php?c=base_user&a=accountList&did=<!--{$userInfo.id}-->"><i class="icon iconfont">&#xe63e;</i>账户管理</a>
+                <a class="refresh" href="javascript:window.location.reload();"><i class="icon iconfont">&#xe637;</i>刷新</a>
+            </div>
+
+            <!--支付账号列表（支付宝、微信、银联）-->
+            <div class="account-list">
+                <!--{if $accountList}-->
+                <table>
+                    <!--{foreach from = $accountList item = account name = accountList}-->
+                    <tr>
+                        <td class="col-1">
+                            <a href="javascript:;" class="item-option<!--{if $account.is_default eq '1'|| $smarty.foreach.accountList.first}--> checked<!--{/if}-->" data-aid="<!--{$account.id}-->">
+                                <i class="icon iconfont selected" <!--{if $account.is_default eq '1'|| $smarty.foreach.accountList.first}-->style="display:inline;"<!--{/if}-->>&#xe621;</i>
+                                <i class="icon iconfont un-selected"<!--{if $account.is_default eq '0' && !$smarty.foreach.accountList.first}-->style="display:inline;"<!--{/if}-->>&#xe622;</i></a></td>
+                        <td class="col-2">
+                            <!--{if $account.account_type eq '0'}-->支付宝
+                            <!--{else if $account.account_type eq '1'}-->微信
+                            <!--{else if $account.account_type eq '2'}-->银行卡-<!--{$account.account_bank}--><!--{/if}-->
+                        </td>
+                        <td class="col-3"><!--{$account.account}--></td>
+                        <td class="col-4"><!--{$account.name}--></td>
+                    </tr>
+                    <!--{/foreach}-->
+                </table>
+                <!--{else}-->
+                <p class="bg-danger no-data">还没有任何账户信息呢！</p>
+                <!--{/if}-->
+            </div>
+			<!--{/if}-->
+            <div class="cash-area"><input type="text" class="cash-value" placeholder="请输入提现金额"></div>
+            <div class="desc notice2"><!--{$errorInfo}--></div>
+            <div class="withdraw">
+                <a href="javascript:;" <!--{if $userInfo.balance > "0"}--> class="can-use"<!--{/if}--> data-model="<!--{$withdraw_model}-->" data-user-id="<!--{$userInfo.id}-->">我要提现</a>
+            </div>
+
+        </div>
+
+        <!--公用js文件-->
+    <!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/front/common/jsfiles.html"}-->
+    <!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/front/common/dialog.html"}-->
+    </div>
+    <!--公用js文件-->
+    <script type="text/javascript" src="<!--{$smarty.const.TEMPLATE_PATH}-->/front/common/user/<!--{$theme}-->/js/balance/withdrawBalance.js"></script>
+</body>
+</html>

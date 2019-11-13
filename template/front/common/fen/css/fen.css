@@ -1,0 +1,148 @@
+/******所有活动的公用css*********
+ ***** @author joy**********
+ ***** @since 2016-10-13*****
+ ****************************/
+
+.cart-area,.user-area{
+	padding: 0 10px;
+	background: #fff;
+}
+/*****头部*******/
+.top-area{
+    height: 130px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding:0px 15px;
+    background:#1695FC;
+}
+.top-area .head-image{
+    width:65px;
+    padding-top:35px;
+}
+.top-area .head-image img{
+	display: block;
+	width: 60px;
+    height: 60px;
+    border-radius: 30px;
+}
+.top-area .username{
+	width:80px;
+	line-height:130px;
+	text-align: left;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+p{
+	margin: 0px;
+	padding:0px;
+	height:35%;
+	color:white;
+	text-align: right;
+}
+.top-area .money{
+	width:140px;
+}
+.top-area .money p:first-child{
+	height:55%;
+	display: flex;
+	align-items:flex-end;
+	justify-content: flex-end;
+}
+.top-area .money .num{
+	font-size:26px;
+	position:relative;
+	top:5px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+.top-area .money .unit{
+	font-size:12px;
+}
+.top-area .money .unit2{
+	font-size:12px;
+	position:relative;
+	left:-13px;
+	top:5px;
+}
+/*间隔区域*/
+.space{
+	height:10px;
+	background:#F5F5F5;
+}
+
+/*物流中心、医院中心、诊所中心及下面菜单*/
+.cart-area a{
+	width:100%;
+    text-decoration: none;
+    display:block;
+}
+.cart-area a div:first-child{
+	display: inline-block;
+	width:60%;
+    height:40px;
+    line-height: 40px; 
+    text-align: left;
+}
+.cart-area a div span{
+	color:black;
+	padding-left:5px;
+}
+.cart-area a div:last-child{
+	display: inline-block;
+	width:38%;
+    height:40px;
+    line-height: 40px; 
+    text-align: right;
+}
+.cart-area i,.user-area i{
+	color:#FE7676;
+	position: relative;
+	top:1px;
+}
+.cart-area .info .arrow{
+	color:#CECECE;
+	font-weight:bold;
+}
+
+.user-area{
+	/*margin-left:10px ;*/
+	border-top:1px solid #ececec;
+}
+.user-area a{
+	width:100%;
+    text-decoration: none;
+    display:block;
+}
+.user-area a div:first-child{
+	display: inline-block;
+	width:60%;
+    height:40px;
+    line-height: 40px; 
+    text-align: left;
+}
+.user-area a div span{
+	color:black;
+	padding-left:5px;
+}
+.user-area a div:last-child{
+	display: inline-block;
+	width:38%;
+    height:40px;
+    line-height: 40px; 
+    text-align: right;
+}
+.user-area .info .arrow{
+	color:#CECECE;
+	font-weight:bold;
+/*	padding-right:10px;*/
+}
+
+.user-area .info a div .like{
+	color:#1795FC;
+}
+.cart-area .info a div .check{
+	color:#FD6F31;
+}

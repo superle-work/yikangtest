@@ -1,0 +1,41 @@
+@CHARSET "UTF-8";
+.right-section #list-table .th1{
+    width:40px;
+}
+.right-section #list-table .th2{
+    width:50px;
+}
+.right-section #list-table .th3{
+    width: 110px;
+}
+.right-section #list-table .th4{
+    width: 85px;
+}
+.right-section #list-table .th5{
+    width: 70px;
+}
+.right-section #list-table .th6{
+    width: 80px;
+}
+.right-section #list-table .th7{
+    width: 137px;
+}
+.right-section #list-table .th8{
+    width: 100px;
+}
+.input-normal search{
+	border-radius: 0;
+	border: 1px solid #cccccc !important;
+	color: #222;
+	width: 120px;
+	height: 20px;
+	margin: 5px 0;
+	padding: 2px;
+}
+.limitName{
+	text-overflow: ellipsis;
+    white-space: nowrap;
+    display: inline-block;
+    width: 100%;
+    overflow: hidden;
+}

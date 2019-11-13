@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <title>消息通知</title>
+    <!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/front/common/user/<!--{$theme}-->/page/inner/head.html"}-->
+    <link rel="stylesheet"	href="<!--{$smarty.const.TEMPLATE_PATH}-->/front/common/user/<!--{$theme}-->/css/user/userMessage.css">
+</head>
+
+<body>
+    <!--主容器-->
+    <div id="container" class="container-fluid">
+        <!--页面头部-->
+        <div class="top">
+			<a href="javascript:window.history.go(-1);" class="left-icon"><i class="iconfont">&#xe62a;</i></a>
+		    <a href="./index.php?c=store&a=index" class="center"><span class="logo"><!--{$smarty.const.pageTitle}--></span></a>
+		    <a href="javascript:;" class="right-icon"></a>
+		</div>
+
+        <!--主体内容-->
+        <div id="content">
+            <!--{if $messageList}-->
+            <!--{foreach from = $messageList item = message}-->
+            <div class="message-info" data-href="<!--{$message.link}-->">
+                <div class="title"><!--{$message.title}--><span class="add-time"><!--{$message.add_time|truncate:12:""}--></span></div>
+                <div class="content"><!--{$message.content}--></div>
+                <a class="delete" data-id="<!--{$message.id}-->" href="javascript:;"><i class="icon iconfont">&#xe619;</i></a>
+            </div>
+
+            <!--{/foreach}-->
+            <!--{else}-->
+            <div class="no-result"><p class="bg-danger">暂无消息。</p></div>
+            <!--{/if}-->
+
+        </div>
+
+        <!--页面脚部-->
+        <!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/front/common/user/<!--{$theme}-->/page/inner/footer.html"}-->
+    </div>
+    <!--公用js文件-->
+    <!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/front/common/user/<!--{$theme}-->/page/inner/jsfiles.html"}-->
+    <script type="text/javascript" src="<!--{$smarty.const.TEMPLATE_PATH}-->/front/common/user/<!--{$theme}-->/js/user/userMessage.js"></script>
+
+</body>
+</html>

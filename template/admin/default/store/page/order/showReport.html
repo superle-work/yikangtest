@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<!-- head -->
+<!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/admin/<!--{$theme}-->/common/page/head.html"}-->
+<link rel="stylesheet" href="<!--{$smarty.const.TEMPLATE_PATH}-->/admin/<!--{$theme}-->/store/css/order/showReport.css" />
+<body>
+<!---------------- 查看订单报告 ------------------->
+
+<!-- 页头 -->
+<!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/admin/<!--{$theme}-->/common/page/header.html"}-->
+<!-- 主体 -->
+<div class="content container-fluid<!--{if $leftBarScale eq '1'}--> scale<!--{/if}-->">
+    <div class="row">
+        <div class="col-md-2 left-section">
+            <!-- 左导航菜单 -->
+            <!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/admin/<!--{$theme}-->/common/page/menu.html"}-->
+
+        </div>
+        <div class="col-md-10 right-section">
+            <!--内容区域-->
+            <h3>
+                <i class="icon iconfont"><!--{$smarty.session.currentMenu.icon}--></i>查看订单报告
+            </h3>
+            <div class="inner-section row">
+                <div id="content">
+                    <div class="list-title">
+                        <div class="list-title-panel">
+                            <span class="glyphicon glyphicon-list"></span>列表</span>
+                        </div>
+                    </div>
+                    <div class="table-content" id = "list_container">
+                        <table id="list-table" class="list-table table-hover table-bordered" cellspacing="0" cellpadding="0" border="0" width="100%" align="center">
+                            <tbody>
+                                <tr>
+                                    <th style="width:100px"></th>
+                                    <th>报告详情</th>
+                                </tr>
+                                <tr>
+                                    <td style="width:100px">报告描述</td>
+                                    <td><!--{$reportInfo.report_desc}--></td>
+                                </tr>
+                                <tr>
+                                    <td style="width:100px">报告图片</td>
+                                    <td class="image">
+                                        <!--{foreach from=$reportInfo.img_str item=img}-->
+                                        <img src="<!--{$img.img_url}-->" alt="">
+                                        <!--{/foreach}-->
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td class="edit">
+                                        <a href="admin.php?c=store_order&a=editReport&id=<!--{$reportInfo.id}-->" class="btn-primary btn-xs">编辑</a>
+                                        <a href="javascript:history.go(-1);" class="btn-info btn-xs">返回</a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+					
+                    <div class="fn-clear"></div>
+
+                    <!-- 列表底部 -->
+                    <div class="list-bottom">
+                        <div class="list-bottom-panel">
+                        </div>
+                    </div>
+                </div>
+                <!--分页-->
+                <div id="page-selection"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 页脚 -->
+<!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/admin/<!--{$theme}-->/common/page/footer.html"}-->
+
+<!-- jsfiles -->
+<!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/admin/<!--{$theme}-->/common/page/jsfiles.html"}-->
+<script src="<!--{$smarty.const.BASE_PATH}-->/js/public/My97DatePicker/WdatePicker.js"></script>
+<script type="text/javascript" src="<!--{$smarty.const.BASE_PATH}-->/js/public/jquery.bootpag/jquery.bootpag.min.js"></script>
+</body>
+</html>
+

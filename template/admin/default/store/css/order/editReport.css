@@ -1,0 +1,95 @@
+#content{
+  width:640px;
+}
+#content .top-area{
+  background: #fff;
+  height:120px;
+  padding:10px;
+}
+#content .top-area textarea{
+  display:block;
+  width:100%;
+  height:100%;
+  font-size:13px;
+  border:1px solid #ccc;
+  outline:none;
+  resize:none;
+}
+
+/*图片上传区域*/
+#content .img-area{
+  padding:20px 10px 0px 10px;
+}
+.img-area .image-list{
+  margin: 0;
+}
+.upload-image{
+  margin-bottom: 4px;
+}
+.upload-image .main {
+    margin: 0px 1.5%;
+    text-align: center;
+    width: 90px;
+    height: 90px;
+    float: left;
+    position: relative;
+    background-color: #7A7A7A;
+    color: #999;
+    border-radius: 3px;
+    overflow: hidden;
+    margin-bottom:10px;
+}
+.upload-image .main .add-btn {
+    position: absolute;
+    margin: auto;
+    left: 0px;
+    right: 0px;
+    top: 24px;
+    bottom: 0px;
+    cursor: pointer;
+}
+.add-btn .icon{
+  font-size: 30px;
+  color:#ccc;
+}
+.upload-image .main .share-ago {
+    display: none;
+    width: 0;
+    height: 0;
+    border-top: 50px solid #00B7EE;
+    /* border-left: 50px solid transparent; */
+    position: absolute;
+    right: 0;
+    top: 0;
+    color: #fff;
+}
+.upload-image .main .share-ago .off-text {
+    position: absolute;
+    height: 50px;
+    width: 50px;
+    text-align: center;
+    line-height: 50px;
+    font-size: 22px;
+    top: -65px;
+    left: -35px;
+    color:red;
+    cursor:pointer;
+}
+.upload-image .main img {
+    width: 100%;
+    height: 100%;
+}
+
+/*按钮*/
+#content .btn-area{
+  padding:30px 10px 0px 10px;
+}
+#content .btn-area #upload{
+  display: block;
+  width:120px;
+  height:40px;
+  background: #1695FC;
+  border:0px;
+  color:white;
+  border-radius:3px;
+}

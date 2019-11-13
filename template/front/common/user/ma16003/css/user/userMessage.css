@@ -1,0 +1,50 @@
+/*************************
+ ------消息通知页面样式---
+ *************************/
+
+#content{
+    background-color: #EEEEEE;
+}
+#content .message-info{
+    margin: 8px auto;
+    border-top:1px solid #f0f0f0;
+    border-bottom:1px solid #f0f0f0;
+    background-color: #ffffff;
+    padding: 5px 10px;
+    padding-bottom: 20px;
+    position: relative;
+}
+#content .message-info .title{
+    color: #333333;
+    position: relative;
+    height: 20px;
+    line-height: 20px;
+    margin-bottom: 5px;
+    padding-right: 66px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+#content .title .add-time{
+    position: absolute;
+    right: 0;
+    color: #CCCCCC;
+    font-size: 12px;
+    width: 66px;
+    text-align: right;
+}
+#content .message-info .content{
+    color: #666;
+    font-size: 12px;
+}
+#content .message-info .delete{
+    position: absolute;
+    right: 10px;
+    bottom: 5px;
+    color: #F95858;
+    text-decoration: none;
+}
+#content .no-result{
+    text-align: center;
+    color: #F95858;
+}

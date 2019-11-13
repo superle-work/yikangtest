@@ -1,0 +1,15 @@
+.list-table .th1{
+    width:40px;
+}
+.list-table .th2{
+    width: 100%;
+}
+.list-table .th3{
+    width: 80px;
+}
+.list-table .th4{
+    width: 160px;
+}
+.list-table td a{
+    margin: 0 2px;
+}

@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <title>商品详情</title>
+    <!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/front/store/<!--{$theme}-->/inner/head.html"}-->
+    <link rel="stylesheet"	href="<!--{$smarty.const.JS_PATH}-->/public/swiper/css/swiper.min.css">
+    <link rel="stylesheet"	href="<!--{$smarty.const.TEMPLATE_PATH}-->/front/store/<!--{$theme}-->/css/goods/goodsDetail.css">
+</head>
+
+<body >
+    <!--主容器-->
+    <div id="container" class="container-fluid">
+        <!--页面头部-->
+        <!--主体内容-->
+        <div id="content" class="content-goodsDetail">
+            <!--商品详情-->
+            <!--商品介绍-->
+            <div class="goods-instroduce">
+            	<!--幻灯片轮播-->
+	            <div class="swiper-container">
+	                <div class="swiper-wrapper">
+	
+	                    <div class="swiper-slide"><img class="slide-image" src="<!--{$goodsInfo.img_url}-->"></div>
+	                    <!--{foreach from = $sideList item = side}-->
+	                    <div class="swiper-slide"><img class="slide-image" src="<!--{$side.img_url}-->"></div>
+	                    <!--{/foreach}-->
+	                </div>
+	                <!-- 如果需要分页器 -->
+	                <!--{if $sideList}-->
+	                <div class="swiper-pagination"></div>
+	                <!--{/if}-->
+	            </div>
+	            <!--商品信息-->
+	            <div class="goods-info">
+	                <div class="desc">
+	                	<span class="name"><!--{$goodsInfo.name}--></span>
+	                </div>
+	                <div class="price">
+	                	<div>
+	                		<span class="symbol">￥</span><span class="price-value"><!--{$goodsInfo.price}--></span>
+	                	</div>
+	                	<div class="sale-quantity">已售<!--{$goodsInfo.sale_quantity}--></div>
+	                </div>
+	            </div>
+	        </div>
+	        
+	        <div class="space"></div>
+	        <!--商品详情-->
+	        <div class="goods-detail">
+	        	<!--{$goodsInfo.detail_desc}-->
+	        </div>
+		</div>
+        <!--页面脚部-->
+        <!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/front/store/<!--{$theme}-->/inner/footer.html"}-->
+        <!--底部导航-->
+        <div class="bottom-nav">
+            <div class="row">
+                <a class="add-favorite" href="javascript:;"  data-user="<!--{$smarty.session.user.account}-->" >
+                	<div class="favorite" data-id="<!--{$goodsInfo.id}-->">
+                		<!--{if $isFavorite}-->
+                		<i class="icon iconfont selected">&#xe6b0;</i>
+                		<span class="my-favorite">已收藏</span>
+	                	<!--{else}-->
+	                	<i class="icon iconfont">&#xe61b;</i>
+	                	<span class="my-favorite">收藏</span>	
+                		<!--{/if}-->            	
+                	</div>
+                	<div class="share">
+	                	<i class="icon iconfont">&#xe602;</i>
+	                	<span class="my-carlist">分享</span>
+                	</div>
+                	<div class="cartList">
+	                	<i class="icon iconfont">&#xe602;</i>
+	                	<span class="my-carlist">购物车</span>
+	                	<span class="cartList-num"><span class="number"><!--{$cartCount}--></span></span>
+                	</div>
+                </a>            	            	
+                <a class="add-cart" href="javascript:;" data-user="<!--{$smarty.session.user.account}-->" data-id="<!--{$goodsInfo.id}-->"><span>加入购物车</span></a>            	
+                <a class="buy-now" href="javascript:;" data-user="<!--{$smarty.session.user.account}-->" data-id="<!--{$goodsInfo.id}-->"><span>立即购买</span></a>
+            </div>
+        </div>
+    </div>
+    <!--提示框-->
+    <!--公用js文件-->
+    <!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/front/store/<!--{$theme}-->/inner/jsfiles.html"}-->
+    <script src="<!--{$smarty.const.JS_PATH}-->/public/swiper/js/swiper.jquery.min.js"></script>
+    <script type="text/javascript" src="<!--{$smarty.const.JS_PATH}-->/public/jquery.bootpag/jquery.bootpag.min.js"></script>
+    <script type="text/javascript" src="<!--{$smarty.const.TEMPLATE_PATH}-->/front/store/<!--{$theme}-->/js/goods/goodsDetail.js"></script>
+    
+    <!-- 模态框（Modal） 加入购物车弹出框,当商品为多规格 加载以下div-->
+
+    <div class="modal fade" id="addCartModal" tabindex="-1" role="dialog"
+         aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-fixed">
+            <div class="modal-content">
+                <div class="modal-header detail-area">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                        <i class="icon iconfont">&#xe63e;</i>
+                    </button>
+                    <h4 class="modal-title" id="myModalLabel">
+                        <div class="cart-goods-info">
+                        	<div class="goods-img">
+                            <img src="<!--{$goodsInfo.thumb}-->">
+                            </div>
+                            <div class="cart-goods-text-info">
+                                <div class="price">
+                                    <span class="price-value" data-price="<!--{$goodsInfo.price}-->">￥<!--{$goodsInfo.price}--></span>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </h4>
+                </div>
+                
+                <!-- 库存弹出框 -->
+                <div class="modal-body">
+                    <!--{if $goodsInfo.standard eq 1}-->
+                    <div class="property-group-area" data-id="<!--{$goodsInfo.id}-->">
+                    	<!--{$k = 0}-->
+                        <!--{foreach from = $propertyGroups item = property name = propertyGroups}-->
+                        <div class="goods-property-item" data-property-index="<!--{$smarty.foreach.propertyGroups.iteration}-->">
+                            <dl class="goods-prop clearfix">
+                                <dt><span><!--{$property.name}--></span></dt>
+                                <dd>
+                                    <ul data-name="<!--{$property.name}-->">
+                                        <!--{foreach from = $property.valueList item = value}-->
+                                        <li data-key="<!--{$k++}-->" data-value="<!--{$value}-->">
+                                            <a class="property-value" href="javascript:;"><!--{$value}--></a>
+                                            <i>已选中</i>
+                                        </li>
+                                        <!--{/foreach}-->
+                                    </ul>
+                                </dd>
+                            </dl>
+                        </div>
+                        <!--{/foreach}-->
+                    </div>
+                    <!--{/if}-->
+
+                    <div class="quantity-area">
+                        <span class="quantity-title">数量</span>
+                        <!--数量操作区域-->
+                        <div class="quantity-operation-area">
+                            <button class="quantity-minus"><i class="icon iconfont">&#xe651;</i></button>
+                            <span class="quantity-area"><input type="text" class="quantity-value" value="1"></span>
+                            <button class="quantity-plus"><i class="icon iconfont">&#xe62f;</i></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <div class="row">
+                        <a class="col-xs-6 col-sm-6 col-md-6 add-cart" href="javascript:;"  data-user="<!--{$smarty.session.user.account}-->" data-id="<!--{$goodsInfo.id}-->"><span>加入购物车</span></a>
+                        <a class="col-xs-6 col-sm-6 col-md-6 buy-now" href="javascritp:;"  data-user="<!--{$smarty.session.user.account}-->" data-id="<!--{$goodsInfo.id}-->"><span>立即购买</span></a>                  
+                    </div>
+                </div>
+            </div><!-- /.modal-content -->
+        </div>
+    </div><!-- /.modal -->
+
+	<!--弹框-->
+    <!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/front/store/<!--{$theme}-->/inner/dialog.html"}-->
+        
+</body>
+</html>

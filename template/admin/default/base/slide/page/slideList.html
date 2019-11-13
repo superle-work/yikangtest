@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<!-- head -->
+<!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/admin/<!--{$theme}-->/common/page/head.html"}-->
+<link rel="stylesheet" href="<!--{$smarty.const.TEMPLATE_PATH}-->/admin/<!--{$theme}-->/base/slide/css/slideList.css">
+<!---------------- 商品列表 ------------------->
+
+<!-- 页头 -->
+<!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/admin/<!--{$theme}-->/common/page/header.html"}-->
+<!-- 主体 -->
+<div class="content container-fluid<!--{if $leftBarScale eq '1'}--> scale<!--{/if}-->">
+    <div class="row">
+        <div class="col-md-2 left-section">
+            <!-- 左导航菜单 -->
+            <!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/admin/<!--{$theme}-->/common/page/menu.html"}-->
+
+        </div>
+        <div class="col-md-10 right-section">
+            <!--内容区域-->
+            <h3>
+                <i class="icon iconfont"><!--{$smarty.session.currentMenu.icon}--></i><!--{$smarty.session.currentMenu.menuTitle}-->
+                <div class="operation-div">
+                    <a class="btn btn-success addSlide" href="<!--{spUrl c=base_slide a=addSlide type=$type}-->">添加</a>
+                </div>
+            </h3>
+            <div class="inner-section row">
+                <div id="content">
+                    <div class="list-title">
+                        <div class="list-title-panel">
+                            <span class="glyphicon glyphicon-list"></span>列表</span>
+                        </div>
+
+                    </div>
+                    <div class="table-content" id = "list_container">
+                        <table id="list-table" class="list-table table-hover table-bordered" cellspacing="0" cellpadding="0" border="0" width="100%" align="center">
+                            <tbody>
+                            <tr>
+                                <th>名称</th>
+                                <th>缩略图</th>
+                                <th>链接地址</th>
+                                <th>打开方式</th>
+                                <th>排序</th>
+                                <th>操作</th>
+                            </tr>
+                            <!--{if $slideList}-->
+                            <!--{foreach from = $slideList item = slide}-->
+                            <tr>
+                                <td><!--{$slide.name}--></td>
+                                <td><img src="<!--{$slide.thumb}-->" height="50"></td>
+                                <td><!--{if $slide.url}--><!--{$slide.url}--><!--{else}-->无<!--{/if}--></td>
+                                <td><!--{if $slide.target eq '_blank'}-->新开窗口<!--{else}-->本页刷新<!--{/if}--></td>
+                                <td><!--{$slide.sort}--></td>
+                                <td><a class="btn btn-xs btn-primary" href="./admin.php?c=base_slide&a=editSlide&id=<!--{$slide.id}-->" target="_self">编辑</a><a class="btn btn-xs btn-default deleteSlide" sid="<!--{$slide.id}-->">删除</a></td>
+                            </tr>
+                            <!--{/foreach}-->
+                            <!--{else}-->
+                            <tr><td colspan="6"><p class="text-danger">暂无数据。</p></td></tr>
+                            <!--{/if}-->
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="fn-clear"></div>
+                    <!-- 列表底部 -->
+                    <div class="list-bottom">
+                        <div class="list-bottom-panel">
+                        </div>
+                    </div>
+
+                </div>
+                <!--分页-->
+                <div id="page-selection"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 页脚 -->
+<!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/admin/<!--{$theme}-->/common/page/footer.html"}-->
+
+<!-- jsfiles -->
+<!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/admin/<!--{$theme}-->/common/page/jsfiles.html"}-->
+<script type="text/javascript" src="<!--{$smarty.const.TEMPLATE_PATH}-->/admin/<!--{$theme}-->/base/slide/js/slideList.js"></script>
+</body>
+</html>

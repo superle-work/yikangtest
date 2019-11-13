@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <title>分销中心</title>
+    <!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/front/common/head.html"}-->
+    <link rel="stylesheet" href="<!--{$smarty.const.TEMPLATE_PATH}-->/front/common/fen/css/fen.css">
+</head>
+
+<body>
+    <!--主容器-->
+    <div id="container" class="container-fluid">
+        <!--主体内容-->
+        <div id="content">
+	        <!--页面头部-->
+	        <div class="top-area">
+			    <div class="head-image">
+			    	<img src="<!--{$fenInfo.head_img_url}-->">
+			    </div>
+			    <div class="username">
+			    	<!--{$fenInfo.name}-->
+			    </div>
+			    <div class="money">
+			    	<p>
+			    		<span class="num" title="<!--{$fenInfo.my_fee}-->">
+			    		<!--{$fenInfo.my_fee}-->
+			    		</span>
+			    		<span class="unit">&nbsp;&nbsp;元</span>
+			    	</p>
+			    	<p class="unit2">佣金金额</p>
+			    </div>
+			</div>
+			<div class="space"></div>
+			
+			<div class="cart-area">
+			    <div class="info">
+			        <a href="./index.php?c=fen&a=withdrawal&type=1&id=<!--{$fenInfo.id}-->">
+			        	<div>
+			        		<i class="icon iconfont check">&#xe63f;</i><span>提现</span>
+			        	</div>
+			        	<div>
+			        		<i class="icon iconfont arrow">&#xe618;</i>
+			        	</div>
+			        </a>
+			    </div>
+		    </div>
+			<div class="user-area">
+			    <div class="info">
+			        <a href="./index.php?c=fen&a=incomeCount">
+			        	<div>
+			        		<i class="icon iconfont like">&#xe649;</i><span>收益统计</span>
+			        	</div>
+			        	<div>
+			        		<i class="icon iconfont arrow">&#xe618;</i>
+			        	</div>
+			        </a>
+			    </div>
+		   </div>
+        </div>
+    </div>
+    <!--提示框-->
+    <!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/front/common/dialog.html"}-->
+    <!--公用js文件-->
+    <!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/front/common/jsfiles.html"}-->
+    <script type="text/javascript" src="<!--{$smarty.const.TEMPLATE_PATH}-->/front/common/fen/js/fen.js"></script>
+
+</body>
+</html>

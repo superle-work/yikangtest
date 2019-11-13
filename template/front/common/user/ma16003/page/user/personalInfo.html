@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <title>我的资料</title>
+	<link rel="stylesheet" href='<!--{$smarty.const.JS_PATH}-->/public/SUI_Mobile_dev/dist/css/sm.min.css'>
+        <!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/front/common/user/<!--{$theme}-->/page/inner/head.html"}-->
+    <link rel="stylesheet"	href="<!--{$smarty.const.TEMPLATE_PATH}-->/front/common/user/<!--{$theme}-->/css/user/personalInfo.css">
+</head>
+
+<body>
+    <!--主容器-->
+    <div id="container" class="container-fluid">
+    	
+    	<!--顶部-->
+    	<div class="top">
+			<div class="left-icon"><a href="javascript:window.history.go(-1);" class="left-icon"><i class="iconfont">&#xe62a;</i></a></div>
+		    <div class="center"><span class="logo" style="text-align:left"></span></div>
+		    <div class="right-icon">
+		    	<a href="javascript:;" class="btn-save btn btn-sm btn-success">保存</a>
+		    </div>
+		</div>
+		       	
+        <!--主体内容-->
+        <div id="content">
+			<div class="operation-area" style="display: none;">
+                <input type="hidden" value="<!--{$userInfo.id}-->" id="id">
+                <a href="javascript:;" class="btn-save btn btn-sm btn-success">保存</a>
+            </div>
+            <div class="myinfo">
+            	
+            	<div class="user-info">
+                    <div class="user-info-text cf">
+                        <span class="text">头像</span><img id="head_img_url" src="<!--{$userInfo.head_img_url}-->"/>
+                    </div>
+                </div>
+                
+                <div class="user-info">
+                    <div class="user-info-text cf">
+                        <span class="text">昵称</span><input type="text" id="nick_name" value="<!--{$userInfo.nick_name}-->">
+                    </div>
+                </div>
+                
+                <div class="user-info">
+                    <div class="user-info-text cf">
+                        <span class="text">姓名</span><input type="text" id="name" value="<!--{$userInfo.name}-->">
+                    </div>
+                </div>
+
+                <div class="user-info">
+                    <div class="user-info-text cf">
+                        <span class="text">联系方式</span><input type="text" id="phone" value="<!--{$userInfo.phone}-->">
+                    </div>
+                </div>
+                <div class="user-info">
+                    <div class="user-info-text cf">
+                        <span class="text">地区</span><input type="text" id="addr" value="<!--{$userInfo.address}-->">
+                    </div>
+                </div>
+                <div class="user-info">
+                    <div class="user-info-text cf">
+						<span class="text">我的地址</span><input type="text" id="detail" placeholder="省/市/区"  value="<!--{$userInfo.detail}-->  ">	
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--页面脚部-->
+        <!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/front/common/user/<!--{$theme}-->/page/inner/footer.html"}-->
+    </div>
+    <!--提示框-->
+    <!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/front/common/user/<!--{$theme}-->/page/inner/dialog.html"}-->
+    
+    <!--公用js文件-->
+    <!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/front/common/user/<!--{$theme}-->/page/inner/jsfiles.html"}-->
+    <script>jQuery.noConflict()</script>
+    <script type='text/javascript' src='<!--{$smarty.const.JS_PATH}-->/public/SUI_Mobile_dev/dist/js/Zepto.js'></script>
+    <script type='text/javascript' src='<!--{$smarty.const.JS_PATH}-->/public/SUI_Mobile_dev/dist/js/sm.min.js'></script>
+    <script type='text/javascript' src='<!--{$smarty.const.JS_PATH}-->/public/SUI_Mobile_dev/dist/js/sm-extend.min.js'></script>
+    <script type='text/javascript' src='<!--{$smarty.const.JS_PATH}-->/public/SUI_Mobile_dev/dist/js/sm-city-picker.min.js'></script>
+    <script type="text/javascript" src="<!--{$smarty.const.TEMPLATE_PATH}-->/front/common/user/<!--{$theme}-->/js/user/personalInfo.js"></script>
+</body>
+</html>

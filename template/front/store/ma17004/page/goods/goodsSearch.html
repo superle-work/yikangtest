@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <title>商品搜索</title>
+    <!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/front/store/<!--{$theme}-->/inner/head.html"}-->
+    <link rel="stylesheet"	href="<!--{$smarty.const.TEMPLATE_PATH}-->/front/store/<!--{$theme}-->/css/goods/goodsSearch.css">
+</head>
+
+<body>
+    <!--主容器-->
+    <div id="container" class="container-fluid">
+        <!--页面头部-->
+        <!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/front/store/<!--{$theme}-->/inner/header.html"}-->
+
+        <!--主体内容-->
+        <div id="content">
+        	<input type="hidden" name="cid" id="cid" value="<!--{$cid}-->">
+            <!--商品搜索-->
+            <div class="search-goods-area">
+            	<div class="search-goods-left">
+	                <i class="icon iconfont">&#xe607;</i>
+	                <input type="text" class="search-text" placeholder="输入您想寻找的商品" value="<!--{$keywords}-->">
+            	</div>
+            	<div class="search-goods-right">
+            		<span class="search-btn">搜索</span>
+            	</div>
+            </div>
+            <!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/front/store/<!--{$theme}-->/inner/sortBar.html"}-->
+            <div class="goods-display-area">
+            </div>
+            <!--分页-->
+            <!--<div id="page-selection"></div>-->
+			<div class="get-more" data-start="1" data-num="10" >下拉加载更多</div>
+        </div>
+        <!--页面脚部-->
+        <!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/front/store/<!--{$theme}-->/inner/footer.html"}-->
+        <!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/front/store/<!--{$theme}-->/inner/bottomNav.html"}-->
+    </div>
+    <!--提示框-->
+    <!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/front/store/<!--{$theme}-->/inner/dialog.html"}-->
+    <!--公用js文件-->
+    <!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/front/store/<!--{$theme}-->/inner/jsfiles.html"}-->
+    <script type="text/javascript" src="<!--{$smarty.const.JS_PATH}-->/public/jquery.bootpag/jquery.bootpag.min.js"></script>
+        <script type="text/javascript" src="<!--{$smarty.const.JS_PATH}-->/public/jquery.cookie/jquery.cookie.js"></script>
+    <script type="text/javascript" src="<!--{$smarty.const.TEMPLATE_PATH}-->/front/store/<!--{$theme}-->/js/goods/goodsSearch.js"></script>
+</body>
+</html>

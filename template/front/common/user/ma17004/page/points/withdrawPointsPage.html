@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <title>积分提现</title>
+    <!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/front/common/head.html"}-->
+    <link rel="stylesheet"	href="<!--{$smarty.const.TEMPLATE_PATH}-->/front/common/user/<!--{$theme}-->/css/points/withdrawPointsPage.css">
+</head>
+
+<body>
+    <!--主容器-->
+    <div id="container" class="container-fluid">
+        <!--页面头部-->
+        <div class="top">
+			<a href="javascript:window.history.go(-1);" class="left-icon"><i class="iconfont">&#xe62a;</i></a>
+		    <a href="./index.php?c=store&a=index" class="center"><span class="logo" style="text-align: left;">积分提现</span></a>
+		    <a href="javascript:;" class="right-icon"></a>
+		</div>
+        <!--主体内容-->
+        <div id="content">
+        	
+            <div class="top-area">
+                <div class="notice">温馨提示</div>
+                <div class="points">当前账户可提现<span class="total_points" proportion="<!--{$baseConfigInfo.points_cash}-->"><!--{$userInfo.points}--></span>积分&nbsp;(&nbsp;1积分=<!--{$baseConfigInfo.points_cash}-->元&nbsp;)</div>
+            </div>
+            
+            <div class="chose_area">
+	            <div class="text">选择固定提现金额，或者自定义提现金额</div>
+	            <div class="get_money cf">
+	            	<!--{foreach from = $template item = money name=moneyList}-->
+	            	<div class="item item-<!--{$smarty.foreach.moneyList.iteration%3}-->" value="<!--{$money.money}-->"><span><!--{$money.money}--></span>元</div>
+	            	<!--{/foreach}-->
+		        	<input type="text" class="item" placeholder="自定义金额" value=""/><span class="unit">元</span>
+	            </div>
+	            <div class="submit">立即提现</div>
+            </div>
+        </div>
+
+    </div>
+    <!--公用js文件-->
+    <!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/front/common/jsfiles.html"}-->
+    <!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/front/common/dialog.html"}-->
+    <script type="text/javascript" src="<!--{$smarty.const.TEMPLATE_PATH}-->/front/common/user/<!--{$theme}-->/js/points/withdrawPointsPage.js"></script>
+</body>
+</html>

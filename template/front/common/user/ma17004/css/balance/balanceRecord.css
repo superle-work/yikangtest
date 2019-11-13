@@ -1,0 +1,29 @@
+/*************************
+ ------我的佣金页面样式---
+ *************************/
+
+#content .top-area{
+    background-color: #C2273E;
+    height: 100px;
+    padding: 10px;
+    color: #ffffff;
+}
+#content .cash-record-list{
+    padding: 10px;
+}
+#content .cash-record-list table{
+    width: 100%;
+}
+#content table tr.title td{
+    background-color: #EEEEEE;
+}
+#content table td{
+    text-align: center;
+    padding: 5px;
+}
+#content .record-info .money-info{
+    color: #ff6600;
+}
+#content .record-info .col-2{
+    color: #999999;
+}

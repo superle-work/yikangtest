@@ -1,0 +1,73 @@
+/***************************
+*****www.changkeji.com******
+******Author:jjhu***********
+******Date:2015.4.17********
+****************************/
+
+.header,.header .top{
+    background: #FF66FF;
+}
+.list-title-panel {
+    color: #FF66FF;
+}
+.header .top a:hover,.header .top a.active{
+    background: #FC9CFC;
+}
+.content .left-section li a:hover,
+.content .left-section li.active a{
+    background-color:  #FF66FF;
+}
+.right-section h3 i{
+    color: #FF66FF;
+}
+.inner-section .nav-tabs{
+    border-color: #FF66FF;
+}
+.inner-section .nav li.selected a,.inner-section .nav li:hover a{
+    background:  #FF66FF;
+}
+.right-section .nav-div tr.first-rank td{
+    color: #FF66FF;
+}
+/**微相册页面**/
+.album-item .album-operation .album-operation-list div:hover{
+    background-color: #FF66FF;
+}
+.photo-item-wrap .photo-item{
+    background: #FF66FF;
+}
+.photo-item .photo-operation .photo-operation-list div:hover{
+    background-color: #FF66FF;
+}
+/**素材管理页面**/
+.right-section .media-type li.selected, .right-section .media-type li.selected:hover{
+    border-bottom-color: #FF66FF;
+}
+/**自动回复**/
+.response-text-wrap .unlock{
+    color: #FF66FF;
+}
+/**关键指标**/
+.key-index{
+    background-color: #FF66FF;
+}
+.key-index .key-index-item:hover{
+    background-color: #FC9CFC;
+}
+.key-index .key-index-item-wrap{
+    border-right: 1px solid #FC9CFC;
+}
+/**缩放按钮**/
+.content .section-scale .btn-scale{
+    color: #FF66FF;
+}
+.content .section-scale .btn-scale:hover{
+    color:#FC9CFC;
+}
+/**左边栏菜单缩小悬浮效果 提示条**/
+.content .left-section .tooltip-inner{
+    background-color: #FF66FF;
+}
+.content .left-section .tooltip-arrow{
+    border-right-color: #FF66FF;
+}

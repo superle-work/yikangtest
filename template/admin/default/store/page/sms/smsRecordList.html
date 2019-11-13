@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<!-- head -->
+<!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/admin/<!--{$theme}-->/common/page/head.html"}-->
+<body>
+<!---------------- 在线预订 ------------------->
+
+<!-- 页头 -->
+<!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/admin/<!--{$theme}-->/common/page/header.html"}-->
+<!-- 主体 -->
+<div class="content container-fluid<!--{if $leftBarScale eq '1'}--> scale<!--{/if}-->">
+    <div class="row">
+        <div class="col-md-2 left-section">
+            <!-- 左导航菜单 -->
+            <!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/admin/<!--{$theme}-->/common/page/menu.html"}-->
+
+        </div>
+        <div class="col-md-10 right-section">
+            <!--内容区域-->
+            <h3><i class="icon iconfont"><!--{$smarty.session.currentMenu.icon}--></i><!--{$smarty.session.currentMenu.menuTitle}--></h3>
+            <div class="inner-section row">
+                <div class="sms-info">剩余短信数：<b><!--{$quantity}--></b></div>
+                <!--查询区域-->
+                <div class="search-area">
+                    短信类型
+                    <select class="sms_type">
+                        <option value="">全部</option>
+                        <option value="0">注册验证码</option>
+                        <option value="1">订单付款成功通知商家</option>
+                    </select>
+                    验证结果
+                    <select class="verify_result">
+                        <option value="">全部</option>
+                        <option value="0">未验证</option>
+                        <option value="1">验证成功</option>
+                        <option value="2">验证失败</option>
+                    </select>
+                    <input type="text" size="20" class="search-text phone" placeholder="手机号">
+                    <a class="btn btn-primary btn-sm search-btn">查询</a>
+                </div>
+                <div class="item table-responsive">
+                    <table id="list-table" class="table table-striped table-hover table-bordered table-base">
+                        <tbody>
+
+                        </tbody>
+                    </table>
+                </div>
+                <!--分页-->
+                <div id="page-selection"></div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 页脚 -->
+<!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/admin/<!--{$theme}-->/common/page/footer.html"}-->
+
+<!-- jsfiles -->
+<!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/admin/<!--{$theme}-->/common/page/jsfiles.html"}-->
+<script type="text/javascript" src="<!--{$smarty.const.BASE_PATH}-->/js/public/jquery.bootpag/jquery.bootpag.min.js"></script>
+<script type="text/javascript" src="<!--{$smarty.const.TEMPLATE_PATH}-->/admin/<!--{$theme}-->/store/js/sms/smsRecordList.js"></script>
+</body>
+</html>

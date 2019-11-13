@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <title>提现记录</title>
+    <!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/front/common/head.html"}-->
+    <link rel="stylesheet"	href="<!--{$smarty.const.TEMPLATE_PATH}-->/front/common/user/<!--{$theme}-->/css/balance/balanceRecord.css">
+</head>
+
+<body>
+    <!--主容器-->
+    <div id="container" class="container-fluid">
+        <!--主体内容-->
+        <div id="content">
+            <div class="cash-record-list">
+                <table class="table-striped">
+                <!--{if count($recordList) neq 0}-->
+                    <tr class="title"><td>提现金额</td><td>提现时间</td></tr>
+                    <!--{foreach item=cash from=$recordList}-->
+                    <tr class="record-info">
+                        <td class="col-1"><span class="money-info"><i class="icon iconfont">&#xe604;</i><!--{$cash.money}--></span></td>
+                        <td class="col-2"><!--{$cash.add_time}--></td>
+                    </tr>
+                    <!--{/foreach}-->
+                 <!--{else}-->
+                 <tr class="text-danger"><td>您还没有提现记录哦</td></tr>
+                 <!--{/if}-->
+                </table>
+            </div>
+        </div>
+
+        <!--页面脚部-->
+    </div>
+    <!--公用js文件-->
+   	<!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/front/common/jsfiles.html"}-->
+    <!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/front/common/dialog.html"}-->
+
+</body>
+</html>

@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>个人中心</title>
+    <!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/front/store/<!--{$theme}-->/inner/head.html"}-->
+    <link rel="stylesheet"	href="<!--{$smarty.const.TEMPLATE_PATH}-->/front/store/<!--{$theme}-->/css/user/userCenter1.css">
+</head>
+<body>
+	<div id="container" class="container-fluid">
+    <!--主体内容-->
+    	<div id="content">
+    		<!--用户信息区-->
+    		<div class="user-area">
+    			<div class="head-img-box">
+    				<img src="<!--{$smarty.session.user.head_img_url}-->" alt="" />
+    			</div>
+    			<div class="level">LV.15</div>
+    			<div class="user-info">
+    				<div class="nick_name">飞翔的老鸟</div>
+    				<div class="balance-box">
+    					<div class="balance-top clearfix">
+    						<span class="pull-left">我的个人消费(元)</span>
+    						<span class="pull-right">2300/3300</span>
+    					</div>
+    					<div class="balance-rate">
+    						<div class="rating" style="width: 60%;"></div>
+    					</div>
+    				</div>
+    				<div class="member-info">
+    					<i class="iconfont">&#xe6e7;</i> 钻石会员博士
+    				</div>
+    			</div>
+    		</div>
+    		<!--我的资金-->
+    		<div class="my-money row">
+    			<div class="col-xs-4 col-sm-4 col-md-4 money-item">
+    				<a href="javascript:;" class="balance">
+    					<div class="item-cont" style="color: #EA4844"><span>0.00</span>元</div>
+    					<div class="item-intro">余额</div>
+    				</a>
+    			</div>
+    			<div class="col-xs-4 col-sm-4 col-md-4 money-item">
+    				<a href="javascript:;" class="balance">
+	    				<div class="item-cont" style="color: #EFA84B"><span>10</span>个</div>
+	    				<div class="item-intro">金币</div>
+	    			</a>
+    			</div>
+    			<div class="col-xs-4 col-sm-4 col-md-4 money-item">
+    				<a href="javascript:;" class="balance">
+	    				<div class="item-cont" style="color: #58C949"><span>100</span>分</div>
+	    				<div class="item-intro">积分</div>
+	    			</a>
+    			</div>
+    		</div>
+    		<!--我的订单-->
+    		<div class="info-box my-order">
+    			<div class="info-top clearfix">
+    				<div class="info-top-left pull-left">
+    					<i class="iconfont left-icon" style="color: #E68F9D">&#xe68d;</i> 我的订单
+    				</div>
+    				<a href="./index.php?c=store&a=orderList" class="info-top-right pull-right">
+    					查看全部订单 <i class="iconfont right-icon">&#xe654;</i>
+    				</a>
+    			</div>
+    			<div class="row order-list">
+    				<a href="javascript:;" class="col-xs-3 col-sm-3 col-md-3 order-item list-item order-btn" data-href="./index.php?c=store&a=orderList&state=0">
+    					<i class="iconfont order-icon" style="color: #D09033;">&#xe673;</i>
+    					<div class="item-name">待付款</div>
+    				</a>
+    				<a href="javascript:;" class="col-xs-3 col-sm-3 col-md-3 order-item list-item order-btn" data-href="./index.php?c=store&a=orderList&state=2">
+    					<i class="iconfont order-icon" style="color: #119CA6;">&#xe691;</i>
+    					<div class="item-name">待收货</div>
+    				</a>
+    				<a href="javascript:;" class="col-xs-3 col-sm-3 col-md-3 order-item list-item order-btn" data-href="./index.php?c=store&a=orderList&state=5">
+    					<i class="iconfont order-icon" style="color: #8B6ED7;">&#xe6c9;</i>
+    					<div class="item-name">待评价</div>
+    				</a>
+    				<a href="javascript:;" class="col-xs-3 col-sm-3 col-md-3 order-item list-item">
+    					<i class="iconfont order-icon" style="color: #72A6FF;">&#xe789;</i>
+    					<div class="item-name">售后</div>
+    				</a>
+    			</div>
+    		</div>
+    		<!--相关服务-->
+    		<div class="info-box all-serve">
+    			<div class="info-top clearfix">
+    				<div class="info-top-left pull-left">
+    					<i class="iconfont left-icon" style="color: #5794CD">&#xe73c;</i> 相关服务
+    				</div>
+    			</div>
+    			<div class="serve-list row">
+    				<a href="javascript:;" class="col-xs-3 col-sm-3 col-md-3 serve-item list-item">
+    					<i class="iconfont serve-icon" style="color: #E24636">&#xe6af;</i>
+    					<div class="item-name">我的收藏</div>
+    				</a>
+    				<a href="javascript:;" class="col-xs-3 col-sm-3 col-md-3 serve-item list-item">
+    					<i class="iconfont serve-icon" style="color: #4DAB79">&#xe608;</i>
+    					<div class="item-name">个人资料</div>
+    				</a>
+    				<a href="javascript:;" class="col-xs-3 col-sm-3 col-md-3 serve-item list-item">
+    					<i class="iconfont serve-icon" style="color: #6B6BB3">&#xe67c;</i>
+    					<div class="item-name">地址管理</div>
+    				</a>
+    				<a href="javascript:;" class="col-xs-3 col-sm-3 col-md-3 serve-item list-item">
+    					<i class="iconfont serve-icon" style="color: #4BAD79">&#xe7d4;</i>
+    					<div class="item-name">我的粉丝</div>
+    				</a>
+    				<a href="javascript:;" class="col-xs-3 col-sm-3 col-md-3 serve-item list-item">
+    					<i class="iconfont serve-icon" style="color: #3C7BB8">&#xe678;</i>
+    					<div class="item-name">发布列表</div>
+    				</a>
+    				<a href="javascript:;" class="col-xs-3 col-sm-3 col-md-3 serve-item list-item">
+    					<i class="iconfont serve-icon" style="color: #EB7E60">&#xe6d3;</i>
+    					<div class="item-name">我的评论</div>
+    				</a>
+    				<a href="javascript:;" class="col-xs-3 col-sm-3 col-md-3 serve-item list-item">
+    					<i class="iconfont serve-icon" style="color: #E9C82A">&#xe6f0;</i>
+    					<div class="item-name">消息管理</div>
+    				</a>
+    				<a href="javascript:;" class="col-xs-3 col-sm-3 col-md-3 serve-item list-item">
+    					<i class="iconfont serve-icon" style="color: #EDA15E">&#xe774;</i>
+    					<div class="item-name">社团服务</div>
+    				</a>
+    				<a href="javascript:;" class="col-xs-3 col-sm-3 col-md-3 serve-item list-item">
+    					<i class="iconfont serve-icon" style="color: #C37525">&#xe657;</i>
+    					<div class="item-name">会员服务</div>
+    				</a>
+    				<a href="javascript:;" class="col-xs-3 col-sm-3 col-md-3 serve-item list-item">
+    					<i class="iconfont serve-icon" style="color: #EB8FAE">&#xe629;</i>
+    					<div class="item-name">积分商城</div>
+    				</a>
+    				<a href="javascript:;" class="col-xs-3 col-sm-3 col-md-3 serve-item list-item">
+    					<i class="iconfont serve-icon" style="color: #3C7BB8">&#xe71b;</i>
+    					<div class="item-name">我的钱包</div>
+    				</a>
+    				<a href="javascript:;" class="col-xs-3 col-sm-3 col-md-3 serve-item list-item">
+    					<i class="iconfont serve-icon" style="color: #4DAB79">&#xe65f;</i>
+    					<div class="item-name">积分签到</div>
+    				</a>
+    				<a href="javascript:;" class="col-xs-3 col-sm-3 col-md-3 serve-item list-item">
+    					<i class="iconfont serve-icon" style="color: #C26EF8">&#xe6ee;</i>
+    					<div class="item-name">帮帮服务</div>
+    				</a>
+    				<a href="javascript:;" class="col-xs-3 col-sm-3 col-md-3 serve-item list-item">
+    					<i class="iconfont serve-icon" style="color: #7885E6">&#xe662;</i>
+    					<div class="item-name">校园贴吧</div>
+    				</a>
+    				<a href="javascript:;" class="col-xs-3 col-sm-3 col-md-3 serve-item list-item">
+    					<i class="iconfont serve-icon" style="color: #F27547">&#xe63a;</i>
+    					<div class="item-name">跳蚤市场</div>
+    				</a>
+    				<a href="javascript:;" class="col-xs-3 col-sm-3 col-md-3 serve-item list-item">
+    					<i class="iconfont serve-icon" style="color: #70BEE4">&#xe746;</i>
+    					<div class="item-name">兼职招聘</div>
+    				</a>
+    			</div>
+    		</div>
+    	</div>	
+    	<!--页面脚部-->
+        <!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/front/store/<!--{$theme}-->/inner/bottomNav.html"}-->
+    </div>
+    <!--提示框-->
+    <!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/front/store/<!--{$theme}-->/inner/dialog.html"}-->
+    <!--公用js文件-->
+    <!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/front/store/<!--{$theme}-->/inner/jsfiles.html"}-->
+    <script type="text/javascript" src="<!--{$smarty.const.TEMPLATE_PATH}-->/front/store/<!--{$theme}-->/js/user/userCenter1.js"></script>
+</body>
+</html>

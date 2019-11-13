@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <title>账户管理</title>
+    <!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/front/common/user/<!--{$theme}-->/page/inner/head.html"}-->
+    <link rel="stylesheet"	href="<!--{$smarty.const.TEMPLATE_PATH}-->/front/common/user/<!--{$theme}-->/css/user/accountList.css">
+</head>
+
+<body>
+    <!--主容器-->
+    <div id="container" class="container-fluid">
+        <!--页面头部-->
+        <div id="header">
+            <a class="back" href="javascript:window.history.back(-1);"><i class="icon iconfont">&#xe62a;</i></a>
+            <a class="weimall" href="./index.php?c=mall&a=index"><span><!--{$smarty.const.pageTitle}--></span></a>
+        </div>
+        <!--主体内容-->
+        <div id="content">
+            <div class="account-top-area">
+                <span>账户列表</span>
+                <a href="javascript:;" class="complete" style="display: none;">完成</a>
+                <a href="javascript:;" class="edit" style="display: block;">编辑</a>
+            </div>
+            <div class="account-list">
+                <!--{if $accountList}-->
+                <table>
+                    <!--{foreach from = $accountList item = account name = accountList}-->
+                    <tr class="account-area"  data-id="<!--{$account.id}-->">
+                        <td class="col-1">
+                            <!--选择区域-->
+                            <div class="select-area">
+                                <a class="item-select <!--{if $account.is_default eq '1'}--> selected<!--{/if}-->" href="javascript:;">
+                                    <i class="icon iconfont selected"<!--{if $account.is_default eq '1'}-->style="display:inline;"<!--{/if}-->>&#xe621;</i>
+                                    <i class="icon iconfont un-selected"<!--{if $account.is_default eq '0'}-->style="display:inline;"<!--{/if}-->>&#xe622;</i>
+                                </a>
+                                <a class="item-delete" style="display: none;" href="javascript:;">
+                                    <i class="icon iconfont un-selected">&#xe618;</i>
+                                    <i class="icon iconfont selected">&#xe619;</i>
+                                </a>
+                            </div>
+                        </td>
+                        <td class="col-2">
+                            <!--{if $account.account_type eq '0'}-->支付宝
+                            <!--{else if $account.account_type eq '1'}-->微信
+                            <!--{else if $account.account_type eq '2'}-->银行卡-<!--{$account.account_bank}--><!--{/if}-->
+                        </td>
+                        <td class="col-3"><!--{$account.account}--></td>
+                        <td class="col-4"><a class="edit" href="./index.php?c=base_user&a=saveOrUpdateAccount&id=<!--{$account.id}-->" data-id="<!--{$account.id}-->" ><i class="icon iconfont">&#xe62c;</i></a></td>
+                    </tr>
+                    <!--{/foreach}-->
+                </table>
+                <!--{else}-->
+                <p class="bg-danger no-data">还没有任何账户信息呢！</p>
+                <!--{/if}-->
+            </div>
+            <!--提示框-->
+    		<!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/front/common/user/<!--{$theme}-->/page/inner/dialog.html"}-->
+        </div>
+        <!--页面脚部-->
+        <div class="account-bottom-area">
+            <div class="row">
+                <a class="col-xs-6 col-sm-6 col-md-6" id="defaultAccount" href="javascript:;">
+                    <span>设为默认账户</span>
+                </a>
+                <a class="col-xs-6 col-sm-6 col-md-6" id="addAccount" href="./index.php?c=base_user&a=saveOrUpdateAccount"><span class="can-use">添加新账户</span></a>
+                <a class="col-xs-6 col-sm-6 col-md-6" style="display: none;" id="selectAllDelete" href="javascript:;">
+                    <i class="icon iconfont all-selected" style="display: none;">&#xe619;</i>
+                    <i class="icon iconfont not-all-selected">&#xe618;</i>
+                    <span class="select-all-text">全选</span>
+                </a>
+                <a class="col-xs-6 col-sm-6 col-md-6"id="deleteAll" style="display: none;" href="javascript:;"><span>删除</span></a>
+            </div>
+        </div>
+    </div>
+
+    <!--公用js文件-->
+     <!--页面脚部-->
+    <!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/front/common/user/<!--{$theme}-->/page/inner/footer.html"}-->
+    
+    <!--公用js文件-->
+    <!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/front/common/user/<!--{$theme}-->/page/inner/jsfiles.html"}-->
+    <script src="<!--{$smarty.const.BASE_PATH}-->/js/public/bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="<!--{$smarty.const.TEMPLATE_PATH}-->/front/common/user/<!--{$theme}-->/js/user/accountList.js"></script>
+
+</body>
+</html>

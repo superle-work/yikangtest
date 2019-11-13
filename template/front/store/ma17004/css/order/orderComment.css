@@ -1,0 +1,229 @@
+/*******************************
+ ------到付订单页面样式-------
+ ---------author:jjhu-----------
+ -------data:2015-07-26---------
+ *******************************/
+#content{
+    padding: 0;
+    padding-bottom: 100px;
+}
+.order-area .order-num-info{
+    font-size: 12px;
+    padding: 5px 10px;
+    border-top: 1px solid #EEEEEE;
+    border-bottom: 1px solid #EEEEEE;
+}
+.order-area .order-goods-list{
+    /*padding: 5px 0;*/
+    /*border-bottom: 1px solid #EEEEEE;*/
+    overflow: hidden;
+    background-color: #f7f7f7;
+}
+.order-area .goods{
+    padding: 20px 10px 10px 120px;
+    background: #ffffff;
+    position: relative;
+    height: 130px;
+}
+/*.order-area .goods a{
+    float: left;
+}*/
+.order-area .goods .goods-image{
+   position: absolute;
+   top:15px;
+   left:10px;
+   width:100px;
+   height:100px; 
+}
+.order-area .goods .goods-image img{
+   width:100%;
+   height:100%; 
+}
+.order-area .goods-comment{
+    /*margin: 5px 0;*/
+    background: #ffffff;
+    padding: 5px 0px;
+    position: relative;
+}
+.order-area .goods-comment textarea{
+    width: 100%;
+    height: 80px;
+    border: none;
+
+    padding: 10px;
+}
+.order-area .upload-image-area{
+    margin: 5px 0 10px;
+}
+.order-area .upload-oper-btn a{
+    color: #999999;
+    text-decoration: none;
+    display: inline-block;
+}
+.order-area .upload-oper-btn a i{
+    font-size: 26px;
+}
+.order-area .choose-level{
+    padding: 10px 0;
+}
+.order-area .service-score .choose-level{
+    text-align: center;
+}
+.order-area .service-score .choose-level .radio-inline{
+    width: 20%;
+}
+.order-area .choose-score{
+    /*border-top: 1px solid #EEEEEE;
+    border-bottom: 1px solid #EEEEEE;*/
+    /*padding: 10px 0;*/
+   padding-right:10px;
+    position: absolute;
+    right: 0px;
+    top: 0px;
+}
+.order-area .choose-score .star{
+    /*float: left;*/
+    /*width: 20%;*/
+    text-align: center;
+    display: inline-block;
+    /*padding: 5px;*/
+    cursor: pointer;
+}
+.order-area .choose-score .star i{
+    font-size: 20px;
+}
+.order-area .choose-score .star i.empty{
+    display: none;
+}
+.order-area .choose-score .star .entity{
+    color: #F16564;
+}
+.order-area .goods .goods-info{
+    /*float: left;*/
+    padding-right: 40px;
+}
+.order-area .goods .goods-info .name{
+    padding-right: 20px;
+}
+.order-area .goods .price-count-info{
+    /*float: right;
+    text-align: right;*/
+    font-size: 12px;
+}
+.order-area .goods .price-count-info .price{
+	font-size:16px;
+    position:absolute;
+    top:19px;
+    right:10px;
+}
+.order-area .goods .price-count-info .count{
+	font-size:12px;
+    position:absolute;
+    top:60px;
+    right:10px;
+}
+.order-area .property-area{
+	padding:5px 0px;
+    font-size: 12px;
+    color: #666;
+}
+.order-area .side-tool{
+    padding: 0 10px;
+}
+.order-area  .side-tool label{
+    font-weight: normal;
+    color: #666666;
+}
+.submit-area{
+    margin: 20px 0;
+    text-align: center;
+    padding: 0 10px;
+}
+.submit-area .submit{
+    text-decoration: none;
+    height: 40px;
+    line-height: 40px;
+    font-size: 14px;
+    display: block;
+    background: #009A00;
+    color: #ffffff;
+}
+.goods-comment .service-score {
+    padding: 0px 0px 20px 10px;
+    border-bottom:1px solid #eee;
+    
+}
+.bottom-nav .anonym{
+	width:70%;
+	text-align:left;
+	padding-left:20px;
+}
+.bottom-nav .submit{
+	width:30%;
+	color:#fff;
+	background:#E93B3C;
+}
+.bottom-nav .selected .icon.cur{
+	color:#E93B3C;
+}
+.bottom-nav .selected .anonym-select{
+	padding-left:5px;
+}
+#feedbackcontent::-webkit-input-placeholder{
+	color:#D1D1D1;
+}
+#content .upload-image {
+    padding: 30px 0px 20px 0px;
+    border-bottom: 1px solid #eee;
+}
+#content .upload-image .main {
+    margin: 2px 1.5%;
+    text-align: center;
+    width: 30%;
+    height: 100px;
+    /* line-height: 100px; */
+    float: left;
+    position: relative;
+    background-color: #EBECF0;
+    color: #999;
+}
+#content .upload-image .main .add-btn {
+    position: absolute;
+    margin: auto;
+    left: 0px;
+    right: 0px;
+    top: 15px;
+    bottom: 0px;
+}
+#content .upload-image .main i.camera {
+    font-size: 30px;
+}
+#content .upload-image .main .add-img {
+    display: block;
+}
+#content .upload-image .main .share-ago {
+    display: none;
+    width: 0;
+    height: 0;
+    border-top: 50px solid #f29700;
+    /* border-left: 50px solid transparent; */
+    position: absolute;
+    right: 0;
+    top: 0;
+    color: #fff;
+}
+#content .upload-image .main .share-ago .off-text {
+    position: absolute;
+    /* display: inline-block; */
+    height: 50px;
+    width: 50px;
+    text-align: center;
+    line-height: 50px;
+    font-size: 20px;
+    top: -60px;
+    left: -40px;
+}
+#content .upload-image .main img {
+    width: 100%;
+    height: 100%;
+}

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <title>余额提现</title>
+    <!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/front/common/head.html"}-->
+    <link rel="stylesheet"	href="<!--{$smarty.const.TEMPLATE_PATH}-->/front/common/user/<!--{$theme}-->/css/recharge/withdrawRecharge.css">
+</head>
+
+<body>
+    <!--主容器-->
+    <div id="container" class="container-fluid">
+        <!--页面头部-->
+        <div class="top">
+			<a href="javascript:window.history.go(-1);" class="left-icon"><i class="iconfont">&#xe62a;</i></a>
+		    <span class="logo" style="text-align: left;">余额提现</span>
+		    <a href="javascript:;" class="right-icon"></a>
+		</div>
+        <!--主体内容-->
+        <div id="content">
+        	
+            <div class="top-area">
+                <div class="notice">温馨提示</div>
+                <div class="points">当前账户可提现余额<span class="total_balance" ><!--{$userInfo.balance}--></span>元</div>
+            </div>
+            
+            <div class="chose_area">
+	            <div class="text">选择固定提现金额，或者自定义提现金额</div>
+	            <div class="fixed-area">
+                	<div class="fixed-item">
+                		<div class="item fixed" data-money="20" data-type="0"><span class="item-color">20</span>元</div>
+                	</div>
+                	<div class="fixed-item">
+                		<div class="item fixed" data-money="50" data-type="0"><span class="item-color">50</span>元</div>
+                	</div>
+                	<div class="fixed-item">
+                		<div class="item fixed active" data-money="100" data-type="0"><span class="item-color">100</span>元</div>
+                	</div>
+                	<div class="fixed-item">
+                		<div class="item fixed" data-money="200" data-type="0"><span class="item-color">200</span>元</div>
+                	</div>
+                </div>
+	            <div class="get_money cf">
+		        	<input type="text" class="item defined" placeholder="自定义金额需不能大于200元" value=""/><span class="unit">元</span>
+	          	</div>
+	            <div class="submit">立即提现</div>
+            </div>
+        </div>
+
+    </div>
+    <!--公用js文件-->
+    <!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/front/common/jsfiles.html"}-->
+    <!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/front/common/dialog.html"}-->
+    <script type="text/javascript" src="<!--{$smarty.const.TEMPLATE_PATH}-->/front/common/user/<!--{$theme}-->/js/recharge/withdrawRecharge.js"></script>
+</body>
+</html>

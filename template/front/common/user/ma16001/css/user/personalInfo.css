@@ -1,0 +1,181 @@
+/*******************************
+ -------我的技师页面样式--------
+ ---------author:joy-----------
+ -------data:2016-10-21---------
+ *******************************/
+body{
+	background: #f3f3f3;
+}
+#top{
+	background-color: rgba(25,180,234,1);
+}
+#container{
+    width: 100%;
+    max-width: 640px;
+    margin: 0 auto;
+    background-color: #f3f3f3;
+    min-height: 300px;
+    overflow: visible;
+    padding: 0;
+}
+/******------------top------------*******/
+.top{
+    zoom: 1;
+    overflow: hidden;
+    background-color: rgba(0, 0, 0, 1);
+    height: 40px;
+    line-height: 40px;
+    color: #FFF;
+    font-size: 16px;
+    padding: 0 15px;
+    position: fixed;
+    top:0;
+    width: 100%;
+    max-width: 640px;
+    z-index: 1;
+}
+.top a{
+    display: inline-block;
+    height: 100%;
+    float: left;
+    color: #fff;
+    width: 10%;
+    text-align: left;
+    outline: none;
+    text-decoration: none;
+}
+.top a.right-icon{
+	text-align: right;
+}
+.top a.center{
+	text-align: center;
+ 	width: 80%;
+}
+.top .logo {
+	text-align: center;
+    color: #FFFFFF;
+    display: block;
+}
+.top{
+	position: relative;
+}
+#content{
+    background: #f3f3f3;
+}
+.top-area{
+    background-color: #19B4EA;
+    padding: 10px 0;
+	position: relative;
+}
+.top-area .head-image{
+    margin: 0px auto;
+	height:100px;
+    text-align: center;
+}
+.top-area .nickname{
+	position:absolute;
+	width:100%;
+	top:80px;
+	right:0;
+	left:0;
+	bottom:0;
+    text-align: center;
+    color: #fff;
+}
+.top-area .nickname span,#content #nick_name{
+	display: inline-block;
+	overflow:hidden;
+	text-overflow:ellipsis;
+	white-space: nowrap;
+	width: 100%;
+}
+.top-area .head-image img{
+    height: 60px;
+    border-radius: 40px;
+    border: 1px solid #fff;
+    padding: 2px;
+}
+#content .no-result-info{
+    background-color: #c9e2b3;
+    text-align: center;
+    padding: 5px;
+    margin: 0 -10px;
+}
+
+#content .myinfo{
+	border-top: 1px solid #e5e5e5;
+	border-bottom: 1px solid #e5e5e5;
+	background: #fff;
+    padding: 5px 10px;
+    margin-bottom: 20px;
+    min-height: 160px;
+}
+#content .myinfo input{
+    width: 100%;
+    border: 1px solid #ffffff;
+    padding: 2px 5px;
+    background: none;
+    border: none;
+}
+#content .operation-area{
+    text-align: right;
+    padding: 5px 0;
+    margin-top: 10px;
+    padding-bottom: 0;
+    margin-right: 10px;
+}
+#content .myinfo .btn{
+    border-radius: 0;
+}
+#content .action-tip{
+    text-align: center;
+}
+#content .success-info{
+    background-color: #fbf8e9;
+}
+
+#content .error-info{
+    padding: 4px ;
+    color: #CC231C;
+    background-color: #fbf8e9;
+    line-height: 16px;
+    text-align: center;
+}
+/*可编辑状态*/
+#content .myinfo input.edit{
+    border-color:#EEEEEE;
+}
+#content .myinfo  a{
+    text-decoration: none;
+}
+#content .user-info{
+	position: relative;
+    margin-bottom: 15px;
+    padding: 5px 0;
+    padding-left: 30px;
+    border-bottom: 1px solid #e5e5e5;
+}
+#content .user-info i{
+	position: absolute;
+	top: 10px;
+	left: 0;
+}
+#content .user-info.nick_name i{
+	font-size: 22px;
+}
+#content .user-info-title{
+    color: #888;
+    padding: 3px 5px;
+    margin-bottom: 5px;
+}
+#content  select{
+    padding: 3px 12px;
+    border: 1px solid #ccc;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+.my-dialog-footer a{
+	text-decoration: none;
+}

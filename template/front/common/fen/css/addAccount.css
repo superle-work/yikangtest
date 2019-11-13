@@ -1,0 +1,67 @@
+#content{
+	background: #FFFFFF;
+	padding: 0px;
+	margin-top: 1px;
+	
+}
+#content div{
+	padding: 20px 10px;
+	border-bottom:1px solid #F2F2F2;
+/*	margin-bottom: 15px;*/
+	font-size: 15px;
+}
+#content div input{
+	outline: none;
+	border:none;
+}
+::-webkit-input-placeholder {/*Chrome/Safari*/
+    color:#cbcbcb;
+    }
+#content div select{
+	appearance:none;  
+    -moz-appearance:none;  
+    -webkit-appearance:none; 
+	border:none;
+	width: 75%;
+    outline: none;
+    background: #fff;
+    direction: rtl;
+}    
+#content .type{
+	position: relative;
+}
+#content .type i{
+	position:absolute;
+	top:20px;
+	right:16px;
+}
+
+/*底部功能按钮*/
+#bottom{
+	/*background: #F2F2F2;*/
+	border:0;
+	margin-top: 70px;
+}
+#bottom .button {
+	text-align: center;
+}
+#bottom .button a{
+	display: inline-block;
+	width:90%;
+	padding: 10px 0;
+	border-radius: 3px;
+	color:#fff;
+	font-size: 16px;
+}
+#bottom .button .back{
+	color:#fff;
+	background: #999999;
+	margin-right: 20px;
+}
+#bottom .button .comfirm{
+	color:#fff;
+	background: #3994FD;
+}
+#content .account_bank,#content .account,#content .id_card{
+	display:none;
+}

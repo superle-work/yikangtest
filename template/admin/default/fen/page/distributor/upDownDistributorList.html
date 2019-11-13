@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<!-- head -->
+<!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/admin/<!--{$theme}-->/common/page/head.html"}-->
+<link rel="stylesheet" href="<!--{$smarty.const.TEMPLATE_PATH}-->/admin/<!--{$theme}-->/fen/css/distributor/upDownDistributorList.css">
+<body>
+<!---------------- 分销商申请列表 ------------------->
+
+<!-- 页头 -->
+<!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/admin/<!--{$theme}-->/common/page/header.html"}-->
+<!-- 主体 -->
+<div class="content container-fluid<!--{if $smarty.session.admin.left_bar_scale eq '1'}--> scale<!--{/if}-->">
+    <div class="row">
+        <div class="col-md-2 left-section">
+            <!-- 左导航菜单 -->
+            <!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/admin/<!--{$theme}-->/common/page/menu.html"}-->
+
+        </div>
+        <div class="col-md-10 right-section">
+            <!--内容区域-->
+            <h3> <i class="icon iconfont"><!--{$smarty.session.currentMenu.icon}--></i>关联分销商
+            <div class="operation-div">
+                    <a class="btn btn-success" href="javascript:window.history.go(-1);">返回</a>
+            </div>
+            </h3>
+            <div class="inner-section row">
+                <div class="list-title">
+                        <div class="list-title-panel">
+                            <span class="glyphicon glyphicon-list"> 当前分销商：<!--{$distributorInfo.name}--></span>
+                        </div>
+                </div>
+                <div class="item table-responsive">
+                    <table id="list-table" class="list-table table table-striped table-hover table-bordered table-base applylist">
+                        <tbody>
+                        <tr><th class="th1">序号</th><th class="th12">分销商名称</th><th class="th3">昵称</th><th class="th4">电话</th><th class="th5">销售总额</th><th class="th5">累计佣金</th><th class="th5">可提佣金</th><th class="th5">冻结佣金</th><th class="th5">一级佣金</th><th class="th5">二级佣金</th><th class="th5">三级佣金</th><th class="th6">关联级别</th><th class="th2" hidden="hidden">身份</th><th class="th2">状态</th><th class="th8">操作</th></tr>
+                        	<!--{foreach name=test item=distributorList from=$upDownDistributorList}-->
+                        	<tr>
+                        		<td><!--{$smarty.foreach.test.iteration}--></td>
+                        		<td><a class="limitName" title="查看分销商详情" href="./admin.php?c=fen_distributor&a=distributorInfo&id=<!--{$distributorList.id}-->"><!--{$distributorList.name}--></a></td>
+                        		<td><a href="./admin.php?c=base_user&a=userDetail&id=<!--{$distributorList.user_id}-->" class="limitName" title="查看用户详情"><!--{$distributorList.nick_name}--></a></td>
+                        		<td><!--{$distributorList.phone|default:'--'}--></td>
+                        		<td><!--{$distributorList.total_sales_fee}--></td>
+                        		<td><!--{$distributorList.total_fee}--></td>
+                        		<td><!--{$distributorList.my_fee}--></td>
+                        		<td><!--{$distributorList.freeze_fee}--></td>
+                        		<td><!--{$distributorList.fir_fee}--></td>
+                        		<td><!--{$distributorList.sec_fee}--></td>
+                        		<td><!--{$distributorList.thr_fee}--></td>
+                        		<td>
+                        			<!--{if $distributorList.rank_name eq '上三级'}-->
+                        			<span style="color:#FF1493"><!--{$distributorList.rank_name}--></span>
+                        			<!--{elseif $distributorList.rank_name eq '上二级'}-->
+                        			<span style="color:#FF69B4"><!--{$distributorList.rank_name}--></span>
+                        			<!--{elseif $distributorList.rank_name eq '上一级'}-->
+                        			<span style="color:	#F08080"><!--{$distributorList.rank_name}--></span>
+                        			<!--{elseif $distributorList.rank_name eq '本级'}-->
+                        			<span style="color:red"><!--{$distributorList.rank_name}--></span>
+                        			<!--{elseif $distributorList.rank_name eq '下一级'}-->
+                        			<span style="color:#3CB371"><!--{$distributorList.rank_name}--></span>
+                        			<!--{elseif $distributorList.rank_name eq '下二级'}-->
+                        			<span style="color:	#00FA9A"><!--{$distributorList.rank_name}--></span>
+                        			<!--{elseif $distributorList.rank_name eq '下三级'}-->
+                        			<span style="color:#48D1CC"><!--{$distributorList.rank_name}--></span>
+                        			<!--{else}-->
+                        			<!--{$distributorList.rank_name}-->
+                        			<!--{/if}-->
+                       			</td>
+                       			<td hidden="hidden"><!--{if $distributorList.level == 0}--><span class="text-danger">下线</span><!--{else}--><span class="text-success">分销商</span><!--{/if}--></td>
+                       			<td><!--{if $distributorList.is_use == 0}--><span class="text-danger">无效</span><!--{else}--><span class="text-success">有效</span><!--{/if}--></td>
+		                        <td>
+		                        	<!--{if $distributorList.id neq $distributorInfo.id}-->
+		                        	<a href="./admin.php?c=fen_distributor&a=UpDownDistributorList&id=<!--{$distributorList.id}-->" class="btn btn-xs btn-primary search-parent">查看上下级</a>
+		                        	<!--{/if}-->
+		                        	</td>
+		                     </tr>
+		                     <!--{/foreach}-->
+                        </tbody>
+                    </table>
+                </div>
+                <!--分页-->
+                <div id="page-selection"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 页脚 -->
+<!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/admin/<!--{$theme}-->/common/page/footer.html"}-->
+
+<!-- jsfiles -->
+<!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/admin/<!--{$theme}-->/common/page/jsfiles.html"}-->
+<script src="<!--{$smarty.const.BASE_PATH}-->/js/public/My97DatePicker/WdatePicker.js"></script>
+<script type="text/javascript" src="<!--{$smarty.const.BASE_PATH}-->/js/public/jquery.bootpag/jquery.bootpag.min.js"></script>
+</body>
+</html>

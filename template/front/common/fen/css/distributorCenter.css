@@ -1,0 +1,113 @@
+/*************************
+ ------我的佣金页面样式---
+ *************************/
+#content{
+    min-height: 500px;
+}
+#content .top-area{
+    padding: 10px;
+    height: 60px;
+}
+#content .top-area img{
+    float: left;
+}
+#content .top-area .myinfo{
+    float: left;
+    margin-left: 10px;
+}
+#content .top-area .add-time{
+    color: #999999;
+    font-size: 12px;
+}
+#content .fee-info{
+    position: relative;
+    padding:0px 10px 10px;
+    height: 140px;
+    background-color: #C2273E;
+    color: #ffffff;
+}
+#content .fee-info .total_fee-info{
+    font-size: 12px;
+    height: 40px;
+    line-height: 40px;
+    margin-bottom: 10px;
+    position: relative;
+}
+
+#content .fee-info .myfee-info .myfee-title{
+    margin-bottom: 20px;
+}
+#content .fee-info .myfee-info .myfee-value{
+    font-size: 30px;
+}
+#content .fee-info .withdraw-cash{
+    position: absolute;
+    right: 10px;
+    bottom: 0px;
+    text-decoration: none;
+    color: #ffffff;
+}
+#content .fee-info .withdraw-cash i{
+    font-size: 40px;
+}
+#content .distribute-info{
+
+}
+#content .distribute-info ul,#content .distribute-info li{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+#content .distribute-info li{
+    float: left;
+    width: 33.3%;
+    text-align: center;
+    padding: 10px;
+    border-bottom: 1px solid #E7E7E7;
+}
+.left-border{
+    border-left:1px solid #E7E7E7;
+}
+
+#content .distribute-info li a{
+    display: block;
+    text-decoration: none;
+}
+#content .distribute-info li a .item-icon i{
+    display: inline-block;
+    padding: 5px 10px;
+}
+#content .distribute-info li.item-1 i{
+    background-color: #ff6600;
+}
+#content .distribute-info li.item-2 i{
+    background-color: #606CC8;
+}
+#content .distribute-info li.item-3 i{
+    background-color: #4DB245;
+}
+#content .distribute-info li.item-4 i{
+    background-color: #41AEED;
+}
+#content .distribute-info li.item-5 i{
+    background-color: #B87BF2;
+}
+#content .distribute-info li.item-6 i{
+    background-color: #F29E24;
+}
+#content .distribute-info li a i{
+    color: #ffffff;
+    border-radius: 38px;
+    font-size: 30px;
+}
+#content .distribute-info li a .item-name{
+    color: #333333;
+    line-height: 24px;
+}
+#content .distribute-info .other-info{
+    font-size: 12px;
+    color: #AAAAAA;
+}
+#content .distribute-info .other-info .number{
+    color: #cd0200;
+}

@@ -1,0 +1,57 @@
+/******所有活动的公用css*********
+ ***** @author joy**********
+ ***** @since 2016-10-13*****
+ ****************************/
+
+/*****头部*******/
+.top-area{
+    width:100%; 
+    background: #fff; 
+}
+.header{
+	background:#1695FC ;
+	color:white;
+	height:38px;
+	width:100%;
+	display: flex;
+	flex-direction: row;
+	justify-content:space-between;
+	align-items: center;
+}
+.name{
+	width:30%;
+	padding-left:17px;
+}
+.phone{
+	width:40%;
+	text-align: center;
+}
+.total{
+	width:30%;
+	text-align: center;
+}
+.user-info{
+	height:50px;
+	width:100%;
+	display: flex;
+	flex-direction: row;
+	justify-content:space-between;
+	align-items: center;
+	border-bottom:1px solid #F6F6F6;
+	margin-left:17px;
+}
+.user-info .name2{
+	width:22%;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+.user-info .income{
+	color:#FF7D44;
+	width:38%;
+}
+/*间隔区域*/
+.space{
+	height:10px;
+	background:#F5F5F5;
+}

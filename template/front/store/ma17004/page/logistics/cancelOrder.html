@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <title>核销记录</title>
+    <!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/front/store/<!--{$theme}-->/inner/head.html"}-->
+    <link rel="stylesheet"	href="<!--{$smarty.const.TEMPLATE_PATH}-->/front/store/<!--{$theme}-->/css/logistics/cancelOrder.css">
+</head>
+
+<body>
+    <div id="content">
+        <div id="content">
+        	<div class="top-area">
+        		<div class="cur all" data-state="">
+        			全部
+        		</div>
+        		<div class="" data-state="2">
+        			待送检
+        		</div>
+        		<div class="" data-state="3">
+        			送检中
+        		</div>
+        		<div class="" data-state="5">
+        			已完成
+        		</div>
+        	</div>
+        	
+        	<div class="space"></div>
+        	
+            <div class="order-list">
+            	
+            </div>
+            <div class="get-more hidden" data-start="1" data-num="10" >下拉加载更多</div>
+        </div>
+    </div>
+
+    <!--提示框-->
+    <!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/front/store/<!--{$theme}-->/inner/dialog.html"}-->
+    <!--公用js文件-->
+    <!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/front/store/<!--{$theme}-->/inner/jsfiles.html"}-->
+    <script type="text/javascript" src="<!--{$smarty.const.JS_PATH}-->/public/jquery.bootpag/jquery.bootpag.min.js"></script>
+    <script type="text/javascript" src="<!--{$smarty.const.TEMPLATE_PATH}-->/front/store/<!--{$theme}-->/js/logistics/cancelOrder.js"></script>
+</body>
+</html>

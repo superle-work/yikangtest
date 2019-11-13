@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html>
+<!-- head -->
+<!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/admin/<!--{$theme}-->/common/page/head.html"}-->
+<link rel="stylesheet" href="<!--{$smarty.const.BASE_PATH}-->/js/public/jquery.qqFace/css/qqFace.css">
+<link rel="stylesheet" href="<!--{$smarty.const.TEMPLATE_PATH}-->/admin/<!--{$theme}-->/weixin/response/css/responsePage.css">
+<body<!--{if $smarty.session.admin.account neq 'change'}--> oncontextmenu="return false"  oncopy="return false" oncut="return false"<!--{/if}-->>
+<!---------------- 智能回复 ------------------->
+
+<!-- 页头 -->
+<!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/admin/<!--{$theme}-->/common/page/header.html"}-->
+<!-- 主体 -->
+<div class="content container-fluid<!--{if $leftBarScale eq '1'}--> scale<!--{/if}-->">
+    <div class="row">
+        <div class="col-md-2 left-section">
+            <!-- 左导航菜单 -->
+            <!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/admin/<!--{$theme}-->/common/page/menu.html"}-->
+
+        </div>
+        <div class="col-md-10 right-section">
+            <!--内容区域-->
+            <h3><i class="icon iconfont"><!--{$smarty.session.currentMenu.icon}--></i><!--{$smarty.session.currentMenu.menuTitle}-->
+                <input id="navFlag" type="hidden" value="<!--{$navFlag}-->">
+            </h3>
+            <div class="response-text-wrap">
+                <!--自动回复功能是否开启-->
+                <!--{if $isUse}-->
+                <span class="lock-icon unlock"><i class="icon iconfont">&#xe650;</i></span>
+                <h4 class="title">已开启智能回复设置</h4>
+                <p class="desc">通过编辑内容或关键词规则，快速进行自动回复设置。</p>
+                <div class="oper"><a class="btn btn-danger btn-md set-use" data-isuse="0">停用</a></div>
+                <!--{else}-->
+                <span class="lock-icon lock"><i class="icon iconfont">&#xe64f;</i></span>
+                <h4 class="title">已关闭智能回复设置</h4>
+                <p class="desc">通过编辑内容或关键词规则，快速进行自动回复设置。</p>
+                <div class="oper"><a class="btn btn-success btn-md set-use" data-isuse="1">启用</a></div>
+                <!--{/if}-->
+            </div>
+            <!--{if $isUse}-->
+            <div class="inner-section row">
+                <div class="response-type">
+                    <ul class="clearfix">
+                        <li id="attentionMessage" class="selected"><a href="javascript:" data-use_scene="0" data-id="<!--{$attentionMessage.id}-->" data-is_use="<!--{$attentionMessage.is_use}-->">被关注自动回复</a></li>
+                        <li id="allMessage"><a href="javascript:" data-use_scene="1" data-id="<!--{$allMessage.id}-->" data-is_use="<!--{$allMessage.is_use}-->">消息统一自动回复</a></li>
+                        <li id="keywordsMessage" class="last-type"><a href="javascript:" data-use_scene="2">关键词自动回复</a></li>
+                    </ul>
+                    <span class="response-set-way response-way-0"><a target="_blank" href="http://kf.qq.com/faq/120322fu63YV130422aEv6nq.html">如何设置被关注自动回复<i class="icon iconfont">&#xe616;</i></a></span>
+                    <span class="response-set-way response-way-1"><a target="_blank" href="http://kf.qq.com/faq/120322fu63YV130422q6FBrm.html">如何设置消息自动回复<i class="icon iconfont">&#xe616;</i></a></span>
+                    <span class="response-set-way response-way-2"><a target="_blank" href="http://kf.qq.com/faq/120322fu63YV130422rYNjYB.html">如何设置关键词自动回复<i class="icon iconfont">&#xe616;</i></a></span>
+                </div>
+                <!--回复内容操作区域-->
+                <div id="responseContentWrap">
+                    <!--被关注自动回复区域-->
+                    <div class="response-content response-content-0 selected">
+                        <ul class="response-content-nav">
+                            <li<!--{if $attentionMessage.type eq '' || $attentionMessage.type eq 'text'}--> class="selected"<!--{/if}-->><a href="javascript:;"  data-media-type="text"><i class="icon iconfont">&#xe654;</i><span>文字</span></a></li>
+                            <li<!--{if $attentionMessage.type eq 'image'}--> class="selected"<!--{/if}-->><a href="javascript:;" data-media-type="image"><i class="icon iconfont">&#xe653;</i><span>图片</span></a></li>
+                            <li<!--{if $attentionMessage.type eq 'voice'}--> class="selected"<!--{/if}-->><a href="javascript:;" data-media-type="voice"><i class="icon iconfont">&#xe651;</i><span>语音</span></a></li>
+                            <li<!--{if $attentionMessage.type eq 'video'}--> class="selected"<!--{/if}-->><a href="javascript:;" data-media-type="video"><i class="icon iconfont">&#xe652;</i><span>视频</span></a></li>
+                            <li<!--{if $attentionMessage.type eq 'my_news'}--> class="selected"<!--{/if}-->><a href="javascript:;" data-media-type="my_news"><i class="icon iconfont">&#xe655;</i><span>自定义图文</span></a></li>
+                        </ul>
+                        <div class="tab-content-panel">
+                            <div class="tab-content tab-content-text <!--{if $attentionMessage eq '' || $attentionMessage.type eq 'text'}-->selected<!--{/if}-->">
+                                <div class="real-content"><!--{if $attentionMessage.type eq 'text'}--><!--{$attentionMessage.content}--><!--{/if}--></div>
+                                <div class="display-content display-content-text" contenteditable="true"></div>
+                                <div class="editor-toolbar clearfix">
+                                    <a href="javascript:;" class="icon-emotion"><i class="icon iconfont">&#xe657;</i></a>
+                                    <a href="javascript:;" class="icon-link"><i class="icon iconfont">&#xe658;</i></a>
+                                    <p class="editor-tip">共可以输入<em>600</em>字</p>
+                                    <div class="link-oper-area">
+                                        <span class="hook"><span class="hook_dec hook_top"></span><span class="hook_dec hook_btm"></span></span>
+                                        <div class="link-name-area">链接名称：<input type="text" placeholder="最多输入30字" class="link-name"></div>
+                                        <div class="link-url-area">链接地址：<input type="text" class="link-url" placeholder="请输入正确的链接地址"></div>
+                                        <div class="tip-info"></div>
+                                        <div class="link-btn-area">
+                                            <a class="btn btn-sm btn-success link-add" href="javascript:;">添加</a>
+                                            <a class="btn btn-sm btn-default link-cancel" href="javascript:;">取消</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-content tab-content-image <!--{if $attentionMessage.type eq 'image'}-->selected<!--{/if}-->">
+                                <div class="display-content display-content-image">
+                                    <div class="display-material-area"<!--{if $attentionMessage.type eq 'image'}-->style="display:block;"<!--{/if}-->>
+                                        <!--{if $attentionMessage.type eq 'image'}-->
+                                        <img src="<!--{$attentionMessage.url}-->" data-media_id="<!--{$attentionMessage.media_id}-->"><a href="javascript:;" class="material-remove">删除</a>
+                                        <!--{/if}-->
+                                    </div>
+
+                                    <div class="no-content"<!--{if $attentionMessage.type neq 'image'}-->style="display:block;"<!--{/if}-->>
+                                        <span class="create-access">
+                                            <a href="javascript:;">
+                                                <i class="icon iconfont">&#xe65a;</i>
+                                                <strong>从素材库中选择</strong>
+                                            </a>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-content tab-content-voice <!--{if $attentionMessage.type eq 'voice'}-->selected<!--{/if}-->">
+                                <div class="display-content display-content-voice">
+                                    <div class="display-material-area"<!--{if $attentionMessage.type eq 'voice'}-->style="display:block;"<!--{/if}-->>
+                                        <!--{if $attentionMessage.type eq 'voice'}-->
+                                        <div class="voice-wrap" data-media_id="<!--{$attentionMessage.media_id}-->">
+                                            <span class="voice-icon"><i class="icon iconfont">&#xe64c;</i></span>
+                                            <span class="voice-name"></span>
+                                        </div>
+                                        <a href="javascript:;" class="material-remove">删除</a>
+                                        <!--{/if}-->
+                                    </div>
+
+                                    <div class="no-content"<!--{if $attentionMessage.type neq 'voice'}-->style="display:block;"<!--{/if}-->>
+                                        <span class="create-access">
+                                            <a href="javascript:;">
+                                                <i class="icon iconfont">&#xe65a;</i>
+                                                <strong>从素材库中选择</strong>
+                                            </a>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-content tab-content-video <!--{if $attentionMessage.type eq 'video'}-->selected<!--{/if}-->">
+                                <div class="display-content display-content-video">
+                                    <div class="display-material-area"<!--{if $attentionMessage.type eq 'video'}-->style="display:block;"<!--{/if}-->>
+                                        <!--{if $attentionMessage.type eq 'video'}-->
+                                        <div class="video-wrap" data-media_id="<!--{$attentionMessage.media_id}-->">
+                                            <span class="video-icon"><i class="icon iconfont">&#xe64d;</i></span>
+                                            <span class="video-name"></span>
+                                        </div>
+                                        <a href="javascript:;" class="material-remove">删除</a>
+                                        <!--{/if}-->
+                                    </div>
+
+                                    <div class="no-content"<!--{if $attentionMessage.type neq 'video'}-->style="display:block;"<!--{/if}-->>
+                                            <span class="create-access">
+                                                <a href="javascript:;">
+                                                    <i class="icon iconfont">&#xe65a;</i>
+                                                    <strong>从素材库中选择</strong>
+                                                </a>
+                                            </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--自定义图文-->
+                            <div class="tab-content tab-content-my_news <!--{if $attentionMessage.type eq 'my_news'}-->selected<!--{/if}-->">
+                                <div class="display-content display-content-my_news">
+                                	<!--{if $attentionMessage.type eq 'my_news' && $attentionMessage.content !=''}-->
+                                		<!--{foreach from = json_decode($attentionMessage.content) item = item name = itemList}-->
+                                		<div class="item">
+	                                		<div class="title-area"><input type="text" class="title" value="<!--{$item->title}-->" placeholder="请输入标题"></div>          								
+											<div class="description-area"><textarea class="description" placeholder="请输入描述"><!--{$item->description}--></textarea></div>
+											<div class="url-area"><input type="text" class="url" value="<!--{$item->url}-->" placeholder="请输入图文链接地址"></div>
+											<div class="picUrl-area">
+												<div class="image-wrap">
+													<img src="<!--{$item->picUrl}-->">
+												</div>
+											</div>
+											<div class="oper-area">
+												<a class="item-upload-image" href="javascript:;" title="上传图片"><i class="icon iconfont">&#xe691;</i></a>
+												<a class="item-delete" href="javascript:;" title="删除图文"><i class="icon iconfont">&#xe624;</i></a>
+												<a class="item-add" href="javascript:;" title="添加图文"><i class="icon iconfont">&#xe65a;</i></a>
+											</div>
+										</div>
+                                		<!--{/foreach}-->
+                                	<!--{elseif ($attentionMessage.type !='my_news') || ($attentionMessage.type eq 'my_news' && $attentionMessage.content == "")}-->
+          							<div class="item">
+										<div class="title-area"><input type="text" class="title" placeholder="请输入标题"></div>          								
+										<div class="description-area"><textarea class="description" placeholder="请输入描述"></textarea></div>
+										<div class="url-area"><input type="text" class="url" placeholder="请输入图文链接地址"></div>
+										<div class="picUrl-area">
+											<div class="image-wrap"></div>
+										</div>
+										<div class="oper-area">
+											<a class="item-upload-image" href="javascript:;" title="上传图片"><i class="icon iconfont">&#xe691;</i></a>
+											<a class="item-delete" href="javascript:;" title="删除图文"><i class="icon iconfont">&#xe624;</i></a>
+											<a class="item-add" href="javascript:;" title="添加图文"><i class="icon iconfont">&#xe65a;</i></a>
+										</div>
+          							</div>
+          							
+          							<!--{/if}-->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--消息自动回复区域-->
+                    <div class="response-content response-content-1">
+                        <ul class="response-content-nav">
+                            <li<!--{if $allMessage eq '' || $allMessage.type eq 'text'}--> class="selected"<!--{/if}-->><a href="javascript:;" data-media-type="text"><i class="icon iconfont">&#xe654;</i><span>文字</span></a></li>
+                            <li<!--{if $allMessage.type eq 'image'}--> class="selected"<!--{/if}-->><a href="javascript:;" data-media-type="image"><i class="icon iconfont">&#xe653;</i><span>图片</span></a></li>
+                            <li<!--{if $allMessage.type eq 'voice'}--> class="selected"<!--{/if}-->><a href="javascript:;" data-media-type="voice"><i class="icon iconfont">&#xe651;</i><span>语音</span></a></li>
+                            <li<!--{if $allMessage.type eq 'video'}--> class="selected"<!--{/if}-->><a href="javascript:;" data-media-type="video"><i class="icon iconfont">&#xe652;</i><span>视频</span></a></li>
+                            <li<!--{if $allMessage.type eq 'my_news'}--> class="selected"<!--{/if}-->><a href="javascript:;" data-media-type="my_news"><i class="icon iconfont">&#xe655;</i><span>自定义图文</span></a></li>
+                        </ul>
+                        <div class="tab-content-panel">
+                            <div class="tab-content tab-content-text <!--{if $allMessage eq '' || $allMessage.type eq 'text'}-->selected<!--{/if}-->">
+                                <div class="real-content"><!--{if $allMessage.type eq 'text'}--><!--{$allMessage.content}--><!--{/if}--></div>
+                                <div class="display-content display-content-text" contenteditable="true"></div>
+                                <div class="editor-toolbar clearfix">
+                                    <a href="javascript:;" class="icon-emotion"><i class="icon iconfont">&#xe657;</i></a>
+                                    <a href="javascript:;" class="icon-link"><i class="icon iconfont">&#xe658;</i></a>
+                                    <p class="editor-tip">共可以输入<em>600</em>字</p>
+                                    <div class="link-oper-area">
+                                        <span class="hook"><span class="hook_dec hook_top"></span><span class="hook_dec hook_btm"></span></span>
+                                        <div class="link-name-area">链接名称：<input type="text" placeholder="最多输入30字" class="link-name"></div>
+                                        <div class="link-url-area">链接地址：<input type="text" class="link-url" placeholder="请输入正确的链接地址"></div>
+                                        <div class="tip-info"></div>
+                                        <div class="link-btn-area">
+                                            <a class="btn btn-sm btn-success link-add" href="javascript:;">添加</a>
+                                            <a class="btn btn-sm btn-default link-cancel" href="javascript:;">取消</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-content tab-content-image <!--{if $allMessage.type eq 'image'}-->selected<!--{/if}-->">
+
+                                <div class="display-content display-content-image">
+                                    <div class="display-material-area"<!--{if $allMessage.type eq 'image'}-->style="display:block;"<!--{/if}-->>
+                                        <!--{if $allMessage.type eq 'image'}-->
+                                        <img src="<!--{$allMessage.url}-->" data-media_id="<!--{$allMessage.media_id}-->"><a href="javascript:;" class="material-remove">删除</a>
+                                        <!--{/if}-->
+                                    </div>
+
+                                    <div class="no-content"<!--{if $allMessage.type neq 'image'}-->style="display:block;"<!--{/if}-->>
+                                        <span class="create-access">
+                                            <a href="javascript:;">
+                                                <i class="icon iconfont">&#xe65a;</i>
+                                                <strong>从素材库中选择</strong>
+                                            </a>
+                                        </span>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="tab-content tab-content-voice <!--{if $allMessage.type eq 'voice'}-->selected<!--{/if}-->">
+                                <div class="display-content display-content-voice">
+                                    <div class="display-material-area"<!--{if $allMessage.type eq 'voice'}-->style="display:block;"<!--{/if}-->>
+                                        <!--{if $allMessage.type eq 'voice'}-->
+                                        <div class="voice-wrap" data-media_id="<!--{$allMessage.media_id}-->">
+                                            <span class="voice-icon"><i class="icon iconfont">&#xe64c;</i></span>
+                                            <span class="voice-name"></span>
+                                        </div>
+                                        <a href="javascript:;" class="material-remove">删除</a>
+                                        <!--{/if}-->
+                                    </div>
+
+                                    <div class="no-content"<!--{if $allMessage.type neq 'voice'}-->style="display:block;"<!--{/if}-->>
+                                        <span class="create-access">
+                                            <a href="javascript:;">
+                                                <i class="icon iconfont">&#xe65a;</i>
+                                                <strong>从素材库中选择</strong>
+                                            </a>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-content tab-content-video <!--{if $allMessage.type eq 'video'}-->selected<!--{/if}-->">
+                                <div class="display-content display-content-video">
+                                    <div class="display-material-area"<!--{if $allMessage.type eq 'video'}-->style="display:block;"<!--{/if}-->>
+                                        <!--{if $allMessage.type eq 'video'}-->
+                                        <div class="video-wrap" data-media_id="<!--{$allMessage.media_id}-->">
+                                            <span class="video-icon"><i class="icon iconfont">&#xe64d;</i></span>
+                                            <span class="video-name"></span>
+                                        </div>
+                                        <a href="javascript:;" class="material-remove">删除</a>
+                                        <!--{/if}-->
+                                    </div>
+
+                                    <div class="no-content"<!--{if $allMessage.type neq 'video'}-->style="display:block;"<!--{/if}-->>
+                                            <span class="create-access">
+                                                <a href="javascript:;">
+                                                    <i class="icon iconfont">&#xe65a;</i>
+                                                    <strong>从素材库中选择</strong>
+                                                </a>
+                                            </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--自定义图文-->
+                            <div class="tab-content tab-content-my_news <!--{if $allMessage.type eq 'my_news'}-->selected<!--{/if}-->">
+                                <div class="display-content display-content-my_news">
+                                	<!--{if $allMessage.type eq 'my_news' && $allMessage.content !=''}-->
+                                		<!--{foreach from = json_decode($allMessage.content) item = item name = itemList}-->
+                                		<div class="item">
+	                                		<div class="title-area"><input type="text" class="title" value="<!--{$item->title}-->" placeholder="请输入标题"></div>          								
+											<div class="description-area"><textarea class="description" placeholder="请输入描述"><!--{$item->description}--></textarea></div>
+											<div class="url-area"><input type="text" class="url" value="<!--{$item->url}-->" placeholder="请输入图文链接地址"></div>
+											<div class="picUrl-area">
+												<div class="image-wrap">
+													<img src="<!--{$item->picUrl}-->">
+												</div>
+											</div>
+											<div class="oper-area">
+												<a class="item-upload-image" href="javascript:;" title="上传图片"><i class="icon iconfont">&#xe691;</i></a>
+												<a class="item-delete" href="javascript:;" title="删除图文"><i class="icon iconfont">&#xe624;</i></a>
+												<a class="item-add" href="javascript:;" title="添加图文"><i class="icon iconfont">&#xe65a;</i></a>
+											</div>
+										</div>
+                                		<!--{/foreach}-->
+                                	<!--{elseif ($allMessage.type !='my_news') || ($allMessage.type eq 'my_news' && $allMessage.content == "")}-->
+          							<div class="item">
+										<div class="title-area"><input type="text" class="title" placeholder="请输入标题"></div>          								
+										<div class="description-area"><textarea class="description" placeholder="请输入描述"></textarea></div>
+										<div class="url-area"><input type="text" class="url" placeholder="请输入图文链接地址"></div>
+										<div class="picUrl-area">
+											<div class="image-wrap"></div>
+										</div>
+										<div class="oper-area">
+											<a class="item-upload-image" href="javascript:;" title="上传图片"><i class="icon iconfont">&#xe691;</i></a>
+											<a class="item-delete" href="javascript:;" title="删除图文"><i class="icon iconfont">&#xe624;</i></a>
+											<a class="item-add" href="javascript:;" title="添加图文"><i class="icon iconfont">&#xe65a;</i></a>
+										</div>
+          							</div>
+          							
+          							<!--{/if}-->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--关键词自动回复区域-->
+                    <div class="response-content response-content-2">
+                        <div class="btn-rule-add-wrap">
+                            <a href="javascript:;" class="btn btn-success btn-sm btn-ruld-add"><i class="icon iconfont">&#xe61f;</i>添加规则</a>
+                        </div>
+
+                        <!--添加规则-->
+                        <div class="keywords-response rule-add-wrap keywords-rule-wrap">
+                            <div class="rule-top">新规则</div>
+                            <div class="rule-wrap">
+                                <div class="rule-info-area rule-name-area"><span class="label-text"><i class="icon iconfont">&#xe620;</i>规则名</span><input type="text" class="rule-name" placeholder="规则名最多60个字"></div>
+                                <div class="rule-info-area rule-keywords-area"><span class="label-text"><i class="icon iconfont">&#xe620;</i>关键字</span><input type="text" class="rule-keywords" placeholder="多个关键词之间以英文竖线“|”隔开,每个关键词少于30个字"></div>
+                                <div class="rule-info-area rule-response-type-area clearfix">
+                                    <span class="label-text rule-content-area-text"><i class="icon iconfont">&#xe620;</i>回复</span>
+                                    <ul>
+                                        <li class="selected"><a href="javascript:;"  data-media-type="text"><i class="icon iconfont">&#xe654;</i><span>文字</span></a></li>
+                                        <li><a href="javascript:;" data-media-type="image"><i class="icon iconfont">&#xe653;</i><span>图片</span></a></li>
+                                        <li><a href="javascript:;" data-media-type="voice"><i class="icon iconfont">&#xe651;</i><span>语音</span></a></li>
+                                        <li><a href="javascript:;" data-media-type="video"><i class="icon iconfont">&#xe652;</i><span>视频</span></a></li>
+                                        <li><a href="javascript:;" data-media-type="news"><i class="icon iconfont">&#xe655;</i><span>图文</span></a></li>
+                                        <li><a href="javascript:;" data-media-type="my_news"><i class="icon iconfont">&#xe655;</i><span>自定义图文</span></a></li>
+                                    </ul>
+                                </div>
+                                <!--新规则内容-->
+                                <div class="rule-info-area rule-content-area">
+                                    <!--文本内容 默认显示-->
+                                    <div class="tab-content tab-content-text selected" data-media-type="text">
+                                        <div class="display-content display-content-text" contenteditable="true"></div>
+                                        <div class="editor-toolbar clearfix">
+                                            <a href="javascript:;" class="icon-emotion"><i class="icon iconfont">&#xe657;</i></a>
+                                            <a href="javascript:;" class="icon-link"><i class="icon iconfont">&#xe658;</i></a>
+                                            <p class="editor-tip">共可以输入<em>600</em>字</p>
+                                            <div class="link-oper-area">
+                                                <span class="hook"><span class="hook_dec hook_top"></span><span class="hook_dec hook_btm"></span></span>
+                                                <div class="link-name-area">链接名称：<input type="text" placeholder="最多输入30字" class="link-name"></div>
+                                                <div class="link-url-area">链接地址：<input type="text" class="link-url" placeholder="请输入正确的链接地址"></div>
+                                                <div class="tip-info"></div>
+                                                <div class="link-btn-area">
+                                                    <a class="btn btn-sm btn-success link-add" href="javascript:;">添加</a>
+                                                    <a class="btn btn-sm btn-default link-cancel" href="javascript:;">取消</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="tab-content display-material-area" data-media-type="">
+                                        <!--素材库中选择内容-->
+
+                                    </div>
+                                    <!--自定义图文-->
+		                            <div class="tab-content tab-content-my_news" data-media_type="my_news">
+		                                <div class="display-content display-content-my_news">
+		          							<div class="item">
+												<div class="title-area"><input type="text" class="title" placeholder="请输入标题"></div>          								
+												<div class="description-area"><textarea class="description" placeholder="请输入描述"></textarea></div>
+												<div class="url-area"><input type="text" class="url" placeholder="请输入图文链接地址"></div>
+												<div class="picUrl-area">
+													<div class="image-wrap"></div>
+												</div>
+												<div class="oper-area">
+													<a class="item-upload-image" href="javascript:;" title="上传图片"><i class="icon iconfont">&#xe691;</i></a>
+													<a class="item-delete" href="javascript:;" title="删除图文"><i class="icon iconfont">&#xe624;</i></a>
+													<a class="item-add" href="javascript:;" title="添加图文"><i class="icon iconfont">&#xe65a;</i></a>
+												</div>
+		          							</div>
+		                                </div>
+		                            </div>
+                                </div>
+                            </div>
+                            <div class="rule-bottom"><a class="btn btn-success btn-sm btn-rule-save" href="javascript:;">保存</a><a class="btn btn-default btn-sm btn-rule-remove" href="javascript:;">删除</a></div>
+                        </div>
+                        <!--已有规则-->
+                        <div class="keywords-response keywords-response-wrap"<!--{if $keywordsMessage}--> style="display:block;"<!--{/if}-->>
+                            <!--{foreach from = $keywordsMessage item = message name = keywordsMessage}-->
+                            <div class="keywords-rule keywords-rule-wrap" data-id="<!--{$message.id}-->" data-message_id="<!--{$message.message_id}-->">
+                                <div class="rule-top">规则<!--{$smarty.foreach.keywordsMessage.iteration}-->：<!--{$message.rule_name}--></div>
+                                <div class="rule-wrap">
+                                    <div class="rule-info-area rule-name-area"><span class="label-text"><i class="icon iconfont">&#xe620;</i>规则名</span><input type="text" class="rule-name" placeholder="规则名最多60个字" value="<!--{$message.rule_name}-->"></div>
+                                    <div class="rule-info-area rule-keywords-area"><span class="label-text"><i class="icon iconfont">&#xe620;</i>关键字</span><input type="text" class="rule-keywords" placeholder="多个关键词之间以英文竖线“|”隔开，每个关键词少于30个字"value="<!--{foreach from = $message.keywords item = keywords name = keywords}--><!--{$keywords}--><!--{if $smarty.foreach.keywords.last == false}-->|<!--{/if}--><!--{/foreach}-->"></div>
+                                    <div class="rule-info-area rule-response-type-area clearfix">
+                                        <span class="label-text rule-content-area-text"><i class="icon iconfont">&#xe620;</i>回复</span>
+                                        <ul>
+                                            <li <!--{if $message.type eq 'text'}-->class="selected"<!--{/if}-->><a href="javascript:;"  data-media-type="text"><i class="icon iconfont">&#xe654;</i><span>文字</span></a></li>
+                                            <li <!--{if $message.type eq 'image'}-->class="selected"<!--{/if}-->><a href="javascript:;" data-media-type="image"><i class="icon iconfont">&#xe653;</i><span>图片</span></a></li>
+                                            <li <!--{if $message.type eq 'voice'}-->class="selected"<!--{/if}-->><a href="javascript:;" data-media-type="voice"><i class="icon iconfont">&#xe651;</i><span>语音</span></a></li>
+                                            <li <!--{if $message.type eq 'video'}-->class="selected"<!--{/if}-->><a href="javascript:;" data-media-type="video"><i class="icon iconfont">&#xe652;</i><span>视频</span></a></li>
+                                            <li <!--{if $message.type eq 'news'}-->class="selected"<!--{/if}-->><a href="javascript:;" data-media-type="news"><i class="icon iconfont">&#xe655;</i><span>图文</span></a></li>
+                                            <li <!--{if $message.type eq 'my_news'}-->class="selected"<!--{/if}-->><a href="javascript:;" data-media-type="my_news"><i class="icon iconfont">&#xe655;</i><span>自定义图文</span></a></li>
+                                        </ul>
+                                    </div>
+                                    <!--规则内容-->
+                                    <div class="rule-info-area rule-content-area">
+                                        <!--文本内容 默认显示-->
+                                        <div class="tab-content tab-content-text<!--{if $message.type eq 'text'}--> selected<!--{/if}-->" data-media-type="text">
+                                            <div class="real-content"><!--{if $message.type eq 'text'}--><!--{$message.content}--><!--{/if}--></div>
+                                            <div class="display-content display-content-text" contenteditable="true"></div>
+                                            <div class="editor-toolbar clearfix">
+                                                <a href="javascript:;" class="icon-emotion"><i class="icon iconfont">&#xe657;</i></a>
+                                                <a href="javascript:;" class="icon-link"><i class="icon iconfont">&#xe658;</i></a>
+                                                <p class="editor-tip">共可以输入<em>600</em>字</p>
+                                                <div class="link-oper-area">
+                                                    <span class="hook"><span class="hook_dec hook_top"></span><span class="hook_dec hook_btm"></span></span>
+                                                    <div class="link-name-area">链接名称：<input type="text" placeholder="最多输入30字" class="link-name"></div>
+                                                    <div class="link-url-area">链接地址：<input type="text" class="link-url" placeholder="请输入正确的链接地址"></div>
+                                                    <div class="tip-info"></div>
+                                                    <div class="link-btn-area">
+                                                        <a class="btn btn-sm btn-success link-add" href="javascript:;">添加</a>
+                                                        <a class="btn btn-sm btn-default link-cancel" href="javascript:;">取消</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="tab-content display-material-area<!--{if $message.type neq 'text'}--> selected<!--{/if}-->" data-media-type="<!--{$message.type}-->">
+                                            <!--素材库中选择内容-->
+                                            <!--{if $message.type eq 'image'}-->
+                                             <img src="<!--{$message.url}-->" data-media_id="<!--{$message.media_id}-->"><a href="javascript:;" class="material-remove">删除</a>
+                                            <!--{else if $message.type eq 'voice'}-->
+                                            <div class="voice-wrap" data-media_id="<!--{$message.media_id}-->">
+                                                <span class="voice-icon"><i class="icon iconfont">&#xe64c;</i></span><span class="voice-name"><!--{$message.content}--></span>
+                                            </div>
+                                            <a href="javascript:;" class="material-remove">删除</a>
+                                            <!--{else if $message.type eq 'video'}-->
+                                            <div class="video-wrap" data-media_id="<!--{$message.media_id}-->"><span class="video-icon"><i class="icon iconfont">&#xe64d;</i></span><span class="video-name"><!--{$message.content}--></span></div>
+                                            <!--{else if $message.type eq 'news'}-->
+                                            <div class="news-wrap" data-media_id="<!--{$message.media_id}-->">
+                                            <!--{$message.content}-->
+                                            <a href="javascript:;" class="material-remove">删除</a>
+                                            </div>
+                                            <!--{/if}-->
+
+                                        </div>
+                                        <!--自定义图文-->
+			                            <div class="tab-content tab-content-my_news <!--{if $message.type eq 'my_news'}-->selected<!--{/if}-->" data-media_type="<!--{$message.type}-->">
+			                                <div class="display-content display-content-my_news">
+			                                	<!--{if $message.type eq 'my_news' && $message.content !=''}-->
+			                                		<!--{foreach from = json_decode($message.content) item = item name = itemList}-->
+			                                		<div class="item">
+				                                		<div class="title-area"><input type="text" class="title" value="<!--{$item->title}-->" placeholder="请输入标题"></div>          								
+														<div class="description-area"><textarea class="description" placeholder="请输入描述"><!--{$item->description}--></textarea></div>
+														<div class="url-area"><input type="text" class="url" value="<!--{$item->url}-->" placeholder="请输入图文链接地址"></div>
+														<div class="picUrl-area">
+															<div class="image-wrap">
+																<img src="<!--{$item->picUrl}-->">
+															</div>
+														</div>
+														<div class="oper-area">
+															<a class="item-upload-image" href="javascript:;" title="上传图片"><i class="icon iconfont">&#xe691;</i></a>
+															<a class="item-delete" href="javascript:;" title="删除图文"><i class="icon iconfont">&#xe624;</i></a>
+															<a class="item-add" href="javascript:;" title="添加图文"><i class="icon iconfont">&#xe65a;</i></a>
+														</div>
+													</div>
+			                                		<!--{/foreach}-->
+			                                	<!--{elseif ($message.type !='my_news') || ($message.type eq 'my_news' && $message.content == "")}-->
+			          							<div class="item">
+													<div class="title-area"><input type="text" class="title" placeholder="请输入标题"></div>          								
+													<div class="description-area"><textarea class="description" placeholder="请输入描述"></textarea></div>
+													<div class="url-area"><input type="text" class="url" placeholder="请输入图文链接地址"></div>
+													<div class="picUrl-area">
+														<div class="image-wrap"></div>
+													</div>
+													<div class="oper-area">
+														<a class="item-upload-image" href="javascript:;" title="上传图片"><i class="icon iconfont">&#xe691;</i></a>
+														<a class="item-delete" href="javascript:;" title="删除图文"><i class="icon iconfont">&#xe624;</i></a>
+														<a class="item-add" href="javascript:;" title="添加图文"><i class="icon iconfont">&#xe65a;</i></a>
+													</div>
+			          							</div>
+			          							
+			          							<!--{/if}-->
+			                                </div>
+			                            </div>
+                                    </div>
+                                </div>
+                                <div class="rule-bottom"><a class="btn btn-success btn-sm btn-rule-update" href="javascript:;">保存</a><!--{if $message.is_use eq '1'}--><a class="btn btn-danger btn-sm keywords-response-set-use" data-is_use="0" href="javascript:;">停用</a><!--{else}--><a href="javascript:;" data-is_use="1" class="btn btn-success btn-sm keywords-response-set-use">启用</a><!--{/if}--><a class="btn btn-default btn-sm btn-rule-delete" href="javascript:;">删除</a></div>
+                            </div>
+                            <!--{/foreach}-->
+                        </div>
+                        <!--{if !$keywordsMessage}-->
+                        <div class="keywords-response no-keywords-response">
+                            暂无创建规则
+                        </div>
+                        <!--{/if}-->
+                    </div>
+                    <!--回复操作按钮-->
+                    <div class="response-toolbar">
+                        <div class="response-toolbar-oper response-toolbar-0 selected">
+                            <a href="javascript:;" class="btn btn-success btn-md response-save">保存</a>
+                            <a href="javascript:;" <!--{if $attentionMessage.is_use eq '0'}-->style="display:inline-block;"<!--{/if}--> class="btn btn-success btn-md response-use" data-is_use="1">启用</a>
+                            <a href="javascript:;" <!--{if $attentionMessage.is_use eq '1'}-->style="display:inline-block;"<!--{/if}--> class="btn btn-danger btn-md response-no-use" data-is_use="0">停用</a>
+                        </div>
+                        <div class="response-toolbar-oper response-toolbar-1">
+                            <a href="javascript:;" class="btn btn-success btn-md response-save">保存</a>
+                            <a href="javascript:;" <!--{if $allMessage.is_use eq '0'}-->style="display:inline-block;"<!--{/if}--> class="btn btn-success btn-md response-use" data-is_use="1">启用</a>
+                            <a href="javascript:;" <!--{if $allMessage.is_use eq '1'}-->style="display:inline-block;"<!--{/if}--> class="btn btn-danger btn-md response-no-use" data-is_use="0">停用</a>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <!--{/if}-->
+        </div>
+    </div>
+</div>
+<form action="#" method="post" id="myForm" enctype="multipart/form-data" class="hidden">
+     <input class="upload-image" title="支持jpg、jpeg、gif、png格式，文件小于5M" tabindex="3" type="file" accept="image/*" id="imgurl" name="imgurl" size="3">
+     <input type="hidden" name="prevUrl" id="prevUrl" value=""/>
+</form>
+<!-- 页脚 -->
+<!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/admin/<!--{$theme}-->/common/page/footer.html"}-->
+<!--打开素材库，从中选择特定素材-->
+<div class="modal fade" id="materialModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog  modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    ×
+                </button>
+                <h4 class="modal-title">
+                    确认提示框
+                </h4>
+            </div>
+            <div class="modal-body">
+                <!--素材列表-->
+                <div class="materail-list">
+
+                </div>
+                <!--分页-->
+                <div id="page-selection"></div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary btn-confirm no-operate">确认</button>
+                <button type="button" class="btn btn-default close-action" data-dismiss="modal">取消</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div>
+</div>
+<!-- jsfiles -->
+<!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/admin/<!--{$theme}-->/common/page/jsfiles.html"}-->
+<script type="text/javascript" src="<!--{$smarty.const.BASE_PATH}-->/js/public/jquery.qqFace/js/jquery.qqFace.js"></script>
+<script type="text/javascript" src="<!--{$smarty.const.TEMPLATE_PATH}-->/admin/<!--{$theme}-->/weixin/response/js/responsePage.js"></script>
+</body>
+</html>

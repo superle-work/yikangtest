@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <title>账户管理</title>
+    <!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/front/common/fen/inner/head.html"}-->
+    <link rel="stylesheet"	href="<!--{$smarty.const.TEMPLATE_PATH}-->/front/common/fen/css/addAccount.css">
+</head>
+
+<body>
+    <!--主容器-->  
+        <!--主体内容-->
+        <div id="content">
+            <div class="type">
+            	<span>类型：</span>
+            	<select>
+            		<option value="1">微信</option>
+            		<option value="0" selected>支付宝</option>
+            		<option value="2">银行卡</option>
+            	</select>
+            	<i class="icon iconfont">&#xe618;</i>
+            </div>
+            <div class="name">
+            	<span class="tip">账号姓名：</span>
+            	<input type="text" value="" placeholder="账号持有人真实姓名">
+            </div>
+            <div class="accounts">
+            	<span class="tip">账号：</span>
+            	<input type="text" value="" placeholder="请输入提现账号">
+            </div>
+            <div class="account">
+            	<span class="tip">银行卡号：</span>
+            	<input type="text" value="" placeholder="请输入银行卡号">
+            </div>
+            <div class="account_bank">
+            	<span>开户行：</span>
+            	<input type="text" value="" placeholder="请输入开户行名称">
+            </div>
+        </div>
+        
+        <div id="bottom">
+        	<div class="button">
+        		<input type="hidden" id="id" value="<!--{$id}-->">
+    			<input type="hidden" id="type" value="<!--{$type}-->">
+            	<a href="javascript:;" class="comfirm">确定</a>
+            </div>
+        </div>
+
+        <!--页面脚部-->
+    <!--提示框-->
+    <!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/front/common/fen/inner/dialog.html"}-->
+    <!--公用js文件-->
+    <!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/front/common/fen/inner/jsfiles.html"}-->
+	<script type="text/javascript" src="<!--{$smarty.const.TEMPLATE_PATH}-->/front/common/fen/js/addAccount.js"></script>
+</body>
+</html>

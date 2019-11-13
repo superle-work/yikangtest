@@ -1,0 +1,208 @@
+/*******************************
+ ------待付款订单页面样式-------
+ ---------author:jjhu-----------
+ -------data:2015-07-26---------
+ *******************************/
+#content{
+	/*padding-bottom: 80px;*/
+	background: #fff;
+}
+
+/*体检成员信息*/
+.member-list{
+	width:100%;
+	height:90px;
+	display:flex;
+	flex-direction: row;
+	justify-content: space-between;
+	padding:13px;
+}
+.member-list .info{
+	width:90%;
+}
+.member-list .action{
+	width:10%;
+	line-height:64px;
+	text-align: right;
+	color:#C7C7C7;
+	font-weight:bold;
+}
+p{
+	margin:0px;
+	padding:0px;
+	color:#666666;
+	font-size:12px;
+	padding-bottom:5px;
+}
+.member-list .info .name{
+	color:black;
+	font-size:15px;
+}
+.space{
+	background: #F5F5F5;
+	height:10px;
+}
+/*没有默认信息*/
+.member-list .addMem-area{
+	width:100%;
+	height:100%;
+	display:flex;
+	justify-content: center;
+	align-items: center;
+}
+.member-list .addMem-area .addCheckMember{
+	width:130px;
+	height:30px;
+	display:block;
+	border:1px solid #1695FC;
+	color:#1695FC;
+	background: #fff;
+	font-size:14px;
+	outline:none;
+	border-radius:2px;
+	text-align:center;
+}
+.addMem-area .addCheckMember .add-icon{
+	font-size:12px;
+	margin-right:5px;
+	font-weight:bold;
+}
+
+/**订单商品列表**/
+.order-goods-list .goods-list{
+    height:96px;
+    padding:8px 13px;   
+}
+.order-goods-list .goods-list a{
+	display:block;
+	width:100%;
+    height:100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;    
+}
+.order-goods-list .goods-list .goods-image img{
+	width:70px;
+	height:70px;
+}
+.order-goods-list .goods-list .goods-name{
+	padding-left:8px;
+	height:100%;
+	width:170px;
+}
+.order-goods-list .goods-list .goods-name .name{
+	color:black;
+	font-size:16px;
+	height:50px;
+	padding-top:10px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+.order-goods-list .goods-list .goods-name .price{
+	font-size:16px;
+	color:#F97F34;
+}
+.order-goods-list .goods-list .count{
+	width:100%;
+	height:100%;
+	color:black;
+	font-size:15px;
+	text-align: right;
+	padding-left:5px;
+	padding-top:50px;
+}
+.space2{
+	height:4px;
+	background: #F5F5F5;
+}
+.space3{
+	height:6px;
+	background: #F5F5F5;
+}
+
+/*小计部分*/
+#content .order-bottom-area .goods-total{
+	height: 45px;
+	padding:0px 10px;
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;
+}
+#content .order-bottom-area .goods-total .goods-count{
+	padding-right:10px;
+}
+#content .order-bottom-area .goods-total .icon-price{
+	font-size: 14px;
+	color:#F97F34;
+	font-weight: bold;
+}
+#content .order-bottom-area .goods-total .money{
+	font-size: 14px;
+	color:#F97F34;
+}
+/*诊所推荐ID*/
+#content .clinic-area{
+    height: 45px;
+    line-height: 45px;
+    margin-left:15px;
+    border-bottom: 1px solid #eee;
+}
+#content .clinic-area .title{
+    font-size:14px;
+}
+#content .clinic-area .clinicID{
+    height:28px;
+    padding:0px;
+    margin: 0px;
+    border:0px;
+    outline:none; 
+    font-size:14px;
+    margin-left:25px;
+}
+
+/*底部提交*/
+.bottom-nav .goods-info{
+	float:left;
+	text-align:left;
+	width:50%;
+	font-size:14px;
+	padding-left:13px;
+	line-height:50px;
+}
+.bottom-nav .goods-info .total-num{
+	padding-right: 5px;
+}
+.bottom-nav .goods-info .icon-price,
+.bottom-nav .goods-info .money{
+	font-size:15px;
+	color:#F97F34;
+	font-weight:bold;
+}
+.bottom-nav .pay-method{
+	float:right;
+	text-align:center;
+	width:50%;
+	color:#fff;
+	background:#1695FC;
+	line-height:50px;
+}
+
+.order-fee {
+    display: flex;
+    flex-direction: row;
+    background: #fff;
+    border-bottom: 1px solid #eee;
+    padding: 10px 0px;
+    justify-content: start;
+    /*align-items: center;*/
+}
+span.left {
+    padding: 0 10px;
+}
+span.order-fee-title {
+    display: flex;
+    flex: 1;
+    padding: 0 5px 0 0px;
+}

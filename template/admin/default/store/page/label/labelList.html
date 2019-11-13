@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<!-- head -->
+<!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/admin/<!--{$theme}-->/common/page/head.html"}-->
+<link rel="stylesheet" href="<!--{$smarty.const.TEMPLATE_PATH}-->/admin/<!--{$theme}-->/store/css/label/labelList.css" />
+<body>
+<!---------------- 标签列表 ------------------->
+
+<!-- 页头 -->
+<!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/admin/<!--{$theme}-->/common/page/header.html"}-->
+<!-- 主体 -->
+<div class="content container-fluid<!--{if $leftBarScale eq '1'}--> scale<!--{/if}-->">
+    <div class="row">
+        <div class="col-md-2 left-section">
+            <!-- 左导航菜单 -->
+            <!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/admin/<!--{$theme}-->/common/page/menu.html"}-->
+
+        </div>
+        <div class="col-md-10 right-section">
+            <!--内容区域-->
+            <h3>
+                <i class="icon iconfont"><!--{$smarty.session.currentMenu.icon}--></i><!--{$smarty.session.currentMenu.menuTitle}-->
+                <div class="operation-div">
+                    <a class="btn btn-success" href="<!--{spUrl c=store_label a=addLabel}-->">添加</a>
+                </div>
+            </h3>
+            <div class="inner-section row">
+                <div id="content">
+                    <div class="list-title">
+                        <div class="list-title-panel">
+                            <span class="glyphicon glyphicon-list"></span>列表</span>
+                        </div>
+
+                    </div>
+                    <div class="table-content" id = "list_container">
+                        <table id="list-table" class="list-table table-hover table-bordered" cellspacing="0" cellpadding="0" border="0" width="100%" align="center">
+                            <tbody>
+                            <tr>
+                                <th>缩略图</th>
+                                <th>标签名称</th>
+                                <th>排序系数</th>
+                                <th>操作</th>
+                            </tr>
+                            <!--{if $labelList}-->
+                            <!--{foreach from = $labelList item = label}-->
+                            <tr>
+                                <td><!--{if $label.thumb}--><img src="<!--{$label.thumb}-->" height="50"><!--{else}-->无<!--{/if}--></td>
+                                <td><!--{$label.name}--></td>
+                                <td><!--{$label.order_index}--></td>
+                                <td>
+                                    <!--{if $label.gids}-->
+                                    <a class="btn btn-primary btn-xs" href="./admin.php?c=store_label&a=labelGoodsList&id=<!--{$label.id}-->">查看商品集</a>
+                                    <!--{/if}-->
+                                    <a class="btn btn-xs btn-primary" href="./admin.php?c=store_label&a=editLabel&id=<!--{$label.id}-->" target="_self">编辑</a>
+                                    <a class="btn btn-xs btn-default delete" data-id="<!--{$label.id}-->">删除</a>
+                                </td>
+                            </tr>
+                            <!--{/foreach}-->
+                            <!--{else}-->
+                            <tr><td colspan="4"><p class="text-danger">暂时无数据。</p></td></tr>
+                            <!--{/if}-->
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="fn-clear"></div>
+                    <!-- 列表底部 -->
+                    <div class="list-bottom">
+                        <div class="list-bottom-panel">
+                        </div>
+                    </div>
+
+                </div>
+                <!--分页-->
+                <div id="page-selection"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 页脚 -->
+<!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/admin/<!--{$theme}-->/common/page/footer.html"}-->
+
+<!-- jsfiles -->
+<!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/admin/<!--{$theme}-->/common/page/jsfiles.html"}-->
+<script type="text/javascript" src="<!--{$smarty.const.TEMPLATE_PATH}-->/admin/<!--{$theme}-->/store/js/label/labelList.js"></script>
+</body>
+</html>

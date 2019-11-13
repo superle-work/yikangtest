@@ -1,0 +1,50 @@
+/*************************
+ ------我的佣金页面样式---
+ *************************/
+
+#content .top-area{
+    background-color: #C2273E;
+    height: 100px;
+    padding: 10px;
+    color: #ffffff;
+}
+#content .top-area .myfee{
+    margin-top: 20px;
+    font-size: 24px;
+}
+#content .total-fee-info{
+    padding: 10px;
+    background-color: #444;
+    color: #ffffff;
+}
+#content .total-fee-info .total-fee{
+    font-size: 18px;
+}
+#content .distributor-fee ul,#content .distributor-fee li{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+#content .distributor-fee li{
+    float: left;
+    width: 33.3%;
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+#content .distributor-fee li .item-name{
+    font-size: 12px;
+    color: #666;
+}
+#content .distributor-fee li .first-fee{
+    color: #ff6600;
+}
+#content .distributor-fee li .second-fee{
+    color: #606CC8;
+}
+#content .distributor-fee li .third-fee{
+    color: #4DB245;
+}
+.leftBorder{
+    border-left: 1px solid #EEEEEE;
+}

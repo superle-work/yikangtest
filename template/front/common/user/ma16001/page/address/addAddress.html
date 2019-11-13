@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <title>添加新地址</title>
+	<link rel="stylesheet" href='<!--{$smarty.const.JS_PATH}-->/public/SUI_Mobile_dev/dist/css/sm.min.css'>
+	<!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/front/common/user/<!--{$theme}-->/page/inner/head.html"}-->
+    <link rel="stylesheet"	href="<!--{$smarty.const.TEMPLATE_PATH}-->/front/common/user/<!--{$theme}-->/css/address/addAddress.css">
+</head>
+
+<body>
+    <!--主容器-->
+    <div id="container" style="background: #fff;"
+        <!--顶部标签-->
+		<div class="top clearfix">
+			<a href="javascript:window.history.go(-1);" class="left-icon"><i class="iconfont">&#xe62a;</i></a>
+		    <a href="./index.php?c=base_user&a=addressList" class="center"><span class="logo">新增地址</span></a>
+		    <a href="javascript:;" class="right-icon"><i class="icon iconfont"></i></a>
+		</div>
+        <!--主体内容-->
+        <div id="content">
+            <div class="address-wrap">
+	             <table cellspacing="0">
+	             	<tbody>
+		             	<tr class="tr">
+		                    <td class="col-1">联系人：</td><td class="col-2"><input type="text" class="callname" placeholder="请输入姓名" value=""></td>
+		                </tr>
+		                <tr class="tr">
+		                    <td class="col-1">手机号：</td><td class="col-2"><input type="text" class="phone" placeholder="请输入手机号码" value=""></td>
+		                </tr>
+		                <tr class="tr addr">
+		                    <td class="col-1">地址：</td><td class="col-2"><input type="text" id="addr" placeholder="省/市/区"  value=""><div class="arrow-down"></div></td>
+		                </tr>
+		                <tr class="tr detail">
+		                    <td class="col-1"></td><td class="col-2"><input type="text" id="detail" placeholder="请输入详细的地址信息"></td>
+		                </tr>	
+	             	</tbody>
+	                <tfoot>
+	                	<tr>
+	                		<td colspan="2">
+	                			<a class="btn btn-primary add-address btn-sm">保存</a>
+	                			<a class="btn btn-default btn-sm back" href="javascript:window.history.back(-1);">返回</a>
+	                		</td>
+	                	</tr>	
+	                </tfoot>
+	                
+	            </table>
+            </div>
+        </div>
+        <!--页面脚部-->
+        <!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/front/common/user/<!--{$theme}-->/page/inner/footer.html"}-->
+        
+    </div>
+	<!--提示框-->
+    <!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/front/common/user/<!--{$theme}-->/page/inner/dialog.html"}-->
+    <!--公用js文件-->
+    <!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/front/common/user/<!--{$theme}-->/page/inner/jsfiles.html"}-->
+    <script>jQuery.noConflict()</script>
+    <script type='text/javascript' src='<!--{$smarty.const.JS_PATH}-->/public/SUI_Mobile_dev/dist/js/Zepto.js'></script>
+    <script type='text/javascript' src='<!--{$smarty.const.JS_PATH}-->/public/SUI_Mobile_dev/dist/js/sm.min.js'></script>
+    <script type='text/javascript' src='<!--{$smarty.const.JS_PATH}-->/public/SUI_Mobile_dev/dist/js/sm-extend.min.js'></script>
+    <script type='text/javascript' src='<!--{$smarty.const.JS_PATH}-->/public/SUI_Mobile_dev/dist/js/sm-city-picker.min.js'></script>
+    <script type="text/javascript" src="<!--{$smarty.const.TEMPLATE_PATH}-->/front/common/user/<!--{$theme}-->/js/address/addAddress.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,165 @@
+/*************************
+ ------我的佣金页面样式---
+ *************************/
+/******------------header 页头------------*******/
+/******------------top------------*******/
+.top{
+    zoom: 1;
+    overflow: hidden;
+    background-color: rgba(0, 0, 0, 1);
+    height: 40px;
+    line-height: 40px;
+    color: #FFF;
+    font-size: 16px;
+    padding: 0 15px;
+    width: 100%;
+    max-width: 640px;
+    z-index: 1;
+}
+.top a{
+    display: inline-block;
+    height: 100%;
+    float: left;
+    color: #fff;
+    width: 10%;
+    text-align: left;
+    outline: none;
+    text-decoration: none;
+}
+.top a.right-icon{
+	text-align: right;
+}
+.top a.center{
+	text-align: center;
+ 	width: 80%;
+}
+.top .logo {
+	text-align: center;
+    color: #FFFFFF;
+    display: block;
+}
+#container{
+    width: 100%;
+    max-width: 640px;
+    margin: 0 auto;
+    background-color: #f3f3f3;
+}
+#content .top-area{
+    height: 120px;
+    padding: 10px;
+    color: #ffffff;
+    position: relative;
+    background: #1C4877;
+}
+#content .top-area .notice{
+	font-size: 18px;
+	line-height: 60px;
+}
+#content .top-area .points{
+	font-size: 15px;
+}
+#content .top-area .points span{
+	font-size: 18px;
+	color: #E86539;
+	font-weight: bold;
+	position: relative;
+	top: 2px;
+	margin: 0 4px;
+}
+#content .chose_area{
+	padding: 0 10px;
+}
+#content .text{
+	font-size: 14px;
+	color: #333;
+	margin: 20px 0 0 0;
+}
+#content .get_money{
+	margin-top:20px;
+}
+#content .get_money .defined{
+	float: left;
+	width: 30%;
+	margin-right: 5%;
+	background: #fff;
+	text-align: center;
+	line-height: 35px;
+	border-radius: 3px;
+	margin-bottom: 20px;
+	border: 1px solid #fff;
+	cursor: pointer;
+}
+#content .get_money .defined{
+	margin-right: 0;
+}
+#content .chose_area{
+	position: relative;
+}
+#content .chose_area .get_money.cur{
+	border-color:  #019e97;
+}
+#content .chose_area .defined span{
+	color: #E86539;
+	margin-right: 3px;
+}
+#content .chose_area span.unit{
+	position: absolute;
+	display: block;
+	height: 35px;
+	line-height: 35px;
+	color: #999;
+	right: 20px;
+	bottom: 80px;
+}
+#content .chose_area input.defined{
+	height: 35px;
+	padding: 5px;
+	width: 100%;
+	border-radius: 3px;
+	outline: none;
+	text-align: left;
+	border: 1px solid #dcdcdc;
+}
+#content .submit{
+	width: 70%;
+	margin: 20px auto;
+	text-align: center;
+	line-height: 40px;
+	color: #fff;
+	font-size: 16px;
+	background: #EA6941;
+	cursor: pointer;
+}
+
+#content .chose_area .fixed-area{
+	display: -webkit-box;
+}
+#content .chose_area .fixed-area:after{
+	content: '';
+	height: 0;
+	display: block;
+	clear: both;
+}
+#content .chose_area .fixed-area .fixed-item{
+	box-flex:1;
+	-moz-box-flex: 1;
+	-webkit-box-flex: 1;
+	float: none;
+	padding:10px;
+}
+#content .chose_area .fixed-area .fixed-item .item{
+	text-align:center;
+	line-height:34px;
+	background-color:#fff;
+	cursor:pointer;
+	border-radius:3px;
+}
+#content .chose_area .fixed-area .fixed-item .item .item-color{
+	color:#ef9d02;
+}
+#content .chose_area .fixed-area .item{
+	border:1px solid #ddd;
+}
+#content .chose_area .item.active{
+	border:1px solid #a90505;
+}

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <title>积分提现</title>
+    <!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/front/common/head.html"}-->
+    <link rel="stylesheet"	href="<!--{$smarty.const.JS_PATH}-->/public/swiper/css/swiper.min.css">
+    <link rel="stylesheet"	href="<!--{$smarty.const.TEMPLATE_PATH}-->/front/common/user/<!--{$theme}-->/css/points/withdrawPointsPage.css">
+</head>
+
+<body>
+    <!--主容器-->
+    <div id="container" class="container-fluid">
+        <!--页面头部-->
+        <div id="header">
+            <a class="back" href="javascript:window.history.back(-1);"><i class="icon iconfont">&#xe62a;</i></a>
+            <!--{if $type eq 'store'}--><a class="logo" href="./index.php?c=<!--{$type}-->&a=index"><span>微商城</span></a><!--{/if}-->
+            <!--{if $type eq 'dining'}--><a class="logo" href="./index.php?c=<!--{$type}-->&a=index"><span>订餐系统</span></a><!--{/if}-->
+            <!--{if $type eq 'hotel'}--><a class="logo" href="./index.php?c=<!--{$type}-->&a=index"><span>微酒店首页</span></a><!--{/if}-->
+            <!--{if $type eq 'rob'}--><a class="logo" href="./index.php?c=<!--{$type}-->&a=index"><span>抢购商城</span></a><!--{/if}-->
+            <!--{if $type eq 'group'}--><a class="logo" href="./index.php?c=<!--{$type}-->&a=index"><span>拼团商城</span></a><!--{/if}-->
+            <!--{if $type eq 'bargain'}--><a class="logo" href="./index.php?c=<!--{$type}-->&a=index"><span>砍价商城</span></a><!--{/if}-->
+        </div>
+        <!--主体内容-->
+        <div id="content">
+            <div class="top-area">
+                <div>您的积分</div>
+                <div class="myfee"><!--{$userInfo.points}--></div>
+                <div class="points-total">您已通过积分提现<!--{$userInfo.cash_points_money}-->元，消耗<!--{$userInfo.cash_points}-->积分</div>
+                <a href="./index.php?c=base_user&a=pointsRecordPage&type=<!--{$type}-->" class="points-record-detail" title="提现记录"><i class="icon iconfont">&#xe63c;</i></a>
+            </div>
+			<div class="cash-area">提现金额：<span class="cash-value">0</span>元</div>
+            <div class="points-area"><input type="tel" class="points-value" placeholder="请输入要提现的积分数" data-rate="<!--{$baseConfigInfo.points_cash}-->" data-max="<!--{$baseConfigInfo.points_cash_min}-->"></div>
+            <div class="points-rule">注意：每次最低提现<!--{$baseConfigInfo.points_cash_min}-->积分，按(1积分=<!--{$baseConfigInfo.points_cash}-->元)比例兑换人民币，并且单次提现金额不能超过200元，提现金额通过平台红包发送，提现成功后请注意领取</div>
+            <div class="withdraw">
+                <a href="javascript:;" <!--{if $distributorInfo.my_fee > "0"}--> class="can-use"<!--{/if}--> data-model="<!--{$withdraw_model}-->" data-type="<!--{$type}-->">我要提现</a>
+            </div>
+        </div>
+
+    </div>
+    <!--公用js文件-->
+    <!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/front/common/jsfiles.html"}-->
+    <script type="text/javascript" src="<!--{$smarty.const.JS_PATH}-->/public/jquery.bootpag/jquery.bootpag.min.js"></script>
+    <script type="text/javascript" src="<!--{$smarty.const.TEMPLATE_PATH}-->/front/common/user/<!--{$theme}-->/js/points/withdrawPointsPage.js"></script>
+</body>
+</html>

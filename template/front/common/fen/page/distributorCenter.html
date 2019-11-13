@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <title>分销中心</title>
+    <!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/front/common/fen/inner/head.html"}-->
+    <link rel="stylesheet"	href="<!--{$smarty.const.TEMPLATE_PATH}-->/front/common/fen/css/distributorCenter.css">
+</head>
+
+<body>
+    <!--主容器-->
+    <div id="container" class="container-fluid">
+        <!--页面头部-->
+        <!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/front/common/fen/inner/top.html"}-->
+
+        <!--主体内容-->
+        <div id="content">
+            <div class="top-area clearfix">
+                <img style="height: 40px;" src="<!--{$smarty.session.user.head_img_url}-->">
+                <div class="myinfo">
+                    <div class="nick_name"><!--{$smarty.session.user.nick_name}--></div>
+                    <div class="add-time">加入时间：<!--{$distributorInfo.add_time}--></div>
+                </div>
+            </div>
+            <!--佣金信息-->
+            <div class="fee-info">
+                <div class="total_fee-info">
+                    <span>累计佣金：<!--{$distributorInfo.total_fee}-->元</span>
+                </div>
+                <div class="myfee-info">
+                    <div class="myfee-title">可提现佣金（元）</div>
+                    <div><span class="myfee-value"><!--{$distributorInfo.my_fee}--></span></div>
+                </div>
+                <a class="withdraw-cash" href="./index.php?c=fen&a=withdrawFeePage&did=<!--{$distributorInfo.id}-->" title="提现"><i class="icon iconfont">&#xe633;</i></a>
+
+            </div>
+            <div class="distribute-info">
+                <ul class="clearfix">
+                    <li class="item item-1">
+                        <a href="./index.php?c=fen&a=incomeAnalysis&did=<!--{$distributorInfo.id}-->">
+                            <div class="item-icon"><i class="icon iconfont">&#xe63d;</i></div>
+                            <div class="item-name">收益统计</div>
+                            <div class="other-info"><span class="number"><!--{$distributorInfo.my_fee}--></span>元</div>
+                        </a>
+                    </li>
+                    <li class="item item-2 left-border">
+                        <a href="./index.php?c=fen&a=myTeam&did=<!--{$distributorInfo.id}-->">
+                            <div class="item-icon"><i class="icon iconfont">&#xe636;</i></div>
+                            <div class="item-name">我的团队</div>
+                            <div class="other-info"><span class="number"><!--{$numOfTeam}--></span>个伙伴</div>
+                        </a>
+                    </li>
+                    <li class="item item-3 left-border">
+                        <a href="./index.php?c=fen&a=promotionPage&did=<!--{$distributorInfo.id}-->&module=<!--{$smarty.session.fen.bottomNav_module}-->">
+                            <div class="item-icon"><i class="icon iconfont">&#xe630;</i></div>
+                            <div class="item-name">二维码</div>
+                            <div class="other-info">推广二维码</div>
+                        </a>
+                    </li>
+                    <li class="item item-4">
+                        <a href="./index.php?c=base_user&a=userMessage">
+                            <div class="item-icon"><i class="icon iconfont">&#xe63b;</i></div>
+                            <div class="item-name">我的通知</div>
+                            <div class="other-info"><span class="number"><!--{$noReadMessageCount}--></span>条通知</div>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+
+        <!--页面脚部-->
+        <!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/front/common/fen/inner/bottomNav.html"}-->
+    </div>
+    <!--公用js文件-->
+    <!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/front/common/fen/inner/jsfiles.html"}-->
+    <script type="text/javascript" src="<!--{$smarty.const.TEMPLATE_PATH}-->/front/common/fen/js/distributorCenter.js"></script>
+
+</body>
+</html>

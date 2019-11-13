@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <title>申请分销商</title>
+    <!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/mall/<!--{$curTemplate}-->/inner/head.html"}-->
+    <link rel="stylesheet"	href="<!--{$smarty.const.TEMPLATE_PATH}-->/mall/<!--{$curTemplate}-->/css/distributor/applyDistributor.css">
+</head>
+
+<body>
+    <!--主容器-->
+    <div id="container" class="container-fluid">
+        <!--页面头部-->
+        <div id="header">
+            <a class="back" href="javascript:window.history.back(-1);"><i class="icon iconfont">&#xe62a;</i></a>
+            <a class="weimall" href="./index.php?c=mall&a=index"><span><!--{$smarty.const.pageTitle}--></span></a>
+        </div>
+        <!--主体内容-->
+        <div id="content">
+            <div class="notice-info">立即申请加入我们</div>
+            <h2><b>在线</b>申请</h2>
+            <form>
+                <div class="form-group">
+                    <label for="name">姓名<span class="must-tag">*</span></label>
+                    <input type="text" class="form-control" id="name" placeholder="请输入您的姓名">
+                </div>
+                <div class="form-group">
+                    <label for="phone">手机<span class="must-tag">*</span></label>
+                    <input type="text" class="form-control" id="phone" placeholder="请输入您的手机号">
+                </div>
+                <div class="form-group">
+                    <label>业务时间是否充足<span class="must-tag">*</span></label>
+                    <div>
+                        <label class="radio-inline">
+                            <input type="radio" name="sparetime" class="sparetime" value="2" checked> 充足
+                        </label>
+                        <label class="radio-inline">
+                            <input type="radio" name="sparetime" class="sparetime" value="1"> 较充足
+                        </label>
+                        <label class="radio-inline">
+                            <input type="radio" name="sparetime" class="sparetime" value="0"> 不太充足
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="friend_type">朋友圈类型<span class="must-tag">*</span></label>
+                    <div>
+                        <select id="friend_type" name="friend_type">
+                            <option value="白领">白领</option>
+                            <option value="个体户">个体户</option>
+                            <option value="自由职业者">自由职业者</option>
+                            <option value="企业高管">企业高管</option>
+                            <option value="学生">学生</option>
+                            <option value="全职主妇">全职主妇</option>
+                            <option value="other">其他</option>
+                        </select>
+                        <input type="text" style="display: none;" class="other-type">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="friend_count">朋友圈人数<span class="must-tag">*</span></label>
+                    <input type="text" class="form-control" id="friend_count" placeholder="请输入您的朋友圈人数">
+                </div>
+                <div class="form-group">
+                    <label>是否做过微信销售<span class="must-tag">*</span></label>
+                    <div>
+                        <label class="radio-inline">
+                            <input type="radio" name="is_weixin_sale" class="is_weixin_sale" value="0" checked> 没做过                        </label>
+                        <label class="radio-inline">
+                            <input type="radio" name="is_weixin_sale" class="is_weixin_sale" value="1"> 做过
+                        </label>
+
+                    </div>
+                </div>
+                <div class="form-group comment-area" style="display: none;">
+                    <label>做过哪些微信销售、业绩如何、经验教训</label>
+                    <div>
+                        <textarea class="form-control" id="comment"></textarea>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <p class="bm-tip-info">此信息将严格保密并仅作为存档使用</p>
+                </div>
+                <div class="form-group">
+                    <!--若为其他分销商的子分销商，这里会存储其准父级分销商主键id-->
+                    <input  type="hidden" id="did" value="<!--{$did}-->">
+                    <a href="javascript:;" id="save" class="btn btn-default">立即申请</a>
+                </div>
+                <div class="form-group action-tip"><div class="error-info">请填写所有信息!</div></div>
+            </form>
+
+        </div>
+
+    </div>
+    <!--公用js文件-->
+    <!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/mall/<!--{$curTemplate}-->/inner/jsfiles.html"}-->
+    <script type="text/javascript" src="<!--{$smarty.const.JS_PATH}-->/mall/distributor/applyDistributor.js"></script>
+
+</body>
+</html>

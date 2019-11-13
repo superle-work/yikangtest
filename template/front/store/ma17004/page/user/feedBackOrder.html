@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <title>查看订单</title>
+	<!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/front/store/<!--{$theme}-->/inner/head.html"}-->
+    <link rel="stylesheet"	href="<!--{$smarty.const.TEMPLATE_PATH}-->/front/store/<!--{$theme}-->/css/user/feedBackOrder.css">
+</head>
+
+<body>
+    <!--主容器-->
+    <div id="container" class="container-fluid">
+        <!--主体内容-->
+        <div id="content">
+        	<!--{if $orderInfo}-->
+           	<div id="order-info-area">
+           		<table>
+           			<tr class="order-tr"><td class='td-order-laber'>买家昵称:</td><td class='td-order-info' colspan="2"><!--{$orderInfo.nick_name}--></td></tr>
+           			<tr class="order-tr"><td class='td-order-laber'>订单编号:</td><td class='td-order-info' colspan="2"><!--{$orderInfo.order_num}--></td></tr>
+           			<tr class="order-tr"><td class='td-order-laber'>下单时间:</td><td class='td-order-info' colspan="2"><!--{$orderInfo.add_time}--></td></tr>
+           			<!--{foreach name=goods_list from=$orderInfo.goods_list item=goods}-->
+           			<tr class="order-tr">
+           				<td class='td-order-laber'><!--{if $smarty.foreach.goods_list.iteration == 1}-->商品详情:<!--{/if}--></td><td><!--{$goods.goods_name}--></td><td rowspan="2"><img class="goods_thumb" src="<!--{$goods.thumb}-->"></td>
+           			</tr>
+           			<tr><td class='td-order-laber'></td><td><i class="icon iconfont">&#xe604;</i><!--{$goods.price}--><span class="ori-price"><i class="icon iconfont">&#xe604;</i><!--{$goods.ori_price}--></span><span class="goods-count"><i class="icon iconfont">&#xe614;</i><!--{$goods.count}--></span></td></tr>
+           			<tr><td class='td-order-laber'></td><td colspan="2" class='property-area'><span><!--{if $goods.property}--><!--{foreach from=$goods.property item=property}--><!--{$property.name}-->:<!--{$property.value}-->&nbsp;&nbsp;<!--{/foreach}--><!--{else}-->无规格<!--{/if}--></span></td></tr>
+           			<!--{/foreach}-->
+           			<tr class="order-tr"><td class='td-order-laber'>实付款数:</td><td class='td-order-info' colspan="2"><!--{$orderInfo.total_price}--></td></tr>
+           			<tr class="order-tr"><td class='td-order-laber'>收货地址:</td><td class='td-order-info' colspan="2"><!--{$orderInfo.address_text}--></td></tr>
+           			<tr class="order-tr"><td class='td-order-laber'>买家留言:</td><td class='td-order-info' colspan="2"><!--{if $orderInfo.message}--><!--{$orderInfo.message}--><!--{else}-->无留言<!--{/if}--></td></tr>
+           			<tr class="order-tr"><td class='td-order-laber'>订单状态:</td>
+           			<td class="order-state td-order-info" colspan="2">
+           				<!--{if $orderInfo.state == 0 }--><span class='text-info'>待付款</span><!--{/if}-->
+           				<!--{if $orderInfo.state == 1 }--><span style='color:#EE0000'>待发货</span><!--{/if}-->
+           				<!--{if $orderInfo.state == 2 }--><span class='text-primary'>已发货</span><!--{/if}-->
+           				<!--{if $orderInfo.state == 3 }--><span class='text-primary'>已收货</span><!--{/if}-->
+           				<!--{if $orderInfo.state == 4 }--><span style='color:gray'>交易关闭</span><!--{/if}-->
+           				<!--{if $orderInfo.state == 5 }--><span class='text-success'>交易完成</span><!--{/if}-->
+           			</td></tr>
+           			<!--{if $orderInfo.state > 1}-->
+           			<tr>
+           				<td class='td-order-laber'>物流公司:</td><td class='td-order-info' colspan="2"><!--{if $orderInfo.express_company}--><!--{$orderInfo.express_company}--><!--{else}-->暂无信息<!--{/if}--></td>
+           			</tr>
+           			<tr>
+           				<td class='td-order-laber'>单号:</td><td class='td-order-info' colspan="2"><!--{if $orderInfo.express_number}--><!--{$orderInfo.express_number}--><!--{else}-->暂无信息<!--{/if}--></td>
+           			</tr>
+           			<!--{/if}-->
+           			<!--{if $isAdmin}-->
+           			<tr class="admin-tr"><td class='td-order-laber'>订单操作</td>
+           			<td class='admin-operate td-order-info'>
+           				<input type="hidden" name='state' class='state' value=<!--{$orderInfo.state}-->>
+           				<input type="hidden" name='oid' class='oid' value=<!--{$orderInfo.id}-->>
+           				<a  href='javascript:;'  oid ="<!--{$orderInfo.id}-->"  class='btn btn-primary send-goods operate-button'>发货</a>
+                		<a  href='javascript:;'  oid ="<!--{$orderInfo.id}-->" class='btn btn-success accept-goods operate-button' title='确认收货'>确认</a>
+                		<a  href='javascript:;'  oid ="<!--{$orderInfo.id}-->" class='btn btn-success complete-order operate-button' title='交易完成'>完成</a>
+                		<a  href='javascript:;'  oid ="<!--{$orderInfo.id}-->"  class='btn btn-danger close-order operate-button' title='关闭订单'>关闭</a>
+                		<a  href='javascript:;'  oid ="<!--{$orderInfo.id}-->" class='btn btn-default delete-order operate-button'>删除</a>
+           			</td>
+           			</tr>
+           			<!--{/if}-->
+           		</table>
+           	</div>
+           	<!--{else}-->
+           	<p>无此订单或已删除</p>
+           	<!--{/if}-->
+        </div>
+        <!--页面脚部-->
+        <!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/front/store/<!--{$theme}-->/inner/footer.html"}-->
+        
+    </div>
+	<!--提示框-->
+    <!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/front/store/<!--{$theme}-->/inner/dialog.html"}-->
+    <!--公用js文件-->
+    <!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/front/store/<!--{$theme}-->/inner/jsfiles.html"}-->
+    <script type="text/javascript" src="<!--{$smarty.const.TEMPLATE_PATH}-->/front/store/<!--{$theme}-->/js/user/feedBackOrder.js"></script>
+
+</body>
+</html>

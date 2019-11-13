@@ -1,0 +1,62 @@
+#list-table .th1{
+    width:40px;
+}
+#list-table .th2{
+    width: 80px;
+}
+#list-table .th2 a,#list-table .th3 a{
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    display: block;
+}
+#list-table .th3{
+    width: 120px;
+}
+#list-table .th4{
+    width:65px;
+}
+#list-table .th5{
+    width: 70px;
+}
+#list-table .th6 span,#list-table .th11 span{
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    display: inline-block;
+    width: 100%;
+    overflow: hidden;
+}
+#list-table .th7{
+    width: 70px;
+}
+#list-table .th8{
+    width: 70px;
+}
+#list-table .th9{
+    width: 130px;
+}
+#list-table .th10{
+    width: 150px;
+}
+#list-table .th11{
+    width: 90px;
+}
+
+.state-0{
+    color:#FE6E09;
+}
+.state-1{
+    color:#FB565B;
+}
+.state-2{
+    color:#49A4FD;
+}
+.state-3{
+    color:#FF803A;
+}
+.state-4{
+    color:#62B0FD;
+}
+.state-5{
+    color:black;
+}

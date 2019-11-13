@@ -1,0 +1,55 @@
+/*************************
+ ------我的佣金页面样式---
+ *************************/
+
+#content{
+    background-color: #F7F7F7;
+}
+#content .top-area{
+    padding: 10px;
+    background-color: #fafafa;
+}
+#content .number{
+    color: #cd0200;
+}
+#content .team-list{
+    padding: 0 10px;
+    background-color: #ffffff;
+}
+#content .team-list table{
+    width: 100%;
+}
+#content .team-list td{
+    padding: 5px 0;
+}
+#content .team-list .col-1{
+    width: 40px;
+}
+#content .team-list .col-2{
+
+}
+#content .team-list .col-2 .content-wrap{
+    padding: 0 5px;
+    border-right:1px solid #EEEEEE;
+}
+#content .team-list .col-2 .phone{
+    font-size: 12px;
+    float: right;
+}
+#content .team-list .name{
+    font-size: 12px;
+}
+#content .team-list .col-2 .add-time,#content .team-list .child-team-count{
+    font-size: 12px;
+    color: #AAAAAA;
+}
+#content .team-list .child-team-total-fee{
+    font-size: 12px;
+}
+#content .team-list .col-3 .content-wrap{
+    padding-left: 5px;
+    text-align: right;
+}
+#content .team-list .no-team{
+	text-align:center;
+}

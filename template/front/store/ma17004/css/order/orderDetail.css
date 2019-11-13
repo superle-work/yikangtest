@@ -1,0 +1,212 @@
+/*******************************
+ ------待付款订单页面样式-------
+ ---------author:joy-----------
+ -------data:2016-09-14---------
+ *******************************/
+#content{
+	background: #fff;
+}
+
+/*医院或诊所*/
+#content .orderDetail .number-wrap{
+	background:#1695FC;
+	width:100%;
+    height: 60px;
+	padding:10px;
+	color:#fff;
+	font-size:12px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+#content .orderDetail .number-wrap2{
+	background:#1695FC;
+	width:100%;
+    height: 60px;
+	padding:10px;
+	color:#fff;
+	font-size:12px;
+	text-align:center;
+	line-height: 40px;
+}
+.space{
+	height:8px;
+	background: #F5F5F5;
+}
+
+/*体检人员信息*/
+#content .receiver-info{
+	padding:10px;
+	height:85px;
+}
+#content .receiver-info .checkName {
+    font-size: 15px;
+    /*font-weight:bold;*/
+   	color:black;
+}
+#content .receiver-info .phone {
+	padding-top:4px;
+    font-size: 12px;
+    color:#9F9F9F;
+}
+
+/*商品信息*/
+#content .goods-info{
+	height:85px;
+	padding:10px;
+}
+#content .goods-info a{
+	display:block;
+	width:100%;
+	height:100%;
+}
+#content .goods-info .goods{
+	display:flex;
+	flex-direction: row;
+	justify-content: flex-start;
+}
+#content .goods-info .goods img{
+	width:62px;
+	height:62px;
+}
+#content .goods-info .goods .good-name{
+	padding-left:10px;
+	width:165px;
+}
+.goods-info .goods .good-name .name{
+	width:100%;
+	text-align: left;
+	overflow: hidden;
+	text-overflow:ellipsis;
+	white-space: nowrap;
+	font-size:15px;
+	/*font-weight:bold;*/
+	color:black;
+	height:65%;
+}
+.goods-info .goods .good-name .price{
+	width:100%;
+	text-align: left;
+	font-size:15px;
+	color:#FD6B07;
+}
+#content .goods-info .goods .state{
+	text-align: right;
+	font-size:12px;
+	padding-left:5px;
+	width:100%;
+}
+#content .goods-info .goods .state .state-type{
+	height:70%;
+}
+.state-0{
+    color:#FE6E09;
+}
+.state-1{
+    color:#FB565B;
+}
+.state-2{
+    color:#49A4FD;
+}
+.state-3{
+    color:#FF803A;
+}
+.state-4{
+    color:#62B0FD;
+}
+.state-5{
+    color:#FF6A06;
+}
+#content .goods-info .goods .state .quantity{
+	color:#9F9F9F;
+}
+
+/*订单信息*/
+.space2{
+	height:30px;
+	background:#F5F5F5;
+	line-height:30px;
+	padding-left:10px;
+	color:#3C3C3C;
+	font-size:13px;
+}
+
+#content .order-number-area{
+	padding:10px;
+	color:#9F9F9F;
+	font-size:12px;
+}
+#content .order-number-area span{
+	display:block;
+	height:20px;
+	line-height:20px;
+}
+
+#content .order-info-area .order-info{
+	border-bottom:1px solid #F5F5F5;
+	padding:10px;
+}
+.order-info-area .order-info div span{
+	display:inline-block;
+	height:28px;
+	line-height:28px;
+	font-size:12px;
+	color:#9F9F9F;
+	text-align: left;
+}
+.order-info-area .order-info div span:first-child{
+	width:65px;
+}
+
+#content .order-info-area .total_price{
+	padding-left:10px;
+}
+#content .order-info-area .total_price span{
+	display:inline-block;
+	height:40px;
+	line-height:40px;
+	font-size:12px;
+	color:#9F9F9F;
+	text-align: left;
+}
+#content .order-info-area .total_price span:first-child{
+	width:65px;
+}
+#content .order-info-area .total_price span:last-child{
+	font-size:14px;
+	color:#FD6B07;
+}
+
+/*最后区域*/
+#container .last-area{
+	padding:0px 10px;
+	padding-top:40px;
+	text-align: center;
+}
+#container .last-area button{
+	display: block;
+	width:100%;
+	height:40px;
+	background: #1695FC;
+	border:0px;
+	color:white;
+	border-radius:3px;
+}
+#container .last-area img{
+	width:155px;
+	height:155px;
+}
+#container .last-area .tipInfo{
+	color:#9F9F9F;
+	font-size:12px;
+	padding-top:10px;
+}
+
+#container .report-area{
+	padding:15px 0px 10px 10px;
+}
+#container .report-area img{
+	width:90px;
+	height:90px;
+	margin-right:10px;
+}

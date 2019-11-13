@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<!-- head -->
+<!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/admin/<!--{$theme}-->/common/page/head.html"}-->
+<link rel="stylesheet" href="<!--{$smarty.const.TEMPLATE_PATH}-->/admin/<!--{$theme}-->/store/css/goods/goodsList.css" />
+<body>
+<!---------------- 商家列表 ------------------->
+
+<!-- 页头 -->
+<!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/admin/<!--{$theme}-->/common/page/header.html"}-->
+<!-- 主体 -->
+<div class="content container-fluid<!--{if $leftBarScale eq '1'}--> scale<!--{/if}-->">
+    <div class="row">
+        <div class="col-md-2 left-section">
+            <!-- 左导航菜单 -->
+            <!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/admin/<!--{$theme}-->/common/page/menu.html"}-->
+
+        </div>
+        <div class="col-md-10 right-section">
+            <!--内容区域-->
+            <h3>
+                <i class="icon iconfont"><!--{$smarty.session.currentMenu.icon}--></i>分类商家列表--<!--{$cateInfo.name}-->
+                <div class="operation-div">
+                    <a class="btn btn-default" href="javascript:window.history.go(-1);">返回</a>
+                </div>
+            </h3>
+            <div class="inner-section row">
+                <div id="content">
+                    <div class="search-param-panel">
+                        <form class="search-param-form" id="search-param-form">
+                            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                <tr>
+                                    <td width="80px">
+                                        <label for="goodsname">商家名称:&nbsp;</label>
+                                    </td>
+                                    <td width="140px">
+                                        <input id="goodsname" name="goodsname" type="text" class="input-normal search"  />
+                                    </td>
+                                    <td width="80px">
+                                        <label for="recommend">首页推荐:&nbsp;</label>
+                                    </td>
+                                    <td width="140px">
+                                        <select class="select-normal" id="recommend" name="recommend">
+                                            <option value="">全部</option>
+                                            <option value="1">推荐</option>
+                                            <option value="0">不推荐</option>
+
+                                        </select>
+                                    </td>
+                                    <td width="50px">
+                                        <label for="recommend">状态:&nbsp;</label>
+                                    </td>
+                                    <td width="140px">
+                                        <select class="select-normal" id="updown" name="updown">
+                                            <option value="">全部</option>
+                                            <option value="1">上架</option>
+                                            <option value="0">下架</option>
+
+                                        </select>
+                                    </td>
+
+                                    <td>
+                                        <input type="hidden" id="id" value="<!--{$cateInfo.gids|default:'0'}-->">
+                                        <div class="list-action-area">
+                                            <a href="javascript:;" class="search-button btn btn-primary btn-sm">查询</a>
+
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+                        </form>
+                    </div>
+                    <div class="list-title">
+                        <div class="list-title-panel">
+                            <span class="glyphicon glyphicon-list"></span>列表</span>
+                        </div>
+                    </div>
+                    <div class="table-content" id = "list_container">
+                        <table id="list-table" class="list-table table-hover table-bordered">
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
+                    <!--分页-->
+                    <div id="page-selection"></div>
+
+                    <div class="fn-clear"></div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 页脚 -->
+<!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/admin/<!--{$theme}-->/common/page/footer.html"}-->
+
+<!-- jsfiles -->
+<!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/admin/<!--{$theme}-->/common/page/jsfiles.html"}-->
+<script src="<!--{$smarty.const.BASE_PATH}-->/js/public/My97DatePicker/WdatePicker.js"></script>
+<script type="text/javascript" src="<!--{$smarty.const.BASE_PATH}-->/js/public/jquery.bootpag/jquery.bootpag.min.js"></script>
+<script type="text/javascript" src="<!--{$smarty.const.TEMPLATE_PATH}-->/admin/<!--{$theme}-->/store/js/category/cateGoodsList.js"></script>
+</body>
+</html>

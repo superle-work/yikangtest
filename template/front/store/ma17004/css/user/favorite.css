@@ -1,0 +1,89 @@
+/*******************************
+ ------商品搜索页面样式--------
+ --------author:jjhu-----------
+ -------date:2015-07-23--------
+ ******************************/
+/**商品区域样式**/
+#content{
+	background: #fff;
+}
+.goods-display-area .goods-area{
+	width:100%;
+	padding: 5px 15px;
+}
+.goods-display-area .goods{
+	width:100%;
+    text-decoration: none;
+    display:flex;
+    flex-direction: row;
+    justify-content:space-between;
+}
+.goods .goods-info{
+	text-decoration: none;
+    display:flex;
+    flex-direction: row;
+    justify-content:flex-start;
+}
+.goods .action{
+	width:70px;
+	text-align: right;
+}
+.goods .action .delete{
+	display: inline-block;
+	width:50px;
+	height:22px;
+	font-size: 12px;
+	color:#FB8F5C;
+	border:1px solid #FB8F5C;
+	background: #fff;
+	border-radius:3px;
+	line-height: 20px;
+	position:relative;
+	top:40px;
+}
+.goods-display-area .goods-area img{
+   height:70px;
+   width:70px;
+}
+/**商品销量、原价**/
+ .goods-descript-info{
+	font-size:12px;
+	margin-left:9px;
+}
+ .goods-descript-info .name{
+ 	width:135px;
+	text-overflow: ellipsis;
+	overflow: hidden;
+    white-space: nowrap;
+    font-size: 16px;
+    color: black;
+    font-weight:bold;
+    margin-bottom:17px;
+}
+
+.goods-descript-info .ori-price{
+	display: inline-block;
+	color:#FB8F5C;
+	font-size: 16px;
+	font-weight: bold;
+}
+
+/*无数据时*/
+.no-cate{
+	color:red;
+	font-size:18px;
+	text-align: center;
+	margin-top:20px;
+}
+/*#content .get-more{
+	text-align: center;
+	color:#CCC;
+}*/
+.space{
+	height:10px;
+	background: #F7F7F7;
+}
+.space2{
+	height:5px;
+	background: #F7F7F7;
+}

@@ -1,0 +1,61 @@
+<!--用户注册-->
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <title>体检人员信息</title>
+    <!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/front/store/<!--{$theme}-->/inner/head.html"}-->
+    <link rel="stylesheet"	href="<!--{$smarty.const.TEMPLATE_PATH}-->/front/store/<!--{$theme}-->/css/user/checkMemberList.css">
+</head>
+
+<body>
+<!--主容器-->
+<div id="container" class="container-fluid">
+   	
+    <!--主体内容-->
+    <div id="content">
+    	<div class="space"></div>
+    	<div class="add-area">
+    		<a href="index.php?c=store&a=addMember">
+    			<i class="icon iconfont">&#xe6dc;</i>
+    			<span>添加家庭成员</span>
+    		</a>
+    	</div>
+    	
+    	<!--体检人员信息展示区域-->
+        <div class="member-area">
+        	<!--{if $memList}-->
+        	<!--{foreach from=$memList item=itemList}-->
+        	<div class="space"></div>
+        	<div class="member-list">
+        		<div class="info">
+        			<a href="index.php?c=store&a=showMember&id=<!--{$itemList.id}-->">
+	        			<p class="name"><!--{$itemList.name}--></p>
+	        			<p>出生年月日: <!--{$itemList.idCard}--></p>
+	        			<p>手机号码: <!--{$itemList.phone}--></p>
+        			</a>
+        		</div>
+        		<hr />
+        		<div class="action">
+        			<!--判断是否默认选中-->
+        			<!--{if $itemList.state==1}-->
+        			<span class="setDefault" data-id="<!--{$itemList.id}-->"><i class="icon iconfont sel cur">&#xe648;</i><span class="set">设置默认成员</span></span>
+        			<!--{else}-->
+        			<span class="setDefault" data-id="<!--{$itemList.id}-->"><i class="icon iconfont sel">&#xe623;</i><span class="set">设置默认成员</span></span>
+        			<!--{/if}-->
+        			<a href="index.php?c=store&a=editMember&id=<!--{$itemList.id}-->" class="edit">编辑</a>
+        			<a href="javascript:;" class="delete" data-id="<!--{$itemList.id}-->">删除</a>
+        		</div>
+        	</div>
+        	<!--{/foreach}-->
+        	<!--{/if}-->
+        </div>
+    </div>
+    
+</div>
+<!--公用js文件-->
+<!--提示框-->
+<!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/front/store/<!--{$theme}-->/inner/dialog.html"}-->
+<!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/front/store/<!--{$theme}-->/inner/jsfiles.html"}-->
+<script type="text/javascript" src="<!--{$smarty.const.TEMPLATE_PATH}-->/front/store/<!--{$theme}-->/js/user/checkMemberList.js"></script>
+</body>
+</html>

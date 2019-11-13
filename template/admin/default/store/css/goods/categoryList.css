@@ -1,0 +1,241 @@
+.hb-toolbar{
+    height: 40px;
+    position: relative;
+    font-size: 14px;
+}
+.cf:after{
+    content: "";
+    clear: both;
+}
+.toolbar-opt{
+    width: 100px;
+    padding: 5px 0;
+    text-align: center;
+}
+.toolbar-left{
+    float: left;
+}
+.toolbar-right{
+    float: right;
+}
+#list_container .operate-area{
+    height: 30px;
+    padding-top: 5px;
+    display: none;
+}
+.select-opt,.delete-opt{
+    float: left;
+    text-align: center;
+}
+.select-opt{
+    width: 20px;
+}
+.delete-opt .batch-delete{
+    display: block;
+    width: 70px;
+    border: 1px solid #bbbbbb;
+    padding: 2px 3px;
+    color: #444444;
+}
+.show-hide-opt{
+    float: right;
+}
+.show-hide-opt a{
+    margin: 0 5px;
+}
+.show-hide-opt a:hover{
+    text-decoration: underline;
+}
+/**复选框样式设置**/
+.checkbox-box,.pseudo-checkbox{
+    position: relative;
+    display: inline-block;
+}
+.pseudo-checkbox{
+    width: 16px;
+    height: 16px;
+    margin: 0;
+}
+
+/*未选中时样式*/
+.pseudo-checkbox {
+    background-image: url("../../../image/checkbox-status.gif");
+    background-position: -128px -4px;
+    background-repeat: no-repeat;
+}
+/*复选框选中样式*/
+.checked .pseudo-checkbox {
+    background-position: -155px -5px;
+}
+/**高亮显示复选框样式**/
+/*高亮未选中*/
+.high .pseudo-checkbox{
+    background-position: -128px -29px;
+}
+/*高亮选中*/
+.high .checked .pseudo-checkbox{
+    background-position: -155px -30px;
+}
+
+/*********隐藏所有复选框************/
+span.checkbox-box{
+    visibility: hidden;
+}
+/**table样式设置**/
+.list-table th{
+    background: #f7f7f7;
+}
+#list-table input{
+	border: 1px solid #ccc;
+}
+.list-table a:hover{
+    cursor: pointer;
+    text-decoration: none;
+    color: #5cb85c;
+}
+.list-table td,.list-table th {
+    padding: 8px 2px;
+    color: #333;
+    text-align: center;
+}
+.list-table th, .list-table td {
+    font-size: 12px;
+    border-bottom: 1px solid #DFDFDF;
+}
+#list-table .td-00{
+    width: 50px;
+}
+#list-table .td-0{
+    width: 50px;
+
+}
+#list-table .td-0 .arrow{
+    height: 0;
+    width: 0;
+    display: block;
+    border: 7px solid transparent;
+    cursor: pointer;
+}
+#list-table .td-0 .arrow-left{
+    border-left-color: #555555;
+}
+#list-table .td-0 .arrow-top{
+    margin-top: 4px;
+    border-top-color: #555555;
+}
+#list-table .td-1{
+    width: 320px;
+    text-align: left;
+}
+#list-table .td-1 div.input-box{
+    width: 320px;
+    height: 30px;
+}
+#list-table .td-3 .cat-statusOper[status='0']{
+   color: red;
+}
+#list-table .td-1 div.input-box .category-name{
+    width: 180px;
+    height: 26px;
+}
+#list-table .td-2{
+    text-align: center;
+}
+#list-table .td-3{
+    text-align: center;
+}
+#list-table .td-3 a{
+    margin: 5px;
+}
+#list-table .td-4{
+    text-align: center;
+    display: none;
+}
+#list-table .td-5{
+    text-align: center;
+    width: 60px;
+}
+#list-table .td-5  input{
+    width: 40px;
+}
+#list-table tbody .look-me{
+    background-color: #fbffb2!important;
+}
+/*tr高亮显示*/
+#list-table tbody tr.high{
+    background-color: #f6f6f6;
+}
+/*二级子类型展示*/
+#list-table tbody .cat-level-2 .td-1 div.input-box,#list-table tbody .cat-level-3 .td-1 div.input-box,
+#list-table tbody .cat-level-4 .td-1 div.input-box{
+    background-position: -381px -81px;
+    background-image: url("../../../image/checkbox-status.gif");
+    background-repeat: no-repeat;
+    padding-left: 24px;
+}
+#list-table tbody .cat-level-2 .td-0{
+        padding-left: 20px;
+}
+#list-table tbody .cat-level-2 .td-1 .alert-error{
+
+}
+/*三级子类属性*/
+#list-table tbody .cat-level-3 .td-1 {
+    padding-left: 24px;
+}
+#list-table tbody .cat-level-3 .td-0{
+    padding-left: 40px;
+}
+#list-table tbody .cat-level-3 .td-1 .name-alert{
+    /*left: 228px;*/
+}
+/*四级子类属性*/
+#list-table tbody .cat-level-4 .td-1 {
+    padding-left: 48px;
+}
+#list-table tbody .cat-level-4 .td-0{
+    padding-left: 60px;
+}
+#list-table tbody .cat-level-4 .td-1 .name-alert{
+    /*left: 272px;*/
+}
+/*分类名称为空时的提示*/
+#list-table .td-1 div{
+    position: relative;
+}
+#list-table .td-1 .alert-error {
+    display: inline-block;
+    _overflow: hidden;
+    vertical-align: middle;
+    height: 20px;
+    margin-right: 1em;
+    padding: 0 5px 0 26px;
+    border: solid 1px #ffcd81;
+    line-height: 20px;
+    background: #ffffe5 url("../../../image/alert_icons.png") no-repeat 4px 1px;
+    overflow: hidden;
+    clear: both;
+    margin-top: 5px;
+    margin-left: 5px;
+}
+#list-table .td-1 .name-alert {
+    /*left: 180px;*/
+    margin-top: 0;
+    position: absolute;
+    top: 0;
+    width: 154px;
+}
+#list-table .td-1 .alert-error {
+    border-color: #f60;
+    background-color: #fffbf0;
+    background-position: 4px -20px;
+}
+#list-table .td-1 .input-error{
+    border: 2px solid rgb(255, 0, 0);
+}
+#bindTemplateDialog .modal-body span{
+    font-size: 14px;
+}
+#bindTemplateDialog .modal-body label{
+    margin-right: 10px;
+}

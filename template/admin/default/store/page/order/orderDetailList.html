@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+
+<html>
+
+<!-- head -->
+
+<!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/admin/<!--{$theme}-->/common/page/head.html"}-->
+
+<link rel="stylesheet" href="<!--{$smarty.const.TEMPLATE_PATH}-->/admin/<!--{$theme}-->/store/css/order/orderDetailList.css" />
+
+<body>
+
+<!---------------- 商品列表 ------------------->
+
+
+
+<!-- 页头 -->
+
+<!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/admin/<!--{$theme}-->/common/page/header.html"}-->
+
+<!-- 主体 -->
+
+<div class="content container-fluid<!--{if $leftBarScale eq '1'}--> scale<!--{/if}-->">
+
+    <div class="row">
+
+        <div class="col-md-2 left-section">
+
+            <!-- 左导航菜单 -->
+
+            <!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/admin/<!--{$theme}-->/common/page/menu.html"}-->
+
+
+
+        </div>
+
+        <div class="col-md-10 right-section">
+
+            <!--内容区域-->
+
+            <h3><i class="icon iconfont"><!--{$smarty.session.currentMenu.icon}--></i>订单商品列表
+
+                <div class="operation-div">
+
+                    <a href="javascript:;" data-oid="<!--{$orderInfo.id}-->" id ='export_btn' class="btn btn-success">导出详情</a><a class="btn btn-default" href="javascript:window.history.go(-1);">返回</a>
+
+                </div>
+
+            </h3>
+
+            <div class="inner-section row">
+
+                <div id="content">
+
+                    <div class="list-title">
+
+                        <div class="list-title-panel">
+
+                            <span class="glyphicon glyphicon-list"></span>列表</span>
+
+                        </div>
+
+                    </div>
+
+                    <div class="table-content" id = "list_container">
+
+                        <table id="list-table" class="list-table table-hover table-bordered" cellspacing="0" cellpadding="0" border="0" width="100%" align="center">
+
+                            <tbody>
+
+                                <tr>
+
+                                    <th class="th2" colspan="2">序号</th>
+
+                                    <th class="th3">商品名称</th>
+
+                                    <th class="th5">数量</th>
+
+                                    <th class="th6">单价</th>
+
+                                </tr>
+
+                                <!--{foreach from = $orderInfo.goods_list item = goods name = goodsList}-->
+
+                                <tr <!--{if $smarty.foreach.goodsList.iteration %2 eq 0}-->class="even"<!--{else}-->class="odd"<!--{/if}-->>
+
+                                    <td colspan="2"><!--{$smarty.foreach.goodsList.iteration}--></td>
+
+                                    <td><!--{$goods.goods_name}--></td>
+
+                                    <td><!--{$goods.count}--></td>
+
+                                    <td><!--{$goods.price}--></td>
+
+                                </tr>
+
+                                <!--{/foreach}-->
+
+                                <tr>
+
+									<td colspan="5" style="color: #FF5C00">
+
+										<!--{if $orderInfo.state eq '0'}-->待付款
+
+                                        <!--{elseif $orderInfo.state eq '1'}-->待采样
+
+                                        <!--{elseif $orderInfo.state eq '2'}-->待送检
+
+                                        <!--{elseif $orderInfo.state eq '3'}-->送检中
+
+                                        <!--{elseif $orderInfo.state eq '4'}-->检测中
+
+                                        <!--{elseif $orderInfo.state eq '5'}-->已完成
+
+                                        <!--{/if}-->
+
+                                   </td>
+
+								</tr>
+
+								<tr>
+
+									<td colspan="2">推荐诊所</td>
+
+									<td colspan="3">
+
+										<!--{if $recommendClinic}-->
+
+										<!--{$recommendClinic}-->
+
+										<!--{else}-->
+
+										---
+
+										<!--{/if}-->
+
+									</td>
+
+								</tr>
+
+								<tr>
+
+								<!--{if $clinicInfo}-->
+
+								</tr>
+
+									<td colspan="2">诊所详情</td>
+
+									<td colspan="3">
+
+										<span>诊所名称：<!--{$clinicInfo.name}--></span>
+
+										<span>核销人员名称：<!--{$orderInfo.clinic_worker_name}--></span>
+
+									</td>
+
+                                </tr>
+
+                                <!--{/if}-->
+
+                                
+
+                                <!--{if $hospitalInfo}-->
+
+								</tr>
+
+									<td colspan="2">医院详情</td>
+
+									<td colspan="3">
+
+										<span>医院名称：<!--{$hospitalInfo.name}--></span>
+
+										<span>核销人员名称：<!--{$orderInfo.hospital_worker_name}--></span>
+
+									</td>
+
+                                </tr>
+
+                                <!--{/if}-->
+
+                                <!--{if $orderInfo.logistics_worker_name}-->
+
+                                <tr>
+
+                                	<td colspan="2">物流详情</td>
+
+									<td colspan="3">
+
+										<span>核销人员名称：<!--{$orderInfo.logistics_worker_name}--></span>
+
+									</td>
+
+                                </tr>
+
+                                <!--{/if}-->
+
+                                <tr>
+
+                                	<td colspan="5">
+
+                                		<span>下单时间:<!--{if $orderInfo.add_time}--> <!--{$orderInfo.add_time}--> <!--{else}--> --- <!--{/if}--></span>
+
+                                		<span>采样时间:<!--{if $orderInfo.sample_time}--> <!--{$orderInfo.sample_time}--> <!--{else}--> --- <!--{/if}--></span>
+
+                                		<span>送检时间:<!--{if $orderInfo.check_time}--> <!--{$orderInfo.check_time}--> <!--{else}--> --- <!--{/if}--></span>
+
+                                		<span>完成时间:<!--{if $orderInfo.end_time}--> <!--{$orderInfo.end_time}--> <!--{else}--> --- <!--{/if}--></span>
+
+                                	</td>
+
+                                </tr>
+
+                                <tr>
+
+                                    <td colspan="5">
+
+                                        <span style="color: #FF5C00">订单金额：<!--{$orderInfo.total_price}--></span>
+
+                                        <span>支付方式：
+
+                                            <!--{if $orderInfo.pay_method eq '0'}-->无
+
+                                            <!--{elseif $orderInfo.pay_method eq 1}-->微信支付
+
+                                            <!--{elseif $orderInfo.pay_method eq 2}-->支付宝支付
+
+                                            <!--{elseif $orderInfo.pay_method eq 3}-->货到付款
+
+                                            <!--{/if}-->
+
+                                        </span>
+
+                                    </td>
+
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+					<div class="print-button">
+
+						<a href="javascript:window.print();" class="btn btn-sm btn-default">打印</a>
+
+						<!--{if $orderInfo.state neq '0'}-->
+
+							<!--{if $config.order_ticket_notify eq 1}-->
+
+								<a data-oid="<!--{$orderInfo.id}-->" data-key="<!--{$config.order_notify_key}-->" class="btn btn-sm btn-default send-ticket-notify hidden">小票打印</a>
+
+							<!--{/if}-->
+
+						<!--{/if}-->
+
+					</div>
+
+                    <div class="fn-clear"></div>
+
+
+
+                    <!-- 列表底部 -->
+
+                    <div class="list-bottom">
+
+                        <div class="list-bottom-panel">
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!--分页-->
+
+                <div id="page-selection"></div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<!-- 页脚 -->
+
+<!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/admin/<!--{$theme}-->/common/page/footer.html"}-->
+
+
+
+<!-- jsfiles -->
+
+<!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/admin/<!--{$theme}-->/common/page/jsfiles.html"}-->
+
+<script src="<!--{$smarty.const.BASE_PATH}-->/js/public/My97DatePicker/WdatePicker.js"></script>
+
+<script type="text/javascript" src="<!--{$smarty.const.BASE_PATH}-->/js/public/jquery.bootpag/jquery.bootpag.min.js"></script>
+
+<script type="text/javascript" src="<!--{$smarty.const.TEMPLATE_PATH}-->/admin/<!--{$theme}-->/store/js/order/orderDetailList.js"></script>
+
+</body>
+
+</html>
+
+
+

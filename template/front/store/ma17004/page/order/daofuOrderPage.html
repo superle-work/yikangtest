@@ -1,0 +1,68 @@
+<!--提交订单-->
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <title>待付款订单</title>
+    <!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/front/store/<!--{$theme}-->/inner/head.html"}-->
+    <link rel="stylesheet"	href="<!--{$smarty.const.TEMPLATE_PATH}-->/front/store/<!--{$theme}-->/css/order/daofuOrderPage.css">
+</head>
+
+<body>
+<!--主容器-->
+<div id="container" class="container-fluid">
+    <!--页面头部-->
+    <!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/front/store/<!--{$theme}-->/inner/top.html"}-->
+    <!--主体内容-->
+    <div id="content">
+        <div class="order-area">
+            <div class="order-num-info">
+            <span>订单号：</span><!--{$order.order_num}-->
+            <a href="./index.php?c=store&a=daofuOrderPage&id=<!--{$order.id}-->&r=<!--{rand(0,9999)}-->" class="refresh">刷新</a>
+            </div>
+            <div class="order-goods-list">
+                <!--{foreach from = $order.goods_list item = goods}-->
+                <div class="goods clearfix">
+                    <a href="./index.php?c=store&a=goodsDetail&id=<!--{$goods.gid}-->"><img style="width:40px;" src="<!--{$goods.thumb}-->"></a>
+                    <div class="goods-info">
+                        <div class="name"><!--{$goods.goods_name}--></div>
+                        <div class="property-area">
+                            <!--{if $goods.property}-->
+                            <!--{foreach from = $goods.property item = property}-->
+                            <span><!--{$property->name}-->:<!--{$property->value}--></span>
+                            <!--{/foreach}-->
+                            <!--{else}-->
+                            <!--{$goods->simple_desc}-->
+                            <!--{/if}-->
+                        </div>
+                    </div>
+                    <div class="price-count-info">
+                        <div class="price"><i class="icon iconfont">&#xe604;</i><span class="price-value"><!--{$goods.price}--></span></div>
+                        <div class="count"><i class="icon iconfont">&#xe614;</i><span class="count-value"><!--{$goods.count}--></span></div>
+                    </div>
+                </div>
+                <!--{/foreach}-->
+            </div>
+            <div class="total-price">总价：<span><i class="icon iconfont">&#xe604;</i><!--{$order.total_price}--></span><!--{if $order.coupon}--><span style="color: #999;font-size: 12px;">(使用了：<!--{$order.coupon.name}-->)</span><!--{/if}--></div>
+            <!--{if $order.min neq '0.00' and $order.min neq null}--><div class="total-price">优惠：<span><i class="icon iconfont">&#xe604;</i><!--{$order.min}--></span></div><!--{/if}-->
+            <div class="address"><!--{$order.address_text}--></div>
+        </div>
+        <div class="message-area">
+            给卖家留言：<!--{if $order.message}--><!--{$order.message}--><!--{else}-->无<!--{/if}-->
+        </div>
+        <div class="pay-method-area">
+            <div class="pay-method"><a href="javascript:;" class="daofu" data-oid="<!--{$order.id}-->">货到付款</a></div>
+        </div>
+
+    </div>
+
+    <!--页面脚部-->
+    <!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/front/store/<!--{$theme}-->/inner/footer.html"}-->
+</div>
+<!--提示框-->
+<!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/front/store/<!--{$theme}-->/inner/dialog.html"}-->
+<!--公用js文件-->
+<!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/front/store/<!--{$theme}-->/inner/jsfiles.html"}-->
+<script type="text/javascript" src="<!--{$smarty.const.TEMPLATE_PATH}-->/front/store/<!--{$theme}-->/js/order/daofuOrderPage.js"></script>
+
+</body>
+</html>

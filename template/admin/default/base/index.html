@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<!-- head -->
+<!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/admin/<!--{$theme}-->/common/page/head.html"}-->
+<body>
+<!---------------- 控制面板 ------------------->
+<!-- 页头 -->
+<!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/admin/<!--{$theme}-->/common/page/header.html"}-->
+
+<!-- 主体 -->
+<div class="content container-fluid<!--{if $leftBarScale eq '1'}--> scale<!--{/if}-->">
+    <div class="row">
+         <div class="col-md-2 left-section">
+             <!-- 左导航菜单 -->
+             <!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/admin/<!--{$theme}-->/common/page/menu.html"}-->
+
+         </div>
+         <div class="col-md-10 right-section">
+            <!--内容区域-->
+             <h3>
+                 <i class="icon iconfont"><!--{$smarty.session.currentMenu.icon}--></i><!--{$smarty.session.currentMenu.menuTitle}-->
+                 <div class="operation-div">
+                     <a class="btn btn-danger clear-cache" href="javascript:;">清除缓存</a>
+                 </div>
+             </h3>
+             <div class="inner-section row">
+                 <!--{foreach from = $panel item = menu name = menu}-->
+                 <!--{if $smarty.foreach.menu.iteration % 5 eq '1'}-->
+                 <div class="col-md-3 quick-nav admin">
+                     <a href="<!--{$menu.url}-->" >
+                         <div class="icon-image  blue-background"><i class="icon iconfont"><!--{$menu.icon}--></i></div>
+                         <div class="title  blue-background"><!--{$menu.name}--></div>
+                     </a>
+                 </div>
+
+                 <!--{elseif $smarty.foreach.menu.iteration % 5 eq '2'}-->
+                 <div class="col-md-3 quick-nav admin">
+                     <a href="<!--{$menu.url}-->" >
+                         <div class="icon-image  green-background"><i class="icon iconfont"><!--{$menu.icon}--></i></div>
+                         <div class="title  green-background"><!--{$menu.name}--></div>
+                     </a>
+                 </div>
+                 <!--{elseif $smarty.foreach.menu.iteration % 5 eq '3'}-->
+                 <div class="col-md-3 quick-nav admin">
+                     <a href="<!--{$menu.url}-->" >
+                         <div class="icon-image  purple-background"><i class="icon iconfont"><!--{$menu.icon}--></i></div>
+                         <div class="title  purple-background"><!--{$menu.name}--></div>
+                     </a>
+                 </div>
+                 <!--{elseif $smarty.foreach.menu.iteration % 5 eq '4'}-->
+                 <div class="col-md-3 quick-nav admin">
+                     <a href="<!--{$menu.url}-->" >
+                         <div class="icon-image  red-background"><i class="icon iconfont"><!--{$menu.icon}--></i></div>
+                         <div class="title  red-background"><!--{$menu.name}--></div>
+                     </a>
+                 </div>
+                 <!--{elseif $smarty.foreach.menu.iteration % 5 eq '0'}-->
+                 <div class="col-md-3 quick-nav admin">
+                     <a href="<!--{$menu.url}-->" >
+                         <div class="icon-image  kaqi-background"><i class="icon iconfont"><!--{$menu.icon}--></i></div>
+                         <div class="title  kaqi-background"><!--{$menu.name}--></div>
+                     </a>
+                 </div>
+                 <!--{/if}-->
+                 <!--{/foreach}-->
+
+             </div>
+         </div>
+    </div>
+</div>
+
+<!-- 页脚 -->
+<!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/admin/<!--{$theme}-->/common/page/footer.html"}-->
+
+<!-- jsfiles -->
+<!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/admin/<!--{$theme}-->/common/page/jsfiles.html"}-->
+<script type="text/javascript" src="<!--{$smarty.const.TEMPLATE_PATH}-->/admin/<!--{$theme}-->/base/js/index.js"></script>
+</body>
+</html>

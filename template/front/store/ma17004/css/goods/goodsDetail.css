@@ -1,0 +1,174 @@
+/******************************
+ ------商品详情页面样式--------
+ --------author:jjhu-----------
+ ------date:2015-07-24---------
+ ******************************/
+#content{
+	background: #fff;
+}
+/*轮播图*/
+#content .swiper-container{
+    margin: 0;
+}
+#content .swiper-container .swiper-slide img{
+    width: 100%;
+}
+
+/*商品信息(价格销量)*/
+#content .goods-info{
+    padding: 10px 10px;
+    background: #fff;
+}
+#content .goods-info .desc{
+    padding: 5px 0;
+}
+#content .goods-info .desc .name{
+    font-size: 16px;
+    line-height: 25px;
+}
+#content .goods-info .price{
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	color: #EE6666;
+    font-size: 18px;
+}
+#content .goods-info .price .price-value{
+	font-size: 20px;
+}
+.symbol{
+	font-size:14px;
+}
+.sale-quantity{
+	color:black;
+	font-size:12px;
+}
+/*商品描述*/
+.goods-desc{
+	padding:10px;
+}
+.goods-desc img{
+	width:100%;
+}
+
+/*底层按钮*/
+#container .bottom-nav{
+    box-shadow: -1px 0 3px #AAA;
+}
+.bottom-nav .but-area{
+	width:100%;
+	display:flex;
+	flex-direction: row;
+	justify-content: flex-start;
+}
+.bottom-nav .but-area .left-area{
+	padding:3px 0px;
+	width:50%;
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;
+}
+/*收藏按钮*/
+.left-area .favorite{
+	width:33.3333333%;
+	height:44px;
+}
+.left-area .favorite i{
+	font-size:22px;
+}
+.left-area .favorite .my-favorite{
+	font-size:12px;
+	position:relative;
+	top:-2px;
+}
+.left-area .favorite .selected{
+	color: #FBB83D;
+}
+
+/*分享按钮*/
+.left-area .share{
+	width:33.3333333%;
+	height:44px;
+}
+.left-area .share i{
+	font-size:22px;
+}
+.left-area .share .my-share{
+	font-size:12px;
+	position:relative;
+	top:-2px;
+}
+
+/*购物车按钮*/
+.left-area .cartList{
+	width:33.3333333%;
+	height:44px;
+}
+.left-area .cartList i{
+	font-size:22px;
+}
+.left-area .cartList .my-carlist{
+	font-size:12px;
+	position:relative;
+	top:-2px;
+}
+.left-area .cartList .cartList-num{
+	display: block;
+	width:16px;
+	height:16px;
+	position:relative;
+	top:-49px;
+	left:33px;
+	border-radius: 9px;
+	background: #F86D09;
+	color:white;
+	text-align: center;
+	line-height:16px;
+	font-size:12px;
+}
+
+
+/*加入购物车--立即购买*/
+.bottom-nav .but-area .right-area{
+	width:50%;
+	padding:8px 5px;
+}
+.but-area .right-area button{
+	display:inline-block ;
+	width:50%;
+	font-size:12px;
+	padding:0px;
+	margin:0px;
+	border:0px;
+	outline: none;
+	color:white;
+	height:100%;
+}
+.but-area .right-area .add-cart{
+	background:#FE8431;
+	border-radius: 3px 0px 0px 3px;
+}
+.but-area .right-area .buy-now{
+	background:#1695FC;
+	border-radius: 0px 3px 3px 0px;
+}
+.space{
+	height:13px;
+	background:#f5f5f5;
+}
+
+/*背景图片*/
+.bg{
+    position: fixed;
+    margin: auto;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: url(../../image/share.png) no-repeat;
+    background-size: 100% 110%;
+    width: 100%;
+    max-width: 640px;
+    /*padding: 140px 10px 0px 10px;*/
+}

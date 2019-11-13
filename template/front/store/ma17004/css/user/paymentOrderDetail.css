@@ -1,0 +1,144 @@
+/*******************************
+ ------待付款订单页面样式-------
+ ---------author:jjhu-----------
+ -------data:2015-07-26---------
+ *******************************/
+#content{
+    padding: 10px 10px 0;
+}
+.order-address-area table{
+    width: 100%;
+}
+.order-address-area .address-area{
+    display: none;
+}
+.order-address-area .current-use{
+    display: table-row-group;;
+}
+.order-address-area table .col-1{
+    color: #444;
+}
+.order-address-area table .address-tag{
+    width: 20px;
+    font-size: 20px;
+}
+.order-address-area .address-info{
+    margin-bottom: 5px;
+}
+.order-address-area .address-info input{
+    border: 1px solid #DDDDDD;
+    border-radius: 0;
+}
+.order-address-area .receiver{
+    width: 140px;
+}
+.order-address-area table .phone{
+    width: 140px;
+}
+.order-address-area .address-desc,
+.order-address-area .contact-info
+{
+    padding-left: 25px;
+}
+.order-address-area .other-address{
+    padding: 5px 0;
+}
+.order-address-area .col-1 .more-address{
+    text-decoration: none;
+    text-align: right;
+    color: #CCCCCC;
+    display: block;
+}
+.order-address-area .info-text{
+    width: 58px;
+    display: inline-block;
+}
+.order-address-area select{
+    border: 1px solid #EEEEEE;
+    border-radius: 0;
+}
+#content .tip-info{
+    display: none;
+    color: #cc0000;
+    background: #FBEFEF;
+    padding: 3px 0;
+}
+/**订单商品列表**/
+.order-goods-list{
+    margin-right: -10px;
+}
+.order-goods-list table{
+    width: 100%;
+    font-size: 14px;
+}
+.order-goods-list .order-goods{
+    border-top: 1px solid #EEEEEE;
+    padding: 5px 0;
+    height: 51px;
+    overflow: hidden;
+}
+.order-goods-list .order-goods td{
+    padding: 0 2px;
+}
+.order-goods-list .order-goods a{
+    text-decoration: none;
+    color: #333;
+}
+.order-goods-list .order-goods .col-2{
+    width: 44px;
+}
+.order-goods-list .order-goods .col-3 .name{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: normal;
+}
+.order-goods-list .order-goods .property-area{
+    color: #9c9c9c;
+    font-size: 12px;
+}
+.order-goods-list .property-area span{
+    margin-right: 2px;
+}
+.order-goods-list .order-goods .col-4{
+    width: 86px;
+    text-align: right ;
+    padding-right: 10px;
+}
+.order-goods-list .order-goods .col-4 .quantity{
+    text-align: right;
+}
+.order-goods .col-4 .quantity i{
+    font-size: 12px;
+}
+.order-goods .col-4 .quantity .quantity-value{
+    font-size: 12px;
+}
+.order-bottom-area .message{
+    margin-top: 10px;
+    border-radius: 0;
+    padding-left: 10px;
+    border: 1px solid #EEEEEE;
+    height: 32px;
+    outline: none;
+    width: 100%;
+}
+.order-bottom-area .total-price-area{
+    margin: 5px 0;
+}
+.order-bottom-area .total-price{
+    float: right;
+    color: #FF5C00;
+}
+.order-bottom-area .pay-method-area{
+    margin: 20px 0;
+}
+.order-bottom-area .pay-method-area a{
+    text-decoration: none;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    background: #009A00;
+    color: #ffffff;
+    font-size: 14px;
+    display: block;
+}

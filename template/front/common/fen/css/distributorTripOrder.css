@@ -1,0 +1,65 @@
+/*************************
+ ------我的佣金页面样式---
+ *************************/
+#content{
+    background-color: #F7F7F7;
+    margin-bottom: 50px;
+}
+#content .order-list .order{
+    background-color: #ffffff;
+    border-top:1px solid #EEEEEE ;
+    border-bottom:1px solid #EEEEEE ;
+    padding: 10px;
+    margin-bottom: 10px;
+    display: block;
+    text-decoration: none;
+    color: #333;
+}
+#content .order-list .order:hover{
+	text-decoration: none;
+}
+#content .order-list .add-time{
+    font-size: 12px;
+    color: #999999;
+}
+#content .order-list .order-num,#content .order-list .state{
+    font-size: 12px;
+}
+#content .order-list .total-price-info{
+    float: right;
+    font-size: 12px;
+}
+#content .order-list .total-price-info i,#content .order-list .total-price{
+    color: #FF5C00;
+}
+#content .order-list .no-order{
+	text-align:center;
+}
+#myBottomNav{
+    display: none;
+    z-index: 10;
+    position: fixed;
+    bottom: 0;
+    text-align: center;
+    background: #fff;
+    box-shadow: 0 -1px  #eee;
+    color: #FFFFFF;
+    overflow: hidden;
+}
+#myBottomNav a{
+    text-align: center;
+    color: #000;
+    display: inline-block;
+    float: left;
+    text-decoration: none;
+    padding: 0;
+    height: 40px;
+    line-height: 40px;
+    width: 20%;
+    font-size: 12px;
+    border-top: 2px solid transparent;
+}
+#myBottomNav a.current {
+    color: #FF5C00;
+    border-top-color:#FF5C00;
+}

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <title>收货地址</title>
+	<!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/front/common/user/<!--{$theme}-->/page/inner/head.html"}-->
+    <meta http-equiv="Pragma" content="no-cache">
+    <link rel="stylesheet"	href="<!--{$smarty.const.TEMPLATE_PATH}-->/front/common/user/<!--{$theme}-->/css/address/addressList.css">
+</head>
+
+<body>
+    <!--主容器-->
+    <div id="container">
+        <!--顶部标签-->
+		<div class="top clearfix">
+			<a href="javascript:window.history.go(-1);" class="left-icon"><i class="iconfont">&#xe62a;</i></a>
+		    <a href="./index.php?c=base_user&a=addressList" class="center"><span class="logo">地址管理</span></a>
+		    <a href="javascript:;" class="right-icon"><i class="icon iconfont"></i></a>
+		</div>
+		
+        <!--主体内容-->
+        <div id="content">
+        	<!--<div class="address-top-area">
+                <span class="back"><i class="icon iconfont">&#xe653;</i></span><span>地址列表</span><a href="javascript:;" class="complete" style="display: none;">完成</a><a href="javascript:;" class="edit" style="display: block;">编辑</a>
+            </div>-->
+            <div class="address-list">
+                <!--{if $addressList}-->
+            		<!--{foreach from=$addressList item=address name=addressList}-->
+                    <div class="address-area clearfix" data-id="<!--{$address.id}-->">
+                        <!--选择区域-->
+
+                        <!--收货信息-->
+                        <div class="receiver-info">
+                            <div class="callname-phone-info">
+                                <span class="callname">姓名：<!--{$address.call_name}--></span>
+                                <span class="phone"><!--{$address.phone}--></span>
+                                <a class="edit" href="./index.php?c=base_user&a=editAddress&id=<!--{$address.id}-->" data-id="<!--{$address.id}-->"></a>
+                            </div>
+                            <!--地址信息-->
+                            <div class="address-info">
+                                	上门地址：<!--{$address.address->province}--><!--{$address.address->city}--><!--{$address.address->area}--><!--{$address.address->detail}-->
+                            </div>
+                            <!--地址编辑-->
+                            <div class="edit-address">
+                            	<div class="default-address">
+                            		<div class="check-box" data-id = "<!--{$address.id}-->"><i class="icon iconfont <!--{if $address.is_default eq 1}-->selected<!--{else}-->hidden<!--{/if}-->">&#xe696;</i></div>
+                            		<span>设置默认地址</span>
+                            		<div class="address-operate">
+                            			<a href="./index.php?c=base_user&a=editAddress&id=<!--{$address.id}-->" data-id="<!--{$address.id}-->"><span class="address-edit">编辑</span></a>
+                            			<span  data-id="<!--{$address.id}-->" class="delete">删除</span>
+                            		</div>	
+                            	</div>
+                            </div>
+                        </div>
+                    </div>
+					<!--{/foreach}-->
+                <!--{else}-->
+                    <p class="text-danger">暂无地址。</p>
+                <!--{/if}-->
+
+            </div>
+            <div class="address-bottom">
+        	<a class="add-address" id="addAddress" href="./index.php?c=base_user&a=addAddress"><span class="can-use">新增收货地址</span></a>
+            <!--<div class="cf">
+            	<a class="col-xs-6 col-sm-6 col-md-6" id="addAddress" href="./index.php?c=base_user&a=addAddress"><span class="can-use">新增收货地址</span></a>
+                <a class="col-xs-6 col-sm-6 col-md-6" id="defaultAddress" href="javascript:;">
+                    <span>设为默认地址</span>
+                </a>
+                
+                <a class="col-xs-6 col-sm-6 col-md-6" style="display: none;" id="selecAllDelete" href="javascript:;">
+                    <i class="icon iconfont all-selected" style="display: none;">&#xe698;</i>
+                    <i class="icon iconfont not-all-selected">&#xe618;</i>
+                    <span class="select-all-text">全选</span>
+                </a>
+                <a class="col-xs-6 col-sm-6 col-md-6"id="deleteAll" style="display: none;" href="javascript:;"><span>删除</span></a>
+            </div>-->
+        </div>
+        </div>
+        
+    </div>
+    <!--提示框-->
+    <!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/front/common/user/<!--{$theme}-->/page/inner/dialog.html"}-->
+    <!--公用js文件-->
+    <!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/front/common/user/<!--{$theme}-->/page/inner/jsfiles.html"}-->
+    <script src="<!--{$smarty.const.JS_PATH}-->/public/jquery.cookie/jquery.cookie.js"></script>
+    <script type="text/javascript" src="<!--{$smarty.const.TEMPLATE_PATH}-->/front/common/user/<!--{$theme}-->/js/address/addressList.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/front/store/<!--{$theme}-->/inner/head.html"}-->
+    <title>分类商品</title>
+    <link rel="stylesheet"	href="<!--{$smarty.const.TEMPLATE_PATH}-->/front/store/<!--{$theme}-->/css/goods/goodsCateList.css">
+</head>
+
+<body>
+    <!--主容器-->
+    <div id="container" class="container-fluid">
+    	<!--页面头部-->
+        <!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/front/store/<!--{$theme}-->/inner/top.html"}-->
+        <!-- 顶部条目 -->
+       	<div class="top-nav hidden">
+       		<span class="cate-click pull-left"><i class="icon iconfont">&#xe60b;</i>商品分类<i class="icon iconfont">&#xe676;</i></span>
+       		<span class="cate-select pull-right">全部商品</span>
+       	</div>
+       	<!-- 分类列表 -->
+       	<div class="cate-wrap hidden">
+       		<!--{foreach from = $cateList item = cate key = key}-->
+       		<!--{if $key == 1}-->
+	       		<div class="cate-list fir">
+		       		<span data-rank="1" data-name="全部商品" class="active current">全部商品</span>
+		       		<!--{foreach from = $cate item = rankList}-->
+		       		<span data-name="<!--{$rankList.name}-->" data-rank="<!--{$rankList.rank}-->" data-id="<!--{$rankList.id}-->" data-fir="<!--{$rankList.fir}-->">
+		       		<!--{if $rankList.icon}--><img src="<!--{$rankList.icon}-->"><!--{/if}-->
+		       		<!--{$rankList.name}-->
+		       		<!--{if $rankList.status}--><span class="triangle-down"></span><!--{/if}--></span>
+		       		<!--{/foreach}-->
+	       		</div>
+       		<!--{elseif $key == 2}-->
+       			<div class="cate-list sec">
+		       		<!--{foreach from = $cate item = rankList}-->
+		       		<span data-name="<!--{$rankList.name}-->" data-rank="<!--{$rankList.rank}-->" data-id="<!--{$rankList.id}-->" data-fir="<!--{$rankList.fir}-->" data-sec="<!--{$rankList.sec}-->">
+		       		<!--{$rankList.name}-->
+		       		<!--{if $rankList.status}--><span class="triangle-down"></span><!--{/if}--></span>
+		       		<!--{/foreach}-->
+	       		</div>
+       		<!--{else}-->
+       			<div class="cate-list thr">
+		       		<!--{foreach from = $cate item = rankList}-->
+		       		<span data-name="<!--{$rankList.name}-->" data-rank="<!--{$rankList.rank}-->" data-id="<!--{$rankList.id}-->" data-fir="<!--{$rankList.fir}-->" data-sec="<!--{$rankList.sec}-->" data-thr="<!--{$rankList.thr}-->">
+		       		<!--{$rankList.name}-->
+		       		</span>
+		       		<!--{/foreach}-->
+	       		</div>
+       		<!--{/if}-->
+       		<!--{/foreach}-->
+       	</div>
+        <!--主体内容-->
+        <div id="content">
+        	<div class="goods-wrap">
+	        	<div class="row label-display">
+	            </div>
+            </div>
+            <div class="get-more" data-start="0" data-num="10"></div>
+        </div>
+        <input type="hidden" id='cid' value="<!--{$cid}-->" /> 
+        <input type="hidden" id='name' value="<!--{$name}-->" /> 
+    </div>
+    <!--公用js文件-->
+    <!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/front/store/<!--{$theme}-->/inner/jsfiles.html"}-->
+    <script type="text/javascript" src="<!--{$smarty.const.TEMPLATE_PATH}-->/front/store/<!--{$theme}-->/js/goods/goodsCateList.js"></script>
+</body>
+</html>

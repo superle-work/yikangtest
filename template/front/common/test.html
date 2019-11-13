@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<script type='text/javascript'>
+(function(window,a,b) {
+	window[a] = window[a] || function() {
+        (window[a].a = window[a].a || []).push(arguments)
+    };
+    window[b] = window[b] || function() {
+        (window[b].a = window[b].a || []).push(arguments)
+    };
+	var s=document.createElement("script");
+	s.src="http://jsapi.weiliaokefu.com/Public/dist/js/jsapi.js?v="+Math.round(Math.random()*1000);
+	s.async=true;
+	s.charset="UTF-8";
+	document.getElementsByTagName("head")[0].appendChild(s);
+})(window,'_FENBOT',"_FENBOT_API");
+_FENBOT({cid:'6844',type:'0'});
+</script>
+<html>
+	<head>
+		<title>提示框测试</title>
+		<!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/front/common/head.html"}-->
+		<style type="text/css">
+			#container{
+				padding: 20px;
+			}
+			#container a{
+				display: block;
+				margin: 0 auto;
+				text-align: center;
+				margin-bottom: 20px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="header"></div>
+		<div id="container">
+			<a href="javascript:;" class="btn-1">加载框</a>
+			<a href="javascript:;" class="btn-2">跳转框</a>
+			<a href="javascript:;" class="btn-3">成功提示框</a>
+			<a href="javascript:;" class="btn-4">警告提示框</a>
+			<a href="javascript:;" class="btn-5">错误提示框</a>
+			<a href="javascript:;" class="btn-6">友情提示框</a>
+			
+			<a href="javascript:;" class="btn-7">删除确认提示框</a>
+			<a href="javascript:;" class="btn-8">普通确认提示框</a>
+			<a href="javascript:;" class="btn-9">成功确认提示框</a>
+		</div>
+		<!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/front/common/footer.html"}-->
+	    <!--提示框-->
+		<!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/front/common/dialog.html"}-->
+		<!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/front/common/jsfiles.html"}-->
+		<script src="<!--{$smarty.const.TEMPLATE_PATH}-->/front/common/test.js"></script>
+	</body>
+</html>
