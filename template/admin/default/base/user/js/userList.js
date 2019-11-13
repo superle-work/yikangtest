@@ -170,6 +170,29 @@ $(function(){
     }
 
     /**
+     * 设为管理员
+     */
+    function userAdmin(){
+        var id = $(this).attr("data-id");
+        $.ajax({
+            url:"./admin.php?c=base_user&a=userAdmin&id="+id,
+            type:"post",
+            data:{"id":id},
+            dataType:"json",
+            success:function(json,statusText){
+                if(json.errorCode == 0){
+
+                    responseTip(json.errorCode,"恭喜您，操作成功！",1500,function(){render(true,currentPage,pageSize);});
+
+                }else{
+                    responseTip(json.errorCode,json.errorInfo,1500);
+                }
+            },
+            error:errorResponse
+        });
+    }
+
+    /**
      * 密码重置
      */
     function restPwd(){
@@ -259,6 +282,7 @@ $(function(){
                         var addr = obj.country+"-"+obj.province+"-"+obj.city;
                         var points = obj.points;
                         var id = obj.id;
+                        var admin = (obj.is_admin == 1) ? "" : "<a href='javascript:;'  class='user-admin btn btn-xs btn-primary' data-id='"+id+"'>设为管理员</a>";
                         html+='<tr>'
                         		+'<td>'+number+'</td>'
                         		+'<td>'+(head_url?'<img width="50" src="'+head_url+'">':'无头像')+'</td>'
@@ -271,7 +295,7 @@ $(function(){
                         		//+'<td>'+subscribeTimes+'</td>'
                         		+'<td>'+subscribe_time+'</td>'
                         		+'<td>'
-                        			//+'<a href="./admin.php?c=base_user&a=editUser&id='+id+'" class="btn btn-xs btn-primary">编辑</a>'
+                                + admin
                         			+'<a href="javascript:;" class="user-detail btn btn-xs btn-primary" data-id="'+id+'">查看</a>'
                         		+'</td>'
                     		+'</tr>';
@@ -280,6 +304,7 @@ $(function(){
                         html += '<tr><td colspan="'+colspan+'"><p class="text-danger">暂无数据。</p></td></tr>';
                     }
                     $(".inner-section #list-table tbody").html(html);
+                    $(".user-admin").click(userAdmin);
                     $(".user-detail").click(userDetail);
                     $(".reset-pwd").click(restPwd);
 

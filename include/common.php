@@ -33,7 +33,7 @@ class common {
 	 * @return string time 2016-08-02 16:01:01
 	 */
 	public static function getTime(){
-	    return date('Y-m-d H:i:s',time());
+	    return date('Y-m-d H:i:s',strtotime('+8hour'));
 	}
 	
 	/**

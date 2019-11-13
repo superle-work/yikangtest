@@ -92,6 +92,29 @@ class base_user extends admin_controller{
 	    $this->log(__CLASS__, __FUNCTION__, "用户详情页面", 1, 'view');
 	    $this->display("../template/admin/{$this->theme}/base/user/page/userDetail.html");
 	}
+
+    /**
+     * 设为管理员
+     */
+    function userAdmin(){
+        $this->getMenu($this);
+        $id = $this->spArgs('id');
+        $conditions = array('id' => $id);
+        $userResult = $this->lib_user->findUser($conditions);
+        $adminMap['user_id'] = $userResult['data']['id'];
+        $adminMap['account'] = time();
+        $adminMap['password'] = 123;
+        $adminMap['admin_name'] = $userResult['data']['nick_name'];
+        $adminMap['type'] = 1;
+        $admin = new lib_admin();
+        $list = $admin->addAdmin($adminMap);
+        if($list['data']){
+            $map['is_admin'] = 1;
+            $userResult = $this->lib_user->updateUser(array('id' => $this->spArgs('id')), $map);
+        }
+        $this->log(__CLASS__, __FUNCTION__, "添加管理员页面", 1, 'add');
+        echo json_encode($list);
+    }
 	
 	/**
 	 * 编辑用户页面
@@ -527,34 +550,62 @@ class base_user extends admin_controller{
 	/**
 	 * 同步微信头像
 	 */
-//	function asynGroupFansImg(){
-//	    if(!$_SESSION['groupFans']){
-//	        echo json_encode(common::errorArray(1, "没有可以处理的数据", false));
-//	        exit;
-//	    }
-//	    //获取当前处理批次
-//	    $batch = $this->spArgs('batch');
-//	    $currentGroup = $_SESSION['groupFans'][$batch - 1];
-//	    $userInfoList = FansManage::getFansInfoBatch($currentGroup);
-//	    $batchUpateSql = "UPDATE base_user SET head_img_url = CASE open_id ";
-//	    $when = '';
-//	    //处理
-//	    foreach ($userInfoList['user_info_list'] as $fansInfo){
-//	        $when .= " WHEN '{$fansInfo['openid']}' THEN '{$fansInfo['headimgurl']}' ";
-//	        $openIds .= "'{$fansInfo['openid']}',";
-//	    }
-//	    $when .= $when . " END ";
-//	    $openIds = rtrim($openIds,',');
-//	    $where = "WHERE open_id IN({$openIds})";
-//	    $batchUpateSql = $batchUpateSql . $when . $where;
-//	    include_once  'model/base/lib_user.php';
-//	    $lib_user = new lib_user();
-//	    $lib_user->runSql($batchUpateSql);
-//	    if($this->spArgs('groupCount') == $batch){
-//	        echo json_encode(common::errorArray(3, "更新头像完成", true));
-//	    }else{
-//	        echo json_encode(common::errorArray(0, "更新头像成功", true));
-//	    }
+//	function asynGroupFansImg(){
+
+//	    if(!$_SESSION['groupFans']){
+
+//	        echo json_encode(common::errorArray(1, "没有可以处理的数据", false));
+
+//	        exit;
+
+//	    }
+
+//	    //获取当前处理批次
+
+//	    $batch = $this->spArgs('batch');
+
+//	    $currentGroup = $_SESSION['groupFans'][$batch - 1];
+
+//	    $userInfoList = FansManage::getFansInfoBatch($currentGroup);
+
+//	    $batchUpateSql = "UPDATE base_user SET head_img_url = CASE open_id ";
+
+//	    $when = '';
+
+//	    //处理
+
+//	    foreach ($userInfoList['user_info_list'] as $fansInfo){
+
+//	        $when .= " WHEN '{$fansInfo['openid']}' THEN '{$fansInfo['headimgurl']}' ";
+
+//	        $openIds .= "'{$fansInfo['openid']}',";
+
+//	    }
+
+//	    $when .= $when . " END ";
+
+//	    $openIds = rtrim($openIds,',');
+
+//	    $where = "WHERE open_id IN({$openIds})";
+
+//	    $batchUpateSql = $batchUpateSql . $when . $where;
+
+//	    include_once  'model/base/lib_user.php';
+
+//	    $lib_user = new lib_user();
+
+//	    $lib_user->runSql($batchUpateSql);
+
+//	    if($this->spArgs('groupCount') == $batch){
+
+//	        echo json_encode(common::errorArray(3, "更新头像完成", true));
+
+//	    }else{
+
+//	        echo json_encode(common::errorArray(0, "更新头像成功", true));
+
+//	    }
+
 //	}
 
 	/**

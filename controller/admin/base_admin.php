@@ -130,6 +130,15 @@ class base_admin extends admin_controller{
 		if($id == $_SESSION['admin']['id']){
 			echo json_encode(common::errorArray(1, "不能删除自己", FALSE));
 		}
+        $condition = array(
+            'id' => $id,
+        );
+        $findresult = $this->lib_admin->findAdmin( $condition);
+        if($findresult['data']['user_id']){
+            $user = new lib_user();
+            $map['is_admin'] = 0;
+            $userResult = $user->updateUser(array('id' => $findresult['data']['user_id']), $map);
+        }
 		$result = $this->lib_admin->deleteAdmin(array('id' => $id));
 		$this->log(__CLASS__, __FUNCTION__, "删除管理员", 0, 'del');
 		echo json_encode($result);

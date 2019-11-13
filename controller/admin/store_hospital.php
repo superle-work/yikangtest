@@ -260,8 +260,8 @@ class store_hospital extends admin_controller{
 	    //验证图片能否上传
 	    if($_FILES) $verify = UtilImage::verifyImage();
 	    if($verify['errorCode'] == 1) exit(json_encode($verify));
-	    
-	    $goodsInfo = $this->getArgsList($this, array(name,phone,address,detail_desc,longitude,latitude,hospital_ratio));
+
+        $goodsInfo = $this->getArgsList($this, array(name,phone,address,detail_desc,doctor_desc,longitude,latitude,hospital_ratio));
 		
 		//上传图片
 		$resultImg = UtilImage::uploadPhoto('imgurl', 'upload/image/store/hospital/',300,300);

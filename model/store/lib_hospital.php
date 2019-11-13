@@ -36,6 +36,7 @@ class lib_hospital extends base_model {
 				"address" => $goodsInfo['address'],
 				"uid" => $goodsInfo['uid'],
 				"detail_desc" => $goodsInfo['detail_desc'],
+                "doctor_desc" => $goodsInfo['doctor_desc'],
 				"longitude" => $goodsInfo['longitude'],
 				"latitude" => $goodsInfo['latitude'],				
 				"add_time" => date ( 'Y-m-d H:i:s', time() ),
