@@ -116,7 +116,7 @@ class store_order extends admin_controller{
 
 		$page = $this->getPageInfo($this);
 		$sort = "add_time desc";
-		$conditions = $this->getArgsList($this,array(state,order_num,phone),false);
+		$conditions = $this->getArgsList($this,array(userstate,state,order_num,phone),false);
 		$keywords = $this->getArgsList($this,array(clinic_name,hospital_name,),false);
 		$createTime = $this->getArgsList($this,array('from','to'),false);
 		extract($page);
@@ -127,6 +127,9 @@ class store_order extends admin_controller{
 		if($state!=''){
 			$sql.=" and o.state={$state}";
 		}
+        if($userstate!=''){
+            $sql.=" and o.user_type={$userstate}";
+        }
 		if($order_num){
 			$sql.=" and o.order_num='{$order_num}'";
 		}
@@ -287,15 +290,18 @@ class store_order extends admin_controller{
 		}
 		
 		$sort = "add_time desc";
-		$conditions = $this->getArgsList($this,array(state,order_num,phone),false);
+		$conditions = $this->getArgsList($this,array(userstate,state,order_num,phone),false);
 		$keywords = $this->getArgsList($this,array(clinic_name,hospital_name,),false);
 		$createTime = $this->getArgsList($this,array('from','to'),false);
 		extract($conditions);
 		extract($keywords);
 		extract($createTime);
 		$sql="select o.*,c.name clinic_name,h.name hospital_name from store_order o left join store_clinic c on o.clinic_id=c.id left join store_hospital h on o.hospital_id=h.id where is_show=1 {$where}";
-		if($state!=''){
-			$sql.=" and o.state={$state}";
+        if($state!=''){
+            $sql.=" and o.state={$state}";
+        }
+		if($userstate!=''){
+			$sql.=" and o.user_type={$userstate}";
 		}
 		if($order_num){
 			$sql.=" and o.order_num='{$order_num}'";

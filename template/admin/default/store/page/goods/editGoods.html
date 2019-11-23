@@ -103,6 +103,44 @@
                         </tr>
 
                         <tr>
+                            <td class="td1">
+                                <label>选择区域</label>
+                            </td>
+                            <td class="td2">
+                                <div class="layui-form-item" id="addressDiv">
+                                    <label class="layui-form-label">管理区域</label>
+                                    <div class="layui-input-inline">
+                                        <select name="province" lay-filter="province" id="province">
+                                            <option ></option>
+                                        </select> 省
+                                    </div>
+                                    <div class="layui-input-inline">
+                                        <select name="city" lay-filter="city" id="city">
+                                            <option></option>
+                                        </select> 市
+                                    </div>
+                                    <div class="layui-input-inline">
+                                        <select name="area" lay-filter="area" id="area">
+                                            <option></option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label">上次选中区域：</label>
+                                    <label class="layui-form-label pca-label-province" >
+                                        <input name="name" lay-verify="required" disabled="disabled" autocomplete="off" class="layui-input" type="disabled" value="<!--{if $goods.province!=null}--><!--{$goods.province}--><!--{/if}-->">
+                                    </label>
+                                    <label class="layui-form-label pca-label-city">
+                                        <input name="name" lay-verify="required" disabled="disabled" autocomplete="off" class="layui-input" type="disabled" value="<!--{if $goods.city!=null}--><!--{$goods.city}--><!--{/if}-->">
+                                    </label>
+                                    <label class="layui-form-label pca-label-area">
+                                        <input name="name" lay-verify="required" disabled="disabled" autocomplete="off" class="layui-input" type="disabled" value="<!--{if $goods.area!=null}--><!--{$goods.area}--><!--{/if}-->">
+                                    </label>
+                                </div>
+                            </td>
+                        </tr>
+
+                        <tr>
 
                             <td class="td1"><label><span class="must-tag">*</span>商品名称</label></td>
 
@@ -343,6 +381,12 @@
 
                                 <input type="hidden" id='id' name="id" value="<!--{$goods.id}-->">
 
+                                <input type="hidden" id='textprovince' name="textprovince" value="<!--{$goods.province}-->">
+
+                                <input type="hidden" id='textcity' name="textcity" value="<!--{$goods.city}-->">
+
+                                <input type="hidden" id='textarea' name="textarea" value="<!--{$goods.area}-->">
+
                                 <input type="hidden" id='addGroups' name="add_groups" value="">
 
                                 <button type="button" class="btn btn-success btn-md" id='save'>提交</button>
@@ -375,7 +419,7 @@
 
 <!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/admin/<!--{$theme}-->/common/page/footer.html"}-->
 
-
+<script type="text/javascript" src="<!--{$smarty.const.TEMPLATE_PATH}-->/admin/<!--{$theme}-->/store/js/citys.js"></script>
 
 <script type="text/javascript" src="<!--{$smarty.const.JS_PATH}-->/public/form/jquery.form.js"></script>
 

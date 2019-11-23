@@ -28,10 +28,15 @@ class lib_logistics extends base_model {
 	public function addLogistics($goodsInfo){
 		$addInfo = array (
 				"nick_name" => $goodsInfo['nick_name'],
-				"phone" => $goodsInfo['phone'],
-				"user_id" => $goodsInfo['user_id'],
+				"phone" => $goodsInfo['phone'],
+
+				"user_id" => $goodsInfo['user_id'],
+
 				"head_img" => $goodsInfo['head_img'],		
-				"add_time" => date ( 'Y-m-d H:i:s', time() ),
+				"province" => $goodsInfo['province'],
+				"city" => $goodsInfo['city'],
+				"area" => $goodsInfo['area'],
+				"add_time" => date ( 'Y-m-d H:i:s', strtotime('+8hour') ),
 		);
 		try {
 			$addGoodsId = $this->m_logistics->create ( $addInfo );

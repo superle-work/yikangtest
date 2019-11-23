@@ -261,7 +261,7 @@ class store_hospital extends admin_controller{
 	    if($_FILES) $verify = UtilImage::verifyImage();
 	    if($verify['errorCode'] == 1) exit(json_encode($verify));
 
-        $goodsInfo = $this->getArgsList($this, array(name,phone,address,detail_desc,doctor_desc,longitude,latitude,hospital_ratio));
+        $goodsInfo = $this->getArgsList($this, array(name,phone,address,detail_desc,doctor_desc,longitude,latitude,hospital_ratio,province,city,area));
 		
 		//上传图片
 		$resultImg = UtilImage::uploadPhoto('imgurl', 'upload/image/store/hospital/',300,300);
@@ -330,7 +330,7 @@ class store_hospital extends admin_controller{
 		$hospitalInfo=$this->lib_hospital->getGoods($conditions['id']);
 		
 		//更新商品基本信息
-		$goodsInfo = $this->getArgsList($this, array(name,phone,address,detail_desc,longitude,latitude,hospital_ratio));
+		$goodsInfo = $this->getArgsList($this, array(name,phone,address,detail_desc,longitude,latitude,hospital_ratio,province,city,area));
 		
 		if($this->spArgs('imgFlag') == 1){//判断是否需要重新上传图片
 		    //更新图片

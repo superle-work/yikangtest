@@ -8,7 +8,7 @@ $(function(){
      * 页面初始化
      */
     function init(){
-    	//addressInit('province', 'city', 'area','安徽');
+    	addressInit('province', 'city', 'area','安徽');
     	setMap(); //初始化地图
         bindEvent();
         //表单的JQueryValidater配置验证---jquery.validate插件验证法

@@ -127,15 +127,25 @@ class store_logistics extends admin_controller{
 	 * 添加工作人员
 	 */
 	function insertLogistics(){
-	    $uid=$this->spArgs("uid");
+	    $form=$this->spArgs();
+	    $uid = $form['uid'];
 		if(!class_exists('lib_user'))include "model/base/lib_user.php";
 		$lib_user=new lib_user();
 		$userInfo=$lib_user->findUserList("id in ($uid)");
 		foreach($userInfo['data'] as $val){
-			$arr['nick_name']=$val['nick_name'];
-			$arr['user_id']=$val['id'];
-			$arr['phone']=$val['phone'];
+			$arr['nick_name']=$val['nick_name'];
+
+			$arr['user_id']=$val['id'];
+
+			$arr['phone']=$val['phone'];
+
 			$arr['head_img']=$val['head_img_url'];
+
+			$arr['province']=$form['province'];
+
+			$arr['city']=$form['city'];
+
+			$arr['area']=$form['area'];
 			$res=$this->lib_logistics->addLogistics($arr);
 		}
 		if($res){

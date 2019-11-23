@@ -45,7 +45,7 @@ $(function(){
                     $("#myModal").modal('hide');
                 },1500);
         	}else{
-	            myConfirmModal("确定要批量删除商品吗？",function(){
+	            myConfirmModal("确定要批量删除体检项目吗？",function(){
 		            $.ajax({
 		                url:"./admin.php?c=store_goods&a=batchDelete",
 		                type:"post",
@@ -74,6 +74,10 @@ $(function(){
 		            });
 	            });
         	}
+        });
+
+        $("#clone").on('click',function(){
+            alert(1);
         });
     }
     /**
@@ -124,7 +128,7 @@ $(function(){
                     currentPage = json.data.pageInfo.current_page;
                     var myList = json.data.dataList;
 
-                    html+='<tr><th class="th1"><input type="checkbox" class="select-all my-icheckbox"></th><th class="th1">序号</th><th class="th8">商品名称</th><th class="th4">标准价格</th><th class="th10">已售</th><th class="th6">状态</th><th class="th7">首页推荐</th><th class="th7">排序系数</th><th class="th8">创建日期</th><th class="th9">操作</th></tr>';
+                    html+='<tr><th class="th1"><input type="checkbox" class="select-all my-icheckbox"></th><th class="th1">序号</th><th class="th8">体检项目名称</th><th class="th4">标准价格</th><th class="th10">已售</th><th class="th6">状态</th><th class="th7">首页推荐</th><th class="th7">排序系数</th><th class="th8">创建日期</th><th class="th9">操作</th></tr>';
                     var colspan = $(html).find("th").length;
                     for(var i = 0; i < myList.length;i++){
                         var obj = myList[i];
@@ -157,6 +161,7 @@ $(function(){
                                     +(updown == 1?"<a href='javascript:;' class='btn btn-danger btn-xs updown' data-updown='0' data-id='"+gid+"'>下架</a>" : "<a href='javascript:;' class='btn btn-success btn-xs updown' data-updown='1' data-id='"+gid+"'>上架</a>")
                                     +(recommend == 0?"<a href='javascript:;' class='btn btn-primary btn-xs recommend' data-recommend='1' data-id='"+gid+"'>首页推荐</a>":"<a href='javascript:;' class='btn btn-default btn-xs recommend' data-recommend='0' data-id='"+gid+"'>取消推荐</a>")
                                     +(updown == 1?"":'<a class="btn btn-default btn-xs delete" imgurl ="'+imgurl+'" gid = "'+gid+'">删除</a>')
+                                    +"<a href='javascript:;' class='btn btn-success btn-xs' id='clone' data-id='"+gid+"'>复制</a>"
                                  +'</td>'
                                +'</tr>';
 
@@ -171,6 +176,7 @@ $(function(){
                     batchSelect(idList,".inner-section #list-table .select-all",".inner-section #list-table .select-single");
                     //单个操作
                     $("#list-table .updown").click(updownGoods);
+                    $("#clone").click(goodClone);
                     $("#list-table .delete").click(deleteGoods);
                     $("#list-table .recommend").click(recommendGoods);
                 }else{
@@ -180,6 +186,26 @@ $(function(){
             },
             error:errorResponse
         });
+    }
+
+    function goodClone(){
+        var id = $(this).attr("data-id");
+        $.ajax(
+            {
+                type:"post",
+                url:"./admin.php?c=store_goods&a=cloneGoods",
+                data:{"id":id},
+                dataType:"json",
+                success:function(json,statusText){
+                    if(json.errorCode == 0){
+                        render(true,currentPage,pageSize);
+                    }else{
+                        responseTip(json.errorCode,json.errorInfo,1500);
+                    }
+                },
+                error:errorResponse
+            }
+        );
     }
 
     /**

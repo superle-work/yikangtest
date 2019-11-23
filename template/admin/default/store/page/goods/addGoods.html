@@ -107,6 +107,32 @@
                             </tr>
 
                             <tr>
+                                <td class="td1">
+                                    <label>选择区域</label>
+                                </td>
+                                <td class="td2">
+                                    <div class="layui-form-item" id="addressDiv">
+                                        <label class="layui-form-label">管理区域</label>
+                                        <div class="layui-input-inline">
+                                            <select name="province" lay-filter="province" id="province">
+                                                <option ></option>
+                                            </select> 省
+                                        </div>
+                                        <div class="layui-input-inline">
+                                            <select name="city" lay-filter="city" id="city">
+                                                <option></option>
+                                            </select> 市
+                                        </div>
+                                        <div class="layui-input-inline">
+                                            <select name="area" lay-filter="area" id="area">
+                                                <option></option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+
+                            <tr>
 
                                 <td class="td1"><label for="name"><span class="must-tag">*</span>商品名称</label></td>
 
@@ -313,6 +339,8 @@
 <!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/admin/<!--{$theme}-->/common/page/footer.html"}-->
 
 
+
+<script type="text/javascript" src="<!--{$smarty.const.TEMPLATE_PATH}-->/admin/<!--{$theme}-->/store/js/citys.js"></script>
 
 <script type="text/javascript" src="<!--{$smarty.const.JS_PATH}-->/public/form/jquery.form.js"></script>
 

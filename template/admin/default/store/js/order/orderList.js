@@ -92,6 +92,7 @@ $(function(){
             order_num : $.trim($("#ordernum").val()),//订单编号
             phone : $.trim($("#phone").val()),//手机号
             state : $('#state').val(),//订单状态
+            userstate : $('#userstate').val(),//用戶类型
             clinic_name : $('#clinic_name').val(),//诊所名称
             hospital_name : $.trim($("#hospital_name").val()),
             from : $('#startTime').val(),
@@ -115,7 +116,7 @@ $(function(){
      * @param pageSize 每页显示记录数
      */
     function render(async,pageIndex,pageSize){
-        var selectInfo = getSelectInfo();
+        var selectInfo = getSelectInfo();console.log(selectInfo);
         selectInfo.pageIndex = pageIndex;
         selectInfo.pageSize = pageSize;
         $.ajax({
@@ -145,6 +146,7 @@ $(function(){
                         var account = obj.account;     //下单用户openid
                         var totalprice = obj.total_price;
                         var state = obj.state;
+                        var userstate = obj.userstate;
                         var createtime = obj.add_time;
                         
                         var clinic_name = obj.clinic_name?obj.clinic_name:'---';  //诊所名称

@@ -13,11 +13,11 @@ $(function(){
     function init(){
     	/*
     	 * 初始化地址信息(三级联动)
+    	 */
 		var province = $(".area-info").attr("data-province");
     	var city = $(".area-info").attr("data-city");
     	var area = $(".area-info").attr("data-area");
     	addressInit('province', 'city', 'area',province,city,area);
-    	*/
     	
     	bindEvent();
         //表单的JQueryValidater配置验证---jquery.validate插件验证法

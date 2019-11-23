@@ -43,10 +43,10 @@ class store_goods extends admin_controller{
 	    $cateResult = $lib_category->findAllCategory(array('is_use' => 1, 'rank' => 4), 'thr asc, order_index asc');
 	    
 	    $this->fouCateList = $cateResult['data'];
-		$this->log(__CLASS__, __FUNCTION__, "商品选择类别", 1, 'view');
+		$this->log(__CLASS__, __FUNCTION__, "体检项目选择类别", 1, 'view');
 		$this->display("../template/admin/{$this->theme}/store/page/goods/selectCategory.html");
 	}
-	
+
 	/**
 	 * 跳转添加商品信息页面
 	 */
@@ -74,7 +74,7 @@ class store_goods extends admin_controller{
 	    }
         $this->cateList = $cateResult['data'];      
         $this->cids = $cids;
-        $this->log(__CLASS__, __FUNCTION__, "跳转添加商品信息页面", 1, 'add');
+        $this->log(__CLASS__, __FUNCTION__, "跳转添加体检项目信息页面", 1, 'add');
 		$this->display("../template/admin/{$this->theme}/store/page/goods/addGoods.html");
 	}
 
@@ -89,7 +89,7 @@ class store_goods extends admin_controller{
         $lib_category = new lib_category();
         $firCateResult = $lib_category->getCategorys($conditions, "order_index asc");
         $this->categoryList = $firCateResult['data'];
-        $this->log(__CLASS__, __FUNCTION__, "跳转商品列表信息页面", 1, 'view');
+        $this->log(__CLASS__, __FUNCTION__, "跳转体检项目列表信息页面", 1, 'view');
 		$this->display("../template/admin/{$this->theme}/store/page/goods/goodsList.html");
 	}
 	
@@ -125,7 +125,7 @@ class store_goods extends admin_controller{
                 $this->goods_fen = 1;
             }
         }
-        $this->log(__CLASS__, __FUNCTION__, "商品详情页面", 1, 'view');
+        $this->log(__CLASS__, __FUNCTION__, "体检项目详情页面", 1, 'view');
         $this->display("../template/admin/{$this->theme}/store/page/goods/goodsDetail.html");
     }
 	
@@ -172,7 +172,7 @@ class store_goods extends admin_controller{
 	            $this->goods_fen = 1;
 	        }
 	    }	
-	    $this->log(__CLASS__, __FUNCTION__, "编辑商品页面", 1, 'edit');
+	    $this->log(__CLASS__, __FUNCTION__, "编辑体检项目页面", 1, 'edit');
 	    $this->display("../template/admin/{$this->theme}/store/page/goods/editGoods.html");
 	}
 	
@@ -183,11 +183,24 @@ class store_goods extends admin_controller{
 	    $conditions = array('id' => $this->spArgs('id'));
 	    $updown = array('recommend' => $this->spArgs('recommend'));
 	    $result = $this->lib_goods->updownGoods($conditions,$updown);
-	    $this->log(__CLASS__, __FUNCTION__, "设置推荐商品", 0, 'edit');
+	    $this->log(__CLASS__, __FUNCTION__, "设置推荐体检项目", 0, 'edit');
 	    echo json_encode($result);
 	}
-	
-	/**
+
+    /**
+     * 复制商品信息
+     */
+    function cloneGoods(){
+        $id = $this->spArgs('id');
+        $result = $this->lib_goods->getGoods($id);
+        unset($result['data']['id']);
+        $result['data']["add_time"] = date ('Y-m-d H:i:s',strtotime('+8hour'));
+        $result['data']["creator"] = $_SESSION['admin']['account'];
+        $resultGoods = $this->lib_goods->addGoods ($result['data']);
+        echo json_encode($resultGoods);
+    }
+
+    /**
 	 * 添加商品
 	 */
 	function insertGoods(){
@@ -195,8 +208,8 @@ class store_goods extends admin_controller{
 	    //if($_FILES) $verify = UtilImage::verifyImage();
 	    //if($verify['errorCode'] == 1) exit(json_encode($verify));
 	    
-	    $goodsInfo = $this->getArgsList($this, array(name,updown,recommend,price,detail_desc,good_type,apply,time_length,ori_price,sample_vessel,discount,sort_num));
-	    $goodsInfo["add_time"] = date ( 'Y-m-d H:i:s');
+	    $goodsInfo = $this->getArgsList($this, array(name,updown,recommend,price,detail_desc,good_type,apply,time_length,ori_price,sample_vessel,discount,sort_num,province,city,area));
+	    $goodsInfo["add_time"] = date ('Y-m-d H:i:s',strtotime('+8hour') );
 	    $goodsInfo["creator"] = $_SESSION['admin']['account'];
 
 		//上传图片
@@ -211,7 +224,7 @@ class store_goods extends admin_controller{
 			$cateResult = $lib_category->updateGids($resultGoods['data']['gid'], $this->spArgs('cids'));
 			if($cateResult['errorCode'] != '0'){
 			    $this->lib_goods->deleteGoods($resultGoods['data']['gid']);
-			    echo json_encode(common::errorArray(1, '处理商品分类失败', $cateResult));
+			    echo json_encode(common::errorArray(1, '处理体检项目分类失败', $cateResult));
 			}
 			//上传辅图
 			$imgInfo['gid'] = $resultGoods['data']['gid'];
@@ -285,7 +298,7 @@ class store_goods extends admin_controller{
 		$conditions = array('id' => $this->spArgs('id'));
 		
 		//更新商品基本信息
-		$goodsInfo = $this->getArgsList($this, array(good_type,apply,time_length,name,price,recommend,updown,detail_desc,ori_price,sample_vessel,discount,sort_num));
+		$goodsInfo = $this->getArgsList($this, array(good_type,apply,time_length,name,price,recommend,updown,detail_desc,ori_price,sample_vessel,discount,sort_num,province,city,area));
 		
 		if($this->spArgs('imgFlag') == 1){//判断是否需要重新上传图片
 		    //更新图片
@@ -318,7 +331,7 @@ class store_goods extends admin_controller{
 			$lib_cart->updateCartGoods(array('gid'=>$this->spArgs('id')),array('price'=>$goodsInfo['price']));
 		}
 
-		$this->log(__CLASS__, __FUNCTION__, "修改商品信息", 0, 'edit');
+		$this->log(__CLASS__, __FUNCTION__, "修改体检项目信息", 0, 'edit');
 		echo json_encode($result);
 	}
 	
@@ -390,7 +403,7 @@ class store_goods extends admin_controller{
 		$updown = array('updown' => $this->spArgs('updown'));
 		$lib_goods = new lib_goods();
 		$result = $lib_goods->updownGoods($conditions,$updown);
-		$this->log(__CLASS__, __FUNCTION__, "商品上下架", 0, 'edit');
+		$this->log(__CLASS__, __FUNCTION__, "体检项目上下架", 0, 'edit');
 		echo json_encode($result);
 	}
 	
@@ -399,7 +412,7 @@ class store_goods extends admin_controller{
 	 */
 	function getGoodsDetail() {
 		$result = $this->lib_goods->getGoods($this->spArgs('id'));
-		$this->log(__CLASS__, __FUNCTION__, "根据id获取商品信息", 0, 'view');
+		$this->log(__CLASS__, __FUNCTION__, "根据id获取体检项目信息", 0, 'view');
 		echo json_encode($result);
 	}
 
@@ -427,7 +440,7 @@ class store_goods extends admin_controller{
 			}
 		}
 		$this->lib_goods->deleteGoodsImage(array('gid'=>$id));
-		$this->log(__CLASS__, __FUNCTION__, "删除商品", 0, 'del');
+		$this->log(__CLASS__, __FUNCTION__, "删除体检项目", 0, 'del');
 		echo json_encode($result);
 	}
 	
@@ -437,7 +450,7 @@ class store_goods extends admin_controller{
 	function batchDelete(){
 		$gids = $this->spArgs('ids');
 		$result = $this->lib_goods->batchDelete($gids);
-		$this->log(__CLASS__, __FUNCTION__, "批量删除商品", 0, 'del');
+		$this->log(__CLASS__, __FUNCTION__, "批量删除体检项目", 0, 'del');
 		echo json_encode($result);
 	}
 }
