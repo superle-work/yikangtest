@@ -2,6 +2,12 @@
 if(!class_exists('admin_controller')) require 'include/base/controller/admin/admin_controller.php';
 if(!class_exists('lib_goods')) require 'model/store/lib_goods.php';
 if(!class_exists('UtilConfig')) require 'include/UtilConfig.php';
+
+if(!class_exists('PHPExcel')) require 'include/PHPExcel.php';
+if(!class_exists('Excel2007')) require 'include/PHPExcel/Reader/Excel2007.php';
+if(!class_exists('Excel5')) require 'include/PHPExcel/Reader/Excel5.php';
+if(!class_exists('IOFactory')) include 'include/PHPExcel/IOFactory.php';
+if(!class_exists('UtilConfig')) require 'include/UtilConfig.php';
 /**
  *商城商品管理
  * @name store_goods.php
@@ -92,6 +98,67 @@ class store_goods extends admin_controller{
         $this->log(__CLASS__, __FUNCTION__, "跳转体检项目列表信息页面", 1, 'view');
 		$this->display("../template/admin/{$this->theme}/store/page/goods/goodsList.html");
 	}
+
+	private $arr = ['category','name','updown','detail_desc','good_type','ori_price','discount','price','sample_vessel','time_length','apply','sort_num','recommend','province','city','area'];
+//	private $arr = ['category'=>'体检项目分类','name'=>'体检项目名称','updown'=>'上下架','detail_desc'=>'体检项目详情简述','good_type'=>'体检项目类别','ori_price'=>'原价','discount'=>'优惠比例','price'=>'优惠价','sample_vessel'=>'采样容器','time_length'=>'时长','apply'=>'适用内容','sort_num'=>'排序系数','recommend'=>'首页推荐','province'=>'省','city'=>'市','area'=>'区县'];
+
+    /**
+     * 导入体检项目
+     */
+    function importExcel(){
+        $aa = $_FILES['test'];
+        $file = iconv("utf-8", "gb2312", $aa['tmp_name']);   //转码
+        if(empty($file) OR !file_exists($file)) {
+            die('file not exists!');
+        }
+        $objRead = new PHPExcel_Reader_Excel2007();   //建立reader对象
+        if(!$objRead->canRead($file)){
+            $objRead = new PHPExcel_Reader_Excel5();
+            if(!$objRead->canRead($file)){
+                die('No Excel!');
+            }
+        }
+        //$cellName = array('A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'AA', 'AB', 'AC', 'AD', 'AE', 'AF', 'AG', 'AH', 'AI', 'AJ', 'AK', 'AL', 'AM', 'AN', 'AO', 'AP', 'AQ', 'AR', 'AS', 'AT', 'AU', 'AV', 'AW', 'AX', 'AY', 'AZ');
+        $objRead = \PHPExcel_IOFactory::createReader('Excel2007');
+        $obj = $objRead->load($aa['tmp_name']);  //建立excel对象
+        $currSheet = $obj->getSheet(0)->toArray();   //获取指定的sheet表
+//        $columnH = $currSheet->getHighestColumn();   //取得最大的列号
+//        $columnCnt = array_search($columnH, $cellName);
+//        $rowCnt = $currSheet->getHighestRow();   //获取总行数
+//        $data = array();
+//        for($_row=1; $_row<=$rowCnt; $_row++){  //读取内容
+//            for($_column=0; $_column<=$columnCnt; $_column++){
+//                $cellId = $cellName[$_column].$_row;
+//                $cellValue = $currSheet->getCell($cellId)->getValue();
+////                array_search($cellValue,$this->arr);
+//                //$cellValue = $currSheet->getCell($cellId)->getCalculatedValue();  #获取公式计算的值
+//                if($cellValue instanceof PHPExcel_RichText){   //富文本转换字符串
+//                    $cellValue = $cellValue->__toString();
+//                }
+//                $data[$_row][$cellName[$_column]] = $cellValue;
+//            }
+//        }
+        $data = array();
+        foreach($currSheet as $key =>$val){
+            $data[] = array_combine(array_values($this->arr), $val);
+        }
+        unset($data[0]);
+        for($i = 1; $i <= count($data); $i++){
+            $data[$i]["add_time"] = date ('Y-m-d H:i:s',strtotime('+8hour'));
+            $data[$i]["creator"] = $_SESSION['admin']['account'];
+            $resultGoods = $this->lib_goods->addGoods ($data[$i]);
+            if(!class_exists('lib_category')) include 'model/store/lib_category.php';
+            $lib_category = new lib_category();
+            $cateResult = $lib_category->getCategorys("name = '{$data[$i]['category']}' and is_use = 1", "fir asc, sec asc, thr asc, fou asc",null);
+            $cateResult['data'][0]['gids'] = $cateResult['data'][0]['gids'].','.$resultGoods['data']['gid'];
+            $conditions = array(
+                'id' => $cateResult['data'][0]['id']
+            );
+            $valueList['gids'] = $cateResult['data'][0]['gids'];
+            $result = $lib_category->updateCategory($conditions,$valueList);
+        }
+        return $result;
+    }
 	
 	/**
      * 商品详情页面
@@ -197,7 +264,16 @@ class store_goods extends admin_controller{
         $result['data']["add_time"] = date ('Y-m-d H:i:s',strtotime('+8hour'));
         $result['data']["creator"] = $_SESSION['admin']['account'];
         $resultGoods = $this->lib_goods->addGoods ($result['data']);
-        echo json_encode($resultGoods);
+        if(!class_exists('lib_category')) include 'model/store/lib_category.php';
+        $lib_category = new lib_category();
+        $cateResult = $lib_category->getCategorys(" (gids = '{$id}' OR gids like '%,{$id},%' OR gids like '%,{$id}' OR gids like '{$id},%') and is_use = 1", "fir asc, sec asc, thr asc, fou asc",null);
+        $cateResult['data'][0]['gids'] = $cateResult['data'][0]['gids'].','.$resultGoods['data']['gid'];
+        $conditions = array(
+            'id' => $cateResult['data'][0]['id']
+        );
+        $valueList['gids'] = $cateResult['data'][0]['gids'];
+        $result = $lib_category->updateCategory($conditions,$valueList);
+        echo json_encode($result);
     }
 
     /**
