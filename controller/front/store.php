@@ -2073,8 +2073,12 @@ class store extends front_controller{
 		$url="http://api.map.baidu.com/geocoder?location=".$latitude.",".$longitude."&output=json&key=E8585e29607347015477b67178b530ab";
 	    $str=file_get_contents($url);
 	    $res=json_decode($str,true);
+	    // dump($res);
 	    if($res['status'] == 'OK'){//成功
 	        $area['city'] = $res['result']['addressComponent']['city'];
+	        $area['provinces'] = $res['result']['addressComponent']['province'];//省
+	        $area['citys'] = $res['result']['addressComponent']['city'];//市
+	        $area['districts'] = $res['result']['addressComponent']['district'];//县、区
 	        $city_arr=explode("市",$area['city']);
 			$area['city']=$city_arr[0];
 	        $area['address'] = $res['result']['formatted_address'];
@@ -2084,6 +2088,7 @@ class store extends front_controller{
 	    }
 	    $area['longitude'] = $longitude;
 	    $area['latitude'] = $latitude;
+	    // dump($area);
 	    return $area;
 	}
 	
@@ -2100,4 +2105,95 @@ class store extends front_controller{
 	    $lat = $z * sin($theta) + 0.006;
 	    return array('lat' => $lat,'lng' => $lng);
 	}
+	/**
+	 * 医院展示
+	 * @return 筛选后的医院
+	 */
+	
+	function haspitalintroduce(){
+		
+		$this->verifyLogin($this);
+
+	    if(!class_exists('m_base_hospital')) include 'model/store/table/m_base_hospital.php';
+	    
+	    $store_hospital=new m_base_hospital();
+
+		if($_SESSION['area']['districts'] != null){
+		
+			$array=$store_hospital->findAll(array('area'=>$_SESSION['area']['districts']));
+			
+			if($array == null){
+				
+				$city=str_replace('市','',$_SESSION['area']['citys']);
+
+				$array=$store_hospital->findAll(array('city'=>$city));
+
+				if($array == null){
+					
+					$array='';
+					
+				}
+			}
+		}
+		// $array=$store_hospital->findAll();
+		$this->lib_common->getMobileCommonDataFront($this,'store_theme');
+
+		$this->haspitalintroduce=$array;
+
+		$this->display("../template/front/store/{$this->theme}/page/hospitalintroduce/hospitalintrduce.html");
+	}
+	/*
+	 * 
+	 *医院详情
+	 * @param $id传入的医院id
+	 * @return 医院详情
+	 */
+	function haspitaldetail(){
+		
+		$this->verifyLogin($this);
+		
+		$id = $this->spArgs('id');
+		
+		if(!class_exists('m_base_hospital')) include 'model/store/table/m_base_hospital.php';
+	    
+	    $store_hospital=new m_base_hospital();
+
+		$data=$store_hospital->find(array('id'=>$id));
+		
+		$this->hospitaldetail=$data;
+		
+		$this->signPackage = JsSdk::getSignPackage();
+		
+		$this->lib_common->getMobileCommonDataFront($this,'store_theme');
+
+		$this->display("../template/front/store/{$this->theme}/page/hospitalintroduce/hospitaldetail.html");
+		
+	}
+	/*
+	 *用户切换地址
+	 *
+     **/
+     function modifyCity(){
+     	$this->verifyLogin($this);
+     	$site=$this->spArgs('site');
+     	$site=explode(' ',$site);
+     	$_SESSION['area']['provinces']=$site['0'];
+     	$_SESSION['area']['citys']=$site['1'];
+     	// 判断是否有区县
+     	if(!array_key_exists('2',$site)){
+
+     		$site['2']=0;
+
+     	}
+
+     	if($site['2']=='0'){
+
+     		$_SESSION['area']['districts']=$site['1'];
+     	}else{
+
+     		$_SESSION['area']['districts']=$site['2'];
+
+     	}
+
+     }
 }

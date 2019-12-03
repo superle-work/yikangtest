@@ -3,25 +3,101 @@
 <head>
     <title>首页</title>
     <!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/front/store/<!--{$theme}-->/inner/head.html"}-->
-    <link rel="stylesheet"	href="<!--{$smarty.const.JS_PATH}-->/public/swiper/css/swiper.min.css">
+    <link rel="stylesheet"  href="<!--{$smarty.const.JS_PATH}-->/public/swiper/css/swiper.min.css">
     <link rel="stylesheet" href="<!--{$smarty.const.TEMPLATE_PATH}-->/front/store/<!--{$theme}-->/css/index.css">
+    <link rel="stylesheet"  href="<!--{$smarty.const.TEMPLATE_PATH}-->/front/store/<!--{$theme}-->/css/goods/area.css">
+    <link rel="stylesheet"  href="<!--{$smarty.const.TEMPLATE_PATH}-->/front/store/<!--{$theme}-->/css/goods/style.css">
 </head>
 
 <body>
+    
     <!--主容器-->
     <div id="container" class="container-fluid">
-    	<div class="search-goods-area">
-    		<div style="margin-left:15px;">
-    			<i class="icon iconfont search_ico">&#xe601;</i>
-    			<span><!--{$smarty.session.area.city}--></span>
-    		</div>
-        	<div class="search">
-            	<i class="icon iconfont search_ico">&#xe609;</i></span>
-            	<input type="text" class="search-text" placeholder="搜索体检项目关键词">
+        
+        
+        
+        
+        
+        
+
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <div class="search-goods-area" style="padding-bottom: 10px;">
+            <div style="margin-left:15px;display:flex;">
+                <i class="icon iconfont search_ico">&#xe601;</i>
+                <!--<span>-->
+
+                <!--    </span>-->
+ 
+     
+        
+                <!--地址选择-->
+                <div class="ui-form-item ui-border-b">
+                        <div class="ui-select">
+                            <input id="expressArea" data-name="custUa" data-required="true" data-label="单位地址" placeholder="选择省市区" readonly style="padding-left:0;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;width:4em" value="<!--{$smarty.session.area.districts}-->">
+                        </div>
+                        <div class="browser">
+    
+                            <!--选择地区弹层-->
+                            <section id="areaLayer" class="express-area-box">
+                                <header>
+                                    <h3>选择省市区</h3>
+                                    <div class="selet-area-wrap">
+                                        <p><span class="one"></span></p>
+                                        <p><span class="two"></span></p>
+                                        <p><span class="three"></span></p>
+                                    </div>
+                                    <div class="hot-city">
+                                        <p>热门城市</p>
+                                        <ul>
+                                            <li onClick="selectPP(0,1)">北京</li>
+                                            <li onClick="selectPP(10,1)">上海</li>
+                                            <li onClick="quickselectC(18,0)">广州</li>
+                                            <li onClick="quickselectC(18,1)">深圳</li>
+                                            <li onClick="quickselectC(12,0)">杭州</li>
+                                            <li onClick="quickselectC(11,0)">南京</li>
+                                            <li onClick="quickselectC(11,4)">苏州</li>
+                                            <li onClick="selectPP(1,1)">天津</li>
+                                            <li onClick="quickselectC(16,0)">武汉</li>
+                                            <li onClick="quickselectC(17,0)">长沙</li>
+                                            <li onClick="selectPP(21,1)">重庆</li>
+                                            <li onClick="quickselectC(22,0)">成都</li>
+                                        </ul>
+                                        <p>选择省份/地区</p>
+                                    </div>
+                                    <a id="backUp" class="back" href="javascript:void(0)" title="返回"></a>
+                                    <a id="closeArea" class="close" href="javascript:void(0)" title="关闭"></a>
+                                </header>
+                                <article id="areaBox">
+                                    <ul id="areaList" class="area-list"></ul>
+                                </article>
+                            </section>
+                            <!--遮罩层-->
+                            <div id="areaMask" class="mask"></div>
+                        </div>
+                    </div> 
+ 
+ 
+ 
+ 
+            </div>
+            <div class="search">
+                <i class="icon iconfont search_ico">&#xe609;</i></span>
+                <input type="text" class="search-text" placeholder="搜索体检项目关键词">
             </div>
         </div>
         <!--页面头部-->
-		<!--{if $slideList}-->
+        <!--{if $slideList}-->
         <!--幻灯片轮播-->
         <div class="swiper-container">
             <div class="swiper-wrapper">
@@ -35,13 +111,13 @@
             <!-- 如果需要分页器 -->
             <div class="swiper-pagination"></div>
         </div>
-		<!--{/if}-->
-		
-		<div class="quick-area">
-			<div class="quick-info">
+        <!--{/if}-->
+        
+        <div class="quick-area">
+            <div class="quick-info">
                 <a href="./index.php?c=store&a=goodsCate">
                     <div class="image product">
-                    	<i class="icon iconfont show-icon1">&#xe65e;</i>
+                        <i class="icon iconfont show-icon1">&#xe65e;</i>
                     </div>
                     <div class="name">我要体检</div>
                 </a>
@@ -49,7 +125,7 @@
             <div class="quick-info">
                 <a href="index.php?c=store&a=moreClinic">
                     <div class="image clinic">
-                    	<i class="icon iconfont show-icon2">&#xe601;</i>
+                        <i class="icon iconfont show-icon2">&#xe601;</i>
                     </div>
                     <div class="name">附近诊所</div>
                 </a>
@@ -57,7 +133,7 @@
             <div class="quick-info">
                 <a href="index.php?c=store&a=orderList">
                     <div class="image order">
-                    	<i class="icon iconfont show-icon3">&#xe667;</i>
+                        <i class="icon iconfont show-icon3">&#xe667;</i>
                     </div>
                     <div class="name">订单查询</div>
                 </a>
@@ -65,18 +141,18 @@
             <div class="quick-info">
                 <a href="index.php?c=fen&a=fenCenter">
                     <div class="image center">
-                    	<i class="icon iconfont show-icon4">&#xe675;</i>
+                        <i class="icon iconfont show-icon4">&#xe675;</i>
                     </div>
                     <div class="name">分销中心</div>
                 </a>
             </div>
-		</div>
-		<div class="space"></div>
-		
+        </div>
+        <div class="space"></div>
+        
         <!--主体内容-->
         <div id="content">
             <!--商品分类-->
-			<!--{if $categoryList}-->
+            <!--{if $categoryList}-->
             <div class="label-display-area">
                 <div class="row label-display">
                 <!--{foreach from = $categoryList item = cate name = cateList}-->
@@ -92,22 +168,22 @@
                 <!--{/foreach}-->
                 
                 
-	                <!--全部项目-->
-	                <div class="col-xs-3 col-sm-3 col-md-3 item">
-	                    <a href="./index.php?c=store&a=goodsCate">
-	                        <div class="image">
-	                        	<i class="icon iconfont all">&#xe70c;</i>
-	                        </div>
-	                        <div class="name">全部体检</div>
-	                    </a>
-	                </div>
+                    <!--全部项目-->
+                    <div class="col-xs-3 col-sm-3 col-md-3 item">
+                        <a href="./index.php?c=store&a=goodsCate">
+                            <div class="image">
+                                <i class="icon iconfont all">&#xe70c;</i>
+                            </div>
+                            <div class="name">全部体检</div>
+                        </a>
+                    </div>
                 </div>
             </div>
-			<!--{/if}-->
-			<!--商品消息和推荐商品-->
-			
-	    	<!--推荐商品展示区域-->
-	    	<!--$recommendGoodsList-->
+            <!--{/if}-->
+            <!--商品消息和推荐商品-->
+            
+            <!--推荐商品展示区域-->
+            <!--$recommendGoodsList-->
             <div class="recommend-goods-diplay-area hidden" >
                 <div class="recommend-name-area" style="background:url(<!--{$smarty.const.TEMPLATE_PATH}-->/front/store/<!--{$theme}-->/image/0.png) no-repeat left center;"><span class="recommend-name">推荐商品</span><a class="more" href="./index.php?c=store&a=goodsSearch">查看全部<i class="icon iconfont">&#xe62d;</i></a></div>
                 <!--推荐的商品展示区域-->
@@ -122,11 +198,11 @@
                                 </div>
                             </a>
                             <div class="goods-descript-info">
-                            	<div class="name"><!--{$goods.name}--></div>
-	                            <div>
-	                            	<span class="ori-price"><i class="icon iconfont">&#xe645;</i><!--{$goods.price}--></span>
-	                            	<span class="sale-quantity">已售：<!--{$goods.sale_quantity}--></span>
-	                            </div>
+                                <div class="name"><!--{$goods.name}--></div>
+                                <div>
+                                    <span class="ori-price"><i class="icon iconfont">&#xe645;</i><!--{$goods.price}--></span>
+                                    <span class="sale-quantity">已售：<!--{$goods.sale_quantity}--></span>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -139,48 +215,48 @@
             <div class="label-goods-diplay-area">
                 <!--标签名称-->
                 <div class="label-goods-foreach">
-	                <div class="label-title-english">
-	                	<span class="left">
-	                		<span class="shuxian"></span>
-	                		<span class="near">&nbsp;合作医院</span></span>
-	                	<!--<a class="right" href="index.php?c=store&a=moreClinic">更多诊所  <i class="icon iconfont">&#xe619;</i></a>-->
-	                </div>
-	                
-	                <!--诊所展示区-->
-	                <div class="label-goods-display-item">
-	                    <div class="row label-goods-area">
-							<!--{if $labelList}-->
-	                        <!--{foreach from = $labelList item = goods name = goodsList}-->
-	                        <!--默认只展示前6个-->
-	                        <!--{if $smarty.foreach.goodsList.iteration <= 6}-->
-	                        <div class="col-xs-12 col-sm-12 col-md-12 item">
-	                            <div class="goods goods-<!--{$smarty.foreach.goodsList.iteration%2}-->">
-	                                <a href="./index.php?c=store&a=clinicDetail&id=<!--{$goods.id}-->" class="goods-info" title="诊所详情" data-id="<!--{$goods.id}-->">
-	                                    <div class="image">
-	                                        <img alt="<!--{$goods.name}-->" src="<!--{$goods.img_url}-->">
-	                                    </div>
-	                                
-		                                <div class="detail">
-		                                	<div class="name"><!--{$goods.name}--></div>
-		                                    <div class="space2">
-		                                    	<span class="addr"><i class="icon iconfont colo">&#xe639;</i><span class="address"><!--{$goods.address}--></span></span><span class="distance"><!--{$goods.distance}--></span>
-		                                    </div>	
-		                                    <div>
-		                                    	<i class="icon iconfont colo">&#xe67f;</i><span class="phone"><!--{$goods.phone}--></span>
-		                                    </div>
-		                                </div>
-		                            </a>
-	                            </div>
-	                        </div>
-	                        <div class="space3"></div>
-	                        <!--{/if}-->
-	                        <!--{/foreach}-->
-							<!--{else}-->
-							<p class="text-danger">没有查到记录</p>
-							<!--{/if}-->
-	                    </div>
-	                </div>
-	            </div>
+                    <div class="label-title-english">
+                        <span class="left">
+                            <span class="shuxian"></span>
+                            <span class="near">&nbsp;合作医院</span></span>
+                        <!--<a class="right" href="index.php?c=store&a=moreClinic">更多诊所  <i class="icon iconfont">&#xe619;</i></a>-->
+                    </div>
+                    
+                    <!--诊所展示区-->
+                    <div class="label-goods-display-item">
+                        <div class="row label-goods-area">
+                            <!--{if $labelList}-->
+                            <!--{foreach from = $labelList item = goods name = goodsList}-->
+                            <!--默认只展示前6个-->
+                            <!--{if $smarty.foreach.goodsList.iteration <= 6}-->
+                            <div class="col-xs-12 col-sm-12 col-md-12 item">
+                                <div class="goods goods-<!--{$smarty.foreach.goodsList.iteration%2}-->">
+                                    <a href="./index.php?c=store&a=clinicDetail&id=<!--{$goods.id}-->" class="goods-info" title="诊所详情" data-id="<!--{$goods.id}-->">
+                                        <div class="image">
+                                            <img alt="<!--{$goods.name}-->" src="<!--{$goods.img_url}-->">
+                                        </div>
+                                    
+                                        <div class="detail">
+                                            <div class="name"><!--{$goods.name}--></div>
+                                            <div class="space2">
+                                                <span class="addr"><i class="icon iconfont colo">&#xe639;</i><span class="address"><!--{$goods.address}--></span></span><span class="distance"><!--{$goods.distance}--></span>
+                                            </div>  
+                                            <div>
+                                                <i class="icon iconfont colo">&#xe67f;</i><span class="phone"><!--{$goods.phone}--></span>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="space3"></div>
+                            <!--{/if}-->
+                            <!--{/foreach}-->
+                            <!--{else}-->
+                            <p class="text-danger">没有查到记录</p>
+                            <!--{/if}-->
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
         <br />
@@ -265,7 +341,8 @@
     <!--公用的客服服务-->
     <!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/front/common/service/page/service.html"}-->
     <script src="<!--{$smarty.const.JS_PATH}-->/public/swiper/js/swiper.jquery.min.js"></script>
-
+    <script type="text/javascript" src="<!--{$smarty.const.JS_PATH}-->/public/jquery.area.js"></script>
+    <script type="text/javascript" src="<!--{$smarty.const.JS_PATH}-->/public/jquery.min.js"></script>
     <script type="text/javascript" src="<!--{$smarty.const.JS_PATH}-->/public/wechat/jweixin-1.0.0.js"></script>
     
     <!--{if !$smarty.session.area.city}-->
@@ -292,7 +369,9 @@
             success: function (res) {
             }
         });
+
         wx.getLocation({
+                    // console.log("1");
             type: 'gcj02', // 默认为wgs84的gps坐标，如果要返回直接给openLocation用的火星坐标，可传入'gcj02'
             success: function (res) {
                 var latitude = res.latitude; // 纬度，浮点数，范围为90 ~ -90

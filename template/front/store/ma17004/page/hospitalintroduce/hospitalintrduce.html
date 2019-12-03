@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/front/store/<!--{$theme}-->/inner/head.html"}-->
+    
+	<style>
+		body{background: #f1f1f1;}
+		a,a:hover,a:link,a:active{
+			color: #333;
+			text-decoration: none;
+		}
+		.yiyuan{border-radius:20px;overflow:hidden;}	
+
+	    body{background: #f1f1f1;padding:0 5px;}
+	    .yypic{ width: 100%;}
+	    .yiyuan{background: #fff;border-radius: 10px;box-shadow:2px 2px 5px #888;margin-top: 10px; margin-bottom: 20px; }
+	    .yiyuan p{margin:0;line-height: 30px;height: 30px;font-size: 14px;width: 100%;color: #333; }
+	    .pbox{height: 150px;overflow: hidden;border-top-left-radius: 10px;border-top-right-radius: 10px;}
+	    .yyx{overflow: hidden;text-overflow: ellipsis;white-space: nowrap;width: 100%;color: #ccc!important;}
+	    .yyxq{padding: 0px 15px;}
+	</style>
+    <title>医院介绍</title>
+    <link rel="stylesheet"	href="<!--{$smarty.const.TEMPLATE_PATH}-->/front/store/<!--{$theme}-->/css/goods/goodsCate.css">
+    <link rel="stylesheet"	href="<!--{$smarty.const.JS_PATH}-->/public/swiper/css/swiper.min.css">
+</head>
+<body>
+    <!--主容器-->
+	
+	<!--{if $haspitalintroduce}-->
+	
+    <!--{foreach from = $haspitalintroduce item = cate name = cate}-->
+    <a href="./index.php?c=store&a=haspitaldetail&id=<!--{$cate.id}-->" >
+	<div style="" class="yiyuan">
+	    <div class="pbox">
+	    <img src="<!--{$cate.img_url}-->" class="yypic" alt="">
+	    </div>
+	    <div class="yyxq">
+	    <p style="" class="yy"><!--{$cate.name}--> </p >
+	    <p class="yyx">地址：<!--{$cate.address}--></p >
+	    </div>
+	</div>
+    </a>
+	<!--{/foreach}-->
+	
+    <!--{else}-->
+	
+    <p style=" color:red;font-size :16px;margin-right: 5%;margin-left: 5%;line-height: 30px;" class="ppp">很抱歉，没有找到您的相关信息。</p>
+
+    <p style="margin: 5%">温馨提示：</p>
+
+    <p style="margin: 5%">1.是否定位（可去首页定位）</p>
+    
+    <p style="margin: 5%">2.该城市没有合作医院</p>
+
+    <!--{/if}-->
+    
+    <!--公用js文件-->
+    <!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/front/store/<!--{$theme}-->/inner/jsfiles.html"}-->
+    
+    <script type="text/javascript" src="<!--{$smarty.const.JS_PATH}-->/public/jquery.cookie/jquery.cookie.js"></script>
+    <script src="<!--{$smarty.const.JS_PATH}-->/public/swiper/js/swiper.jquery.min.js"></script>
+    <script type="text/javascript" src="<!--{$smarty.const.TEMPLATE_PATH}-->/front/store/<!--{$theme}-->/js/goods/goodsCate.js"></script>
+
+</body>
+</html>

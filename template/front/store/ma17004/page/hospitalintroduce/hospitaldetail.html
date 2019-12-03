@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <title>医院详情</title>
+    <!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/front/store/<!--{$theme}-->/inner/head.html"}-->
+    <link rel="stylesheet"	href="<!--{$smarty.const.JS_PATH}-->/public/swiper/css/swiper.min.css">
+    <link rel="stylesheet"	href="<!--{$smarty.const.TEMPLATE_PATH}-->/front/store/<!--{$theme}-->/css/clinic/clinicDetail.css">
+</head>
+
+<body >
+    <!--主容器-->
+    <div id="container" class="container-fluid">
+        <!--主体内容-->
+        <div id="content" class="content-goodsDetail">
+            <!--商品介绍-->
+            <div class="goods-instroduce">
+            	<!--幻灯片轮播-->
+	            <div class="swiper-container">
+	            	<div class="swiper-wrapper">
+		                <div class="swiper-slide"><img class="slide-image" src="<!--{$hospitaldetail.img_url}-->"></div>
+
+		            </div>
+
+	            </div>
+	            <!--商品信息-->
+	            <div class="goods-info">
+	                <div class="desc">
+	                	<span class="name"><!--{$hospitaldetail.name}--></span>
+	                </div>
+	                <div class="addrInfo" id="gps" style="padding-bottom:10px;">
+	                    <i class="icon iconfont colo">&#xe639;</i><span class="address"> <!--{$hospitaldetail.address}--></span>
+	                </div>
+	                <div class="phoneInfo">
+	                    <i class="icon iconfont colo">&#xe67f;</i><a href="tel:<!--{$hospitaldetail.phone}-->"><span class="phone"> <!--{$hospitaldetail.phone}--></span></a>
+	                </div>
+	                <br />
+	            </div>
+	        </div>
+	        <!--商品详情-->
+	        <div class="goods-detail" style="border-bottom: 1px solid #dcdcdc;margin-bottom: 6px;">
+	        	<label>医院介绍</label>
+	        	<!--{$hospitaldetail.detail_desc}-->
+	        </div>
+			        <!--商品详情-->
+	        <div class="goods-detail">
+	        	<label>名师介绍</label>
+	        	<!--{$hospitaldetail.doctor_desc}-->
+	        </div>
+		</div>
+        <!--页面脚部-->
+        <!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/front/store/<!--{$theme}-->/inner/footer.html"}-->
+        <!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/front/store/<!--{$theme}-->/inner/bottomNav.html"}-->
+    </div>
+    <!--提示框-->
+    <!--公用js文件-->
+    <!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/front/store/<!--{$theme}-->/inner/jsfiles.html"}-->
+    <script src="<!--{$smarty.const.JS_PATH}-->/public/swiper/js/swiper.jquery.min.js"></script>
+    <script type="text/javascript" src="<!--{$smarty.const.JS_PATH}-->/public/jquery.bootpag/jquery.bootpag.min.js"></script>
+	<!--弹框-->
+    <!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/front/store/<!--{$theme}-->/inner/dialog.html"}-->
+    <script type="text/javascript" src="<!--{$smarty.const.TEMPLATE_PATH}-->/front/store/<!--{$theme}-->/js/clinic/clinicDetail.js"></script>
+    <script type="text/javascript" src="<!--{$smarty.const.JS_PATH}-->/public/wechat/jweixin-1.0.0.js"></script>
+    
+
+	
+    <script>
+
+    	/*
+         **** 微信分享
+         */
+        wx.config({
+            debug: false,
+            appId: '<!--{$signPackage.appId}-->',
+            timestamp: '<!--{$signPackage.timestamp}-->',
+            nonceStr: '<!--{$signPackage.nonceStr}-->',
+            signature: '<!--{$signPackage.signature}-->',
+            jsApiList: ['checkJsApi','openLocation','onMenuShareTimeline', 'onMenuShareAppMessage', 'hideMenuItems'
+                // 所有要调用的 API 都要加到这个列表中
+            ]
+        });
+    	
+    	wx.ready(function () {
+		 // 在这里调用 API
+	         wx.checkJsApi({
+	              jsApiList : ['openLocation'],
+	              success : function(res) {
+	
+	              }
+	         });
+	         
+	         //获取商户地址经纬度
+	         document.querySelector('#gps').onclick = function() {
+	             wx.openLocation({
+	                latitude: <!--{$hospitaldetail.latitude}-->, // 纬度，浮点数，范围为90 ~ -90
+	                longitude: <!--{$hospitaldetail.longitude}-->, // 经度，浮点数，范围为180 ~ -180。
+	                name: '', // 位置名
+	                address: '', // 地址详情说明
+	                scale: 20, // 地图缩放级别,整形值,范围从1~28。默认为最大
+	                infoUrl: '' // 在查看位置界面底部显示的超链接,可点击跳转
+	
+	             });
+	         }; 
+	    })
+    </script>
+</body>
+</html>
