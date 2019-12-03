@@ -1,0 +1,40 @@
+<?php /* Smarty version Smarty-3.0.8, created on 2019-11-30 06:53:50
+         compiled from "C:\phpStudy\PHPTutorial\WWW\yxj/template\../template/admin/default/store/page/discount/addDiscount.html" */ ?>
+<?php /*%%SmartyHeaderCode:79945de211fe6b9085-58534578%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+$_smarty_tpl->decodeProperties(array (
+  'file_dependency' => 
+  array (
+    '15820e049003822f1a5bcfd97232dda5f83e4b95' => 
+    array (
+      0 => 'C:\\phpStudy\\PHPTutorial\\WWW\\yxj/template\\../template/admin/default/store/page/discount/addDiscount.html',
+      1 => 1575096823,
+      2 => 'file',
+    ),
+  ),
+  'nocache_hash' => '79945de211fe6b9085-58534578',
+  'function' => 
+  array (
+  ),
+  'has_nocache_code' => false,
+)); /*/%%SmartyHeaderCode%%*/?>
+<!DOCTYPE html><html><!-- head --><?php $_template = new Smarty_Internal_Template((@TEMPLATE_PATH)."/admin/".($_smarty_tpl->getVariable('theme')->value)."/common/page/head.html", $_smarty_tpl->smarty, $_smarty_tpl, $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null);
+ echo $_template->getRenderedTemplate(); $_template->rendered_content = null;?><?php unset($_template);?><link rel="stylesheet" href="<?php echo @TEMPLATE_PATH;?>
+/admin/<?php echo $_smarty_tpl->getVariable('theme')->value;?>
+/store/css/discount/addDiscount.css" /><body><!---------------- 添加商品 -------------------><!-- 页头 --><?php $_template = new Smarty_Internal_Template((@TEMPLATE_PATH)."/admin/".($_smarty_tpl->getVariable('theme')->value)."/common/page/header.html", $_smarty_tpl->smarty, $_smarty_tpl, $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null);
+ echo $_template->getRenderedTemplate(); $_template->rendered_content = null;?><?php unset($_template);?><!-- jsfiles --><?php $_template = new Smarty_Internal_Template((@TEMPLATE_PATH)."/admin/".($_smarty_tpl->getVariable('theme')->value)."/common/page/jsfiles.html", $_smarty_tpl->smarty, $_smarty_tpl, $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null);
+ echo $_template->getRenderedTemplate(); $_template->rendered_content = null;?><?php unset($_template);?><link href="<?php echo @BASE_PATH;?>
+/js/public/umeditor/themes/default/css/umeditor.min.css" type="text/css" rel="stylesheet"><script type="text/javascript" charset="utf-8" src="<?php echo @BASE_PATH;?>
+/js/public/umeditor/third-party/template.min.js"></script><script type="text/javascript" charset="utf-8" src="<?php echo @BASE_PATH;?>
+/js/public/umeditor/umeditor.config.js"></script><script type="text/javascript" charset="utf-8" src="<?php echo @BASE_PATH;?>
+/js/public/umeditor/umeditor.min.js"></script><script type="text/javascript" src="<?php echo @BASE_PATH;?>
+/js/public/umeditor/lang/zh-cn/zh-cn.js"></script><!-- 主体 --><div class="content container-fluid<?php if ($_smarty_tpl->getVariable('leftBarScale')->value=='1'){?> scale<?php }?>">    <div class="row">        <div class="col-md-2 left-section">            <!-- 左导航菜单 -->            <?php $_template = new Smarty_Internal_Template((@TEMPLATE_PATH)."/admin/".($_smarty_tpl->getVariable('theme')->value)."/common/page/menu.html", $_smarty_tpl->smarty, $_smarty_tpl, $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null);
+ echo $_template->getRenderedTemplate(); $_template->rendered_content = null;?><?php unset($_template);?>        </div>        <div class="col-md-10 right-section">            <!--内容区域-->            <h3><i class="icon iconfont"><?php echo $_SESSION['currentMenu']['icon'];?>
+</i>添加角色折扣</h3>            <div class="inner-section row">                <div class="items add-div">                    <form action="#" method="post" id="myForm"  enctype="multipart/form-data">                        <table class="table table-striped table-hover table-bordered table-base">                            <tr>                                <td class="td1"><label for=""><span class="must-tag">*</span>用户角色</label></td>                                <td class="td2">                                    <div class="area-info">                                        <select id="user_type" name="user_type">                                            <option value="0">普通用户</option>                                            <option value="1">诊所用户</option>                                            <option value="2">医院用户</option>                                            <option value="3">物流人员</option>                                        </select>                                    </div>                                </td>                                <td class="td3"></td>                            </tr>                            <tr>                                <td class="td1"><label for="discount"><span class="must-tag">*</span>折扣</label></td>                                <td class="td2">                                    <input type="text" id="discount" name="discount" placeholder="0.8相当于8折，1就是不打折"> &nbsp;&nbsp;&nbsp;<label for="discount"><span class="must-tag">例：0.8相当于8折，1就是不打折</span></label></td>                                <td class="td3"></td>                            </tr>                            <tr>                                <td class="td1"><label for="blood_fee">采血费</label></td>                                <td class="td2"><input type="text" id="blood_fee" name="blood_fee" placeholder="采血费"></td>                                <td class="td3"></td>                            </tr>                            <tr>                                <td class="td1"><label for="transport_fee">运输费</label></td>                                <td class="td2"><input type="text" id="transport_fee" name="transport_fee" placeholder="运输费"></td>                                <td class="td3"></td>                            </tr>                            <tr>                                <td><input type="hidden" name="uid" id="uid" value=""></td>                                <td><button type="button" class="btn btn-success btn-md" id='save'>提交</button></td>                                <td></td>                            </tr>                        </table>                    </form>                </div>            </div>        </div>    </div></div><!--选择用户--><div class="modal fade" id="bindLabelDialog"  tabindex="-1" role="dialog"     aria-labelledby="myModalLabel" aria-hidden="true">    <div class="modal-dialog modal-lg">        <div class="modal-content">        </div><!-- /.modal-content -->    </div><!-- /.modal-dialog --></div><!-- /.modal --><!-- 页脚 --><?php $_template = new Smarty_Internal_Template((@TEMPLATE_PATH)."/admin/".($_smarty_tpl->getVariable('theme')->value)."/common/page/footer.html", $_smarty_tpl->smarty, $_smarty_tpl, $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null);
+ echo $_template->getRenderedTemplate(); $_template->rendered_content = null;?><?php unset($_template);?><script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=E8585e29607347015477b67178b530ab"></script> <script type="text/javascript" src="<?php echo @JS_PATH;?>
+/public/form/jquery.form.js"></script><script type="text/javascript" src="<?php echo @JS_PATH;?>
+/public/form/jquery.validate.js"></script><script type="text/javascript" src="<?php echo @JS_PATH;?>
+/public/form/jquery.validate.extend.js"></script><script type="text/javascript" src="<?php echo @TEMPLATE_PATH;?>
+/admin/<?php echo $_smarty_tpl->getVariable('theme')->value;?>
+/base/school/js/address.js"></script><script type="text/javascript" src="<?php echo @TEMPLATE_PATH;?>
+/admin/<?php echo $_smarty_tpl->getVariable('theme')->value;?>
+/store/js/discount/addDiscount.js"></script></body></html>

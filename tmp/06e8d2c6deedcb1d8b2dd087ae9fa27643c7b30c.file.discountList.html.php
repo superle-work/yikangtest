@@ -1,17 +1,17 @@
-<?php /* Smarty version Smarty-3.0.8, created on 2019-09-11 16:24:25
-         compiled from "/home/wwwroot/yikang.chuyuanshengtai.com/template/../template/admin/default/store/page/agent/discountList.html" */ ?>
-<?php /*%%SmartyHeaderCode:15691474875d78af39537a79-36809502%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /* Smarty version Smarty-3.0.8, created on 2019-11-30 06:50:24
+         compiled from "C:\phpStudy\PHPTutorial\WWW\yxj/template\../template/admin/default/store/page/discount/discountList.html" */ ?>
+<?php /*%%SmartyHeaderCode:322075de211308fe2a6-97424782%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
-    'c06ce997970652b46d2a83f79b9399a02465c524' => 
+    '06e8d2c6deedcb1d8b2dd087ae9fa27643c7b30c' => 
     array (
-      0 => '/home/wwwroot/yikang.chuyuanshengtai.com/template/../template/admin/default/store/page/agent/discountList.html',
-      1 => 1540952364,
+      0 => 'C:\\phpStudy\\PHPTutorial\\WWW\\yxj/template\\../template/admin/default/store/page/discount/discountList.html',
+      1 => 1575096620,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '15691474875d78af39537a79-36809502',
+  'nocache_hash' => '322075de211308fe2a6-97424782',
   'function' => 
   array (
   ),
@@ -28,7 +28,7 @@ $_smarty_tpl->decodeProperties(array (
 
 <link rel="stylesheet" href="<?php echo @TEMPLATE_PATH;?>
 /admin/<?php echo $_smarty_tpl->getVariable('theme')->value;?>
-/store/css/agent/agentList.css" />
+/store/css/discount/discountList.css" />
 
 <body>
 
@@ -70,7 +70,7 @@ $_smarty_tpl->decodeProperties(array (
 
                 <div class="operation-div">
 
-                    <a class="btn btn-success" class="addGoods" href="admin.php?c=store_agent&a=addAgent">添加</a>
+                    <a class="btn btn-success" class="addGoods" href="admin.php?c=store_discount&a=addDiscount">添加</a>
 
                 </div>
 
@@ -90,49 +90,18 @@ $_smarty_tpl->decodeProperties(array (
 
                                     <td width="80px">
 
-                                        <label for="area">代理区域:&nbsp;</label>
+                                        <label for="user_type">用户角色:&nbsp;</label>
 
                                     </td>
 
                                     <td width="140px">
-
-                                        <input id="area" name="area" type="text" class="input-normal search"  placeholder="区/县"/>
-
-                                    </td>
-
-                                    <td width="80px">
-
-                                        <label for="goodsname">代理名称:&nbsp;</label>
-
-                                    </td>
-
-                                    <td width="140px">
-
-                                        <input id="goodsname" name="goodsname" type="text" class="input-normal search"  />
-
-                                    </td>
-
-                                    <td width="80px">
-
-                                        <label for="startTime">创建时间:&nbsp;</label>
-
-                                    </td>
-
-                                    <td width="140px">
-
-                                        <input id="startTime" name="startTime" type="text" class="input-normal search Wdate" onclick="WdatePicker({dateFmt:'yyyy-MM-dd'})" />
-
-                                    </td>
-
-                                    <td width="40px">
-
-                                        <label for="endTime">至:</label>
-
-                                    </td>
-
-                                    <td width="140px">
-
-                                        <input id="endTime" name="endTime" type="text" class="input-normal search Wdate" onclick="WdatePicker({dateFmt:'yyyy-MM-dd'})" />
+                                        <select class="select-normal"  id="user_type" name="user_type">
+                                            <option value="">全部</option>
+                                            <option value="0">普通用户</option>
+                                            <option value="1">诊所用户</option>
+                                            <option value="2">医院用户</option>
+                                            <option value="3">物流人员</option>
+                                        </select>
 
                                     </td>
 
@@ -224,7 +193,7 @@ $_smarty_tpl->decodeProperties(array (
 
 <script type="text/javascript" src="<?php echo @TEMPLATE_PATH;?>
 /admin/<?php echo $_smarty_tpl->getVariable('theme')->value;?>
-/store/js/agent/agentList.js"></script>
+/store/js/discount/discountList.js"></script>
 
 </body>
 

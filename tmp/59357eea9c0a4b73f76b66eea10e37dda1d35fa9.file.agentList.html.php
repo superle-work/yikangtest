@@ -1,12 +1,12 @@
 <?php /* Smarty version Smarty-3.0.8, created on 2019-11-21 03:38:12
-         compiled from "C:\phpStudy\PHPTutorial\WWW\yxj/template\../template/admin/default/store/page/agent/agentList.html" */ ?>
+         compiled from "C:\phpStudy\PHPTutorial\WWW\yxj/template\../template/admin/default/store/page/agent/discountList.html" */ ?>
 <?php /*%%SmartyHeaderCode:132105dd606a4c7dfb2-73268453%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     '59357eea9c0a4b73f76b66eea10e37dda1d35fa9' => 
     array (
-      0 => 'C:\\phpStudy\\PHPTutorial\\WWW\\yxj/template\\../template/admin/default/store/page/agent/agentList.html',
+      0 => 'C:\\phpStudy\\PHPTutorial\\WWW\\yxj/template\\../template/admin/default/store/page/agent/discountList.html',
       1 => 1573626494,
       2 => 'file',
     ),
