@@ -428,6 +428,7 @@ class lib_order extends base_model {
 				//$orderInfo['address'] = json_decode($orderInfo['address']);
 				//decode商品信息
 				$orderInfo['goods_list'] = json_decode($result['orderList'][$count]['goods_list']);
+				$result['orderList'][$count]['member_info']=json_decode($result['orderList'][$count]['member_info'],true);
 				foreach ($orderInfo['goods_list'] as &$goods){
 					$goods->property = json_decode($goods->property);
 					//返回给页面ogid
