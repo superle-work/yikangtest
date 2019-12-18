@@ -1,17 +1,17 @@
-<?php /* Smarty version Smarty-3.0.8, created on 2019-09-11 16:16:32
-         compiled from "/home/wwwroot/yikang.chuyuanshengtai.com/template/../template/admin/default/store/page/clinic/printerList.html" */ ?>
-<?php /*%%SmartyHeaderCode:11327642265d78ad605a0f01-21035981%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /* Smarty version Smarty-3.0.8, created on 2019-12-17 06:38:14
+         compiled from "C:\phpStudy\PHPTutorial\WWW\yxj/template\../template/admin/default/base/printer/page/printerList.html" */ ?>
+<?php /*%%SmartyHeaderCode:292925df877d6697cf2-18788465%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
-    '28426c685de751b93fef3cc080e2438fc426df82' => 
+    'ba120ab688a1264f7ba539c3f83d973d11a7e55a' => 
     array (
-      0 => '/home/wwwroot/yikang.chuyuanshengtai.com/template/../template/admin/default/store/page/clinic/printerList.html',
-      1 => 1540952280,
+      0 => 'C:\\phpStudy\\PHPTutorial\\WWW\\yxj/template\\../template/admin/default/base/printer/page/printerList.html',
+      1 => 1576564692,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '11327642265d78ad605a0f01-21035981',
+  'nocache_hash' => '292925df877d6697cf2-18788465',
   'function' => 
   array (
   ),
@@ -28,7 +28,7 @@ $_smarty_tpl->decodeProperties(array (
 
 <link rel="stylesheet" href="<?php echo @TEMPLATE_PATH;?>
 /admin/<?php echo $_smarty_tpl->getVariable('theme')->value;?>
-/store/css/clinic/clinicList.css" />
+/base/printer/css/printerList.css" />
 
 <body>
 
@@ -70,7 +70,7 @@ $_smarty_tpl->decodeProperties(array (
 
                 <div class="operation-div">
 
-                    <a class="btn btn-success" class="addGoods" href="admin.php?c=store_clinic&a=addClinic">添加</a>
+                    <a class="btn btn-success" class="addGoods" href="admin.php?c=base_printer&a=addPrinter">添加</a>
 
                 </div>
 
@@ -90,41 +90,52 @@ $_smarty_tpl->decodeProperties(array (
 
                                     <td width="80px">
 
-                                        <label for="goodsname">诊所名称:&nbsp;</label>
+                                        <label for="goodsname">打印机编号:</label>
 
                                     </td>
 
                                     <td width="140px">
 
-                                        <input id="goodsname" name="goodsname" type="text" class="input-normal search"  />
+                                        <input id="goodsname" name="num" type="text" class="input-normal search"  />
+
+                                    </td>
+                                    <td width="80px">
+
+                                        <label for="province">省份:</label>
+
+                                    </td>
+
+                                    <td width="80px" style="padding-right: 30px;">
+
+                                        <input id="province" name="province" type="text" class="input-normal search"  />
 
                                     </td>
 
                                     <td width="80px">
 
-                                        <label for="startTime">创建时间:&nbsp;</label>
+                                        <label for="startTime">城市:</label>
 
                                     </td>
 
-                                    <td width="140px">
+                                    <td width="80px">
 
-                                        <input id="startTime" name="startTime" type="text" class="input-normal search Wdate" onclick="WdatePicker({dateFmt:'yyyy-MM-dd'})" />
-
-                                    </td>
-
-                                    <td width="40px">
-
-                                        <label for="endTime">至:</label>
+                                        <input id="startTime" name="city" type="text" class="input-normal search" />
 
                                     </td>
 
-                                    <td width="140px">
+                                    <td width="80px" style="padding-left: 30px;">
 
-                                        <input id="endTime" name="endTime" type="text" class="input-normal search Wdate" onclick="WdatePicker({dateFmt:'yyyy-MM-dd'})" />
+                                        <label for="endTime">区县:</label>
 
                                     </td>
 
-                                    <td>
+                                    <td width="80px">
+
+                                        <input id="endTime" name="area" type="text" class="input-normal search" />
+
+                                    </td>
+
+                                    <td style="padding-left: 30px;">
 
                                         <div class="list-action-area">
 
@@ -246,7 +257,7 @@ $_smarty_tpl->decodeProperties(array (
 
 <script type="text/javascript" src="<?php echo @TEMPLATE_PATH;?>
 /admin/<?php echo $_smarty_tpl->getVariable('theme')->value;?>
-/store/js/clinic/clinicList.js"></script>
+/base/printer/js/printerList.js"></script>
 
 </body>
 

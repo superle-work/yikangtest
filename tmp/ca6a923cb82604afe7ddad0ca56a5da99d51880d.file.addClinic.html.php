@@ -1,12 +1,12 @@
 <?php /* Smarty version Smarty-3.0.8, created on 2019-11-23 00:51:45
-         compiled from "C:\phpStudy\PHPTutorial\WWW\yxj/template\../template/admin/default/store/page/clinic/addClinic.html" */ ?>
+         compiled from "C:\phpStudy\PHPTutorial\WWW\yxj/template\../template/admin/default/store/page/clinic/addPrinter.html" */ ?>
 <?php /*%%SmartyHeaderCode:188685dd882a1847fd1-06166577%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     'ca6a923cb82604afe7ddad0ca56a5da99d51880d' => 
     array (
-      0 => 'C:\\phpStudy\\PHPTutorial\\WWW\\yxj/template\\../template/admin/default/store/page/clinic/addClinic.html',
+      0 => 'C:\\phpStudy\\PHPTutorial\\WWW\\yxj/template\\../template/admin/default/store/page/clinic/addPrinter.html',
       1 => 1573626494,
       2 => 'file',
     ),

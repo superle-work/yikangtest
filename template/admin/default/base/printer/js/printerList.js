@@ -45,9 +45,9 @@ $(function(){
                     $("#myModal").modal('hide');
                 },1500);
         	}else{
-	            myConfirmModal("确定要批量删除折扣吗？",function(){
+	            myConfirmModal("确定要批量删除打印机吗？",function(){
 		            $.ajax({
-		                url:"./admin.php?c=store_discount&a=batchDelete",
+		                url:"./admin.php?c=base_printer&a=batchDelete",
 		                type:"post",
 		                data:{"ids":ids},
 		                dataType:"json",
@@ -81,7 +81,10 @@ $(function(){
      */
     function getSelectInfo(){
         var selectInfo = {
-            user_type : $('.inner-section .search-param-form #user_type').val().trim()
+            num : $('.inner-section .search-param-form #goodsname').val().trim(),
+            province : $('.inner-section .search-param-form #province').val().trim(),
+            city : $('.inner-section .search-param-form #startTime').val().trim(),
+            area : $('.inner-section .search-param-form #endTime').val().trim()
         };
         return selectInfo;
     }
@@ -107,7 +110,7 @@ $(function(){
         $.ajax({
             async:async,
             type:'post',
-            url:'./admin.php?c=store_discount&a=pagingDiscount',
+            url:'./admin.php?c=base_printer&a=pagingPrinter',
             data:selectInfo,//从1开始计数
             dataType:'json',
             success:function(json){
@@ -120,27 +123,27 @@ $(function(){
                     currentPage = json.data.pageInfo.current_page;
                     var myList = json.data.dataList;
 
-                    html+='<tr><th class="th1"><input type="checkbox" class="select-all my-icheckbox"></th><th class="th1">序号</th><th class="th2">用户角色</th><th class="th8">折扣系数</th><th class="th8">采血费</th><th class="th8">运输费</th><th class="th2">操作</th></tr>';
+                    html+='<tr><th class="th1"><input type="checkbox" class="select-all my-icheckbox"></th><th class="th1">序号</th><th class="th2">打印机编号</th><th class="th4">省份</th><th class="th11">城市</th><th class="th11">区县</th><th class="th2">操作</th></tr>';
                     var colspan = $(html).find("th").length;
                     for(var i = 0; i < myList.length;i++){
                         var obj = myList[i];
                         var num = (pageIndex-1)*pageSize + i+1;
-                        var user_type_des = obj.user_type_des;
-                        var discount = obj.discount;
-                        var blood_fee = obj.blood_fee;
-                        var transport_fee = obj.transport_fee;
+                        var pnum = obj.num;
+                        var province = obj.province;
+                        var city = obj.city;
+                        var area = obj.area;
                         var cid = obj.id;
                         var checked = (idList.indexOf(cid) >= 0) ? "checked":"";//判断当前记录先前有没有被选中
 
                         html+='<tr>'
-                        		+'<td><input type="checkbox" class="select-single my-icheckbox" value="'+cid+'" '+checked+'></td>'
+                                +'<td><input type="checkbox" class="select-single my-icheckbox" value="'+cid+'" '+checked+'></td>'
                                  +'<td>'+num+'</td>'
-                                 +'<td><a class="limit-text">'+ user_type_des +'</a></td>'
-                                 +'<td>'+discount+'</td>'
-                                 +'<td>'+blood_fee+'</td>'
-                                 +'<td>'+transport_fee+'</td>'
+                                 +'<td><a href="./admin.php?c=base_printer&a=printerDetail&id='+cid+'" class="limit-text">'+ pnum +'</a></td>'
+                                 +'<td>'+province+'</td>'
+                                 +'<td>'+city+'</td>'
+                                 +'<td>'+area+'</td>'
                                  +'<td>'
-                                    +'<a href="./admin.php?c=store_discount&a=editDiscount&id='+cid+'" class="btn btn-primary btn-xs editor">编辑</a>'
+                                    +'<a href="./admin.php?c=base_printer&a=editPrinter&id='+cid+'" class="btn btn-primary btn-xs editor">编辑</a>'
                                     +'<a class="btn btn-default btn-xs delete" id = "'+cid+'">删除</a>'
                                  +'</td>'
                                +'</tr>';
@@ -155,7 +158,7 @@ $(function(){
                     myCheck();
                     batchSelect(idList,".inner-section #list-table .select-all",".inner-section #list-table .select-single");
                     //单个操作
-                    $("#list-table .delete").click(deleteAgent);
+                    $("#list-table .delete").click(deleteClinic);
                 }else{
                     responseTip(json.errorCode,json.errorInfo,1500);
                 }
@@ -168,15 +171,15 @@ $(function(){
 	/**
      * 真删
      */
-	function deleteAgent() {
+	function deleteClinic() {
         var id = $(this).attr("id");
         var imgurl = $(this).attr("imgurl");
-        myConfirmModal("确定要删除代理吗？",function(){
+        myConfirmModal("确定要删除打印机吗？",function(){
             $.ajax(
                 {
                     type:"post",
-                    url:"./admin.php?c=store_discount&a=deleteDiscount",
-                    data:{'id':id, 'imgurl':imgurl},
+                    url:"./admin.php?c=base_printer&a=deletePrinter",
+                    data:{'id':id},
                     dataType:"json",
                     beforeSend:function(xhr){
                         //显示“加载中。。。”

@@ -1,12 +1,12 @@
 <?php /* Smarty version Smarty-3.0.8, created on 2019-09-29 14:10:06
-         compiled from "/home/wwwroot/yikang.chuyuanshengtai.com/template/../template/front/store/ma17004/page/clinic/clinicDetail.html" */ ?>
+         compiled from "/home/wwwroot/yikang.chuyuanshengtai.com/template/../template/front/store/ma17004/page/clinic/printerDetail.html" */ ?>
 <?php /*%%SmartyHeaderCode:5028361805d904abe00b434-17909139%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     'f2d442fc2d35be553665096957c3409cb861073d' => 
     array (
-      0 => '/home/wwwroot/yikang.chuyuanshengtai.com/template/../template/front/store/ma17004/page/clinic/clinicDetail.html',
+      0 => '/home/wwwroot/yikang.chuyuanshengtai.com/template/../template/front/store/ma17004/page/clinic/printerDetail.html',
       1 => 1541829856,
       2 => 'file',
     ),

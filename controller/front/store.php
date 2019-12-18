@@ -259,7 +259,7 @@ class store extends front_controller{
 		}
 		$this->signPackage = JsSdk::getSignPackage();
 		$this->log(__CLASS__, __FUNCTION__, "商品详情页", 1, "view");
-		$this->display("../template/front/store/{$this->theme}/page/clinic/clinicDetail.html");
+		$this->display("../template/front/store/{$this->theme}/page/clinic/printerDetail.html");
 	}
 	
 	/**
