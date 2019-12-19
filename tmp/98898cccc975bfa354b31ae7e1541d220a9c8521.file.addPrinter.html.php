@@ -1,17 +1,17 @@
-<?php /* Smarty version Smarty-3.0.8, created on 2019-12-17 06:58:30
+<?php /* Smarty version Smarty-3.0.8, created on 2019-12-19 10:22:19
          compiled from "C:\phpStudy\PHPTutorial\WWW\yxj/template\../template/admin/default/base/printer/page/addPrinter.html" */ ?>
-<?php /*%%SmartyHeaderCode:134515df87c96432fa3-61320720%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:79385dfb4f5b29a593-82467944%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     '98898cccc975bfa354b31ae7e1541d220a9c8521' => 
     array (
       0 => 'C:\\phpStudy\\PHPTutorial\\WWW\\yxj/template\\../template/admin/default/base/printer/page/addPrinter.html',
-      1 => 1576565907,
+      1 => 1576750826,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '134515df87c96432fa3-61320720',
+  'nocache_hash' => '79385dfb4f5b29a593-82467944',
   'function' => 
   array (
   ),
@@ -53,6 +53,11 @@ $_smarty_tpl->decodeProperties(array (
                             <tr>
                                 <td class="td1"><label for="num"><span class="must-tag">*</span>打印机编号</label></td>
                                 <td class="td2"><input type="text" id="num" name="num" placeholder="打印机编号"></td>
+                                <td class="td3"></td>
+                            </tr>
+                            <tr>
+                                <td class="td1"><label for="printer_key"><span class="must-tag">*</span>打印机key</label></td>
+                                <td class="td2"><input type="text" id="printer_key" name="printer_key" placeholder="打印机key"></td>
                                 <td class="td3"></td>
                             </tr>
                             <tr>

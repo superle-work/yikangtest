@@ -1,17 +1,17 @@
-<?php /* Smarty version Smarty-3.0.8, created on 2019-12-17 03:27:28
+<?php /* Smarty version Smarty-3.0.8, created on 2019-12-19 10:28:08
          compiled from "C:\phpStudy\PHPTutorial\WWW\yxj/template\../template/admin/default/base/printer/page/printerDetail.html" */ ?>
-<?php /*%%SmartyHeaderCode:232595df84b201605e2-24725109%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:32255dfb50b8731ee4-27103630%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     'c0da83534911ba579c168f2c8af84de0a0c25612' => 
     array (
       0 => 'C:\\phpStudy\\PHPTutorial\\WWW\\yxj/template\\../template/admin/default/base/printer/page/printerDetail.html',
-      1 => 1576553240,
+      1 => 1576751038,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '232595df84b201605e2-24725109',
+  'nocache_hash' => '32255dfb50b8731ee4-27103630',
   'function' => 
   array (
   ),
@@ -85,6 +85,21 @@ $_smarty_tpl->decodeProperties(array (
                                         <td>
 
                                             <?php echo $_smarty_tpl->getVariable('goodsInfo')->value['num'];?>
+
+
+                                        </td>
+
+                                        <td></td>
+
+                                    </tr>
+
+                                    <tr>
+
+                                        <td>打印机key<label class="must-tag">&nbsp;&nbsp;</label></td>
+
+                                        <td>
+
+                                            <?php echo $_smarty_tpl->getVariable('goodsInfo')->value['printer_key'];?>
 
 
                                         </td>

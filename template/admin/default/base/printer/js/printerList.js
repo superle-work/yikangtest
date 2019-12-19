@@ -123,7 +123,7 @@ $(function(){
                     currentPage = json.data.pageInfo.current_page;
                     var myList = json.data.dataList;
 
-                    html+='<tr><th class="th1"><input type="checkbox" class="select-all my-icheckbox"></th><th class="th1">序号</th><th class="th2">打印机编号</th><th class="th4">省份</th><th class="th11">城市</th><th class="th11">区县</th><th class="th2">操作</th></tr>';
+                    html+='<tr><th class="th1"><input type="checkbox" class="select-all my-icheckbox"></th><th class="th1">序号</th><th class="th2">打印机编号</th><th class="th11">打印机key</th><th class="th4">省份</th><th class="th11">城市</th><th class="th11">区县</th><th class="th2">操作</th></tr>';
                     var colspan = $(html).find("th").length;
                     for(var i = 0; i < myList.length;i++){
                         var obj = myList[i];
@@ -133,12 +133,14 @@ $(function(){
                         var city = obj.city;
                         var area = obj.area;
                         var cid = obj.id;
+                        var printer_key = obj.printer_key;
                         var checked = (idList.indexOf(cid) >= 0) ? "checked":"";//判断当前记录先前有没有被选中
 
                         html+='<tr>'
                                 +'<td><input type="checkbox" class="select-single my-icheckbox" value="'+cid+'" '+checked+'></td>'
                                  +'<td>'+num+'</td>'
                                  +'<td><a href="./admin.php?c=base_printer&a=printerDetail&id='+cid+'" class="limit-text">'+ pnum +'</a></td>'
+                                 +'<td>'+printer_key+'</td>'
                                  +'<td>'+province+'</td>'
                                  +'<td>'+city+'</td>'
                                  +'<td>'+area+'</td>'

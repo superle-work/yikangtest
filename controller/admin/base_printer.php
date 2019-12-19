@@ -73,7 +73,7 @@ class base_printer extends admin_controller{
 	 */
 	function insertPrinter(){
 	    
-	    $goodsInfo = $this->getArgsList($this, array(num,province,city,area));
+	    $goodsInfo = $this->getArgsList($this, array(num,printer_key,province,city,area));
         $resultGoods = $this->lib_printer->addPrinter ($goodsInfo);
 
         $this->log(__CLASS__, __FUNCTION__, "添加打印机", 0, 'add');
@@ -101,7 +101,7 @@ class base_printer extends admin_controller{
 		$conditions = array('id' => $this->spArgs('id'));
 		
 		//更新商品基本信息
-		$goodsInfo = $this->getArgsList($this, array(num,province,city,area));
+		$goodsInfo = $this->getArgsList($this, array(num,printer_key,province,city,area));
 		$result = $this->lib_printer->updatePrinter($conditions,$goodsInfo);
 		
 		$this->log(__CLASS__, __FUNCTION__, "修改打印机信息", 0, 'edit');

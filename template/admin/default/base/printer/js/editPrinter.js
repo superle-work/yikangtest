@@ -79,6 +79,9 @@ $(function(){
             num:{//打印机编号
                 required:true
             },
+            printer_key:{//打印机key
+                required:true
+            },
             province:{//购买商品赠送的积分
                 required:true,
             },
@@ -91,6 +94,9 @@ $(function(){
         },
         messages:{
             num:{//打印机编号
+                required:"必填项"
+            },
+            printer_key:{//打印机key
                 required:"必填项"
             },
             province:{

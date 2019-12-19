@@ -1,17 +1,17 @@
-<?php /* Smarty version Smarty-3.0.8, created on 2019-12-17 07:59:01
+<?php /* Smarty version Smarty-3.0.8, created on 2019-12-19 10:28:12
          compiled from "C:\phpStudy\PHPTutorial\WWW\yxj/template\../template/admin/default/base/printer/page/editPrinter.html" */ ?>
-<?php /*%%SmartyHeaderCode:269845df88ac5b675a0-70432189%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:111025dfb50bccc9194-20970750%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     '22aa62ce3481bc08999fa3b028884bbc38a3a01e' => 
     array (
       0 => 'C:\\phpStudy\\PHPTutorial\\WWW\\yxj/template\\../template/admin/default/base/printer/page/editPrinter.html',
-      1 => 1576568216,
+      1 => 1576751176,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '269845df88ac5b675a0-70432189',
+  'nocache_hash' => '111025dfb50bccc9194-20970750',
   'function' => 
   array (
   ),
@@ -79,6 +79,17 @@ $_smarty_tpl->decodeProperties(array (
                             <td class="td1"><label for="num"><span class="must-tag">*</span>打印机编号</label></td>
 
                             <td class="td2"><input type="text" id="num" name="num" placeholder="打印机编号" value="<?php echo $_smarty_tpl->getVariable('goods')->value['num'];?>
+"></td>
+
+                            <td class="td3"></td>
+
+                        </tr>
+
+                        <tr>
+
+                            <td class="td1"><label for="printer_key"><span class="must-tag">*</span>打印机key</label></td>
+
+                            <td class="td2"><input type="text" id="printer_key" name="printer_key" placeholder="打印机key" value="<?php echo $_smarty_tpl->getVariable('goods')->value['printer_key'];?>
 "></td>
 
                             <td class="td3"></td>
