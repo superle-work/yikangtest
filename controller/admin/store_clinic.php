@@ -32,7 +32,7 @@ class store_clinic extends admin_controller{
 	function addClinic(){
 		$this->getMenu($this);
         $this->log(__CLASS__, __FUNCTION__, "跳转添加诊所信息页面", 1, 'add');
-		$this->display("../template/admin/{$this->theme}/store/page/clinic/addPrinter.html");
+		$this->display("../template/admin/{$this->theme}/store/page/clinic/addclinic.html");
 	}
 	
 	/**
@@ -51,7 +51,7 @@ class store_clinic extends admin_controller{
 	function clinicList(){
 		$this->getSetMenu($this);
         $this->log(__CLASS__, __FUNCTION__, "跳转诊所列表信息页面", 1, 'view');
-		$this->display("../template/admin/{$this->theme}/store/page/clinic/printerList.html");
+		$this->display("../template/admin/{$this->theme}/store/page/clinic/clinicList.html");
 	}
 	
 	/**
@@ -209,7 +209,7 @@ class store_clinic extends admin_controller{
             $this->$str= $imgListResult['data'][$i];
         }
         $this->log(__CLASS__, __FUNCTION__, "商品详情页面", 1, 'view');
-        $this->display("../template/admin/{$this->theme}/store/page/clinic/printerDetail.html");
+        $this->display("../template/admin/{$this->theme}/store/page/clinic/clinicDetail.html");
     }
 	
 	/**
@@ -228,7 +228,7 @@ class store_clinic extends admin_controller{
 	        $this->$str= $imgListResult['data'][$i];
 	    }
 	    $this->log(__CLASS__, __FUNCTION__, "编辑诊所页面", 1, 'edit');
-	    $this->display("../template/admin/{$this->theme}/store/page/clinic/editPrinter.html");
+	    $this->display("../template/admin/{$this->theme}/store/page/clinic/editClinic.html");
 	}
 	
 	

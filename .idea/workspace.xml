@@ -14,19 +14,10 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/controller/admin/base_printer.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1231">
-              <caret line="103" column="68" selection-start-line="103" selection-start-column="68" selection-end-line="103" selection-end-column="68" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/template/admin/default/base/printer/page/printerDetail.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="590">
-              <caret line="76" column="75" lean-forward="true" selection-start-line="76" selection-start-column="75" selection-end-line="76" selection-end-column="75" />
+            <state relative-caret-position="1444">
+              <caret line="76" column="75" selection-start-line="76" selection-start-column="75" selection-end-line="76" selection-end-column="75" />
             </state>
           </provider>
         </entry>
@@ -34,13 +25,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/template/admin/default/store/js/goods/goodsList.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="613">
-              <caret line="236" column="10" lean-forward="true" selection-start-line="236" selection-start-column="10" selection-end-line="236" selection-end-column="10" />
-              <folding>
-                <element signature="n#style#0;n#span#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#span#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#span#0;n#!!top" expanded="true" />
-              </folding>
+            <state relative-caret-position="4484">
+              <caret line="236" column="10" selection-start-line="236" selection-start-column="10" selection-end-line="236" selection-end-column="10" />
             </state>
           </provider>
         </entry>
@@ -48,8 +34,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/template/admin/default/base/printer/js/printerList.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="514">
-              <caret line="142" column="60" lean-forward="true" selection-start-line="142" selection-start-column="60" selection-end-line="142" selection-end-column="60" />
+            <state relative-caret-position="2698">
+              <caret line="142" column="60" selection-start-line="142" selection-start-column="60" selection-end-line="142" selection-end-column="60" />
             </state>
           </provider>
         </entry>
@@ -57,17 +43,26 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/template/admin/default/base/printer/page/editPrinter.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-18">
-              <caret line="64" column="161" lean-forward="true" selection-start-line="64" selection-start-column="161" selection-end-line="64" selection-end-column="161" />
+            <state relative-caret-position="1216">
+              <caret line="64" column="161" selection-start-line="64" selection-start-column="161" selection-end-line="64" selection-end-column="161" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/template/admin/default/base/printer/js/editPrinter.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="756">
+              <caret line="118" column="3" lean-forward="true" selection-start-line="118" selection-start-column="3" selection-end-line="118" selection-end-column="3" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/template/admin/default/base/printer/js/editPrinter.js">
+        <entry file="file://$PROJECT_DIR$/controller/admin/store_clinic.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="414">
-              <caret line="100" column="14" selection-start-line="100" selection-start-column="14" selection-end-line="100" selection-end-column="14" />
+            <state relative-caret-position="-1976">
+              <caret line="34" column="84" selection-start-line="34" selection-start-column="84" selection-end-line="34" selection-end-column="84" />
             </state>
           </provider>
         </entry>
@@ -75,7 +70,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/controller/front/store.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="433">
+            <state relative-caret-position="38494">
               <caret line="2026" column="65" lean-forward="true" selection-start-line="2026" selection-start-column="65" selection-end-line="2026" selection-end-column="65" />
             </state>
           </provider>
@@ -84,7 +79,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/template/admin/default/base/printer/page/addPrinter.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="514">
+            <state relative-caret-position="627">
               <caret line="33" column="101" selection-start-line="33" selection-start-column="90" selection-end-line="33" selection-end-column="101" />
             </state>
           </provider>
@@ -93,7 +88,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/template/admin/default/base/printer/js/addPrinter.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="661">
+            <state relative-caret-position="1634">
               <caret line="86" column="14" lean-forward="true" selection-start-line="86" selection-start-column="14" selection-end-line="89" selection-end-column="14" />
             </state>
           </provider>
@@ -102,7 +97,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/controller/admin/store_logistics.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="338">
+            <state relative-caret-position="2451">
               <caret line="129" column="30" lean-forward="true" selection-start-line="129" selection-start-column="30" selection-end-line="129" selection-end-column="30" />
             </state>
           </provider>
@@ -155,7 +150,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="E:/yxj/yikangtest/include/common.php" />
         <option value="E:/yxj/yikangtest/template/admin/default/base/user/js/userList.js" />
         <option value="E:/yxj/yikangtest/template/admin/default/store/page/hospital/addHospital.html" />
         <option value="E:/yxj/yikangtest/template/admin/default/store/page/hospital/editHospital.html" />
@@ -206,6 +200,7 @@
         <option value="$PROJECT_DIR$/template/admin/default/base/printer/js/printerList.js" />
         <option value="$PROJECT_DIR$/template/admin/default/base/printer/page/editPrinter.html" />
         <option value="$PROJECT_DIR$/template/admin/default/base/printer/js/editPrinter.js" />
+        <option value="$PROJECT_DIR$/controller/admin/store_clinic.php" />
       </list>
     </option>
   </component>
@@ -221,6 +216,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -304,7 +300,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -384,11 +379,12 @@
       <workItem from="1576547762249" duration="17829000" />
       <workItem from="1576630893465" duration="21493000" />
       <workItem from="1576718279381" duration="21988000" />
+      <workItem from="1576806539889" duration="2462000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="466728000" />
+    <option name="totallyTimeSpent" value="469190000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -403,7 +399,7 @@
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49945828" visible="true" weight="0.14072494" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49945828" visible="true" weight="0.14232409" />
       <window_info id="Structure" order="1" sideWeight="0.5005417" side_tool="true" weight="0.19669509" />
       <window_info id="Favorites" order="2" sideWeight="0.5005417" side_tool="true" weight="0.19669509" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -535,13 +531,6 @@
     <entry file="file://$PROJECT_DIR$/template/admin/default/base/printer/bindUser.html" />
     <entry file="file://$PROJECT_DIR$/template/admin/default/base/printer/js/bindUser.js" />
     <entry file="file://$PROJECT_DIR$/template/admin/default/base/printer/css/bindUser.css" />
-    <entry file="file://$PROJECT_DIR$/controller/admin/store_clinic.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="475">
-          <caret line="25" column="45" lean-forward="true" selection-start-line="25" selection-start-column="45" selection-end-line="25" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/template/admin/default/base/points/page/cashList.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="209">
@@ -681,78 +670,80 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/template/admin/default/store/js/goods/goodsList.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="613">
-          <caret line="236" column="10" lean-forward="true" selection-start-line="236" selection-start-column="10" selection-end-line="236" selection-end-column="10" />
-          <folding>
-            <element signature="n#style#0;n#span#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#span#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#span#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/controller/admin/store_logistics.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="338">
-          <caret line="129" column="30" lean-forward="true" selection-start-line="129" selection-start-column="30" selection-end-line="129" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/controller/front/store.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="433">
-          <caret line="2026" column="65" lean-forward="true" selection-start-line="2026" selection-start-column="65" selection-end-line="2026" selection-end-column="65" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/template/admin/default/base/printer/page/addPrinter.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="514">
-          <caret line="33" column="101" selection-start-line="33" selection-start-column="90" selection-end-line="33" selection-end-column="101" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/controller/admin/base_printer.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1231">
+        <state relative-caret-position="1957">
           <caret line="103" column="68" selection-start-line="103" selection-start-column="68" selection-end-line="103" selection-end-column="68" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/template/admin/default/base/printer/page/printerDetail.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="590">
-          <caret line="76" column="75" lean-forward="true" selection-start-line="76" selection-start-column="75" selection-end-line="76" selection-end-column="75" />
+        <state relative-caret-position="1444">
+          <caret line="76" column="75" selection-start-line="76" selection-start-column="75" selection-end-line="76" selection-end-column="75" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/template/admin/default/base/printer/page/editPrinter.html">
+    <entry file="file://$PROJECT_DIR$/template/admin/default/store/js/goods/goodsList.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-18">
-          <caret line="64" column="161" lean-forward="true" selection-start-line="64" selection-start-column="161" selection-end-line="64" selection-end-column="161" />
+        <state relative-caret-position="4484">
+          <caret line="236" column="10" selection-start-line="236" selection-start-column="10" selection-end-line="236" selection-end-column="10" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/template/admin/default/base/printer/js/printerList.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="514">
-          <caret line="142" column="60" lean-forward="true" selection-start-line="142" selection-start-column="60" selection-end-line="142" selection-end-column="60" />
+        <state relative-caret-position="2698">
+          <caret line="142" column="60" selection-start-line="142" selection-start-column="60" selection-end-line="142" selection-end-column="60" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/template/admin/default/base/printer/page/editPrinter.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1216">
+          <caret line="64" column="161" selection-start-line="64" selection-start-column="161" selection-end-line="64" selection-end-column="161" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/controller/front/store.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="38494">
+          <caret line="2026" column="65" lean-forward="true" selection-start-line="2026" selection-start-column="65" selection-end-line="2026" selection-end-column="65" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/template/admin/default/base/printer/page/addPrinter.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="627">
+          <caret line="33" column="101" selection-start-line="33" selection-start-column="90" selection-end-line="33" selection-end-column="101" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/template/admin/default/base/printer/js/addPrinter.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="661">
+        <state relative-caret-position="1634">
           <caret line="86" column="14" lean-forward="true" selection-start-line="86" selection-start-column="14" selection-end-line="89" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/controller/admin/store_logistics.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2451">
+          <caret line="129" column="30" lean-forward="true" selection-start-line="129" selection-start-column="30" selection-end-line="129" selection-end-column="30" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/template/admin/default/base/printer/js/editPrinter.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="414">
-          <caret line="100" column="14" selection-start-line="100" selection-start-column="14" selection-end-line="100" selection-end-column="14" />
+        <state relative-caret-position="756">
+          <caret line="118" column="3" lean-forward="true" selection-start-line="118" selection-start-column="3" selection-end-line="118" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/controller/admin/store_clinic.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1976">
+          <caret line="34" column="84" selection-start-line="34" selection-start-column="84" selection-end-line="34" selection-end-column="84" />
         </state>
       </provider>
     </entry>
