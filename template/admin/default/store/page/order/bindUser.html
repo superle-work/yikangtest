@@ -1,0 +1,57 @@
+<link rel="stylesheet" href="<!--{$smarty.const.TEMPLATE_PATH}-->/admin/<!--{$theme}-->/store/css/logistics/bindUser.css"/>
+
+
+<script type="text/javascript" src="<!--{$smarty.const.BASE_PATH}-->/js/public/jquery.bootpag/jquery.bootpag.min.js"></script>
+
+<script type="text/javascript" src="<!--{$smarty.const.TEMPLATE_PATH}-->/admin/<!--{$theme}-->/store/js/order/bindUser.js"></script>
+
+<div class="modal-header">
+
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+
+    <h4 class="modal-title">选择打印机
+        <span>选中号</span>
+    </h4>
+
+</div>
+
+
+        <div class="list-title">
+
+            <div class="list-title-panel">
+
+                <span class="glyphicon glyphicon-list"></span>列表(勾选当前页面，请勿翻页勾选)</span>
+
+            </div>
+
+        </div>
+
+        <div class="table-content" id = "list_container">
+
+            <table id="list-tables" class="list-table table-hover table-bordered">
+                <tbody>
+
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+        <!--分页-->
+
+        <div id="page-selections"></div>
+
+    </div>
+
+</div>
+
+
+
+<div class="modal-footer">
+
+    <button type="button" class="btn btn-primary" id="bindSave" data-dismiss="modal">选择完成</button>
+
+    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+
+</div>

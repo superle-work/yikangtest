@@ -259,7 +259,7 @@ class store extends front_controller{
 		}
 		$this->signPackage = JsSdk::getSignPackage();
 		$this->log(__CLASS__, __FUNCTION__, "商品详情页", 1, "view");
-		$this->display("../template/front/store/{$this->theme}/page/clinic/printerDetail.html");
+		$this->display("../template/front/store/{$this->theme}/page/clinic/clinicDetail.html");
 	}
 	
 	/**
@@ -1006,7 +1006,7 @@ class store extends front_controller{
 		//获取订单信息	
         $orderResult = $lib_order->getOrderInfo(array('id'=>$result['data']['addOrderId']));
         $orderInfo = $orderResult['data'];
-		
+
         //微信支付标题
         if(!class_exists('UtilConfig')) require 'include/UtilConfig.php';
         $bidding_config = new UtilConfig('store_config');
@@ -1035,12 +1035,36 @@ class store extends front_controller{
         try{
         	//file_put_contents('aa.txt', $userInfo['data']['account']);
             $jsApiParameters = $pay->GetJsApiParameters($payResult);
+                    // 新订单来了通知管理员
+			$url=ROOT_URL.'/index.php?c=store&a=orderList';
+			//微信模板通知
+			$data = array(
+	            'first'=>array('value'=>'订单号'.$orderInfo['order_num'], 'color'=>'#000000'),
+	            'keyword1'=>array('value'=>有新的订单来了请及时查看, 'color'=>'#173177'),
+	            'keyword2'=>array('value'=>date('Y-m-d'), 'color'=>'#173177'),
+	            'remark'=>array('value'=>'查看详情', 'color'=>'#1A1AC9'),
+	      	);
+
+			$templateId="Mv-grNhf5Cq-UR-07E00UBQKdILrW6zQ_gxkuicR00E";
+			if(!class_exists('TemplateMessage')) include 'include/wechatUtil/TemplateMessage.php';
+
+			if(!class_exists('lib_admin')) include 'model/base/lib_admin.php';
+			$lib_admin = new lib_admin();
+			$sql="select * from base_admin where open_id!=''";
+			$array=$lib_admin->findSql($sql);
+
+			for ($i=0; $i <count($array) ; $i++) { 
+					$touser=$array[$i]['open_id'];
+					TemplateMessage::sendTemplateMessage($data, $touser, $templateId,$url);
+			}
             echo json_encode( common::errorArray(0, "统一下单成功",$jsApiParameters) );
             return false;
         }catch (Exception $ex){//发生异常重定向
             echo json_encode( common::errorArray(1, "统一下单失败",'') );
             return false;
         }
+
+			
 	}
 	/**
 	 *用户订单删除
@@ -1394,6 +1418,14 @@ class store extends front_controller{
 	    $lib_config = new UtilConfig('store_config');
 	    $result = $lib_config->findConfigKeyValue();
 	    $config = $result['data'];
+	    // 查询用户权限
+	   	if(!class_exists('m_base_user')) include 'model/base/table/m_base_user.php';
+	    
+		$m_base_user=new m_base_user();
+		
+		$member=$m_base_user->find(array('id'=>$_SESSION['user']['id']));
+
+		$this->member=$member;
 		$this->bottomNav = "orderList";//底部导航选中标识
 	    $this->configInfo = $config;//支持支付方式0仅货到付款1仅微信支付2货到付款和微信支付
 	    $this->log(__CLASS__, __FUNCTION__, "订单列表页面", 1, "view");
@@ -1406,6 +1438,8 @@ class store extends front_controller{
 	function pagingOrder(){
 	    $page['pageIndex'] = $this->spArgs('start');
         $page['pageSize'] = $this->spArgs('num');
+        $page['keywords'] = $this->spArgs('keywords');
+
 	    $sort = array(
 	        array('field' => 'state', 'orderby' => 'asc'),
 	        array('field' => 'add_time', 'orderby' => 'desc')
@@ -1878,6 +1912,51 @@ class store extends front_controller{
 				$this->printOrderTicket($oid,$result[0]['name']);
 				$res=$this->updateOrderState($oid,$info);
 				if($res['errorCode']==0){
+					// 查询对应的物流人员,没有就群发
+					if(!class_exists('lib_logistics')) include 'model/store/lib_logistics.php';
+					$lib_logistics = new lib_logistics();
+					$logisticsmember=$lib_logistics->getOrderInfo(array('province'=>$result[0]['province'],
+																  'city'=>$result[0]['city'],
+																  'city'=>$result[0]['area'],	
+																));
+					
+					$url=ROOT_URL.'/index.php?c=store&a=orderList';
+					//微信模板通知
+					$data = array(
+		              	'first'=>array('value'=>'您好,有新订单来了', 'color'=>'#000000'),
+		               	'keyword1'=>array('value'=>$orderInfo['data']['order_num'], 'color'=>'#173177'),
+		             	'keyword2'=>array('value'=>date('Y-m-d'), 'color'=>'#173177'),
+		             	'keyword3'=>array('value'=>'代送检', 'color'=>'#173177'),
+		             	'keyword4'=>array('value'=>$result[0]['name'], 'color'=>'#173177'),
+		             	'keyword5'=>array('value'=>$result[0]['phone'], 'color'=>'#173177'),
+		             	'remark'=>array('value'=>'如有疑问,请致电,谢谢', 'color'=>'#1A1AC9'),
+		      		);
+					if(!class_exists('lib_user')) include 'model/base/lib_user.php';
+					$lib_user = new lib_user();
+					$templateId="3HaJ_pDicrVNWch2GIJkvvWNTPRwZ6WzkQO9DpQ-Ehg";
+
+					if ($logisticsmember) {
+
+						$logisticsmember=$lib_user->getOrderInfo(array('id'=>$logisticsmember['user_id']));
+						
+						$touser = $logisticsmember['open_id'];
+
+						if(!class_exists('TemplateMessage')) include 'include/wechatUtil/TemplateMessage.php';
+					 	TemplateMessage::sendTemplateMessage($data, $touser, $templateId,$url);
+
+					}else{
+
+						$data=$lib_logistics->findAll();
+						for ($i=0; $i <count($data) ; $i++) { 
+							$logisticsmember=$lib_user->getOrderInfo(array('id'=>$logisticsmember[$i]['user_id']));
+							$touser = $logisticsmember['open_id'];
+							if(!class_exists('TemplateMessage')) include 'include/wechatUtil/TemplateMessage.php';
+						 	TemplateMessage::sendTemplateMessage($data, $touser, $templateId,$url);
+
+						}
+					}
+
+
 					echo "<script>alert('已核销')</script>";
 					$this->jump("index.php?c=store&a=clinicCenter");
 				}

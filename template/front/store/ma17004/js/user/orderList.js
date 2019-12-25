@@ -8,7 +8,7 @@ $(function(){
      * 初始化
      */
     function init(){
-    	//幻灯片Swiper插件
+        //幻灯片Swiper插件
         var mySwiper = new Swiper ('.swiper-container', {
             loop: false,
 //          speed:400,
@@ -56,21 +56,21 @@ $(function(){
         });
         
         //滚动实现加载
-    	$(window).scroll(function(){
-    		if(stop == true){
-	    		var scroll_top = $(window).height()+$(window).scrollTop();
-	    		if(scroll_top > get_more_top){
-	    			//异步请求，渲染商品列表
-	    			render(1);
-	    		}
-    		}
-    	});
+        $(window).scroll(function(){
+            if(stop == true){
+                var scroll_top = $(window).height()+$(window).scrollTop();
+                if(scroll_top > get_more_top){
+                    //异步请求，渲染商品列表
+                    render(1);
+                }
+            }
+        });
     }
     
     //查看报告
     function orderReport(){
-    	var oid = $(this).attr("data-oid");
-    	location.href ="index.php?c=store&a=showReport&oid="+oid;
+        var oid = $(this).attr("data-oid");
+        location.href ="index.php?c=store&a=showReport&oid="+oid;
     }
     
     
@@ -79,37 +79,51 @@ $(function(){
      */
     function getSelect(){
         var selectInfo = {
-        	state : $("#content #state").val(),
+            state : $("#content #state").val(),
             start : $("#content .get-more").attr("data-start"),
             num : $("#content .get-more").attr("data-num")
         };
         return selectInfo;
     }
-    
+    /*
+     * 搜索按钮
+     **/
+    $("#search").click(function(){
+        render();
+    });
     /**
      * 下拉加载数据
      */
     function render(type){
-    	if(type != 1){
-    		$("#content .get-more").attr('data-start',1);
-    	}
-    	var start = $("#content .get-more").attr("data-start");
-    	var num = $("#content .get-more").attr("data-num");
+        if(type != 1){
+            $("#content .get-more").attr('data-start',1);
+        }
+        // 查询条件
+        keywords=$("#keywords").val();
+
+        if(keywords==undefined){
+            keywords='';    
+        }
+
+        var start = $("#content .get-more").attr("data-start");
+        var num = $("#content .get-more").attr("data-num");
         var selectInfo = getSelect();
+        selectInfo['keywords']=keywords;
+
         $.ajax({
             type:'post',
             url:'./index.php?c=store&a=pagingOrder',
             data:selectInfo,
             dataType:'json',
             beforeSend:function(){
-            	stop = false;
-            	$("#content .get-more").text("正在加载中");
+                stop = false;
+                $("#content .get-more").text("正在加载中");
             },
             success:function(result){
                 var html ='';
                 console.log(result)
                 if(result.errorCode == 0){
-                	console.log(result)
+                    console.log(result)
                     var orderList = result.data.orderList;
                     for(var i = 0; i < orderList.length; i++){
                         var order = orderList[i];
@@ -123,7 +137,7 @@ $(function(){
                         var goods_count = order.goods_count;
                         var min = order.min;
                         var balance_money = order.balance_money;                       
-						var add_time = order.add_time;
+                        var add_time = order.add_time;
                         
                         var stateText = "";
                         var orderOper = "";
@@ -149,24 +163,24 @@ $(function(){
                         
                         //判断订单
                         if(myState=='0'){
-                        	html+="<div class='order-goods-list'><a href='./pay/request/balancePay.php?oid="+order.id+"'>";
+                            html+="<div class='order-goods-list'><a href='./pay/request/balancePay.php?oid="+order.id+"'>";
                         }
                         else{
-                        	html+="<div class='order-goods-list'><a href='index.php?c=store&a=orderDetail&from=1&oid="+order.id+"'>";
+                            html+="<div class='order-goods-list'><a href='index.php?c=store&a=orderDetail&from=1&oid="+order.id+"'>";
                         }
                         
                         html+='<table>'
-	                        	+'<thead>'
-//	                        		+'<tr>'
-//	                        			+'<td class="order-title" colspan="3"><span class="add-time">'+add_time+'</span>'+help_name+'<a class="orderDetail" href="./index.php?c=store&a=orderDetail&oid='+order.id+'">订单详情</a></td>'
-//	                        		+'</tr>
-	                        		+'<tr class="order-num">'
-	                        			+'<td colspan="2"><i class="icon iconfont">&#xe62e;</i>订单号：'+order.order_num+'</td>'
-	                        			+stateText
-	                        		+'</tr>'
-	                        	+'</thead>'
-	                            +'<tbody>';
-	                            
+                                +'<thead>'
+//                                  +'<tr>'
+//                                      +'<td class="order-title" colspan="3"><span class="add-time">'+add_time+'</span>'+help_name+'<a class="orderDetail" href="./index.php?c=store&a=orderDetail&oid='+order.id+'">订单详情</a></td>'
+//                                  +'</tr>
+                                    +'<tr class="order-num">'
+                                        +'<td colspan="2"><i class="icon iconfont">&#xe62e;</i>订单号：'+order.order_num+'</td>'
+                                        +stateText
+                                    +'</tr>'
+                                +'</thead>'
+                                +'<tbody>';
+                                
                         var goodsList = order.goods_list;//商品集
                         for(var j = 0 ;j < goodsList.length; j++){
                             var goods = goodsList[j];
@@ -180,40 +194,40 @@ $(function(){
                         }
                         
                         html+='</tbody>'
-                        	 +'<tfoot>'
-                        	 	+'<tr>'
-                        	 		+'<td class="total-goods" colspan="3">'
+                             +'<tfoot>'
+                                +'<tr>'
+                                    +'<td class="total-goods" colspan="3">'
                                     +'<span class="total-money col-xs-4">病人姓名&nbsp;:&nbsp;'+order.member_info.name+'</span>'
                                     +'<span class="total-money col-xs-8">下单时间&nbsp;:&nbsp;'+order.add_time+'</span>'
                                     +'<span class="total-money col-xs-12">合计&nbsp;:&nbsp;￥'+order.total_price+'</span>'
-                        	 		+'<span class="total-money">合计&nbsp;:&nbsp;￥'+order.total_price+'</span>'
-                        	 		+'</td>'
-                        	 	+'</tr>'
-                        	 	+orderOper
-                        	 +'<tfoot>'
-                        	 +'</table>'
+                                    
+                                    +'</td>'
+                                +'</tr>'
+                                +orderOper
+                             +'<tfoot>'
+                             +'</table>'
                         html+='</a></div><div class="space2"></div>';
                     }
                     
                     if(type == 1){//滚动加载
-            		    $("#content .order-list").append(html);
-            	    }else{//点击切换状态
-            		   $("#content .order-list").html(html);
-            	    }
+                        $("#content .order-list").append(html);
+                    }else{//点击切换状态
+                       $("#content .order-list").html(html);
+                    }
 
-            	    if(orderList.length < num || result.data.pageInfo.total_page == 1){//判断数据是否加载完
-                	   stop = false;
-                	   $("#content .get-more").text("没有更多了");
-               	    }else{
-               		   get_more_top = $("#content .get-more").offset().top;
-               		   $("#content .get-more").attr("data-start",parseInt(start)+1);
-               		   $("#content .get-more").text("下拉加载更多");
-               		   stop = true;
-               	    }
+                    if(orderList.length < num || result.data.pageInfo.total_page == 1){//判断数据是否加载完
+                       stop = false;
+                       $("#content .get-more").text("没有更多了");
+                    }else{
+                       get_more_top = $("#content .get-more").offset().top;
+                       $("#content .get-more").attr("data-start",parseInt(start)+1);
+                       $("#content .get-more").text("下拉加载更多");
+                       stop = true;
+                    }
                 }
             },
             error:function(){
-            	showDialog('#errorDialog',' ','请求失败，网络异常！');
+                showDialog('#errorDialog',' ','请求失败，网络异常！');
             }
         });
     }
@@ -240,15 +254,15 @@ $(function(){
             url:'index.php?c=store&a=deleteUserOrder',//请求地址，html页面传过来的
                 type: "post",
                 data: {id: id
-                	  },
-					success:function(res){
-	
-							showDialog('#errorDialog', '删除成功','加载成功~' , '&#xe683;', 1500,function(){
-								window.location.reload();
-							});
-						
+                      },
+                    success:function(res){
+    
+                            showDialog('#errorDialog', '删除成功','加载成功~' , '&#xe683;', 1500,function(){
+                                window.location.reload();
+                            });
+                        
 
-					}
+                    }
         });
     });
     

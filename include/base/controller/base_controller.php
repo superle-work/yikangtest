@@ -167,6 +167,7 @@ class base_controller extends spController{
 	 * @return array
 	 */
 	protected function getPageInfo($controller){
+		// var_dump($controller);
 		if(null != $controller->spArgs('pageIndex') && '' != $controller->spArgs('pageIndex')){
 			$page['pageIndex'] = $controller->spArgs('pageIndex');
 		}else{

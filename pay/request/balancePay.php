@@ -40,7 +40,7 @@ define('JS_PATH',"../../js");
 $db = new db();
 
 $configInfo = $db->find("SELECT * FROM base_config WHERE item_key = 'store_theme'");
-
+// var_dump($configInfo);
 $curTemplate = $configInfo['item_value'];
 
 $smarty->assign('theme', $curTemplate);
@@ -145,7 +145,7 @@ $smarty->assign('orderInfo', $orderInfo);
 
  */
 
-
+// var_dump($_GET);
 
 if($_GET['oid']){
 
@@ -154,7 +154,7 @@ if($_GET['oid']){
 	$oid=$_GET['oid'];
 
 	$orderInfo=$db->find("select * from store_order where id={$oid}");
-
+	// var_dump($orderInfo);
 	$orderInfo['goods_info']=json_decode($orderInfo['goods_list'],true);
 
 	foreach($orderInfo['goods_info'] as &$val){
@@ -198,14 +198,14 @@ else{
 	//购买用户id
 
 	$uid=$_GET['uid'];
-
+	// 用户信息
+	$member=$db->find("select * from base_user where id={$uid}");
+	// 用户折扣
+	$membertype=$db->find("select * from store_discount where user_type={$member['user_type']}");
 	
-
 	$goodsInfo=$db->findAll("select * from store_goods where id in ($gids)");
 
 	$goodsCountList = explode(',',$counts);
-
-	
 
 	//商品信息和总价		
 
@@ -220,14 +220,23 @@ else{
 	    $sum += $goodsInfo[$i]['price'] * $goodsCountList[$i];
 
 	}
-
+	// 乘以折扣百分百比
+	// 百分百修改成%
+	if($membertype['discount']!='1.00'&&$membertype['discount']!='0.00'){
+		
+		$sum=bcmul($sum,$membertype['discount'],2);
+		
+		$membertype['discount']=bcmul(100,$membertype['discount'],0).'%';
+		
+	}
+	// 加上其他费用
+	$sum=$membertype['blood_fee']+$membertype['transport_fee']+$sum;
 	
-
 	//体检人员信息
 
 	$memberInfo=$db->find("select * from store_check_member where state=1 and uid={$uid}");
-
 	
+	$smarty->assign('membertype',$membertype);
 
 	$smarty->assign('goodsList', $goodsInfo);
 

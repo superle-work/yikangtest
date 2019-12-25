@@ -1,17 +1,17 @@
-<?php /* Smarty version Smarty-3.0.8, created on 2019-09-11 16:24:25
-         compiled from "/home/wwwroot/yikang.chuyuanshengtai.com/template/../template/admin/default/store/page/agent/discountList.html" */ ?>
-<?php /*%%SmartyHeaderCode:15691474875d78af39537a79-36809502%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /* Smarty version Smarty-3.0.8, created on 2019-12-25 08:58:53
+         compiled from "C:\Users\Administrator\Desktop\yikang.chuyuanshengtai.com\yikangtest/template\../template/admin/default/store/page/hospital/hospitalList.html" */ ?>
+<?php /*%%SmartyHeaderCode:69265e0324cd28f7a7-96831467%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
-    'c06ce997970652b46d2a83f79b9399a02465c524' => 
+    'a37eb8f31678c3d19268816539b7ef2786fc06a8' => 
     array (
-      0 => '/home/wwwroot/yikang.chuyuanshengtai.com/template/../template/admin/default/store/page/agent/discountList.html',
-      1 => 1540952364,
+      0 => 'C:\\Users\\Administrator\\Desktop\\yikang.chuyuanshengtai.com\\yikangtest/template\\../template/admin/default/store/page/hospital/hospitalList.html',
+      1 => 1575337095,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '15691474875d78af39537a79-36809502',
+  'nocache_hash' => '69265e0324cd28f7a7-96831467',
   'function' => 
   array (
   ),
@@ -28,11 +28,11 @@ $_smarty_tpl->decodeProperties(array (
 
 <link rel="stylesheet" href="<?php echo @TEMPLATE_PATH;?>
 /admin/<?php echo $_smarty_tpl->getVariable('theme')->value;?>
-/store/css/agent/agentList.css" />
+/store/css/hospital/hospitalList.css" />
 
 <body>
 
-<!---------------- 代理列表 ------------------->
+<!---------------- 医院列表 ------------------->
 
 
 
@@ -70,7 +70,7 @@ $_smarty_tpl->decodeProperties(array (
 
                 <div class="operation-div">
 
-                    <a class="btn btn-success" class="addGoods" href="admin.php?c=store_agent&a=addAgent">添加</a>
+                    <a class="btn btn-success" class="addGoods" href="admin.php?c=store_hospital&a=addHospital">添加</a>
 
                 </div>
 
@@ -90,19 +90,7 @@ $_smarty_tpl->decodeProperties(array (
 
                                     <td width="80px">
 
-                                        <label for="area">代理区域:&nbsp;</label>
-
-                                    </td>
-
-                                    <td width="140px">
-
-                                        <input id="area" name="area" type="text" class="input-normal search"  placeholder="区/县"/>
-
-                                    </td>
-
-                                    <td width="80px">
-
-                                        <label for="goodsname">代理名称:&nbsp;</label>
+                                        <label for="goodsname">医院名称:&nbsp;</label>
 
                                     </td>
 
@@ -224,7 +212,7 @@ $_smarty_tpl->decodeProperties(array (
 
 <script type="text/javascript" src="<?php echo @TEMPLATE_PATH;?>
 /admin/<?php echo $_smarty_tpl->getVariable('theme')->value;?>
-/store/js/agent/agentList.js"></script>
+/store/js/hospital/hospitalList.js"></script>
 
 </body>
 

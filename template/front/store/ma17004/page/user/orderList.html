@@ -18,7 +18,17 @@
             <input type="hidden" id="payType" value="<!--{$configInfo.pay_type}-->">
             <!--是否开启退款-->
             <input type="hidden" id="is_refund" value="<!--{$configInfo.is_refund}-->">
-            
+            <!--查询订单-->
+           <!--{if $member.user_type == '1'}-->
+            <div class="col-lg-6" style="margin-top:8px;">
+                <div class="input-group">
+                <input type="text" class="form-control" id="keywords" placeholder="输入姓名电话查询~">
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" style="color: #fff;background-color: #1596FB;" id="search" type="button">查询</button>
+                    </span>
+                </div>
+            </div>
+            <!--{/if}-->
             <div id="myBottomNav" data-http ="<!--{$HttpHost}-->">
 	            <div class="swiper-container swiper-container-horizontal swiper-container-free-mode">
 					<div class="swiper-wrapper">

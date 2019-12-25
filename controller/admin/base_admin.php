@@ -2,6 +2,7 @@
 if(!class_exists('admin_controller')) require 'include/base/controller/admin/admin_controller.php';
 if(!class_exists('lib_admin')) require 'model/base/lib_admin.php';
 if(!class_exists('lib_admin_message')) require 'model/base/lib_admin_message.php';
+if(!class_exists('lib_user')) require 'model/base/lib_user.php';
 /**
  *管理员管理
  * @name base_admin.php
@@ -15,7 +16,9 @@ if(!class_exists('lib_admin_message')) require 'model/base/lib_admin_message.php
  */
 class base_admin extends admin_controller{
     private $lib_admin;
+    private $lib_user;
     private $lib_message;
+
 	/**
 	 * 构造函数
 	 */
@@ -24,6 +27,7 @@ class base_admin extends admin_controller{
 		$this->rightVerify($_SESSION['admin'], "./admin.php?c=base_main&a=login");
 		error_reporting ( E_ALL & ~ E_NOTICE & ~ E_DEPRECATED & ~ E_STRICT & ~ E_WARNING );
 		$this->lib_admin = new lib_admin();
+		$this->lib_user = new lib_user();
 		$this->lib_message = new lib_admin_message();
 	}
 	
@@ -39,7 +43,31 @@ class base_admin extends admin_controller{
 		$this->log(__CLASS__, __FUNCTION__, "管理员列表页面", 1, 'view');
 		$this->display("../template/admin/{$this->theme}/base/admin/page/adminList.html");
 	}
-	
+	/**
+     * 展示用户页面
+     **/
+    function showBindUser(){
+        //一级分类
+        $this->getMenu($this);
+
+    	$this->log(__CLASS__, __FUNCTION__, "展示打印页面", 1, 'view');
+
+        $this->display("../template/admin/{$this->theme}/base/admin/page/bindUser.html");
+    }
+	/**
+	 * 分页查询用户
+	 */
+	function pagingUser(){
+	    $page = $this->getPageInfo($this);
+	    // var_dump("11111111111");
+	    //$keyValueList = array('name'=>'like','nick_name'=>'like','subscribe'=>'=','country'=>'like','province'=>'like','city'=>'like','phone'=>'=','sex'=>'=','remark'=>'like','from_add_time'=>'>=','to_add_time'=>'<=');
+	    // var_dump($page);
+	    $keyValueList = array('nick_name'=>'like','phone'=>'=','user_type'=>'=','name'=>'like','subscribe'=>'=');
+	    $conditionList = $this->getPagingList($this, $keyValueList);
+	    $sort = "subscribe_time desc,add_time desc";
+	    $result = $this->lib_user->pagingUser($page,$conditionList,$sort);
+	    echo json_encode($result);
+	}
 	/**
 	 * 添加管理员页面
 	 */
@@ -83,7 +111,7 @@ class base_admin extends admin_controller{
 	 */
 	function insertAdmin(){
 	    $this->log(__CLASS__, __FUNCTION__, "添加管理员", 0, 'add');
-		$adminInfo = $this->getArgsList($this, array(account,password,email,admin_name,type,agent_id));
+		$adminInfo = $this->getArgsList($this, array(account,password,email,admin_name,type,agent_id,userid));
 		$result = $this->lib_admin->addAdmin( $adminInfo );
 		echo json_encode($result);
 	}

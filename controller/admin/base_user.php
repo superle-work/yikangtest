@@ -2,6 +2,7 @@
 if(!class_exists('admin_controller')) require 'include/base/controller/admin/admin_controller.php';
 if(!class_exists('lib_user')) require 'model/base/lib_user.php';
 if(!class_exists('lib_user_balance')) require 'model/base/lib_user_balance.php';
+if(!class_exists('lib_printer')) require 'model/store/lib_printer.php';
 if(!class_exists('lib_balance')) require 'model/base/lib_balance.php';
 if(!class_exists('lib_points_record')) require 'model/base/lib_points_record.php';
 /**
@@ -20,6 +21,7 @@ class base_user extends admin_controller{
     private $lib_balance;
     private $lib_points;
     private $lib_user_balance;
+    private $lib_printer;
 	/**
 	 * 构造函数
 	 */
@@ -31,6 +33,7 @@ class base_user extends admin_controller{
 		$this->lib_user_balance = new lib_user_balance();
 		$this->lib_points = new lib_points_record();
 		$this->lib_balance = new lib_balance();
+		$this->lib_printer = new lib_printer();
 	}
 	
 	//----------------------------------用户管理------------------------------
@@ -153,14 +156,28 @@ class base_user extends admin_controller{
 	function pagingUser(){
 	    $page = $this->getPageInfo($this);
 	    //$keyValueList = array('name'=>'like','nick_name'=>'like','subscribe'=>'=','country'=>'like','province'=>'like','city'=>'like','phone'=>'=','sex'=>'=','remark'=>'like','from_add_time'=>'>=','to_add_time'=>'<=');
-	    
+	    // var_dump($page);
 	    $keyValueList = array('nick_name'=>'like','phone'=>'=','user_type'=>'=','name'=>'like','subscribe'=>'=');
 	    $conditionList = $this->getPagingList($this, $keyValueList);
 	    $sort = "subscribe_time desc,add_time desc";
 	    $result = $this->lib_user->pagingUser($page,$conditionList,$sort);
 	    echo json_encode($result);
 	}
-	
+	/**
+	 * 分页查询打印机
+	 */
+	function pagingPrinter(){
+	    $page = $this->getPageInfo($this);
+	    // var_dump($page);die();
+	    //$keyValueList = array('name'=>'like','nick_name'=>'like','subscribe'=>'=','country'=>'like','province'=>'like','city'=>'like','phone'=>'=','sex'=>'=','remark'=>'like','from_add_time'=>'>=','to_add_time'=>'<=');
+	    // var_dump($page);
+	    $keyValueList = array('num' => 'like', 'province' => 'like', 'city' => 'like', 'area' => 'like');
+	    $conditionList = $this->getPagingList($this,$keyValueList);
+	    $sort = "id asc";
+	    $result = $this->lib_printer->pagingUsers($page,$conditionList,$sort);
+	    // var_dump($result);
+	    echo json_encode($result);
+	}	
 	//--------------------------------------用户余额充值记录-------------------------------
 	
 	/**

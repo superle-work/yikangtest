@@ -56,6 +56,7 @@ $(function(){
             responseTip(json.errorCode,json.errorInfo,1500);
         }
     }
+
     //表单验证信息
     var validateInfo ={
         rules:{

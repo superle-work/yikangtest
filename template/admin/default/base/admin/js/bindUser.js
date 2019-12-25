@@ -8,11 +8,12 @@ $(function(){
     var pageSize = 5;//每页显示的记录数
     var idList = [];//被选中的商品主键集合
     var uid = $("#myForm #uid").val();
-    if(uid !=""){
-        idList = uid.split(",");
-    }
 
+    // if(uid !=""){
+    //     idList = uid.split(",");
+    // }
 
+	
     /**
      * 页面初始化
      */
@@ -113,6 +114,23 @@ $(function(){
         pagination("#myContent #page-selection",{total:total,pageSize:pageSize},render);
 
     }
+        // 被选中放再字段里
+
+        var ids = [];
+        $("#bindSave").click(function(){
+
+            $("input[class='select-single']:checked").each(function(i){
+
+                var result= $.inArray($(this).val(), ids);
+                if (result==-1) {
+                ids=($(this).val());
+
+                $(".userid").val(ids);
+
+                }
+            })
+
+        });
     /**
      * 分页动态渲染数据
      * @param async ajax请求是否异步
@@ -126,7 +144,7 @@ $(function(){
         $.ajax({
             async:async,
             type:'post',
-            url:'./admin.php?c=base_user&a=pagingUser',
+            url:'./admin.php?c=base_admin&a=pagingUser',
             data:selectInfo,//从1开始计数
             dataType:'json',
             success:function(result){

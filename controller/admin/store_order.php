@@ -34,6 +34,20 @@ class store_order extends admin_controller{
 		$this->display("../template/admin/{$this->theme}/store/page/order/orderList.html");
 	}
 	
+
+	/**
+     * 展示打印页面
+     **/
+    function showBindUser(){
+        //一级分类
+        $this->getMenu($this);
+
+    	$this->log(__CLASS__, __FUNCTION__, "展示打印页面", 1, 'view');
+
+        $this->display("../template/admin/{$this->theme}/store/page/order/bindUser.html");
+    }
+	
+
 	/**
 	 * 订单详情页面
 	 */
@@ -74,7 +88,96 @@ class store_order extends admin_controller{
         $this->orderInfo = $orderResult['data'];
 		$this->display("../template/admin/{$this->theme}/store/page/order/orderDetailList.html");
 	}
-	
+
+
+	/**
+	 *打印机打印订单
+	 *
+	 */
+  	function printer(){
+	  		$data=$this->spArgs();
+	  		// dump($data);
+	  		//查配置信息
+			if(!class_exists('UtilConfig')) include 'include/UtilConfig.php';
+			$lib_config = new UtilConfig('store_config');
+			$configInfoResult = $lib_config->findConfigKeyValue();
+
+
+			include_once 'include/PrintTicket.php';
+			$printTicket = new PrintTicket();
+			if(!class_exists('m_store_order')) include 'model/store/table/m_store_order.php';
+	    
+		    $m_store_order=new m_store_order();
+
+			$orderInfoResult['data']=$m_store_order->find(array('id'=>$data['id']));
+			$orderInfoResult['data']['goods_list']=json_decode($orderInfoResult['data']['goods_list'],true);
+			$orderInfoResult['data']['member_info']=json_decode($orderInfoResult['data']['member_info'],true);
+			// if(!class_exists("m_store_hospital")) include_once "model/store/table/m_store_hospital.php";
+			if(!class_exists("m_store_clinic")) include_once "model/store/table/m_store_clinic.php";
+			// if(!class_exists("lib_clinic")) include_once "model/store/lib_clinic.php";
+			$m_store_clinic=new m_store_clinic();
+			// $m_store_hospital=new m_store_hospital();
+			if ($orderInfoResult['data']['clinic_id']) {
+				$a=$m_store_clinic->find(array('id'=>$orderInfoResult['data']['clinic_id']));
+				$orderInfoResult['data']['clinic_id']=$a['name'];
+			}
+			// dump($orderInfoResult['data']);
+			if ($orderInfoResult['data']['clinicID']) {
+				$b=$m_store_clinic->find(array('id'=>$orderInfoResult['data']['clinicID']));
+				$orderInfoResult['data']['clinicID']=$b['name'];
+			}			
+
+
+			// dump($orderInfoResult['data']);die;
+			$mesageInfo = array(
+				'ticket_title'=>$configInfoResult['data']['ticket_title'],
+				'num'=>time(),
+				'order_num'=>$orderInfoResult['data']['order_num'],
+				'time'=>$orderInfoResult['data']['add_time'],
+				'name'=>$orderInfoResult['data']['member_info']['name'],
+				'sex'=>$orderInfoResult['data']['member_info']['sex'],
+				'idCard'=>$orderInfoResult['data']['member_info']['idCard'],
+				'total_price'=>$orderInfoResult['data']['total_price'],
+				'goodsList'=>$orderInfoResult['data']['goods_list'],
+				'clinic_name'=>$orderInfoResult['data']['clinic_name'],
+				'clinicID'=>$orderInfoResult['data']['clinicID'],
+				'clinic_name'=>$orderInfoResult['data']['clinic_id'],
+				'ticket_phone'=>$configInfoResult['data']['ticket_phone'],
+				'ticket_ad'=>$configInfoResult['data']['ticket_ad'],
+				'ticket_qcode'=>$orderInfoResult['data']['qrcode'],
+				'ticket_is_double'=>$configInfoResult['data']['ticket_is_double']
+			);
+			
+			if($orderInfoResult['data']['pay_method'] == 1){
+				$mesageInfo['pay_method'] ="微信支付";
+			}else if($orderInfoResult['data']['pay_method'] == 2){
+				$mesageInfo['pay_method'] ="支付宝支付";
+			}else if($orderInfoResult['data']['pay_method'] == 3){
+				$mesageInfo['pay_method'] ="货到付款";
+			}
+
+			if(!class_exists('m_base_printer')) include 'model/base/table/m_base_printer.php';
+	    
+		    $m_base_printer=new m_base_printer();
+
+			
+
+			for ($i=0; $i <count($data['ids']) ; $i++) { 
+
+				$array=$m_base_printer->find(array('num'=>$data['ids'][$i]));
+
+				$deviceInfo['ticket_device_num'] = $array['num'];
+				$deviceInfo['ticket_device_key'] = $array['printer_key'];
+				$result = $printTicket->sendNewPrint($mesageInfo,$deviceInfo);//新版小票打印机通知
+
+				if($result['errorCode'] != 0){
+					$log = Log::getInstance();
+					$log->log($result['errorInfo'],'ERROR');
+				}
+
+			}
+
+  	}
 	/**
 	 * 分页查询订单
 	 */

@@ -305,13 +305,52 @@ var pageOption = {
 
 var selectInfo = {};//模糊查询配置参数
 function pagination(selector,option,callback){
-	
+
     $.extend(true,pageOption,option);
     $(selector).bootpag(pageOption).on("page", function(event, pageIndex){//当前页
+
     	var curPageSize = $("#page-selection #paging-mode").val() || pageOption.pageSize;//当前选择的分页模式，即每页显示几条记录
 		pageOption.pageSize = curPageSize;
         //动态加载渲染数据
         callback(true,pageIndex,pageOption.pageSize);
+    });
+}
+/**
+ * 利用bootpag插件完成
+ * 分页查询方法
+ * @param selector 分页页码所在选择器内
+ * @param option 插件自定义配置选择
+ * @param callback 翻页事件回调函数
+ */
+//初始化配置
+var pageOptions = {
+    firstLastUse: true,
+    first: '«',
+    last: '»',
+    prev:'‹',
+    next:'›',
+    leaps:true,
+    //wrapClass: 'pagination',
+    //activeClass: 'active',
+    //disabledClass: 'disabled',
+    //nextClass: 'next',
+    //prevClass: 'prev',
+    //lastClass: 'last',
+    //firstClass: 'first'
+    total:1,//总页数
+    total_count:0,//总记录数
+    page:1, //当前显示页
+    pageSize:10, //每页显示的记录数
+    maxVisible:10//每页最多显示的页码链接
+};//分页配置项
+function paginations(selector,option,callback){
+
+    $.extend(true,pageOptions,option);
+    $("#page-selections").bootpag(pageOptions).on("page", function(event, pageIndex){//当前页
+        var curPageSize = $("#page-selections #paging-mode").val() || pageOptions.pageSize;//当前选择的分页模式，即每页显示几条记录
+        pageOptions.pageSize = curPageSize;
+        //动态加载渲染数据
+        callback(true,pageIndex,pageOptions.pageSize);
     });
 }
 //字符串去除首发空格

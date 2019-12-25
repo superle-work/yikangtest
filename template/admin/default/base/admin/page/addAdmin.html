@@ -1,116 +1,260 @@
-<!DOCTYPE html>
-<html>
-<!-- head -->
-<!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/admin/<!--{$theme}-->/common/page/head.html"}-->
-<body>
-<!---------------- 添加管理员 ------------------->
-
-<!-- 页头 -->
-<!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/admin/<!--{$theme}-->/common/page/header.html"}-->
-<!-- 主体 -->
-<div class="content container-fluid<!--{if $leftBarScale eq '1'}--> scale<!--{/if}-->">
-    <div class="row">
-        <div class="col-md-2 left-section">
-            <!-- 左导航菜单 -->
-            <!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/admin/<!--{$theme}-->/common/page/menu.html"}-->
-
-        </div>
-        <div class="col-md-10 right-section">
-            <!--内容区域-->
-            <h3><i class="icon iconfont"><!--{$smarty.session.currentMenu.icon}--></i>添加管理员</h3>
-            <div class="inner-section row">
-                <div class="items add-div">
-                    <form id="myForm" action="#" method="post" enctype="multipart/form-data">
-                        <div class="item table-responsive">
-                            <table class="table table-striped table-hover table-bordered table-base">
-                                <tbody>
-                                    <tr>
-                                        <td>账号<label class="must-tag">*</label></td>
-                                        <td>
-                                            <input type="text" name="account" id="account">
-                                        </td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td>名称<label class="must-tag">&nbsp;&nbsp;</label></td>
-                                        <td>
-                                            <input type="text" name="admin_name" id="admin_name">
-                                        </td>
-                                        <td></td>
-                                    </tr>
-
-                                    <tr>
-                                        <td>密码<label class="must-tag">*</label></td>
-                                        <td>
-                                            <input type="password" name="password" id="password">
-                                        </td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td>再输一次<label class="must-tag">*</label></td>
-                                        <td>
-                                            <input type="password" name="confirmPwd" id="confirmPwd">
-                                        </td>
-                                        <td></td>
-                                    </tr>
-
-                                    <tr>
-                                        <td>邮箱<label class="must-tag">&nbsp;</label></td>
-                                        <td>
-                                            <input type="text"  name="email" id="email">
-                                        </td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td>账户类型<label class="must-tag">*</label></td>
-                                        <td>
-                                            <input type="radio" name="type" value="1"> 管理员
-                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                            <input type="radio" name="type" value="2"> 子账户
-                                        </td>
-                                        <td></td>
-                                    </tr>
-                                    <tr class="hidden">
-                                        <td>选择代理<label class="must-tag">*</label></td>
-                                        <td>
-                                            <!--{if $agentResult}-->
-                                            <select name="agent_id" id="">
-                                                <option value="">--请选择--</option>
-                                                <!--{foreach from=$agentResult item=agent}-->
-                                                <option value="<!--{$agent.id}-->"><!--{$agent.name}-->----<!--{$agent.province}--><!--{$agent.city}--><!--{$agent.area}--></option>
-                                                <!--{/foreach}-->
-                                            </select>
-                                            <!--{else}-->
-                                            <font color="red" size="4">请先添加代理</font>
-                                            &nbsp;&nbsp;<a href="admin.php?c=store_agent&a=agentList&mid=41">点击前去添加</a>
-                                            <!--{/if}-->
-                                        </td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                        </td>
-                                        <td>
-                                            <a class="btn btn-primary submit">提交</a>
-                                            <a href="javascript:window.history.go(-1);" class="btn btn-default">返回</a>
-                                        </td>
-                                        <td></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- 页脚 -->
-<!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/admin/<!--{$theme}-->/common/page/footer.html"}-->
-
-<!-- jsfiles -->
-<!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/admin/<!--{$theme}-->/common/page/jsfiles.html"}-->
-<script type="text/javascript" src="<!--{$smarty.const.TEMPLATE_PATH}-->/admin/<!--{$theme}-->/base/admin/js/addAdmin.js"></script>
-</body>
+<!DOCTYPE html>
+
+<html>
+
+<!-- head -->
+
+<!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/admin/<!--{$theme}-->/common/page/head.html"}-->
+
+
+<body>
+
+<!---------------- 添加管理员 ------------------->
+
+
+
+<!-- 页头 -->
+
+<!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/admin/<!--{$theme}-->/common/page/header.html"}-->
+
+<!-- 主体 -->
+
+<div class="content container-fluid<!--{if $leftBarScale eq '1'}--> scale<!--{/if}-->">
+
+    <div class="row">
+
+        <div class="col-md-2 left-section">
+
+            <!-- 左导航菜单 -->
+
+            <!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/admin/<!--{$theme}-->/common/page/menu.html"}-->
+
+
+
+        </div>
+
+        <div class="col-md-10 right-section">
+
+            <!--内容区域-->
+
+            <h3><i class="icon iconfont"><!--{$smarty.session.currentMenu.icon}--></i>添加管理员</h3>
+
+            <div class="inner-section row">
+
+                <div class="items add-div">
+
+                    <form id="myForm" action="#" method="post" enctype="multipart/form-data">
+
+                        <div class="item table-responsive">
+
+                            <table class="table table-striped table-hover table-bordered table-base">
+
+                                <tbody>
+
+                                    <tr>
+
+                                        <td>账号<label class="must-tag">*</label></td>
+
+                                        <td>
+
+                                            <input type="text" name="account" id="account">
+
+                                        </td>
+
+                                        <td></td>
+
+                                    </tr>
+                                    <tr>
+
+                                        <td class="td1"><label for="doctor_pwd"><span class="must-tag">*</span>工作人员</label></td>
+
+                                        <td class="td2">
+
+                                            <div class="select-goods-area"><a data-toggle="modal" class="btn btn-primary btn-sm select-goods" href="./admin.php?c=base_admin&a=showBindUser" data-target="#bindLabelDialog">选择用户</a></div>
+                                            <input type="hidden" name="userid" class="userid" >
+                                        </td>
+
+                                    </tr>
+
+                                    <tr>
+
+                                        <td>名称<label class="must-tag">&nbsp;&nbsp;</label></td>
+
+                                        <td>
+
+                                            <input type="text" name="admin_name" id="admin_name">
+
+                                        </td>
+
+                                        <td></td>
+
+                                    </tr>
+
+
+
+                                    <tr>
+
+                                        <td>密码<label class="must-tag">*</label></td>
+
+                                        <td>
+
+                                            <input type="password" name="password" id="password">
+
+                                        </td>
+
+                                        <td></td>
+
+                                    </tr>
+
+                                    <tr>
+
+                                        <td>再输一次<label class="must-tag">*</label></td>
+
+                                        <td>
+
+                                            <input type="password" name="confirmPwd" id="confirmPwd">
+
+                                        </td>
+
+                                        <td></td>
+
+                                    </tr>
+
+
+
+                                    <tr>
+
+                                        <td>邮箱<label class="must-tag">&nbsp;</label></td>
+
+                                        <td>
+
+                                            <input type="text"  name="email" id="email">
+
+                                        </td>
+
+                                        <td></td>
+
+                                    </tr>
+
+                                    <tr>
+
+                                        <td>账户类型<label class="must-tag">*</label></td>
+
+                                        <td>
+
+                                            <input type="radio" name="type" value="1"> 管理员
+
+                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+                                            <input type="radio" name="type" value="2"> 子账户
+
+                                        </td>
+
+                                        <td></td>
+
+                                    </tr>
+
+                                    <tr class="hidden">
+
+                                        <td>选择代理<label class="must-tag">*</label></td>
+
+                                        <td>
+
+                                            <!--{if $agentResult}-->
+
+                                            <select name="agent_id" id="">
+
+                                                <option value="">--请选择--</option>
+
+                                                <!--{foreach from=$agentResult item=agent}-->
+
+                                                <option value="<!--{$agent.id}-->"><!--{$agent.name}-->----<!--{$agent.province}--><!--{$agent.city}--><!--{$agent.area}--></option>
+
+                                                <!--{/foreach}-->
+
+                                            </select>
+
+                                            <!--{else}-->
+
+                                            <font color="red" size="4">请先添加代理</font>
+
+                                            &nbsp;&nbsp;<a href="admin.php?c=store_agent&a=agentList&mid=41">点击前去添加</a>
+
+                                            <!--{/if}-->
+
+                                        </td>
+
+                                        <td></td>
+
+                                    </tr>
+
+                                    <tr>
+
+                                        <td>
+
+                                        </td>
+
+                                        <td>
+
+                                            <a class="btn btn-primary submit">提交</a>
+
+                                            <a href="javascript:window.history.go(-1);" class="btn btn-default">返回</a>
+
+                                        </td>
+
+                                        <td></td>
+
+                                    </tr>
+
+                                </tbody>
+
+                            </table>
+
+                        </div>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+<!--选择用户-->
+
+<div class="modal fade" id="bindLabelDialog"  tabindex="-1" role="dialog"
+
+     aria-labelledby="myModalLabel" aria-hidden="true">
+
+    <div class="modal-dialog modal-lg">
+
+        <div class="modal-content">
+
+
+
+
+
+        </div><!-- /.modal-content -->
+
+    </div><!-- /.modal-dialog -->
+
+</div><!-- /.modal -->
+
+<!-- 页脚 -->
+
+<!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/admin/<!--{$theme}-->/common/page/footer.html"}-->
+
+
+
+<!-- jsfiles -->
+
+<!--{include file="<!--{$smarty.const.TEMPLATE_PATH}-->/admin/<!--{$theme}-->/common/page/jsfiles.html"}-->
+
+<script type="text/javascript" src="<!--{$smarty.const.TEMPLATE_PATH}-->/admin/<!--{$theme}-->/base/admin/js/addAdmin.js"></script>
+<script type="text/javascript" src="<!--{$smarty.const.TEMPLATE_PATH}-->/admin/<!--{$theme}-->/base/admin/js/addAdmin.js"></script>
+</body>
+
 </html>

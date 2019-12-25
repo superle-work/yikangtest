@@ -6,26 +6,26 @@ $(function(){
     function init(){
         bindEvent();
     }
-	
+  
     /**
      * 绑定事件
      */
     function bindEvent(){
-       	//无默认体检人员
-       	$(".addMem-area .addCheckMember").click(function(){
-       		var storage=window.localStorage;
-       		storage['url']=window.location.href;
-       		location.href="http://yikang.chuyuanshengtai.com/index.php?c=store&a=checkMember";
-       	})
-       	
-       	//重新选择体检人员
-       	$(".member-list .action .reSel").click(function(){
-       		var storage=window.localStorage;
-       		storage['url']=window.location.href;
-       		location.href="http://yikang.chuyuanshengtai.com/index.php?c=store&a=checkMember";
-       	})
+        //无默认体检人员
+        $(".addMem-area .addCheckMember").click(function(){
+          var storage=window.localStorage;
+          storage['url']=window.location.href;
+          location.href="http://yikang.chuyuanshengtai.com/index.php?c=store&a=checkMember";
+        })
+        
+        //重新选择体检人员
+        $(".member-list .action .reSel").click(function(){
+          var storage=window.localStorage;
+          storage['url']=window.location.href;
+          location.href="http://yikang.chuyuanshengtai.com/index.php?c=store&a=checkMember";
+        })
        
-       	
+        
         //提交订单
         $(".bottom-nav .pay-method").click(function(){
             $("#content .tip-info").hide();
@@ -42,6 +42,12 @@ $(function(){
             var gids = $("#content #gids").val();//商品主键
             //var gpids = $("#content #gpids").val();  //商品属性主键
             var counts = $("#content #counts").val();//商品数量
+            // 采血费
+            var blood_fee = $("#blood_fee").val();
+            // 运输费
+            var transport_fee = $("#transport_fee").val();
+            // 折扣
+            var discount = $("#discount").val();
             //总价
             var total_price=$(".order-bottom-area .goods-total #total-price-1").text();
             //推荐诊所id
@@ -50,51 +56,54 @@ $(function(){
             var uid=$(this).attr("data-user");
             $.ajax(
                 {
-                  	type:"post",
-                  	url:"http://yikang.chuyuanshengtai.com/index.php?c=store&a=payOrder",
-                  	data:{
-                      	"gids":gids,
-                      	"cgids":cgids,
-                      	"counts":counts,
-                      	"pay_method":1,
-                      	"checkMember_id":checkMember_id,
-                      	"total_price":total_price,
-                      	"clinicID":clinicID,
-                      	'uid':uid
-                  	},
-                  	dataType:"json",
-                  	beforeSend:function(xhr){
-                       	//显示“加载中。。。”
-                       	//showDialog('#loadingDialog');
-                  	},
-                  	complete:function(){
-				   		//隐藏“加载中。。。”
-                	  	//hideDialog('#loadingDialog');
-                  	},
-                  	success:function(json,statusText){
-                      	if(json.errorCode == 0){
-                      		var storage=window.localStorage;
-       						storage.clear();
-                    	  	var jsApiParametersResult = $.parseJSON(json.data);
-                   			callpay(jsApiParametersResult);
-                      	}else{
-                          	showDialog("#errorDialog", "下单失败", json.errorInfo );
-                          	return false;
-                      	}
-                  	},
-                  	error:function(xhr,status,thrown){
-                	  	showDialog('#errorDialog','','网络异常，请求失败！','');
-                      	return false;
-                  	}
+                    type:"post",
+                    url:"/index.php?c=store&a=payOrder",
+                    data:{
+                        "gids":gids,
+                        "blood_fee":blood_fee,
+                        "transport_fee":transport_fee,
+                        "discount":discount,
+                        "cgids":cgids,
+                        "counts":counts,
+                        "pay_method":1,
+                        "checkMember_id":checkMember_id,
+                        "total_price":total_price,
+                        "clinicID":clinicID,
+                        'uid':uid
+                    },
+                    dataType:"json",
+                    beforeSend:function(xhr){
+                        //显示“加载中。。。”
+                        //showDialog('#loadingDialog');
+                    },
+                    complete:function(){
+              //隐藏“加载中。。。”
+                      //hideDialog('#loadingDialog');
+                    },
+                    success:function(json,statusText){
+                        if(json.errorCode == 0){
+                          var storage=window.localStorage;
+                  storage.clear();
+                          var jsApiParametersResult = $.parseJSON(json.data);
+                        callpay(jsApiParametersResult);
+                        }else{
+                            showDialog("#errorDialog", "下单失败", json.errorInfo );
+                            return false;
+                        }
+                    },
+                    error:function(xhr,status,thrown){
+                      showDialog('#errorDialog','','网络异常，请求失败！','');
+                        return false;
+                    }
                 }
             );
-       	});
-		
+        });
+    
     }
     
     //调用微信JS api 支付
     function jsApiCall(jsApiParameters)
-    {	
+    { 
         WeixinJSBridge.invoke(
                 'getBrandWCPayRequest',
                 {
@@ -113,7 +122,7 @@ $(function(){
                     }else if(res.err_msg == "get_brand_wcpay_request:cancel"){//取消支付
 
                     }else if(res.err_msg == "get_brand_wcpay_request:fail"){//支付失败
-						
+            
                     }
                 }
         );

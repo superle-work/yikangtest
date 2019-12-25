@@ -45,7 +45,7 @@ class lib_order extends base_model {
 	 * @return array $result 
 	 */
 
-	public function addOrder($userInfo,$gids,$counts,$cgids,$total_price,$checkMember_id,$clinicID,$pay_method =0){
+	public function addOrder($userInfo,$gids,$counts,$cgids,$total_price,$checkMember_id,$clinicID,$pay_method =0,$blood_fee,$transport_fee,$discount){
 
 		if(!class_exists('lib_goods')) include 'model/store/lib_goods.php';
 	    $lib_goods = new lib_goods();
@@ -72,6 +72,15 @@ class lib_order extends base_model {
 		$userResult=$lib_user->findUser(array('id'=>$userInfo['id']));
 		$phone=$userResult['data']['phone'];
 		
+		// 是否为诊所用户是直接核销
+		$user_type=$userResult['data']['user_type'];
+		
+		if ($user_type==1) {
+			$state=1;
+		}else{
+			$state=0;
+		}
+		
 		//体检人员信息
 		if(!class_exists('lib_check_member')) include 'model/store/lib_check_member.php';
 		$lib_check_member = new lib_check_member();
@@ -91,8 +100,11 @@ class lib_order extends base_model {
 				"checkMember_id"=>$checkMember_id,
 				"member_info"=>$member_info,
 				"clinicID"=>$clinicID,
-		        "state" => 0,
+		        "state" => $state,
 		        "pay_method" => $pay_method,
+		        "blood_fee" => $blood_fee,
+		        "transport_fee" => $transport_fee,
+		        "discount" => $discount,
 		);
 		try {
 			//添加订单
@@ -407,14 +419,23 @@ class lib_order extends base_model {
 						$join [] = "date_format(end_time,'%Y-%m-%d')<='".$endTime['to']."'";
 					}
 				}
+				// 模糊查询json
+				if(!empty($page['keywords'])){
+					$keywords = str_replace('"','',json_encode($page['keywords']));  
+					$keywords = str_replace("\\",'_',$keywords);
+					// var_dump($keywords);
+					$join [] = "member_info LIKE '%$keywords%'";
+				}
 				//将所有的条件用AND连接起来
 				$where = "WHERE " . join ( " AND ", $join );
+
 			} else {
 				if (null != $conditions)
 					$where = "WHERE " . $conditions;
 			}
 			//根据$sort的值 选择要排序的字段
 			$sql = "SELECT * FROM store_order {$where} {$sortstr}";
+			
 		}
 		
 		//查询数据库

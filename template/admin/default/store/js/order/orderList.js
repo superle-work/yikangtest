@@ -7,7 +7,10 @@ $(function(){
     var currentPage = 1;//当前页
     var pageSize = pageOption.pageSize;//每页显示的记录数
     var idList = [];//批量选择id所存的数组
-
+    printerid = '';
+    function chooseid(){
+        printerid=$(this).attr("oid");
+    }
     /**
      * 页面初始化
      */
@@ -205,7 +208,7 @@ $(function(){
                             //+'<td class="th11"><a href="javascript:;" class="logistics_detail" title="查看物流人员详情" lid="'+lid+'">'+logistics_worker_name+'</a></td>'
                             +'<td class="th11"><a href="javascript:;" class="hospital_worker_detail" title="查看医院人员详情" hwid="'+hospital_worker+'">'+hospital_worker_name+'</a></td>'
                             +'<td>'+createtime+'</td>'
-                            +'<td>'+operate+'<a href="javascript:;" oid="'+oid+'" class="btn btn-default btn-xs delete-order">删除</a></td>'
+                            +'<td>'+operate+'<a oid="'+oid+'" class="btn btn-default btn-xs print-order chooseid" data-toggle="modal" href="./admin.php?c=store_order&a=showBindUser&id='+oid+'" data-target="#bindLabelDialog">打印</a>'+'<a href="javascript:;" oid="'+oid+'" class="btn btn-default btn-xs delete-order">删除</a></td>'
                             +'</tr>';
                     }
 
@@ -288,6 +291,7 @@ $(function(){
                        
                         //删除订单
                         $(".delete-order").click(deleteOrder);
+                        $(".chooseid").click(chooseid);
                         
                     }
 
@@ -298,6 +302,14 @@ $(function(){
             error:errorResponse
         });
     }
+
+    // /**
+    // *打印订单
+    // *
+    // **/
+    // function printOrder(){
+    //     alert("111111111");
+    // }
 
     /**
      * 删除订单
